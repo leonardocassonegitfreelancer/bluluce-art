@@ -1,0 +1,36 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import GalleryPageWrapper from "../../../page-components/GalleryPageWrapper";
+import type { Lang } from "../../../i18n/homeTranslations";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "lt" } },
+    { params: { lang: "en" } },
+    { params: { lang: "it" } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const titles: Record<Lang, string> = {
+  lt: "Galerija | LALIMENTARI – Italų restoranas Vilniuje",
+  en: "Gallery | LALIMENTARI – Italian Restaurant Vilnius",
+  it: "Galleria | LALIMENTARI – Ristorante Italiano a Vilnius",
+};
+
+const descriptions: Record<Lang, string> = {
+  lt: "Peržiūrėkite mūsų virtuvę nuotraukose. Šviežia pasta, focaccia, užkandžiai ir mūsų restorano atmosfera Vilniuje.",
+  en: "Discover our kitchen through images. Fresh pasta, focaccia, starters and the atmosphere of our restaurant in Vilnius.",
+  it: "Scopri la nostra cucina attraverso le immagini. Pasta fresca, focacce, antipasti e l'atmosfera del nostro locale a Vilnius.",
+};
+---
+
+<Layout
+  title={titles[lang]}
+  description={descriptions[lang]}
+  canonical={`/${lang}/gallery`}
+  lang={lang}
+>
+  <GalleryPageWrapper lang={lang} client:only="react" />
+</Layout>

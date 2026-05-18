@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Skill(impeccable)",
+      "Skill(impeccable:*)",
+      "Skill(high-end-visual-design)",
+      "Skill(high-end-visual-design:*)",
+      "Bash(powershell -command \"\\(Get-Content src/views/Menu.tsx -Raw\\) -replace '#FAF6EE', '#F2E4CB' -replace '#FBF7F0', '#EBD9B8' | Set-Content src/views/Menu.tsx -Encoding utf8\")",
+      "Bash(cd \"/c/Users/leona/Desktop/Antugtavity projetcts/lalimentari-restaurant\" && grep -rn \"from \\\\\"@/assets/.*\\\\.\\\\\\(png\\\\|jpg\\\\|jpeg\\\\\\)\" src/ --include=\"*.tsx\" --include=\"*.ts\" --include=\"*.astro\" -l)",
+      "Read(//c/c/Users/leona/Desktop/Antugtavity projetcts/lalimentari-restaurant/**)"
+    ]
+  }
+}

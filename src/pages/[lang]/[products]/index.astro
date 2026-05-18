@@ -1,0 +1,42 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import ProductsPageWrapper from "../../../page-components/ProductsPageWrapper";
+import type { Lang } from "../../../i18n/homeTranslations";
+
+const productsSlug: Record<string, string> = {
+  lt: "produktai",
+  en: "products",
+  it: "prodotti",
+};
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "lt", products: "produktai" } },
+    { params: { lang: "en", products: "products" } },
+    { params: { lang: "it", products: "prodotti" } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: Lang; products: string };
+
+const titles: Record<Lang, string> = {
+  lt: "Itališki produktai Vilniuje | LALIMENTARI – Saliumai, Sūriai, Pasta, Vynai",
+  en: "Italian Products in Vilnius | LALIMENTARI – Salumi, Cheeses, Pasta, Wines",
+  it: "Prodotti Italiani a Vilnius | LALIMENTARI – Salumi, Formaggi, Pasta, Vini",
+};
+
+const descriptions: Record<Lang, string> = {
+  lt: "Atraskite autentiškus itališkus produktus LALIMENTARI Vilniuje: saliumai, sūriai, šviežia pasta, vynai, focaccia. Italijos skonis Lietuvos sostinėje.",
+  en: "Discover authentic Italian products at LALIMENTARI Vilnius: salumi, cheeses, fresh pasta, wines, focaccia. The taste of Italy in the Lithuanian capital.",
+  it: "Scopri i prodotti italiani autentici da LALIMENTARI a Vilnius: salumi, formaggi, pasta fresca, vini, focacce. Il gusto dell'Italia nella capitale lituana.",
+};
+---
+
+<Layout
+  title={titles[lang]}
+  description={descriptions[lang]}
+  canonical={`/${lang}/${productsSlug[lang]}`}
+  lang={lang}
+>
+  <ProductsPageWrapper lang={lang} client:only="react" />
+</Layout>

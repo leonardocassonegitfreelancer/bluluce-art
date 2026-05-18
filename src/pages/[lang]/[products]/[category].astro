@@ -1,0 +1,52 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import CategoryPageWrapper from "../../../page-components/CategoryPageWrapper";
+import { th } from "../../../i18n/homeTranslations";
+import type { Lang, TranslationKey } from "../../../i18n/homeTranslations";
+import type { CategorySlug } from "../../../i18n/slugs";
+
+const productsSlug: Record<string, string> = {
+  lt: "produktai",
+  en: "products",
+  it: "prodotti",
+};
+
+type CategoryMeta = { nameKey: TranslationKey; descKey: TranslationKey };
+
+const categoryMeta: Record<CategorySlug, CategoryMeta> = {
+  prosciutti: { nameKey: "prodCatProsciuttiName", descKey: "prodCatProsciuttiDesc" },
+  pasta: { nameKey: "prodCatPastaName", descKey: "prodCatPastaDesc" },
+  focaccia: { nameKey: "prodCatFocacciaName", descKey: "prodCatFocacciaDesc" },
+  vini: { nameKey: "prodCatViniName", descKey: "prodCatViniDesc" },
+  dolci: { nameKey: "productsNameDolci", descKey: "productsNarrativeDolci" },
+  conserve: { nameKey: "prodCatConserveName", descKey: "prodCatConserveDesc" },
+};
+
+export function getStaticPaths() {
+  const langs = ["lt", "en", "it"];
+  const slugMap: Record<string, string> = { lt: "produktai", en: "products", it: "prodotti" };
+  const cats: CategorySlug[] = ["prosciutti", "pasta", "focaccia", "vini", "dolci", "conserve"];
+
+  return langs.flatMap((lang) =>
+    cats.map((category) => ({
+      params: { lang, products: slugMap[lang], category },
+    }))
+  );
+}
+
+const { lang, category } = Astro.params as { lang: Lang; products: string; category: CategorySlug };
+const meta = categoryMeta[category];
+const title = meta
+  ? `${th(meta.nameKey, lang)} | LALIMENTARI`
+  : `${category} | LALIMENTARI`;
+const description = meta ? th(meta.descKey, lang) : "";
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={`/${lang}/${productsSlug[lang]}/${category}`}
+  lang={lang}
+>
+  <CategoryPageWrapper lang={lang} category={category} client:only="react" />
+</Layout>

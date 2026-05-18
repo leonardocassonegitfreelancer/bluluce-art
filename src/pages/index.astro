@@ -1,0 +1,23 @@
+---
+// Root: country redirects handled by Cloudflare Pages (_redirects).
+// For all other visitors, JS detects browser language and redirects.
+---
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LALIMENTARI</title>
+    <meta name="robots" content="noindex" />
+    <noscript><meta http-equiv="refresh" content="0;url=/en" /></noscript>
+    <script>
+      (function () {
+        var l = (navigator.language || "en").toLowerCase();
+        if (l.startsWith("it")) location.replace("/it");
+        else if (l.startsWith("lt")) location.replace("/lt");
+        else location.replace("/en");
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

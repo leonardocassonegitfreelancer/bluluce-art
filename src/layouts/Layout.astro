@@ -1,0 +1,86 @@
+---
+import "../index.css";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  lang: string;
+  image?: string;
+  jsonLd?: Record<string, unknown>;
+  robots?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  lang,
+  image,
+  jsonLd,
+  robots = "index, follow",
+} = Astro.props;
+
+const BASE_URL = "https://lalimentari.lt";
+const DEFAULT_IMAGE = "https://lalimentari.lt/og-image.webp";
+const LANGS = ["lt", "en", "it"] as const;
+const subPath = canonical.replace(/^\/(lt|en|it)/, "") || "";
+const ogImage = image || DEFAULT_IMAGE;
+const canonicalUrl = `${BASE_URL}${canonical}`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    {
+      LANGS.map((l) => (
+        <link
+          rel="alternate"
+          hreflang={l}
+          href={`${BASE_URL}/${l}${subPath}`}
+        />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={`${BASE_URL}/lt${subPath}`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
+    <meta name="geo.region" content="LT-VL" />
+    <meta name="geo.placename" content="Vilnius" />
+    <meta name="geo.position" content="54.6872;25.2797" />
+    <meta name="ICBM" content="54.6872, 25.2797" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,400;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <slot name="head" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+  </head>
+  <body>
+    <div class="grain-overlay" aria-hidden="true"></div>
+    <slot />
+  </body>
+</html>

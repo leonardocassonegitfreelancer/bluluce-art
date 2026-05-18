@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Command node, npm, bun, pnpm 2>&1)",
+      "PowerShell($env:PATH)",
+      "PowerShell($env:PATH += \";C:\\\\Users\\\\leona\\\\.bun\\\\bin\"; Set-Location \"c:\\\\Users\\\\leona\\\\Desktop\\\\Antugtavity projetcts\\\\lalimentari-restaurant\"; bun install 2>&1 | Select-Object -Last 30)",
+      "PowerShell($env:PATH += \";C:\\\\Users\\\\leona\\\\.bun\\\\bin\"; Set-Location \"c:\\\\Users\\\\leona\\\\Desktop\\\\Antugtavity projetcts\\\\lalimentari-restaurant\"; bun run build 2>&1)",
+      "PowerShell($env:PATH += \";C:\\\\Users\\\\leona\\\\.bun\\\\bin\"; Set-Location \"c:\\\\Users\\\\leona\\\\Desktop\\\\Antugtavity projetcts\\\\lalimentari-restaurant\"; bun run build 2>&1 | Select-Object -Last 40)",
+      "PowerShell($env:PATH += \";C:\\\\Users\\\\leona\\\\.bun\\\\bin\"; Set-Location \"c:\\\\Users\\\\leona\\\\Desktop\\\\Antugtavity projetcts\\\\lalimentari-restaurant\"; bun install 2>&1 | Select-Object -Last 10)",
+      "PowerShell($env:PATH += \";C:\\\\Users\\\\leona\\\\.bun\\\\bin\"; Set-Location \"c:\\\\Users\\\\leona\\\\Desktop\\\\Antugtavity projetcts\\\\lalimentari-restaurant\"; bun run build 2>&1 | Select-String -Pattern \"\\(WARN|ERROR|error|built in|Complete|sitemap\\)\")",
+      "PowerShell(netstat -ano)",
+      "PowerShell(findstr -E \":\\(3000|3001|5173|5174|8080|8081|4322|4323\\)\")"
+    ]
+  }
+}

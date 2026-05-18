@@ -1,0 +1,54 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import MenuPageWrapper from "../../../page-components/MenuPageWrapper";
+import type { Lang } from "../../../i18n/homeTranslations";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "lt" } },
+    { params: { lang: "en" } },
+    { params: { lang: "it" } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const menuJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "@id": `https://lalimentari.lt/${lang}/menu`,
+  name: "Menu LALIMENTARI",
+  url: `https://lalimentari.lt/${lang}/menu`,
+  hasMenuSection: [
+    { "@type": "MenuSection", name: "Antipasti" },
+    { "@type": "MenuSection", name: "La Pasta Fresca" },
+    { "@type": "MenuSection", name: "Focacce" },
+    { "@type": "MenuSection", name: "Secondi Piatti" },
+    { "@type": "MenuSection", name: "Insalate" },
+    { "@type": "MenuSection", name: "Dolci" },
+    { "@type": "MenuSection", name: "Bevande" },
+  ],
+};
+
+const titles: Record<Lang, string> = {
+  lt: "Meniu | LALIMENTARI – Italų restoranas Vilniuje",
+  en: "Menu | LALIMENTARI – Italian Restaurant in Vilnius",
+  it: "Menu | LALIMENTARI – Ristorante Italiano a Vilnius",
+};
+
+const descriptions: Record<Lang, string> = {
+  lt: "Atraskite mūsų itališko restorano meniu: šviežia pasta, focaccia, antipasti ir italų vynai. LALIMENTARI, Vilnius.",
+  en: "Discover our Italian restaurant menu: fresh pasta, focaccia, antipasti and Italian wines. LALIMENTARI, Vilnius.",
+  it: "Scopri il menu del nostro ristorante italiano: pasta fresca, focaccia, antipasti e vini italiani. LALIMENTARI, Vilnius.",
+};
+---
+
+<Layout
+  title={titles[lang]}
+  description={descriptions[lang]}
+  canonical={`/${lang}/menu`}
+  lang={lang}
+  jsonLd={menuJsonLd}
+>
+  <MenuPageWrapper lang={lang} client:only="react" />
+</Layout>

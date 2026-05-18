@@ -1,0 +1,14 @@
+# Language redirect by country (JS fallback handles browser language for other countries)
+/ /it 302 Country=IT
+/ /lt 302 Country=LT
+
+# Legacy redirects
+/home /lt 301
+
+# Legacy product URL redirects
+/products /lt/produktai 301
+/prodotti /it/prodotti 301
+/menu /lt/menu 301
+
+# Catch-all: serve 404 page
+/* /404.html 404
