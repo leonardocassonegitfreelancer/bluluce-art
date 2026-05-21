@@ -1,151 +1,157 @@
 import { useEffect, useRef } from "react";
-import { ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-deli-new.webp";
-import logoImage from "@/assets/logo-lalimentari.webp";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { th } from "@/i18n/homeTranslations";
+import type { Lang } from "@/i18n/homeTranslations";
+import { productsSlug } from "@/i18n/slugs";
+import heroVideo from "@/assets/mare.mp4?url";
+import desktopVideo from "@/assets/hero-desktop.mp4?url";
+
+const copy: Record<Lang, {
+  line1: string;
+  highlight: string;
+  line2: string;
+  desc: string;
+  cta1: string;
+  cta2: string;
+}> = {
+  es: {
+    line1: "Donde el mar",
+    highlight: "encuentra",
+    line2: "el arte.",
+    desc: "Pinturas originales inspiradas en la luz, las mujeres y los paisajes del Mediterráneo. Creaciones únicas pintadas a mano.",
+    cta1: "Descubrir Colección",
+    cta2: "Portfolio",
+  },
+  en: {
+    line1: "Where the sea",
+    highlight: "meets",
+    line2: "art.",
+    desc: "Original paintings inspired by the light, women and landscapes of the Mediterranean. Unique hand-painted works of art.",
+    cta1: "Shop Collection",
+    cta2: "Portfolio",
+  },
+  it: {
+    line1: "Dove il mare",
+    highlight: "incontra",
+    line2: "l'arte.",
+    desc: "Dipinti originali ispirati alla luce, alle donne e ai paesaggi del Mediterraneo. Opere uniche dipinte a mano.",
+    cta1: "Scopri la Collezione",
+    cta2: "Portfolio",
+  },
+};
 
 const Hero = () => {
   const { lang } = useLanguage();
-  const bgRef = useRef<HTMLDivElement>(null);
+  const t = copy[lang as Lang] ?? copy.es;
+
+  const videoWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (bgRef.current) {
-        const scrollY = window.scrollY;
-        bgRef.current.style.transform = `scale(1.15) translateY(${scrollY * 0.35}px)`;
-      }
+    const onScroll = () => {
+      if (videoWrapRef.current)
+        videoWrapRef.current.style.transform =
+          `translateY(${window.scrollY * 0.3}px)`;
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const prefix = `/${lang}`;
+  const collectionUrl = `${prefix}/${productsSlug[lang as Lang] || productsSlug.es}`;
+  const galleryUrl = `${prefix}/gallery`;
+
   return (
-    <section className="relative min-h-screen h-auto flex items-center justify-center overflow-hidden">
-      {/* Parallax background */}
-      <div
-        ref={bgRef}
-        className="absolute inset-0 bg-cover bg-[center_70%] scale-[1.15] will-change-transform transition-transform duration-75"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
-      {/* Vignette */}
-      <div className="absolute inset-0" style={{ boxShadow: 'inset 0 0 140px 50px rgba(0,0,0,0.35)' }} />
+    <>
+      <style>{`
+        @keyframes heroFadeUp {
+          from { opacity: 0; transform: translateY(32px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-h1   { animation: heroFadeUp 1.2s cubic-bezier(0.25,1,0.5,1) forwards; }
+        .hero-ctas { animation: heroFadeUp 1s cubic-bezier(0.25,1,0.5,1) 0.3s both; }
+        .hero-desc { animation: heroFadeUp 1s cubic-bezier(0.25,1,0.5,1) 0.15s both; }
+      `}</style>
 
-      {/* Mobile: stacked centered layout */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-20 md:py-32 md:hidden">
-        <div className="text-center">
-          <div className="w-12 h-px bg-gold/60 mx-auto mb-6 animate-fade-in-up opacity-0" />
+      {/* ─── MOBILE: full-screen video overlay ─── */}
+      <section className="md:hidden relative h-[100dvh] flex flex-col overflow-hidden bg-[#0E0804]">
 
-          <p
-            className="font-body text-[0.75rem] tracking-[0.25em] uppercase text-white/80 mb-4 animate-fade-in-up [animation-delay:100ms] opacity-0"
-            style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.7)' }}
-          >
-            {th("heroSubtitle", lang)}
-          </p>
+        <div ref={videoWrapRef} className="absolute will-change-transform"
+          style={{ inset: "-20%" }}>
+          <video autoPlay muted loop playsInline
+            className="w-full h-full object-cover"
+            style={{ filter: "brightness(1.08) saturate(1.1)" }}
+            src={heroVideo} />
+        </div>
 
-          <div className="animate-fade-in-up [animation-delay:250ms] opacity-0 mb-5 bg-[hsl(38,30%,78%)]">
-            <img
-              src={logoImage}
-              alt="LALIMENTARI - Gastronomia Italiana"
-              className="w-full block"
-            />
-            <h1 className="sr-only">LALIMENTARI - Gastronomia Italiana</h1>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a2240]/90 via-[#0a2240]/40 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#EDE0C4]/95 via-[#EDE0C4]/50 to-transparent" />
+
+        <div className="relative z-10 flex-1 flex flex-col px-7">
+          <div className="mt-[48vh]">
+            <h1
+              className="hero-h1 font-display font-normal italic text-white leading-[0.9]"
+              style={{ fontSize: "clamp(2.8rem, 10vw, 3.8rem)", letterSpacing: "-0.02em", textShadow: "0 2px 24px rgba(0,0,0,0.65)" }}>
+              {t.line1}{" "}
+              <span className="not-italic font-semibold text-[#C9A96E]">{t.highlight}</span>
+              <br />
+              <span className="not-italic font-semibold text-[#C9A96E]">{t.line2}</span>
+            </h1>
           </div>
 
-          <div className="flex items-center justify-center gap-3 mb-5 animate-fade-in-up [animation-delay:350ms] opacity-0">
-            <div className="w-8 h-px bg-gold/40" />
-            <div className="w-1.5 h-1.5 rotate-45 border border-gold/50" />
-            <div className="w-8 h-px bg-gold/40" />
-          </div>
-
-          <p
-            className="font-body text-[1.05rem] text-white/90 leading-relaxed animate-fade-in-up [animation-delay:450ms] opacity-0 max-w-2xl mx-auto"
-            style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.7)' }}
-          >
-            {th("heroTagline", lang)}
-          </p>
-
-          <div className="flex flex-col gap-3 mt-8 animate-fade-in-up [animation-delay:650ms] opacity-0">
-            <a
-              href="tel:+37060000000"
-              className="w-full px-8 py-3.5 bg-gold text-espresso font-body text-[0.8rem] tracking-widest uppercase hover:bg-gold/90 transition-all duration-500 font-semibold text-center"
-            >
-              {th("heroBookTable", lang)}
+          <div className="hero-ctas flex flex-wrap gap-3 mt-auto pb-12 pt-6">
+            <a href={collectionUrl}
+              className="inline-flex items-center px-7 py-3.5 font-body text-[0.6rem] tracking-[0.3em] uppercase font-bold transition-all duration-700 hover:opacity-90 active:scale-[0.98]"
+              style={{ background: "#C9A96E", color: "#0E0804" }}>
+              {t.cta1}
             </a>
-            <a
-              href={`/${lang}/menu`}
-              className="w-full px-8 py-3.5 border border-gold/70 text-gold font-body text-[0.8rem] tracking-widest uppercase hover:bg-gold/10 hover:border-gold transition-all duration-500 text-center backdrop-blur-sm"
-            >
-              {th("heroMenu", lang)}
+            <a href={galleryUrl}
+              className="inline-flex items-center px-7 py-3.5 font-body text-[0.6rem] tracking-[0.3em] uppercase transition-all duration-700 active:scale-[0.98]"
+              style={{ border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.75)" }}>
+              {t.cta2}
             </a>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Desktop: two-column layout */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-32 hidden md:block">
-        <div className="grid grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left column: logo image */}
-          <div className="animate-fade-in-up [animation-delay:250ms] opacity-0 bg-[hsl(38,30%,78%)]">
-            <img
-              src={logoImage}
-              alt="LALIMENTARI - Gastronomia Italiana"
-              className="w-full block"
-            />
-            <h1 className="sr-only">LALIMENTARI - Gastronomia Italiana</h1>
+      {/* ─── DESKTOP: split layout ─── */}
+      <section className="hidden md:flex h-[90vh]" style={{ background: "#F0E6D0" }}>
+
+        <div className="flex flex-col justify-center px-16 lg:px-24 w-[45%] shrink-0 py-32">
+
+          <div className="w-10 h-px mb-8" style={{ background: "#C9A96E" }} />
+
+          <h1
+            className="hero-h1 font-display font-normal italic leading-[0.9] mb-5"
+            style={{ fontSize: "clamp(3.2rem, 4.5vw, 5.5rem)", letterSpacing: "-0.025em", color: "#0E0804" }}>
+            {t.line1}{" "}
+            <span className="not-italic font-semibold" style={{ color: "#C9A96E" }}>{t.highlight}</span>
+            <br />
+            <span className="not-italic font-semibold" style={{ color: "#C9A96E" }}>{t.line2}</span>
+          </h1>
+
+          <div className="hero-ctas flex gap-4">
+            <a href={collectionUrl}
+              className="inline-flex items-center px-8 py-3.5 font-body text-[0.6rem] tracking-[0.3em] uppercase font-bold transition-all duration-500 hover:opacity-80"
+              style={{ background: "#0E0804", color: "#F0E6D0" }}>
+              {t.cta1}
+            </a>
+            <a href={galleryUrl}
+              className="inline-flex items-center px-8 py-3.5 font-body text-[0.6rem] tracking-[0.3em] uppercase transition-all duration-500 hover:border-[#0E0804] hover:text-[#0E0804]"
+              style={{ border: "1px solid rgba(14,8,4,0.3)", color: "rgba(14,8,4,0.6)" }}>
+              {t.cta2}
+            </a>
           </div>
 
-          {/* Right column: text + buttons */}
-          <div>
-            <div className="w-12 h-px bg-gold/60 mb-6 animate-fade-in-up opacity-0" />
-
-            <p
-              className="font-body text-xs tracking-[0.5em] uppercase text-white/80 mb-6 animate-fade-in-up [animation-delay:100ms] opacity-0"
-              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.7)' }}
-            >
-              {th("heroSubtitle", lang)}
-            </p>
-
-            <div className="flex items-center gap-3 mb-6 animate-fade-in-up [animation-delay:350ms] opacity-0">
-              <div className="w-8 h-px bg-gold/40" />
-              <div className="w-1.5 h-1.5 rotate-45 border border-gold/50" />
-              <div className="w-8 h-px bg-gold/40" />
-            </div>
-
-            <p
-              className="font-body text-xl lg:text-2xl text-white/90 leading-relaxed animate-fade-in-up [animation-delay:450ms] opacity-0 max-w-lg"
-              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.7)' }}
-            >
-              {th("heroTagline", lang)}
-            </p>
-
-            <div className="flex flex-row gap-5 mt-10 animate-fade-in-up [animation-delay:650ms] opacity-0">
-              <a
-                href="tel:+37060000000"
-                className="px-10 py-3.5 bg-gold text-espresso font-body text-sm tracking-widest uppercase hover:bg-gold/90 hover:shadow-[0_0_30px_rgba(180,140,60,0.3)] transition-all duration-500 font-semibold text-center"
-              >
-                {th("heroBookTable", lang)}
-              </a>
-              <a
-                href={`/${lang}/menu`}
-                className="px-10 py-3.5 border border-gold/70 text-gold font-body text-sm tracking-widest uppercase hover:bg-gold/10 hover:border-gold transition-all duration-500 text-center backdrop-blur-sm"
-              >
-                {th("heroMenu", lang)}
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
 
-      {/* Animated scroll down arrow */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-        <a href="#about" className="text-white/70 hover:text-white transition-colors">
-          <ChevronDown className="w-8 h-8" />
-        </a>
-      </div>
-    </section>
+        <div className="flex-1 relative overflow-hidden">
+          <video autoPlay muted loop playsInline
+            className="w-full h-full object-cover"
+            style={{ filter: "brightness(1.05) saturate(1.08)" }}
+            src={desktopVideo} />
+        </div>
+
+      </section>
+    </>
   );
 };
 

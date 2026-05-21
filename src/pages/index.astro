@@ -1,20 +1,18 @@
 ---
-// Root: country redirects handled by Cloudflare Pages (_redirects).
-// For all other visitors, JS detects browser language and redirects.
 ---
 <!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LALIMENTARI</title>
+    <title>Bluluce Art</title>
     <meta name="robots" content="noindex" />
-    <noscript><meta http-equiv="refresh" content="0;url=/en" /></noscript>
+    <noscript><meta http-equiv="refresh" content="0;url=/es" /></noscript>
     <script>
       (function () {
-        var l = (navigator.language || "en").toLowerCase();
+        var l = (navigator.language || "es").toLowerCase();
         if (l.startsWith("it")) location.replace("/it");
-        else if (l.startsWith("lt")) location.replace("/lt");
+        else if (l.startsWith("es")) location.replace("/es");
         else location.replace("/en");
       })();
     </script>

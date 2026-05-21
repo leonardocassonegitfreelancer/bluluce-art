@@ -6,7 +6,7 @@ import type { Lang } from "../../i18n/homeTranslations";
 
 export function getStaticPaths() {
   return [
-    { params: { lang: "lt" } },
+    { params: { lang: "es" } },
     { params: { lang: "en" } },
     { params: { lang: "it" } },
   ];
@@ -15,46 +15,22 @@ export function getStaticPaths() {
 const { lang } = Astro.params as { lang: Lang };
 
 const titles: Record<Lang, string> = {
-  lt: "LALIMENTARI | Italų restoranas Vilniuje – Autentiška itališka virtuvė",
-  en: "LALIMENTARI | Italian Restaurant in Vilnius – Authentic Italian Cuisine",
-  it: "LALIMENTARI | Ristorante Italiano a Vilnius – Cucina Italiana Autentica",
+  es: "BLULUCE ART | Pinturas originales y arte del Mediterráneo",
+  en: "BLULUCE ART | Original Paintings & Mediterranean Art",
+  it: "BLULUCE ART | Dipinti Originali & Arte Mediterranea",
 };
 
-const restaurantJsonLd = {
+const artGalleryJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "@id": "https://lalimentari.lt",
-  name: "LALIMENTARI",
-  description: "Ristorante italiano a Vilnius con pasta fresca fatta a mano, focacce, antipasti e vini italiani. Cucina autentica italiana nel cuore di Vilnius.",
-  image: "https://lalimentari.lt/og-image.webp",
-  url: "https://lalimentari.lt",
-  telephone: "+37066408338",
-  email: "info@lalimentari.lt",
-  servesCuisine: ["Italian"],
-  hasMenu: "https://lalimentari.lt/lt/menu",
-  priceRange: "€€",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Gedimino pr. 37",
-    addressLocality: "Vilnius",
-    postalCode: "01103",
-    addressCountry: "LT",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 54.6872,
-    longitude: 25.2797,
-  },
+  "@type": "ArtGallery",
+  "@id": "https://bluluceart.com",
+  name: "BLULUCE ART",
+  description: "Original paintings and artworks inspired by the light, the sea, and the colors of the Mediterranean.",
+  image: "https://bluluceart.com/og-image.webp",
+  url: "https://bluluceart.com",
+  email: "info@bluluceart.com",
   sameAs: [
-    "https://maps.app.goo.gl/e6wLibn3uXbb4WG37",
-    "https://www.facebook.com/LalimentariVilnius/",
-    "https://www.instagram.com/lalimentari.vilnius/",
-  ],
-  openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "10:00", closes: "21:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "10:00", closes: "22:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "10:00", closes: "22:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "11:00", closes: "21:00" },
+    "https://www.instagram.com/bluluce.art/",
   ],
 };
 ---
@@ -64,7 +40,7 @@ const restaurantJsonLd = {
   description={th("heroDescDesktop", lang)}
   canonical={`/${lang}`}
   lang={lang}
-  jsonLd={restaurantJsonLd}
+  jsonLd={artGalleryJsonLd}
 >
-  <IndexPageWrapper lang={lang} client:only="react" />
+  <IndexPageWrapper lang={lang} client:load />
 </Layout>

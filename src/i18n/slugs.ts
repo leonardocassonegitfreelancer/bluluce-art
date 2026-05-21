@@ -2,19 +2,16 @@ import type { Lang } from "@/i18n/homeTranslations";
 
 /** Localized slug for the "all products" page */
 export const productsSlug: Record<Lang, string> = {
-  lt: "produktai",
-  en: "products",
-  it: "prodotti",
+  es: "tienda",
+  en: "shop",
+  it: "collezione",
 };
 
 /** Localized slugs for individual category pages */
 export const categorySlugs = [
-  "prosciutti",
-  "pasta",
-  "focaccia",
-  "vini",
-  "dolci",
-  "conserve",
+  "mare",
+  "terra",
+  "ulivo",
 ] as const;
 
 export type CategorySlug = (typeof categorySlugs)[number];

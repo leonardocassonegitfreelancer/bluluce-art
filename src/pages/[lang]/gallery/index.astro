@@ -5,7 +5,7 @@ import type { Lang } from "../../../i18n/homeTranslations";
 
 export function getStaticPaths() {
   return [
-    { params: { lang: "lt" } },
+    { params: { lang: "es" } },
     { params: { lang: "en" } },
     { params: { lang: "it" } },
   ];
@@ -14,15 +14,15 @@ export function getStaticPaths() {
 const { lang } = Astro.params as { lang: Lang };
 
 const titles: Record<Lang, string> = {
-  lt: "Galerija | LALIMENTARI – Italų restoranas Vilniuje",
-  en: "Gallery | LALIMENTARI – Italian Restaurant Vilnius",
-  it: "Galleria | LALIMENTARI – Ristorante Italiano a Vilnius",
+  es: "Galería | BLULUCE ART – Pinturas y arte del Mediterráneo",
+  en: "Gallery | BLULUCE ART – Paintings & Mediterranean Art",
+  it: "Galleria | BLULUCE ART – Dipinti e Arte del Mediterraneo",
 };
 
 const descriptions: Record<Lang, string> = {
-  lt: "Peržiūrėkite mūsų virtuvę nuotraukose. Šviežia pasta, focaccia, užkandžiai ir mūsų restorano atmosfera Vilniuje.",
-  en: "Discover our kitchen through images. Fresh pasta, focaccia, starters and the atmosphere of our restaurant in Vilnius.",
-  it: "Scopri la nostra cucina attraverso le immagini. Pasta fresca, focacce, antipasti e l'atmosfera del nostro locale a Vilnius.",
+  es: "Explora la galería digital de BLULUCE ART. Pinturas originales y obras de arte inspiradas en la luz, el mar y los colores del Mediterráneo.",
+  en: "Explore the digital gallery of BLULUCE ART. Original paintings and artworks inspired by the light, the sea, and the colors of the Mediterranean.",
+  it: "Esplora la galleria digitale di BLULUCE ART. Dipinti originali e opere d'arte ispirati alla luce, al mare e ai colori del Mediterraneo.",
 };
 ---
 

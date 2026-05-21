@@ -21,10 +21,10 @@ const {
   robots = "index, follow",
 } = Astro.props;
 
-const BASE_URL = "https://lalimentari.lt";
-const DEFAULT_IMAGE = "https://lalimentari.lt/og-image.webp";
-const LANGS = ["lt", "en", "it"] as const;
-const subPath = canonical.replace(/^\/(lt|en|it)/, "") || "";
+const BASE_URL = "https://bluluceart.com";
+const DEFAULT_IMAGE = "https://bluluceart.com/og-image.webp";
+const LANGS = ["es", "en", "it"] as const;
+const subPath = canonical.replace(/^\/(es|en|it)/, "") || "";
 const ogImage = image || DEFAULT_IMAGE;
 const canonicalUrl = `${BASE_URL}${canonical}`;
 ---
@@ -48,7 +48,7 @@ const canonicalUrl = `${BASE_URL}${canonical}`;
         />
       ))
     }
-    <link rel="alternate" hreflang="x-default" href={`${BASE_URL}/lt${subPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${BASE_URL}/es${subPath}`} />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -63,10 +63,10 @@ const canonicalUrl = `${BASE_URL}${canonical}`;
 
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
-    <meta name="geo.region" content="LT-VL" />
-    <meta name="geo.placename" content="Vilnius" />
-    <meta name="geo.position" content="54.6872;25.2797" />
-    <meta name="ICBM" content="54.6872, 25.2797" />
+    <meta name="geo.region" content="ES-MA" />
+    <meta name="geo.placename" content="Málaga" />
+    <meta name="geo.position" content="36.7213;-4.4214" />
+    <meta name="ICBM" content="36.7213, -4.4214" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

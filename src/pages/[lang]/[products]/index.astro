@@ -4,31 +4,31 @@ import ProductsPageWrapper from "../../../page-components/ProductsPageWrapper";
 import type { Lang } from "../../../i18n/homeTranslations";
 
 const productsSlug: Record<string, string> = {
-  lt: "produktai",
-  en: "products",
-  it: "prodotti",
+  es: "tienda",
+  en: "shop",
+  it: "collezione",
 };
 
 export function getStaticPaths() {
   return [
-    { params: { lang: "lt", products: "produktai" } },
-    { params: { lang: "en", products: "products" } },
-    { params: { lang: "it", products: "prodotti" } },
+    { params: { lang: "es", products: "tienda" } },
+    { params: { lang: "en", products: "shop" } },
+    { params: { lang: "it", products: "collezione" } },
   ];
 }
 
 const { lang } = Astro.params as { lang: Lang; products: string };
 
 const titles: Record<Lang, string> = {
-  lt: "Itališki produktai Vilniuje | LALIMENTARI – Saliumai, Sūriai, Pasta, Vynai",
-  en: "Italian Products in Vilnius | LALIMENTARI – Salumi, Cheeses, Pasta, Wines",
-  it: "Prodotti Italiani a Vilnius | LALIMENTARI – Salumi, Formaggi, Pasta, Vini",
+  es: "Colecciones de Arte | BLULUCE ART – Pinturas inspiradas en el Mediterráneo",
+  en: "Art Collections | BLULUCE ART – Mediterranean Fine Art Paintings",
+  it: "Collezioni d'Arte | BLULUCE ART – Dipinti d'Arte Mediterranea",
 };
 
 const descriptions: Record<Lang, string> = {
-  lt: "Atraskite autentiškus itališkus produktus LALIMENTARI Vilniuje: saliumai, sūriai, šviežia pasta, vynai, focaccia. Italijos skonis Lietuvos sostinėje.",
-  en: "Discover authentic Italian products at LALIMENTARI Vilnius: salumi, cheeses, fresh pasta, wines, focaccia. The taste of Italy in the Lithuanian capital.",
-  it: "Scopri i prodotti italiani autentici da LALIMENTARI a Vilnius: salumi, formaggi, pasta fresca, vini, focacce. Il gusto dell'Italia nella capitale lituana.",
+  es: "Explora las colecciones exclusivas de BLULUCE ART. Pinturas originales de las colecciones Mar, Tierra y Olivo creadas con materiales naturales.",
+  en: "Explore the exclusive art collections of BLULUCE ART. Original paintings from the Ocean, Clay, and Olive collections.",
+  it: "Esplora le collezioni d'arte esclusive di BLULUCE ART. Dipinti originali delle collezioni Mare, Terra e Ulivo realizzati con pigmenti naturali.",
 };
 ---
 
