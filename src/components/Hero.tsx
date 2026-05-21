@@ -3,7 +3,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { productsSlug } from "@/i18n/slugs";
 import heroVideo from "@/assets/mare.mp4?url";
-import desktopVideo from "@/assets/hero-desktop.mp4?url";
+const desktopVideo = heroVideo;
 
 const copy: Record<Lang, {
   line1: string;
@@ -113,7 +113,7 @@ const Hero = () => {
       </section>
 
       {/* ─── DESKTOP: split layout ─── */}
-      <section className="hidden md:flex h-[90vh]" style={{ background: "#F0E6D0" }}>
+      <section className="hidden md:flex h-[100vh]" style={{ background: "#F0E6D0" }}>
 
         <div className="flex flex-col justify-center px-16 lg:px-24 w-[45%] shrink-0 py-32">
 
