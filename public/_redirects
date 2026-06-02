@@ -1,14 +1,8 @@
-# Language redirect by country (JS fallback handles browser language for other countries)
+# Language redirect by visitor country.
+# The "/" page detects browser language in JS and redirects to /es, /en or /it;
+# these edge rules just give IT/ES visitors their locale immediately.
 / /it 302 Country=IT
-/ /lt 302 Country=LT
+/ /es 302 Country=ES
 
-# Legacy redirects
-/home /lt 301
-
-# Legacy product URL redirects
-/products /lt/produktai 301
-/prodotti /it/prodotti 301
-/menu /lt/menu 301
-
-# Catch-all: serve 404 page
+# Catch-all: serve the 404 page
 /* /404.html 404

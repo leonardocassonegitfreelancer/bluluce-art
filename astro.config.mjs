@@ -8,28 +8,33 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  site: 'https://lalimentari.lt',
+  site: 'https://bluluceart.com',
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),
     sitemap({
-      filter: (page) => !page.includes('/menu/100heartdemo'),
+      // Drop the bare "/" entry — it's a noindex JS-redirect splash page.
+      filter: (page) => page !== 'https://bluluceart.com/',
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
-      customPages: [],
       serialize(item) {
-        // Homepage gets higher priority
-        if (item.url.endsWith('/lt/') || item.url.endsWith('/en/') || item.url.endsWith('/it/')) {
+        const url = item.url;
+        // Homepages (es / en / it) get top priority
+        if (/\/(es|en|it)\/$/.test(url)) {
           return { ...item, priority: 1.0, changefreq: 'weekly' };
         }
-        // Menu pages
-        if (item.url.includes('/menu')) {
+        // Individual collection pages (mare / terra / ulivo)
+        if (/\/(mare|terra|ulivo)\/?$/.test(url)) {
+          return { ...item, priority: 0.9 };
+        }
+        // Collection listing (tienda / shop / collezione)
+        if (/\/(tienda|shop|collezione)\/?$/.test(url)) {
           return { ...item, priority: 0.8 };
         }
-        // Product pages
-        if (item.url.includes('/produktai') || item.url.includes('/products') || item.url.includes('/prodotti')) {
-          return { ...item, priority: 0.9 };
+        // Gallery
+        if (url.includes('/gallery')) {
+          return { ...item, priority: 0.8 };
         }
         return item;
       },

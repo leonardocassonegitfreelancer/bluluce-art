@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://lalimentari.lt/sitemap-index.xml
+Sitemap: https://bluluceart.com/sitemap-index.xml
