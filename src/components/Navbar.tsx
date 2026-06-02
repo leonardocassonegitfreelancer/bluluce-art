@@ -82,45 +82,57 @@ const Navbar = () => {
       </nav>
 
       {/* Desktop nav — floating pill */}
-      <nav className="hidden md:block fixed top-0 left-0 right-0 z-50 px-8 pt-5">
+      <nav className="hidden md:block fixed top-0 left-0 right-0 z-50 px-8 pt-4">
         <div
-          className={`max-w-7xl mx-auto flex items-center justify-between ease-[cubic-bezier(0.32,0.72,0,1)] rounded-xl transition-all duration-700 ${
-            scrolled || mobileOpen
-              ? "bg-[#0E0804]/90 backdrop-blur-2xl border border-white/[0.08] px-6 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.18)]"
-              : "bg-[#0E0804]/70 backdrop-blur-xl border border-white/[0.05] px-6 py-4 shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
+          className={`max-w-6xl mx-auto grid grid-cols-[1fr_auto_1fr] items-center ease-[cubic-bezier(0.32,0.72,0,1)] rounded-full transition-all duration-700 ${
+            scrolled
+              ? "bg-[#0E0804]/95 backdrop-blur-2xl border border-white/10 px-7 py-3 shadow-[0_14px_44px_-12px_rgba(0,0,0,0.65)]"
+              : "bg-[#0E0804]/90 backdrop-blur-xl border border-white/[0.08] px-7 py-3.5 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)]"
           }`}
         >
           {/* Logo */}
-          <a href={prefix} className="font-display text-base font-bold text-white tracking-[0.15em]">
+          <a
+            href={prefix}
+            className="justify-self-start flex items-baseline gap-1.5 font-display text-[0.95rem] font-bold text-white tracking-[0.22em] leading-none"
+          >
             BLULUCE
+            <span className="font-body text-[0.5rem] font-normal tracking-[0.35em] text-[#C9A96E]">ART</span>
           </a>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-7">
-            {navLinks.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={handleNavClick}
-                className={`font-body text-[0.6rem] tracking-[0.22em] uppercase transition-colors duration-300 ${
-                  isActive(item.href) ? "text-[#BF8A3D]" : "text-white/55 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
+          <div className="justify-self-center flex items-center gap-9">
+            {navLinks.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={handleNavClick}
+                  className={`group relative font-body text-[0.72rem] tracking-[0.2em] uppercase py-1 transition-colors duration-300 ${
+                    active ? "text-[#C9A96E]" : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    className={`pointer-events-none absolute left-0 -bottom-0.5 h-px bg-[#C9A96E] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                      active ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </a>
+              );
+            })}
           </div>
 
           {/* Right: lang + CTA */}
-          <div className="hidden md:flex items-center gap-5">
-            <div className="flex items-center gap-0.5">
-              <Globe className="w-3 h-3 text-white/25 mr-1.5" />
+          <div className="justify-self-end flex items-center gap-6">
+            <div className="flex items-center gap-1">
+              <Globe className="w-3.5 h-3.5 text-white/30 mr-1" />
               {langs.map((l) => (
                 <button
                   key={l}
                   onClick={() => handleLangSwitch(l)}
-                  className={`font-body text-[0.55rem] tracking-[0.18em] uppercase px-1.5 py-0.5 transition-colors duration-300 ${
-                    lang === l ? "text-[#BF8A3D]" : "text-white/35 hover:text-white/70"
+                  className={`font-body text-[0.62rem] tracking-[0.12em] uppercase px-1.5 py-1 transition-colors duration-300 ${
+                    lang === l ? "text-[#C9A96E]" : "text-white/40 hover:text-white/80"
                   }`}
                 >
                   {l.toUpperCase()}
@@ -128,10 +140,10 @@ const Navbar = () => {
               ))}
             </div>
             <a
-              href={`${prefix}/${productsSlug[lang]}`}
-              className="font-body text-[0.55rem] tracking-[0.25em] uppercase px-5 py-2 border border-[#C9A96E]/40 text-[#C9A96E] hover:bg-[#C9A96E] hover:text-[#040D18] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+              href={`${prefix}/#interesse`}
+              className="font-body text-[0.62rem] tracking-[0.22em] uppercase px-5 py-2.5 rounded-full border border-[#C9A96E]/40 text-[#C9A96E] hover:bg-[#C9A96E] hover:text-[#0E0804] hover:border-[#C9A96E] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
             >
-              {th("navMenu", lang)}
+              {th("navContacts", lang)}
             </a>
           </div>
 
