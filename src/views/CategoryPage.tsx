@@ -245,7 +245,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
       )}
 
       {/* CTA */}
-      <section className="py-20 px-6 style={{ borderTop: '1px solid rgba(201,169,110,0.1)' }}">
+      <section className="py-20 px-6" style={{ borderTop: "1px solid rgba(201,169,110,0.1)" }}>
         <div className="max-w-3xl mx-auto text-center">
           <h2
             className="font-display text-3xl md:text-4xl font-normal italic mb-4 text-white"
@@ -257,11 +257,11 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
                 : "Interested in a specific artwork?"}
           </h2>
           <p className="font-body text-sm text-white/50 mb-8 max-w-lg mx-auto leading-relaxed">
-            {lang === "es" 
-              ? "Para conocer disponibilidad, solicitar un catálogo de precios detallado o programar una visita privada a nuestro estudio en Vilna, contáctenos." 
-              : lang === "it" 
-                ? "Per conoscere la disponibilità, richiedere un listino prezzi dettagliato o prenotare una visita in studio a Vilnius, non esitare a contattarci." 
-                : "To check availability, request a detailed price list, or schedule a private studio visit in Vilnius, please get in touch with us."}
+            {lang === "es"
+              ? "Para conocer la disponibilidad, solicitar un catálogo de precios detallado o programar una visita privada al estudio, contáctenos."
+              : lang === "it"
+                ? "Per conoscere la disponibilità, richiedere un listino prezzi dettagliato o prenotare una visita privata allo studio, non esitare a contattarci."
+                : "To check availability, request a detailed price list, or schedule a private studio visit, please get in touch with us."}
           </p>
           <div className="w-16 h-px mx-auto mb-8" style={{ background: "rgba(201,169,110,0.3)" }} />
           <a

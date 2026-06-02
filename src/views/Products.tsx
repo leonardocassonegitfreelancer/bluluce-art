@@ -8,12 +8,6 @@ import mediterraneanSeaImg from "@/assets/mediterranean_sea.png";
 import terracottaClayImg from "@/assets/terracotta_clay.png";
 import oliveSunImg from "@/assets/olive_sun.png";
 
-const categoryLabels = [
-  "COLECCIÓN MARE",
-  "COLECCIÓN TERRA",
-  "COLECCIÓN ULIVO",
-];
-
 const ProductsPage = () => {
   const { lang } = useLanguage();
 
@@ -22,21 +16,18 @@ const ProductsPage = () => {
       name: th("collectionMareTitle", lang),
       desc: th("collectionMareDesc", lang),
       img: mediterraneanSeaImg.src,
-      imgAlt: "Colección Mare",
       slug: "mare" as const,
     },
     {
       name: th("collectionTerraTitle", lang),
       desc: th("collectionTerraDesc", lang),
       img: terracottaClayImg.src,
-      imgAlt: "Colección Terra",
       slug: "terra" as const,
     },
     {
       name: th("collectionUlivoTitle", lang),
       desc: th("collectionUlivoDesc", lang),
       img: oliveSunImg.src,
-      imgAlt: "Colección Ulivo",
       slug: "ulivo" as const,
     },
   ];
@@ -99,7 +90,7 @@ const ProductsPage = () => {
               e.currentTarget.style.background = "transparent";
             }}
           >
-            {categoryLabels[idx]}
+            {categories[idx].name}
           </a>
         ))}
       </div>
@@ -129,7 +120,7 @@ const ProductsPage = () => {
                   <div className={`overflow-hidden ${isReversed ? "md:[direction:ltr]" : ""}`} style={{ border: "1px solid rgba(255,255,255,0.05)" }}>
                     <img
                       src={cat.img}
-                      alt={cat.imgAlt}
+                      alt={cat.name}
                       className="w-full h-64 md:h-80 lg:h-96 object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out"
                       style={{ filter: "brightness(0.9) contrast(1.05)" }}
                     />
