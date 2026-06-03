@@ -2,8 +2,8 @@ import { useEffect, useRef } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { productsSlug } from "@/i18n/slugs";
+import HeroDesktopCards from "@/components/HeroDesktopCards";
 import heroVideo from "@/assets/mare.mp4?url";
-const desktopVideo = heroVideo;
 
 const copy: Record<Lang, {
   line1: string;
@@ -112,45 +112,8 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* ─── DESKTOP: split layout ─── */}
-      <section className="hidden md:flex h-[100vh]" style={{ background: "#F0E6D0" }}>
-
-        <div className="flex flex-col justify-center px-16 lg:px-24 w-[45%] shrink-0 py-32">
-
-          <div className="w-10 h-px mb-8" style={{ background: "#C9A96E" }} />
-
-          <h1
-            className="hero-h1 font-display font-normal italic leading-[0.9] mb-5"
-            style={{ fontSize: "clamp(3.2rem, 4.5vw, 5.5rem)", letterSpacing: "-0.025em", color: "#0E0804" }}>
-            {t.line1}{" "}
-            <span className="not-italic font-semibold" style={{ color: "#C9A96E" }}>{t.highlight}</span>
-            <br />
-            <span className="not-italic font-semibold" style={{ color: "#C9A96E" }}>{t.line2}</span>
-          </h1>
-
-          <div className="hero-ctas flex gap-4">
-            <a href={collectionUrl}
-              className="inline-flex items-center px-8 py-3.5 font-body text-[0.6rem] tracking-[0.3em] uppercase font-bold transition-all duration-500 hover:opacity-80"
-              style={{ background: "#0E0804", color: "#F0E6D0" }}>
-              {t.cta1}
-            </a>
-            <a href={galleryUrl}
-              className="inline-flex items-center px-8 py-3.5 font-body text-[0.6rem] tracking-[0.3em] uppercase transition-all duration-500 hover:border-[#0E0804] hover:text-[#0E0804]"
-              style={{ border: "1px solid rgba(14,8,4,0.3)", color: "rgba(14,8,4,0.6)" }}>
-              {t.cta2}
-            </a>
-          </div>
-
-        </div>
-
-        <div className="flex-1 relative overflow-hidden">
-          <video autoPlay muted loop playsInline
-            className="w-full h-full object-cover"
-            style={{ filter: "brightness(1.05) saturate(1.08)" }}
-            src={desktopVideo} />
-        </div>
-
-      </section>
+      {/* ─── DESKTOP: cycling artwork cards behind fixed brand message ─── */}
+      <HeroDesktopCards />
     </>
   );
 };
