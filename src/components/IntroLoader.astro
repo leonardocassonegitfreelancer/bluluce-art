@@ -1,0 +1,468 @@
+---
+import ninfeImg from "../assets/Ninfe picture for the home.png";
+import scorciImg from "../assets/scorci_mediterraneo.png";
+import oliveImg from "../assets/olive_sun.png";
+import seaImg from "../assets/mediterranean_sea.png";
+---
+
+<section class="bluluce-loader-container bluluce-header is--loading">
+  <!-- Centered Loader with Letters and Expanding Image Box -->
+  <div class="bluluce-loader">
+    <div class="bluluce__h1">
+      <div class="bluluce__h1-start">
+        <span class="bluluce__letter">B</span>
+        <span class="bluluce__letter">l</span>
+        <span class="bluluce__letter">u</span>
+      </div>
+      <div class="bluluce-loader__box">
+        <div class="bluluce-loader__box-inner">
+          <div class="bluluce__growing-image">
+            <div class="bluluce__growing-image-wrap">
+              <!-- Intermittent Flashing Images -->
+              <img class="bluluce__cover-image-extra is--1" src={oliveImg.src} loading="eager" style="transform: scale(1.15) !important;" alt="" />
+              <img class="bluluce__cover-image-extra is--2" src={scorciImg.src} loading="eager" style="transform: scale(1.15) !important;" alt="" />
+              <img class="bluluce__cover-image-extra is--3" src={seaImg.src} loading="eager" style="transform: scale(1.15) !important;" alt="" />
+              <!-- Final Cover Image that expands -->
+              <img class="bluluce__cover-image" src={ninfeImg.src} loading="eager" style="transform: scale(1.15) !important;" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bluluce__h1-end">
+        <span class="bluluce__letter">l</span>
+        <span class="bluluce__letter">u</span>
+        <span class="bluluce__letter">c</span>
+        <span class="bluluce__letter">e</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Overlay Content (Nav and White Letters) -->
+  <div class="bluluce-header__content">
+    <div class="bluluce-header__top">
+      <nav class="bluluce-nav">
+        <div class="bluluce-nav__start">
+          <span class="bluluce-nav__link">BLULUCE ©</span>
+        </div>
+        <div class="bluluce-nav__end">
+          <div class="bluluce-nav__links">
+            <span class="bluluce-nav__link">Dipinti,</span>
+            <span class="bluluce-nav__link">Arte,</span>
+            <span class="bluluce-nav__link">Mediterraneo</span>
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+    <div class="bluluce-header__bottom">
+      <div class="bluluce__h1-white">
+        <span class="bluluce__letter-white">B</span>
+        <span class="bluluce__letter-white">l</span>
+        <span class="bluluce__letter-white">u</span>
+        <span class="bluluce__letter-white">l</span>
+        <span class="bluluce__letter-white">u</span>
+        <span class="bluluce__letter-white">c</span>
+        <span class="bluluce__letter-white">e</span>
+        <span class="bluluce__letter-white is--space">A</span>
+        <span class="bluluce__letter-white">r</span>
+        <span class="bluluce__letter-white">t</span>
+        <span class="bluluce__letter-white is--space">©</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+
+  function initBluluceLoader() {
+    const container = document.querySelector(".bluluce-loader-container") as HTMLElement;
+    if (!container) return;
+
+    const isMobile = window.innerWidth < 768;
+
+    // Set scroll lock
+    document.documentElement.classList.add("loading-active");
+
+    const loadingLetters = container.querySelectorAll(".bluluce__letter");
+    const box = container.querySelectorAll(".bluluce-loader__box");
+    const growingImage = container.querySelectorAll(".bluluce__growing-image");
+    const headingStart = container.querySelectorAll(".bluluce__h1-start");
+    const headingEnd = container.querySelectorAll(".bluluce__h1-end");
+    const coverImageExtra = container.querySelectorAll(".bluluce__cover-image-extra");
+    const headerLetters = container.querySelectorAll(".bluluce__letter-white");
+    const navLinks = container.querySelectorAll(".bluluce-nav span, .bluluce-nav__link");
+
+    /* GSAP Timeline */
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "expo.inOut",
+      }
+    });
+
+    /* Start of Timeline (Common to both Mobile & Desktop) */
+    if (loadingLetters.length) {
+      tl.from(loadingLetters, {
+        yPercent: 100,
+        stagger: 0.025,
+        duration: 1.25
+      });
+    }
+
+    if (box.length) {
+      tl.fromTo(box, {
+        width: "0em",
+      }, {
+        width: "1.1em", // Slightly wider to look balanced with 'Blu' and 'luce'
+        duration: 1.25
+      }, "< 1.25");
+    }
+
+    if (growingImage.length) {
+      tl.fromTo(growingImage, {
+        width: "0%",
+      }, {
+        width: "100%",
+        duration: 1.25
+      }, "<");
+    }
+
+    if (headingStart.length) {
+      tl.fromTo(headingStart, {
+        x: "0em",
+      }, {
+        x: "-0.05em",
+        duration: 1.25
+      }, "<");
+    }
+
+    if (headingEnd.length) {
+      tl.fromTo(headingEnd, {
+        x: "0em",
+      }, {
+        x: "0.05em",
+        duration: 1.25
+      }, "<");
+    }
+
+    if (coverImageExtra.length) {
+      tl.fromTo(coverImageExtra, {
+        opacity: 1,
+      }, {
+        opacity: 0,
+        duration: 0.05,
+        ease: "none",
+        stagger: 0.5
+      }, "-=0.05");
+    }
+
+    if (isMobile) {
+      // ── MOBILE: Fade out and slide up the white loader container to reveal the video hero ──
+      tl.to(container, {
+        opacity: 0,
+        yPercent: -20,
+        duration: 1.1,
+        ease: "power3.inOut"
+      }, "+=0.3");
+    } else {
+      // ── DESKTOP: Expand the loader box to fill screen and reveal the navigation/text ──
+      if (growingImage.length) {
+        tl.to(growingImage, {
+          width: "100vw",
+          height: "100dvh",
+          duration: 2
+        }, "< 1.25");
+      }
+
+      if (box.length) {
+        tl.to(box, {
+          width: "110vw",
+          duration: 2
+        }, "<");
+      }
+
+      if (headerLetters.length) {
+        tl.from(headerLetters, {
+          yPercent: 100,
+          duration: 1.25,
+          ease: "expo.out",
+          stagger: 0.025
+        }, "< 1.2");
+      }
+
+      if (navLinks.length) {
+        tl.from(navLinks, {
+          yPercent: 100,
+          duration: 1.25,
+          ease: "expo.out",
+          stagger: 0.08
+        }, "<");
+      }
+    }
+
+    // Unlock scroll and hide overlay on mobile
+    tl.add(() => {
+      if (isMobile) {
+        container.style.display = "none";
+      }
+      document.documentElement.classList.remove("loading-active");
+    });
+
+    // Check if the user already visited the site in this session to skip loading wait
+    if (sessionStorage.getItem("bluluce-intro-loaded")) {
+      if (isMobile) {
+        container.style.display = "none";
+      }
+      document.documentElement.classList.remove("loading-active");
+      tl.progress(1);
+    } else {
+      sessionStorage.setItem("bluluce-intro-loaded", "true");
+    }
+  }
+
+  // Run on page load
+  document.addEventListener("DOMContentLoaded", initBluluceLoader);
+  // Also run on Astro page transitions if using ViewTransitions
+  document.addEventListener("astro:page-load", initBluluceLoader);
+</script>
+
+<style>
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('https://cdn.prod.website-files.com/6819ed8312518f61b84824df/6819ed8312518f61b84825ba_PPNeueMontreal-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Loader wrapper as the desktop hero section */
+  .bluluce-loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background-color: #FAFAF8;
+    z-index: 100;
+    overflow: hidden;
+    color: #201d1d;
+    font-family: 'PP Neue Montreal', Arial, sans-serif;
+  }
+
+  @media (min-width: 768px) {
+    .bluluce-loader-container {
+      position: relative;
+      z-index: 10;
+    }
+  }
+
+  /* Global lock scroll class added to html element */
+  :global(html.loading-active) {
+    overflow: hidden !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+  }
+
+  /* Main centering flex for the loader header */
+  .bluluce-loader {
+    color: #201d1d;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  /* Giant text container */
+  .bluluce__h1 {
+    white-space: nowrap;
+    justify-content: center;
+    font-size: clamp(4rem, 11vw, 11rem);
+    font-weight: 500;
+    line-height: .75;
+    display: flex;
+    position: relative;
+    letter-spacing: -0.01em;
+  }
+
+  /* Start and end wrappers with overflow hidden to clip sliding letters */
+  .bluluce__h1-start {
+    justify-content: flex-end;
+    width: 1.65em; /* Adjusted width for 'Blu' */
+    display: flex;
+    overflow: hidden;
+  }
+
+  .bluluce__h1-end {
+    justify-content: flex-start;
+    width: 2.15em; /* Adjusted width for 'luce' */
+    display: flex;
+    overflow: hidden;
+  }
+
+  .bluluce__letter {
+    display: block;
+    position: relative;
+  }
+
+  /* Box container that opens and grows */
+  .bluluce-loader__box {
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 0;
+    display: flex;
+    position: relative;
+  }
+
+  .bluluce-loader__box-inner {
+    justify-content: center;
+    align-items: center;
+    min-width: 1.1em;
+    height: 95%;
+    display: flex;
+    position: relative;
+  }
+
+  /* Growing image element inside the box */
+  .bluluce__growing-image {
+    justify-content: center;
+    align-items: center;
+    width: 0%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+  }
+
+  .bluluce__growing-image-wrap {
+    width: 100%;
+    min-width: 1.1em;
+    height: 100%;
+    position: absolute;
+  }
+
+  /* Cover images styling */
+  .bluluce__cover-image,
+  .bluluce__cover-image-extra {
+    pointer-events: none;
+    object-fit: cover;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.15) !important; /* Zoom in to crop out mockup frame/white wall borders from the edges */
+  }
+
+  .bluluce__cover-image-extra.is--1 {
+    z-index: 3;
+  }
+
+  .bluluce__cover-image-extra.is--2 {
+    z-index: 2;
+  }
+
+  .bluluce__cover-image-extra.is--3 {
+    z-index: 1;
+  }
+
+  /* Header content overlay (visible after expansion) */
+  .bluluce-header__content {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .bluluce-header__content {
+      flex-flow: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      min-height: 100dvh;
+      padding: 3rem;
+      display: flex;
+      position: relative;
+      z-index: 5;
+      pointer-events: none;
+    }
+  }
+
+  /* Top Navigation */
+  .bluluce-header__top {
+    width: 100%;
+    position: relative;
+  }
+
+  .bluluce-nav {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bluluce-nav__start {
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50%;
+    display: flex;
+  }
+
+  .bluluce-nav__end {
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 50%;
+    display: flex;
+  }
+
+  .bluluce-nav__links {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .bluluce-nav__link {
+    color: inherit;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+
+  /* Bottom Header containing the final white logo reveal */
+  .bluluce-header__bottom {
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bluluce__h1-white {
+    white-space: nowrap;
+    justify-content: center;
+    font-size: clamp(3rem, 7vw, 7.5rem); /* Slightly smaller than main loader to look elegant at the bottom */
+    font-weight: 500;
+    line-height: .75;
+    display: flex;
+    position: relative;
+    letter-spacing: -0.02em;
+  }
+
+  .bluluce__letter-white {
+    display: block;
+    position: relative;
+  }
+
+  .bluluce__letter-white.is--space {
+    margin-left: 0.28em;
+  }
+</style>

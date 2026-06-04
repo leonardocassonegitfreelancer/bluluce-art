@@ -162,13 +162,132 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
       snapTimer = window.setTimeout(snap, CONFIG.snapDelay);
     };
 
-    nextRef.current = () => { targetScroll += CONFIG.spacingX; snap(); };
-    prevRef.current = () => { targetScroll -= CONFIG.spacingX; snap(); };
+    let isLocked = false;
+    let lastUnlockTime = 0;
+    const maxScroll = (count - 1) * CONFIG.spacingX;
+
+    const onScroll = () => {
+      if (mode !== "section") return;
+      const rect = root.getBoundingClientRect();
+      // Unlock if user dragged the scrollbar far away
+      if (isLocked && Math.abs(rect.top) > 250) {
+        isLocked = false;
+        lastUnlockTime = Date.now();
+      }
+    };
+
+    nextRef.current = () => {
+      if (mode === "section") {
+        const rect = root.getBoundingClientRect();
+        const isAligned = Math.abs(rect.top) < 180;
+
+        if (isAligned) {
+          if (targetScroll < maxScroll) {
+            targetScroll += CONFIG.spacingX;
+            snap();
+          } else {
+            isLocked = false;
+            window.scrollTo({
+              top: window.scrollY + window.innerHeight * 0.5,
+              behavior: "smooth"
+            });
+          }
+        } else {
+          targetScroll += CONFIG.spacingX;
+          snap();
+        }
+      } else {
+        targetScroll += CONFIG.spacingX;
+        snap();
+      }
+    };
+
+    prevRef.current = () => {
+      if (mode === "section") {
+        const rect = root.getBoundingClientRect();
+        const isAligned = Math.abs(rect.top) < 180;
+
+        if (isAligned) {
+          if (targetScroll > 0) {
+            targetScroll -= CONFIG.spacingX;
+            snap();
+          } else {
+            isLocked = false;
+            window.scrollTo({
+              top: Math.max(0, window.scrollY - window.innerHeight * 0.5),
+              behavior: "smooth"
+            });
+          }
+        } else {
+          targetScroll -= CONFIG.spacingX;
+          snap();
+        }
+      } else {
+        targetScroll -= CONFIG.spacingX;
+        snap();
+      }
+    };
 
     // ── input ──────────────────────────────────────────────
     const onWheel = (e: WheelEvent) => {
-      targetScroll += e.deltaY * 0.1;
-      scheduleSnap();
+      if (mode === "full") {
+        targetScroll += e.deltaY * 0.1;
+        targetScroll = Math.max(0, Math.min(maxScroll, targetScroll));
+        scheduleSnap();
+        return;
+      }
+
+      // mode === "section" (Teaser on Home Page)
+      const rect = root.getBoundingClientRect();
+      const winH = window.innerHeight;
+
+      // Check if we should lock
+      if (!isLocked && Date.now() - lastUnlockTime > 1000) {
+        const isScrollingDown = e.deltaY > 0;
+        const isScrollingUp = e.deltaY < 0;
+
+        let shouldLock = false;
+        // Lock when entering from above: top of teaser starts coming into viewport from bottom
+        if (isScrollingDown && rect.top > -50 && rect.top < winH - 100 && targetScroll < maxScroll) {
+          shouldLock = true;
+        }
+        // Lock when entering from below: bottom of teaser starts coming into viewport from top
+        else if (isScrollingUp && rect.top < 50 && rect.top > -winH + 100 && targetScroll > 0) {
+          shouldLock = true;
+        }
+
+        if (shouldLock) {
+          isLocked = true;
+          // Smoothly align the viewport to center the teaser exactly
+          window.scrollTo({
+            top: window.scrollY + rect.top,
+            behavior: "smooth"
+          });
+        }
+      }
+
+      // Handle locking scroll
+      if (isLocked) {
+        const isScrollingDown = e.deltaY > 0;
+        const isScrollingUp = e.deltaY < 0;
+
+        if (isScrollingDown && targetScroll < maxScroll) {
+          if (e.cancelable) e.preventDefault();
+          
+          targetScroll += e.deltaY * 0.15;
+          targetScroll = Math.max(0, Math.min(maxScroll, targetScroll));
+          scheduleSnap();
+        } else if (isScrollingUp && targetScroll > 0) {
+          if (e.cancelable) e.preventDefault();
+
+          targetScroll += e.deltaY * 0.15;
+          targetScroll = Math.max(0, Math.min(maxScroll, targetScroll));
+          scheduleSnap();
+        } else {
+          // Reached boundary, unlock scroll
+          isLocked = false;
+        }
+      }
     };
 
     // pointer drag (both modes)
@@ -179,6 +298,7 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
       if (!dragging) return;
       const diff = lastX - e.clientX;
       targetScroll += diff * 0.18;
+      targetScroll = Math.max(0, Math.min(maxScroll, targetScroll));
       lastX = e.clientX;
     };
     const onUp = () => { if (dragging) { dragging = false; snap(); } };
@@ -188,7 +308,10 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
       mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
 
-    if (mode === "full") window.addEventListener("wheel", onWheel, { passive: true });
+    if (mode === "section") {
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+    root.addEventListener("wheel", onWheel, { passive: false });
     const el = renderer.domElement;
     el.style.touchAction = "pan-y";
     el.addEventListener("pointerdown", onDown);
@@ -239,7 +362,10 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
     return () => {
       cancelAnimationFrame(raf);
       if (snapTimer) window.clearTimeout(snapTimer);
-      if (mode === "full") window.removeEventListener("wheel", onWheel);
+      root.removeEventListener("wheel", onWheel);
+      if (mode === "section") {
+        window.removeEventListener("scroll", onScroll);
+      }
       el.removeEventListener("pointerdown", onDown);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerup", onUp);
@@ -251,11 +377,10 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
       if (el.parentNode) el.parentNode.removeChild(el);
     };
   }, [mounted, mode]);
-
   const rootStyle: React.CSSProperties =
     mode === "full"
       ? { position: "fixed", inset: 0, background: "#f7f7f5" }
-      : { position: "relative", width: "100%", height: "86vh", background: "#f7f7f5", overflow: "hidden" };
+      : { position: "relative", width: "100%", height: "100dvh", background: "#f7f7f5", overflow: "hidden" };
 
   return (
     <section ref={rootRef} className="gh-root" style={rootStyle}>
@@ -295,7 +420,7 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
         .gh-arrow svg { width: 20px; height: 20px; color: #4a4540; }
         .gh-cta { position: absolute; bottom: 38px; left: clamp(40px,14vw,220px); z-index: 10; pointer-events: auto;
           display: inline-flex; align-items: center; padding: 0.85rem 2rem; font-family: var(--font-body, "Lato", sans-serif);
-          font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none;
+          font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none;
           border: 1px solid rgba(176,141,78,0.6); color: #6b5630; transition: background .4s ease, color .4s ease; }
         .gh-cta:hover { background: #b08d4e; color: #fff; }
       `}</style>
@@ -329,7 +454,7 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
       {mode === "full" ? (
         <div className="gh-hint">Scorri o trascina per esplorare</div>
       ) : (
-        <a className="gh-cta" href={galleryHref}>Entra nella galleria →</a>
+        <div className="gh-hint">Trascina o usa le frecce per esplorare</div>
       )}
 
       <div className="gh-controls">

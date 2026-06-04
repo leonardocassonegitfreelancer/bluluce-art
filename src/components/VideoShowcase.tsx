@@ -77,9 +77,7 @@ export default function VideoShowcase() {
         backgroundSize: "300px 300px",
       }} />
 
-      {/* Bottom and top black bars for widescreen cinema effect */}
-      <div className="hidden md:block absolute top-0 inset-x-0 h-8 bg-black z-10" />
-      <div className="hidden md:block absolute bottom-0 inset-x-0 h-8 bg-black z-10" />
+
 
       {/* Cinematic vignette — edges */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none z-10" />

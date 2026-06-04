@@ -81,74 +81,110 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Desktop nav — floating pill */}
-      <nav className="hidden md:block fixed top-0 left-0 right-0 z-50 px-8 pt-4">
-        <div
-          className={`max-w-6xl mx-auto grid grid-cols-[1fr_auto_1fr] items-center ease-[cubic-bezier(0.32,0.72,0,1)] rounded-full transition-all duration-700 ${
-            scrolled
-              ? "bg-[#0E0804]/95 backdrop-blur-2xl border border-white/10 px-7 py-3 shadow-[0_14px_44px_-12px_rgba(0,0,0,0.65)]"
-              : "bg-[#0E0804]/90 backdrop-blur-xl border border-white/[0.08] px-7 py-3.5 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)]"
-          }`}
+
+      {/* Desktop Header with Logo and Menu Trigger */}
+      <header className={`hidden md:flex fixed top-0 left-0 right-0 z-50 justify-between items-center px-12 py-8 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        isHome && !scrolled ? "opacity-0 pointer-events-none -translate-y-4" : "opacity-100 translate-y-0"
+      }`}>
+        <a
+          href={prefix}
+          className="font-display text-[1rem] font-bold text-[#1c1917] tracking-[0.24em] leading-none"
+          style={{ textDecoration: "none" }}
         >
-          {/* Logo */}
-          <a
-            href={prefix}
-            className="justify-self-start flex items-baseline gap-1.5 font-display text-[0.95rem] font-bold text-white tracking-[0.22em] leading-none"
-          >
-            BLULUCE
-            <span className="font-body text-[0.5rem] font-normal tracking-[0.35em] text-[#C9A96E]">ART</span>
-          </a>
-
-          {/* Desktop links */}
-          <div className="justify-self-center flex items-center gap-9">
-            {navLinks.map((item) => {
-              const active = isActive(item.href);
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={handleNavClick}
-                  className={`group relative font-body text-[0.72rem] tracking-[0.2em] uppercase py-1 transition-colors duration-300 ${
-                    active ? "text-[#C9A96E]" : "text-white/60 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                  <span
-                    className={`pointer-events-none absolute left-0 -bottom-0.5 h-px bg-[#C9A96E] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                      active ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
-                </a>
-              );
-            })}
+          BLULUCE
+          <span className="font-body text-[0.55rem] font-normal tracking-[0.35em] text-[#b08d4e] ml-1.5">ART</span>
+        </a>
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="group flex items-center gap-3 bg-transparent border-none cursor-pointer focus:outline-none"
+        >
+          <span className="font-body text-[0.65rem] tracking-[0.3em] uppercase text-[#57534e] group-hover:text-[#1c1917] transition-colors duration-300">
+            {mobileOpen ? "CLOSE" : "MENU"}
+          </span>
+          <div className="relative w-6 h-4 flex flex-col justify-between">
+            <span className={`w-6 h-[1.5px] bg-[#57534e] group-hover:bg-[#1c1917] transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] ${mobileOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
+            <span className={`w-4 h-[1.5px] bg-[#a8a29e] group-hover:bg-[#1c1917] transition-all duration-400 self-end ${mobileOpen ? "opacity-0" : ""}`} />
+            <span className={`w-6 h-[1.5px] bg-[#57534e] group-hover:bg-[#1c1917] transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] ${mobileOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
           </div>
+        </button>
+      </header>
 
-          {/* Right: lang + CTA */}
-          <div className="justify-self-end flex items-center gap-6">
-            <div className="flex items-center gap-1">
-              <Globe className="w-3.5 h-3.5 text-white/30 mr-1" />
+      {/* Backdrop overlay (Desktop) */}
+      <div
+        className={`hidden md:block fixed inset-0 z-[48] bg-[#0E0804]/30 backdrop-blur-sm transition-opacity duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setMobileOpen(false)}
+      />
+
+      {/* Side Menu Drawer (Desktop) */}
+      <div
+        className={`hidden md:flex fixed top-0 right-0 bottom-0 w-[420px] max-w-full z-[49] bg-[#fafaf8] border-l border-[#b08d4e]/15 flex-col justify-between px-16 py-20 shadow-[-10px_0_40px_rgba(0,0,0,0.04)] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+          mobileOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        {/* Top Header inside Drawer */}
+        <div className="flex justify-between items-center mb-12">
+          <span className="font-display text-[0.85rem] tracking-[0.25em] text-[#b08d4e] uppercase">ESPLORA</span>
+          <button
+            onClick={() => setMobileOpen(false)}
+            className="font-body text-[0.62rem] tracking-[0.25em] text-[#78716c] hover:text-[#1c1917] bg-transparent border-none cursor-pointer uppercase transition-colors"
+          >
+            CHIUDI ✕
+          </button>
+        </div>
+
+        {/* Links */}
+        <nav className="flex flex-col gap-6 my-auto">
+          {navLinks.map((item, i) => {
+            const active = isActive(item.href);
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={handleNavClick}
+                className={`font-display text-[2.4rem] font-normal italic leading-none transition-all duration-500 hover:translate-x-3 text-decoration-none ${
+                  active ? "text-[#b08d4e]" : "text-[#1c1917] hover:text-[#b08d4e]"
+                }`}
+                style={{ textDecoration: "none", transitionDelay: mobileOpen ? `${i * 60}ms` : "0ms" }}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+        </nav>
+
+        {/* Bottom Drawer Content */}
+        <div className="border-t border-[#b08d4e]/15 pt-10 flex flex-col gap-8">
+          {/* Languages */}
+          <div className="flex items-center gap-2">
+            <Globe className="w-3.5 h-3.5 text-[#a8a29e] mr-2" />
+            <div className="flex gap-2.5">
               {langs.map((l) => (
                 <button
                   key={l}
                   onClick={() => handleLangSwitch(l)}
-                  className={`font-body text-[0.62rem] tracking-[0.12em] uppercase px-1.5 py-1 transition-colors duration-300 ${
-                    lang === l ? "text-[#C9A96E]" : "text-white/40 hover:text-white/80"
+                  className={`font-body text-[0.68rem] tracking-[0.15em] uppercase border-none bg-transparent cursor-pointer transition-colors ${
+                    lang === l ? "text-[#b08d4e] font-semibold" : "text-[#78716c] hover:text-[#1c1917]"
                   }`}
                 >
                   {l.toUpperCase()}
                 </button>
               ))}
             </div>
-            <a
-              href={`${prefix}/#interesse`}
-              className="font-body text-[0.62rem] tracking-[0.22em] uppercase px-5 py-2.5 rounded-full border border-[#C9A96E]/40 text-[#C9A96E] hover:bg-[#C9A96E] hover:text-[#0E0804] hover:border-[#C9A96E] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
-            >
-              {th("navContacts", lang)}
-            </a>
           </div>
 
+          {/* CTA */}
+          <a
+            href={`${prefix}/#interesse`}
+            onClick={handleNavClick}
+            className="w-full py-4 border border-[#b08d4e]/40 text-[#b08d4e] hover:bg-[#b08d4e] hover:text-[#fafaf8] hover:border-[#b08d4e] font-body text-[0.62rem] tracking-[0.3em] uppercase flex items-center justify-center transition-all duration-500"
+            style={{ textDecoration: "none" }}
+          >
+            {th("navContacts", lang)}
+          </a>
         </div>
-      </nav>
+      </div>
 
       {/* Mobile full-screen overlay */}
       <div
