@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { productsSlug } from "@/i18n/slugs";
-import HeroDesktopCards from "@/components/HeroDesktopCards";
 import heroVideo from "@/assets/mare.mp4?url";
 
 const copy: Record<Lang, {
@@ -112,8 +111,52 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* ─── DESKTOP: cycling artwork cards behind fixed brand message ─── */}
-      <HeroDesktopCards />
+      {/* ─── DESKTOP: split layout ─── */}
+      <section className="hidden md:flex h-[100vh]" style={{ background: "#FAFAF8" }}>
+
+        <div className="flex flex-col justify-center px-16 lg:px-24 w-[45%] shrink-0 py-32">
+
+          <div className="w-10 h-px mb-8" style={{ background: "#C9A96E" }} />
+
+          <h1
+            className="hero-h1 font-display font-normal italic leading-[0.9] mb-6"
+            style={{ fontSize: "clamp(3.2rem, 4.5vw, 5.5rem)", letterSpacing: "-0.025em", color: "#0e0804" }}>
+            {t.line1}{" "}
+            <span className="not-italic font-semibold" style={{ color: "#C9A96E" }}>{t.highlight}</span>
+            <br />
+            <span className="not-italic font-semibold" style={{ color: "#C9A96E" }}>{t.line2}</span>
+          </h1>
+
+          <p
+            className="hero-desc font-body mb-9"
+            style={{ maxWidth: "26rem", fontSize: "0.95rem", lineHeight: 1.7, color: "#57534e" }}
+          >
+            {t.desc}
+          </p>
+
+          <div className="hero-ctas flex gap-4">
+            <a href={collectionUrl}
+              className="inline-flex items-center px-8 py-3.5 font-body text-[0.6rem] tracking-[0.3em] uppercase font-bold transition-all duration-500 hover:opacity-80"
+              style={{ background: "#0e0804", color: "#FAFAF8", textDecoration: "none" }}>
+              {t.cta1}
+            </a>
+            <a href={galleryUrl}
+              className="inline-flex items-center px-8 py-3.5 font-body text-[0.6rem] tracking-[0.3em] uppercase transition-all duration-500 hover:border-[#0e0804] hover:text-[#0e0804]"
+              style={{ border: "1px solid rgba(14,8,4,0.3)", color: "rgba(14,8,4,0.6)", textDecoration: "none" }}>
+              {t.cta2}
+            </a>
+          </div>
+
+        </div>
+
+        <div className="flex-1 relative overflow-hidden">
+          <video autoPlay muted loop playsInline
+            className="w-full h-full object-cover"
+            style={{ filter: "brightness(1.05) saturate(1.08)" }}
+            src={heroVideo} />
+        </div>
+
+      </section>
     </>
   );
 };

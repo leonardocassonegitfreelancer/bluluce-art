@@ -198,21 +198,24 @@ import seaImg from "../assets/mediterranean_sea.png";
           stagger: 0.08
         }, "<");
       }
+
+      // After expanding, fade out the container to reveal the video Hero
+      tl.to(container, {
+        opacity: 0,
+        duration: 1.1,
+        ease: "power3.inOut"
+      }, "+=0.4");
     }
 
-    // Unlock scroll and hide overlay on mobile
+    // Unlock scroll and hide overlay
     tl.add(() => {
-      if (isMobile) {
-        container.style.display = "none";
-      }
+      container.style.display = "none";
       document.documentElement.classList.remove("loading-active");
     });
 
     // Check if the user already visited the site in this session to skip loading wait
     if (sessionStorage.getItem("bluluce-intro-loaded")) {
-      if (isMobile) {
-        container.style.display = "none";
-      }
+      container.style.display = "none";
       document.documentElement.classList.remove("loading-active");
       tl.progress(1);
     } else {
@@ -235,7 +238,7 @@ import seaImg from "../assets/mediterranean_sea.png";
     font-display: swap;
   }
 
-  /* Loader wrapper as the desktop hero section */
+  /* Loader wrapper as a fixed full-screen overlay during loading animation */
   .bluluce-loader-container {
     position: fixed;
     top: 0;
@@ -248,13 +251,6 @@ import seaImg from "../assets/mediterranean_sea.png";
     overflow: hidden;
     color: #201d1d;
     font-family: 'PP Neue Montreal', Arial, sans-serif;
-  }
-
-  @media (min-width: 768px) {
-    .bluluce-loader-container {
-      position: relative;
-      z-index: 10;
-    }
   }
 
   /* Global lock scroll class added to html element */
