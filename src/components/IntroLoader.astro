@@ -80,6 +80,13 @@ import seaImg from "../assets/mediterranean_sea.png";
     if (!container) return;
 
     const isMobile = window.innerWidth < 768;
+    const isLoaded = sessionStorage.getItem("bluluce-intro-loaded");
+
+    // If already loaded and we are on mobile, we don't show the loader at all (keeps display: none from CSS)
+    if (isMobile && isLoaded) {
+      document.documentElement.classList.remove("loading-active");
+      return;
+    }
 
     // Set scroll lock
     document.documentElement.classList.add("loading-active");
@@ -157,6 +164,9 @@ import seaImg from "../assets/mediterranean_sea.png";
     }
 
     if (isMobile) {
+      // Show the loader container on mobile since we need to animate it
+      container.style.display = "block";
+
       // ── MOBILE: Fade out and slide up the white loader container to reveal the video hero ──
       tl.to(container, {
         opacity: 0,
@@ -198,24 +208,21 @@ import seaImg from "../assets/mediterranean_sea.png";
           stagger: 0.08
         }, "<");
       }
-
-      // After expanding, fade out the container to reveal the video Hero
-      tl.to(container, {
-        opacity: 0,
-        duration: 1.1,
-        ease: "power3.inOut"
-      }, "+=0.4");
     }
 
-    // Unlock scroll and hide overlay
+    // Unlock scroll and hide overlay on mobile
     tl.add(() => {
-      container.style.display = "none";
+      if (isMobile) {
+        container.style.display = "none";
+      }
       document.documentElement.classList.remove("loading-active");
     });
 
     // Check if the user already visited the site in this session to skip loading wait
-    if (sessionStorage.getItem("bluluce-intro-loaded")) {
-      container.style.display = "none";
+    if (isLoaded) {
+      if (isMobile) {
+        container.style.display = "none";
+      }
       document.documentElement.classList.remove("loading-active");
       tl.progress(1);
     } else {
@@ -251,6 +258,15 @@ import seaImg from "../assets/mediterranean_sea.png";
     overflow: hidden;
     color: #201d1d;
     font-family: 'PP Neue Montreal', Arial, sans-serif;
+    display: none; /* Hidden on mobile by default to prevent white flashes on page loads/refreshes */
+  }
+
+  @media (min-width: 768px) {
+    .bluluce-loader-container {
+      display: block;
+      position: relative; /* On desktop it acts as the Hero section in document flow */
+      z-index: 10;
+    }
   }
 
   /* Global lock scroll class added to html element */
