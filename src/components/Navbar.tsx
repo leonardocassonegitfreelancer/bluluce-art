@@ -65,9 +65,7 @@ const Navbar = () => {
       <nav className={`md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-[14px] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
         mobileOpen
           ? "bg-[#0E0804] border-b border-white/10"
-          : scrolled
-            ? "bg-white border-b border-[#0E0804]/5"
-            : "bg-transparent"
+          : "bg-transparent"
       }`}>
         <a href={prefix}
           className="font-display text-[1.05rem] font-bold tracking-[0.18em] transition-colors duration-300"

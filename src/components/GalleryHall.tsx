@@ -588,9 +588,10 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
             display: none;
           }
           .gh-controls {
-            bottom: 24px;
-            left: 24px;
-            right: auto;
+            top: 38dvh;
+            bottom: auto;
+            left: auto;
+            right: 20px;
             gap: 10px;
             z-index: 10;
           }
