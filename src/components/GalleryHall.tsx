@@ -154,7 +154,20 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
       const group = new THREE.Group();
       group.position.set(i * CONFIG.spacingX, 0, 0);
 
-      const tex = loader.load(encodeURI(BASE[i].src));
+      const paintingGroup = new THREE.Group();
+
+      const tex = loader.load(
+        encodeURI(BASE[i].src),
+        (t) => {
+          const imgW = t.image ? (t.image.naturalWidth || t.image.width) : 0;
+          const imgH = t.image ? (t.image.naturalHeight || t.image.height) : 0;
+          if (imgW && imgH) {
+            const textureAspect = imgW / imgH;
+            const targetAspect = CONFIG.pWidth / CONFIG.pHeight;
+            paintingGroup.scale.set(textureAspect / targetAspect, 1, 1);
+          }
+        }
+      );
       tex.colorSpace = THREE.SRGBColorSpace;
       textures.push(tex);
       const mat = new THREE.MeshBasicMaterial({ map: tex });
@@ -183,7 +196,8 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
       const lines = new THREE.LineSegments(lineGeo, lineMat);
       disposables.push(lineGeo, lineMat);
 
-      group.add(shadow, mesh, outline, lines);
+      paintingGroup.add(shadow, mesh, outline);
+      group.add(paintingGroup, lines);
       galleryGroup.add(group);
       groups.push(group);
     }
