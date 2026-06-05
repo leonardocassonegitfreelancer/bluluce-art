@@ -125,12 +125,6 @@ const Navbar = () => {
         {/* Top Header inside Drawer */}
         <div className="flex justify-between items-center mb-12">
           <span className="font-display text-[0.85rem] tracking-[0.25em] text-[#b08d4e] uppercase">ESPLORA</span>
-          <button
-            onClick={() => setMobileOpen(false)}
-            className="font-body text-[0.62rem] tracking-[0.25em] text-[#78716c] hover:text-[#1c1917] bg-transparent border-none cursor-pointer uppercase transition-colors"
-          >
-            CHIUDI ✕
-          </button>
         </div>
 
         {/* Links */}
