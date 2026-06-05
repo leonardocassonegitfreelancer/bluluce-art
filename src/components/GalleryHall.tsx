@@ -509,15 +509,15 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
 
         @media (max-width: 767px) {
           .gh-canvas {
-            height: 56dvh;
-            top: 0;
+            height: 53dvh;
+            top: 7dvh;
             bottom: auto;
           }
           .gh-veil {
             display: none;
           }
           .gh-slide {
-            top: 58dvh;
+            top: 62dvh;
             bottom: auto;
             left: 24px;
             right: 24px;
@@ -547,7 +547,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
             display: none;
           }
           .gh-controls {
-            top: 57.5dvh;
+            top: 61.5dvh;
             bottom: auto;
             left: auto;
             right: 24px;
