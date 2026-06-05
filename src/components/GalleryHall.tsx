@@ -117,9 +117,9 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
 
     let isMobile = window.innerWidth < 768;
     let aspect = width / height;
-    let activeCamZ = isMobile ? Math.max(30, 20 / Math.max(0.4, aspect)) : CONFIG.camZ;
+    let activeCamZ = CONFIG.camZ;
     let galleryOffsetX = isMobile ? 0 : 8;
-    let galleryOffsetY = isMobile ? 3.2 : 0;
+    let galleryOffsetY = 0;
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(BG);
@@ -451,9 +451,9 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
 
       isMobile = window.innerWidth < 768;
       aspect = width / height;
-      activeCamZ = isMobile ? Math.max(30, 20 / Math.max(0.4, aspect)) : CONFIG.camZ;
+      activeCamZ = CONFIG.camZ;
       galleryOffsetX = isMobile ? 0 : 8;
-      galleryOffsetY = isMobile ? 3.2 : 0;
+      galleryOffsetY = 0;
 
       galleryGroup.position.x = galleryOffsetX;
       galleryGroup.position.y = galleryOffsetY;
@@ -532,52 +532,61 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
         .gh-arrow svg { width: 20px; height: 20px; color: #4a4540; }
 
         @media (max-width: 767px) {
+          .gh-canvas {
+            height: 45dvh;
+            top: 0;
+            bottom: auto;
+          }
+          .gh-veil {
+            display: none;
+          }
           .gh-slide {
-            top: auto;
-            bottom: 110px;
+            top: 47dvh;
+            bottom: auto;
             left: 24px;
             right: 24px;
             width: auto;
             max-width: none;
-            text-shadow: 0 1px 12px rgba(247,247,245,0.95), 0 0 4px rgba(247,247,245,0.98);
+            text-shadow: none;
           }
-          .gh-cat { margin-bottom: 0.6rem; padding-bottom: 4px; }
+          .gh-cat { margin-bottom: 0.4rem; padding-bottom: 4px; }
           .gh-title {
-            font-size: clamp(1.8rem, 6vw, 2.2rem);
-            margin-bottom: 0.6rem;
+            font-size: clamp(1.6rem, 5vw, 2rem);
+            margin-bottom: 0.4rem;
+            line-height: 1.1;
           }
           .gh-desc {
-            font-size: 0.88rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
           }
           .gh-meta {
             grid-template-columns: 80px 1fr;
-            row-gap: 0.3rem;
-            padding-top: 0.8rem;
-            margin-bottom: 1rem;
+            row-gap: 0.25rem;
+            padding-top: 0.6rem;
+            margin-bottom: 0.8rem;
           }
           .gh-slide-cta {
-            padding: 0.65rem 1.4rem;
+            padding: 0.6rem 1.2rem;
             font-size: 0.55rem;
           }
           .gh-hint {
-            bottom: 24px;
-            left: 20px;
-            font-size: 0.58rem;
+            display: none;
           }
           .gh-controls {
-            bottom: 20px;
-            right: 20px;
+            bottom: 24px;
+            left: 24px;
+            right: auto;
             gap: 10px;
+            z-index: 10;
           }
           .gh-arrow {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
           }
           .gh-arrow svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
           }
         }
       `}</style>
