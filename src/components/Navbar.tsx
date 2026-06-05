@@ -30,8 +30,8 @@ const Navbar = () => {
   const isHome = currentPath === prefix || currentPath === `${prefix}/` || currentPath === "/" || currentPath === "";
   const isDarkPage = !isHome;
 
-  const textBurgerColor = mobileOpen ? "#ffffff" : "#0E0804";
-  const secondaryBurgerColor = mobileOpen ? "rgba(255,255,255,0.6)" : "rgba(14,8,4,0.5)";
+  const textBurgerColor = "#0E0804";
+  const secondaryBurgerColor = "rgba(14,8,4,0.5)";
 
   const navLinks = [
     { label: th("navHome", lang), href: prefix },
@@ -187,7 +187,7 @@ const Navbar = () => {
 
       {/* Mobile full-screen overlay */}
       <div
-        className={`md:hidden fixed inset-0 z-[49] bg-[#0E0804] flex flex-col justify-center px-10 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`md:hidden fixed inset-0 z-[49] bg-[#fafaf8] flex flex-col justify-center px-10 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -199,7 +199,7 @@ const Navbar = () => {
               onClick={handleNavClick}
               className={`block font-display text-3xl font-normal py-1.5 transition-all duration-600 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                 mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              } ${isActive(item.href) ? "text-[#BF8A3D]" : "text-white"}`}
+              } ${isActive(item.href) ? "text-[#b08d4e]" : "text-[#1c1917]"}`}
               style={{ transitionDelay: mobileOpen ? `${80 + i * 70}ms` : "0ms" }}
             >
               {item.label}
@@ -208,20 +208,20 @@ const Navbar = () => {
         </nav>
 
         <div
-          className={`border-t border-white/5 pt-10 flex flex-col gap-8 transition-all duration-500 ${
+          className={`border-t border-[#b08d4e]/15 pt-10 flex flex-col gap-8 transition-all duration-500 ${
             mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ transitionDelay: mobileOpen ? "380ms" : "0ms" }}
         >
           <div className="flex items-center gap-4">
-            <Globe className="w-4 h-4 text-[#BF8A3D]/40" />
+            <Globe className="w-4 h-4 text-[#b08d4e]/60" />
             <div className="flex gap-4">
               {langs.map((l) => (
                 <button
                   key={l}
                   onClick={() => handleLangSwitch(l)}
                   className={`font-bebas text-lg tracking-[0.15em] uppercase transition-colors ${
-                    lang === l ? "text-[#BF8A3D]" : "text-white/30 hover:text-white"
+                    lang === l ? "text-[#b08d4e] font-semibold" : "text-[#78716c] hover:text-[#1c1917]"
                   }`}
                 >
                   {l}
@@ -233,8 +233,8 @@ const Navbar = () => {
           <a
             href={`${prefix}/${productsSlug[lang]}`}
             onClick={handleNavClick}
-            className="w-full py-4 border text-[#C9A96E] font-body text-[0.6rem] tracking-[0.3em] uppercase flex items-center justify-center transition-all duration-500"
-            style={{ background: "rgba(201,169,110,0.08)", borderColor: "rgba(201,169,110,0.25)" }}
+            className="w-full py-4 border text-[#b08d4e] font-body text-[0.6rem] tracking-[0.3em] uppercase flex items-center justify-center transition-all duration-500"
+            style={{ background: "rgba(176,141,78,0.06)", borderColor: "rgba(176,141,78,0.25)" }}
           >
             {th("navMenu", lang)}
           </a>
