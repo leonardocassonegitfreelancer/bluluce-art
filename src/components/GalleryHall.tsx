@@ -585,20 +585,21 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
             display: none;
           }
           .gh-controls {
-            top: 49dvh;
+            top: 57.5dvh;
             bottom: auto;
             left: auto;
-            right: 20px;
-            gap: 10px;
+            right: 24px;
+            gap: 8px;
             z-index: 10;
           }
           .gh-arrow {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.75);
           }
           .gh-arrow svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
           }
         }
       `}</style>
