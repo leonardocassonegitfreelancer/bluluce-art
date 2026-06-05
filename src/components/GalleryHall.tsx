@@ -237,52 +237,14 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     };
 
     nextRef.current = () => {
-      if (mode === "section") {
-        const rect = root.getBoundingClientRect();
-        const isAligned = Math.abs(rect.top) < 180;
-
-        if (isAligned) {
-          if (targetScroll < maxScroll) {
-            targetScroll += CONFIG.spacingX;
-            snap();
-          } else {
-            isLocked = false;
-            window.scrollTo({
-              top: window.scrollY + window.innerHeight * 0.5,
-              behavior: "smooth"
-            });
-          }
-        } else {
-          targetScroll += CONFIG.spacingX;
-          snap();
-        }
-      } else {
+      if (targetScroll < maxScroll) {
         targetScroll += CONFIG.spacingX;
         snap();
       }
     };
 
     prevRef.current = () => {
-      if (mode === "section") {
-        const rect = root.getBoundingClientRect();
-        const isAligned = Math.abs(rect.top) < 180;
-
-        if (isAligned) {
-          if (targetScroll > 0) {
-            targetScroll -= CONFIG.spacingX;
-            snap();
-          } else {
-            isLocked = false;
-            window.scrollTo({
-              top: Math.max(0, window.scrollY - window.innerHeight * 0.5),
-              behavior: "smooth"
-            });
-          }
-        } else {
-          targetScroll -= CONFIG.spacingX;
-          snap();
-        }
-      } else {
+      if (targetScroll > 0) {
         targetScroll -= CONFIG.spacingX;
         snap();
       }
