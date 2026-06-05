@@ -62,12 +62,11 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Mobile nav — full-width bar */}
       <nav className={`md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-[14px] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
         mobileOpen
           ? "bg-[#0E0804] border-b border-white/10"
           : scrolled
-            ? "bg-[#f7f7f5]/40 backdrop-blur-md border-b border-[#0E0804]/5"
+            ? "bg-white border-b border-[#0E0804]/5"
             : "bg-transparent"
       }`}>
         <a href={prefix}
