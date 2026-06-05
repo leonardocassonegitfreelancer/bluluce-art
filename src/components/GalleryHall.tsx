@@ -547,7 +547,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
 
         @media (max-width: 767px) {
           .gh-canvas {
-            height: 45dvh;
+            height: 56dvh;
             top: 0;
             bottom: auto;
           }
@@ -555,7 +555,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
             display: none;
           }
           .gh-slide {
-            top: 47dvh;
+            top: 58dvh;
             bottom: auto;
             left: 24px;
             right: 24px;
@@ -572,13 +572,10 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
           .gh-desc {
             font-size: 0.85rem;
             line-height: 1.5;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
           }
           .gh-meta {
-            grid-template-columns: 80px 1fr;
-            row-gap: 0.25rem;
-            padding-top: 0.6rem;
-            margin-bottom: 0.8rem;
+            display: none;
           }
           .gh-slide-cta {
             padding: 0.6rem 1.2rem;
@@ -588,7 +585,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
             display: none;
           }
           .gh-controls {
-            top: 38dvh;
+            top: 49dvh;
             bottom: auto;
             left: auto;
             right: 20px;
