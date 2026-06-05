@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import GalleryHall from "@/components/GalleryHall";
-import ArtCollections from "@/components/ArtCollections";
 import VideoShowcase from "@/components/VideoShowcase";
 import InterestForm from "@/components/InterestForm";
 import Footer from "@/components/Footer";
@@ -15,10 +14,7 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <div className="hidden md:block">
-          <GalleryHall mode="section" galleryHref={`/${lang}/gallery`} />
-        </div>
-        <ArtCollections />
+        <GalleryHall mode="section" lang={lang} />
         <VideoShowcase />
         <InterestForm />
       </main>

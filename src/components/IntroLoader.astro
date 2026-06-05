@@ -19,11 +19,11 @@ import seaImg from "../assets/mediterranean_sea.png";
           <div class="bluluce__growing-image">
             <div class="bluluce__growing-image-wrap">
               <!-- Intermittent Flashing Images -->
-              <img class="bluluce__cover-image-extra is--1" src={oliveImg.src} loading="eager" style="transform: scale(1.15) !important;" alt="" />
-              <img class="bluluce__cover-image-extra is--2" src={scorciImg.src} loading="eager" style="transform: scale(1.15) !important;" alt="" />
-              <img class="bluluce__cover-image-extra is--3" src={seaImg.src} loading="eager" style="transform: scale(1.15) !important;" alt="" />
+              <img class="bluluce__cover-image-extra is--1" src={oliveImg.src} loading="eager" alt="" />
+              <img class="bluluce__cover-image-extra is--2" src={scorciImg.src} loading="eager" alt="" />
+              <img class="bluluce__cover-image-extra is--3" src={seaImg.src} loading="eager" alt="" />
               <!-- Final Cover Image that expands -->
-              <img class="bluluce__cover-image" src={ninfeImg.src} loading="eager" style="transform: scale(1.15) !important;" alt="" />
+              <img class="bluluce__cover-image" src={ninfeImg.src} loading="eager" alt="" />
             </div>
           </div>
         </div>
@@ -82,8 +82,15 @@ import seaImg from "../assets/mediterranean_sea.png";
     const isMobile = window.innerWidth < 768;
     const isLoaded = sessionStorage.getItem("bluluce-intro-loaded");
 
-    // If already loaded and we are on mobile, we don't show the loader at all (keeps display: none from CSS)
-    if (isMobile && isLoaded) {
+    // Replay the intro on the first visit of the session AND on every hard refresh
+    // (reload). Only skip it when softly returning to the page within the same
+    // session (e.g. navigating home from another page, or back/forward).
+    const navEntry = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+    const isReload = navEntry?.type === "reload";
+    const shouldPlay = !isLoaded || isReload;
+
+    // If we should skip and we are on mobile, we don't show the loader at all (keeps display: none from CSS)
+    if (isMobile && !shouldPlay) {
       document.documentElement.classList.remove("loading-active");
       return;
     }
@@ -176,12 +183,23 @@ import seaImg from "../assets/mediterranean_sea.png";
       }, "+=0.3");
     } else {
       // ── DESKTOP: Expand the loader box to fill screen and reveal the navigation/text ──
+
+      // Step 1: Switch container to fixed so the growing image can escape relative bounds
+      tl.add(() => {
+        container.style.position = "fixed";
+        container.style.top = "0";
+        container.style.left = "0";
+        container.style.width = "100%";
+        container.style.height = "100dvh";
+        container.style.zIndex = "100";
+      }, "< 1.25");
+
       if (growingImage.length) {
         tl.to(growingImage, {
           width: "100vw",
           height: "100dvh",
           duration: 2
-        }, "< 1.25");
+        }, "<");
       }
 
       if (box.length) {
@@ -208,6 +226,16 @@ import seaImg from "../assets/mediterranean_sea.png";
           stagger: 0.08
         }, "<");
       }
+
+      // Step 2: After reveal, switch back to relative so it becomes the in-flow hero section
+      tl.add(() => {
+        container.style.position = "relative";
+        container.style.top = "";
+        container.style.left = "";
+        container.style.width = "";
+        container.style.height = "";
+        container.style.zIndex = "10";
+      });
     }
 
     // Unlock scroll and hide overlay on mobile
@@ -218,8 +246,9 @@ import seaImg from "../assets/mediterranean_sea.png";
       document.documentElement.classList.remove("loading-active");
     });
 
-    // Check if the user already visited the site in this session to skip loading wait
-    if (isLoaded) {
+    // Skip straight to the end only on a soft return within the same session
+    // (not on a hard refresh, where we want the full animation to play again).
+    if (!shouldPlay) {
       if (isMobile) {
         container.style.display = "none";
       }
@@ -354,10 +383,13 @@ import seaImg from "../assets/mediterranean_sea.png";
   }
 
   .bluluce__growing-image-wrap {
-    width: 100%;
-    min-width: 1.1em;
-    height: 100%;
+    /* Oversized wrap that always extends beyond its overflow:hidden parent
+       so the center of the painting fills the visible area */
     position: absolute;
+    top: -30%;
+    left: -25%;
+    width: 150%;
+    height: 160%;
   }
 
   /* Cover images styling */
@@ -365,6 +397,7 @@ import seaImg from "../assets/mediterranean_sea.png";
   .bluluce__cover-image-extra {
     pointer-events: none;
     object-fit: cover;
+    object-position: center 40%; /* Focus on painting center, away from floor/ceiling */
     -webkit-user-select: none;
     user-select: none;
     width: 100%;
@@ -372,7 +405,6 @@ import seaImg from "../assets/mediterranean_sea.png";
     position: absolute;
     top: 0;
     left: 0;
-    transform: scale(1.15) !important; /* Zoom in to crop out mockup frame/white wall borders from the edges */
   }
 
   .bluluce__cover-image-extra.is--1 {

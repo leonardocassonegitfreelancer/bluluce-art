@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { productsSlug } from "@/i18n/slugs";
 import mareImg from "@/assets/mediterranean_sea.png";
 import ninfeImg from "@/assets/Ninfe picture for the home.png";
 import oliveImg from "@/assets/olive_sun.png";
@@ -10,31 +11,59 @@ import scorciImg from "@/assets/scorci_mediterraneo.png";
  * GalleryHall — immersive infinite 3D art gallery (Three.js).
  * Based on the MIT-licensed CodePen "Infinite Gallery Hall" by nassimberrada
  * (https://codepen.io/nassimberrada/pen/EayPjpM); rewritten in React, scoped to
- * its container, re-themed dark/gold and fed with Bluluce artworks.
- * MIT copyright notice retained.
+ * its container, re-themed and fed with Bluluce artworks. Paintings are
+ * clickable (→ their collection) and all copy is localised. MIT notice retained.
  *
  * mode="full"    → fills the viewport, navigate by scroll/drag (a page on its own)
  * mode="section" → bounded height inside a normal page, navigate by drag + arrows
  */
 
-type Painting = {
-  src: string;
-  cat: string;
-  t1: string;
-  t2: string;
-  desc: string;
-  artist: string;
-  year: string;
-  medium: string;
+type Lang = "it" | "en" | "es";
+
+type PaintingBase = { src: string; category: "mare" | "terra" | "ulivo"; year: string };
+
+// Astro image imports are ImageMetadata at runtime but typed as `string` in .tsx
+const srcOf = (m: unknown): string => (typeof m === "string" ? m : (m as { src: string }).src);
+
+const BASE: PaintingBase[] = [
+  { src: srcOf(mareImg), category: "mare", year: "2026" },
+  { src: srcOf(ninfeImg), category: "mare", year: "2025" },
+  { src: srcOf(oliveImg), category: "ulivo", year: "2026" },
+  { src: srcOf(terraImg), category: "terra", year: "2025" },
+  { src: srcOf(scorciImg), category: "mare", year: "2024" },
+];
+
+type PText = { cat: string; t1: string; t2: string; desc: string; medium: string };
+
+const TEXT: Record<Lang, PText[]> = {
+  it: [
+    { cat: "01 — Mare", t1: "Sussurro", t2: "dell'Onda", desc: "Pennellate profonde e foglia d'oro catturano il movimento continuo e l'energia vibrante delle onde del Mediterraneo.", medium: "Olio e foglia d'oro su lino" },
+    { cat: "02 — Figura", t1: "Ninfa", t2: "Mediterranea", desc: "La figura femminile si fonde con il mare, tra luce e materia, in un dialogo silenzioso tra corpo e paesaggio.", medium: "Olio su tela" },
+    { cat: "03 — Ulivo", t1: "Luce", t2: "d'Ulivo", desc: "Contrasti caldi tra il verde argentato delle foglie d'ulivo e la luce zenitale del mezzogiorno mediterraneo.", medium: "Olio e foglia d'oro su lino grezzo" },
+    { cat: "04 — Terra", t1: "Terra", t2: "Arsa", desc: "Forme organiche minimaliste e sfumature di terracotta che richiamano la materia prima e la sabbia arsa dal sole.", medium: "Pigmenti naturali su lino" },
+    { cat: "05 — Mare", t1: "Scorci", t2: "Mediterranei", desc: "Frammenti di costa e riflessi d'acqua, dove l'architettura incontra il respiro lento del mare.", medium: "Tecnica mista su tela" },
+  ],
+  en: [
+    { cat: "01 — Sea", t1: "Whisper", t2: "of the Wave", desc: "Deep brushstrokes and gold leaf capture the continuous movement and vibrant energy of the Mediterranean waves.", medium: "Oil and gold leaf on linen" },
+    { cat: "02 — Figure", t1: "Mediterranean", t2: "Nymph", desc: "The female figure merges with the sea, between light and matter, in a silent dialogue of body and landscape.", medium: "Oil on canvas" },
+    { cat: "03 — Olive", t1: "Olive", t2: "Light", desc: "Warm contrasts between the silvery green of olive leaves and the zenith light of the Mediterranean noon.", medium: "Oil and gold leaf on raw linen" },
+    { cat: "04 — Earth", t1: "Scorched", t2: "Earth", desc: "Minimalist organic shapes and terracotta shades recalling raw matter and sand burnt by the sun.", medium: "Natural pigments on linen" },
+    { cat: "05 — Sea", t1: "Mediterranean", t2: "Glimpses", desc: "Fragments of coast and reflections of water, where architecture meets the slow breath of the sea.", medium: "Mixed media on canvas" },
+  ],
+  es: [
+    { cat: "01 — Mar", t1: "Susurro", t2: "de la Ola", desc: "Pinceladas profundas y pan de oro capturan el movimiento continuo y la energía vibrante de las olas del Mediterráneo.", medium: "Óleo y pan de oro sobre lino" },
+    { cat: "02 — Figura", t1: "Ninfa", t2: "Mediterránea", desc: "La figura femenina se funde con el mar, entre luz y materia, en un diálogo silencioso entre cuerpo y paisaje.", medium: "Óleo sobre lienzo" },
+    { cat: "03 — Olivo", t1: "Luz", t2: "de Olivo", desc: "Contrastes cálidos entre el verde plateado de las hojas de olivo y la luz cenital del mediodía mediterráneo.", medium: "Óleo y pan de oro sobre lino crudo" },
+    { cat: "04 — Tierra", t1: "Tierra", t2: "Quemada", desc: "Formas orgánicas minimalistas y matices de terracota que evocan la materia prima y la arena quemada por el sol.", medium: "Pigmentos naturales sobre lino" },
+    { cat: "05 — Mar", t1: "Vistas", t2: "Mediterráneas", desc: "Fragmentos de costa y reflejos de agua, donde la arquitectura se encuentra con el respiro lento del mar.", medium: "Técnica mixta sobre lienzo" },
+  ],
 };
 
-const PAINTINGS: Painting[] = [
-  { src: mareImg.src, cat: "01 — Mare", t1: "Sussurro", t2: "dell'Onda", desc: "Pennellate profonde e foglia d'oro catturano il movimento continuo e l'energia vibrante delle onde del Mediterraneo.", artist: "Bluluce", year: "2026", medium: "Olio e foglia d'oro su lino" },
-  { src: ninfeImg.src, cat: "02 — Figura", t1: "Ninfa", t2: "Mediterranea", desc: "La figura femminile si fonde con il mare, tra luce e materia, in un dialogo silenzioso tra corpo e paesaggio.", artist: "Bluluce", year: "2025", medium: "Olio su tela" },
-  { src: oliveImg.src, cat: "03 — Ulivo", t1: "Luce", t2: "d'Ulivo", desc: "Contrasti caldi tra il verde argentato delle foglie d'ulivo e la luce zenitale del mezzogiorno mediterraneo.", artist: "Bluluce", year: "2026", medium: "Olio e foglia d'oro su lino grezzo" },
-  { src: terraImg.src, cat: "04 — Terra", t1: "Terra", t2: "Arsa", desc: "Forme organiche minimaliste e sfumature di terracotta che richiamano la materia prima e la sabbia arsa dal sole.", artist: "Bluluce", year: "2025", medium: "Pigmenti naturali su lino" },
-  { src: scorciImg.src, cat: "05 — Mare", t1: "Scorci", t2: "Mediterranei", desc: "Frammenti di costa e riflessi d'acqua, dove l'architettura incontra il respiro lento del mare.", artist: "Bluluce", year: "2024", medium: "Tecnica mista su tela" },
-];
+const UI: Record<Lang, { artist: string; year: string; medium: string; hintFull: string; hintSection: string; cta: string }> = {
+  it: { artist: "Artista", year: "Anno", medium: "Tecnica", hintFull: "Scorri o trascina per esplorare", hintSection: "Trascina o usa le frecce per esplorare", cta: "Scopri la collezione" },
+  en: { artist: "Artist", year: "Year", medium: "Medium", hintFull: "Scroll or drag to explore", hintSection: "Drag or use the arrows to explore", cta: "Discover the collection" },
+  es: { artist: "Artista", year: "Año", medium: "Técnica", hintFull: "Desplaza o arrastra para explorar", hintSection: "Arrastra o usa las flechas para explorar", cta: "Descubre la colección" },
+};
 
 const CONFIG = {
   spacingX: 45,
@@ -47,21 +76,28 @@ const CONFIG = {
 };
 
 const BG = 0xf7f7f5;
-const GOLD = 0xc9a96e;
 
 interface GalleryHallProps {
   mode?: "full" | "section";
+  /** UI / content language. */
+  lang?: Lang;
   /** Where the logo links (full mode = escape to home). */
   homeHref?: string;
-  /** Where the section CTA links (to the full gallery). */
-  galleryHref?: string;
 }
 
-const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }: GalleryHallProps) => {
+const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHallProps) => {
+  const L: Lang = (["it", "en", "es"].includes(lang) ? lang : "it") as Lang;
+  const text = TEXT[L];
+  const ui = UI[L];
+  const slug = productsSlug[L];
+  const hrefs = BASE.map((b) => `/${L}/${slug}/${b.category}`);
+
   const rootRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<() => void>(() => {});
   const prevRef = useRef<() => void>(() => {});
+  const hrefsRef = useRef(hrefs);
+  hrefsRef.current = hrefs;
 
   // WebGL is client-only: render the inner DOM after mount so server HTML and
   // the first client render match (no hydration mismatch inside the home island).
@@ -74,7 +110,7 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
     const mount = canvasRef.current;
     if (!root || !mount) return;
 
-    const count = PAINTINGS.length;
+    const count = BASE.length;
     const totalWidth = count * CONFIG.spacingX;
     let width = mount.clientWidth || window.innerWidth;
     let height = mount.clientHeight || window.innerHeight;
@@ -106,16 +142,19 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
     const disposables: { dispose: () => void }[] = [planeGeo, edgesGeo];
     const textures: THREE.Texture[] = [];
     const groups: THREE.Group[] = [];
+    const meshes: THREE.Mesh[] = [];
 
     for (let i = 0; i < count; i++) {
       const group = new THREE.Group();
       group.position.set(i * CONFIG.spacingX, 0, 0);
 
-      const tex = loader.load(encodeURI(PAINTINGS[i].src));
+      const tex = loader.load(encodeURI(BASE[i].src));
       tex.colorSpace = THREE.SRGBColorSpace;
       textures.push(tex);
       const mat = new THREE.MeshBasicMaterial({ map: tex });
       const mesh = new THREE.Mesh(planeGeo, mat);
+      mesh.userData.index = i;
+      meshes.push(mesh);
       disposables.push(mat);
 
       const outlineMat = new THREE.LineBasicMaterial({ color: 0x1f1b16 });
@@ -273,7 +312,7 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
 
         if (isScrollingDown && targetScroll < maxScroll) {
           if (e.cancelable) e.preventDefault();
-          
+
           targetScroll += e.deltaY * 0.15;
           targetScroll = Math.max(0, Math.min(maxScroll, targetScroll));
           scheduleSnap();
@@ -290,18 +329,57 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
       }
     };
 
-    // pointer drag (both modes)
+    // pointer drag + click-to-open (raycast)
+    const raycaster = new THREE.Raycaster();
+    const hoverNDC = new THREE.Vector2();
+    let hoverInside = false;
     let dragging = false;
     let lastX = 0;
-    const onDown = (e: PointerEvent) => { dragging = true; lastX = e.clientX; if (snapTimer) window.clearTimeout(snapTimer); };
+    let movedDist = 0;
+
+    const setNDC = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      hoverNDC.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+      hoverNDC.y = -((e.clientY - r.top) / r.height) * 2 + 1;
+      hoverInside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+    };
+
+    const pickIndex = () => {
+      raycaster.setFromCamera(hoverNDC, camera);
+      const hits = raycaster.intersectObjects(meshes, false);
+      return hits.length ? (hits[0].object.userData.index as number) : -1;
+    };
+
+    const onDown = (e: PointerEvent) => {
+      dragging = true;
+      lastX = e.clientX;
+      movedDist = 0;
+      setNDC(e);
+      if (snapTimer) window.clearTimeout(snapTimer);
+    };
     const onMove = (e: PointerEvent) => {
+      setNDC(e);
       if (!dragging) return;
       const diff = lastX - e.clientX;
       targetScroll += diff * 0.18;
       targetScroll = Math.max(0, Math.min(maxScroll, targetScroll));
+      movedDist += Math.abs(diff);
       lastX = e.clientX;
     };
-    const onUp = () => { if (dragging) { dragging = false; snap(); } };
+    const onUp = () => {
+      const wasDragging = dragging;
+      dragging = false;
+      if (!wasDragging) return;
+      // treat as a click (open the painting's collection) if the pointer barely moved
+      if (movedDist < 6 && hoverInside) {
+        const idx = pickIndex();
+        if (idx >= 0) {
+          window.location.href = hrefsRef.current[idx];
+          return;
+        }
+      }
+      snap();
+    };
 
     const onMouseMove = (e: MouseEvent) => {
       mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -332,6 +410,7 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
 
     // ── loop ───────────────────────────────────────────────
     let raf = 0;
+    let lastCursor = "";
     const animate = () => {
       raf = requestAnimationFrame(animate);
       currentScroll += (targetScroll - currentScroll) * CONFIG.lerpSpeed;
@@ -346,6 +425,10 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
       camera.rotation.y = -mouse.x * 0.05;
       updateUI(currentScroll);
       renderer.render(scene, camera);
+
+      // cursor feedback: pointer when hovering a painting
+      const cursor = dragging ? "grabbing" : hoverInside && pickIndex() >= 0 ? "pointer" : "grab";
+      if (cursor !== lastCursor) { el.style.cursor = cursor; lastCursor = cursor; }
     };
     animate();
 
@@ -377,6 +460,7 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
       if (el.parentNode) el.parentNode.removeChild(el);
     };
   }, [mounted, mode]);
+
   const rootStyle: React.CSSProperties =
     mode === "full"
       ? { position: "fixed", inset: 0, background: "#f7f7f5" }
@@ -387,7 +471,6 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
       <style>{`
         .gh-root { color: #1a1a1a; }
         .gh-canvas { position: absolute; inset: 0; z-index: 1; cursor: grab; }
-        .gh-canvas:active { cursor: grabbing; }
         .gh-veil { position: absolute; inset: 0; z-index: 3; pointer-events: none;
           background: linear-gradient(to right, rgba(247,247,245,0.7) 0%, rgba(247,247,245,0.42) 26%, rgba(247,247,245,0.14) 44%, rgba(247,247,245,0) 56%); }
         .gh-logo { position: absolute; top: 36px; left: clamp(28px,5vw,56px); z-index: 10;
@@ -395,20 +478,26 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
           font-size: 0.85rem; text-transform: uppercase; color: #161310; }
         .gh-logo .gh-art { color: #b08d4e; }
         .gh-ui { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
-        .gh-slide { position: absolute; top: 24%; left: clamp(40px,14vw,220px); width: min(32vw, 400px);
+        .gh-slide { position: absolute; top: 22%; left: clamp(40px,14vw,220px); width: min(32vw, 400px);
           opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease-out;
           text-shadow: 0 1px 16px rgba(247,247,245,0.92), 0 0 2px rgba(247,247,245,0.95); }
         .gh-slide.gh-active { opacity: 1; transform: translateY(0); }
         .gh-cat { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.28em; color: #b08d4e;
           margin-bottom: 1.4rem; display: inline-block; border-bottom: 1px solid rgba(176,141,78,0.4); padding-bottom: 6px; }
         .gh-title { font-family: var(--font-display, "Playfair Display", serif); font-weight: 400; font-style: italic;
-          font-size: clamp(2.4rem, 4vw, 4rem); line-height: 1; margin: 0 0 1.4rem; color: #0d0d0d; }
-        .gh-desc { font-family: var(--font-body, "Lato", sans-serif); font-weight: 300; font-size: 1rem;
-          line-height: 1.8; color: #555; margin-bottom: 2.4rem; }
-        .gh-meta { display: grid; grid-template-columns: 86px 1fr; row-gap: 0.7rem;
-          border-top: 1px solid #e2ddd4; padding-top: 1.3rem; }
+          font-size: clamp(2.2rem, 3.7vw, 3.7rem); line-height: 1; margin: 0 0 1.3rem; color: #0d0d0d; }
+        .gh-desc { font-family: var(--font-body, "Lato", sans-serif); font-weight: 300; font-size: 0.98rem;
+          line-height: 1.75; color: #555; margin-bottom: 1.8rem; }
+        .gh-meta { display: grid; grid-template-columns: 86px 1fr; row-gap: 0.6rem;
+          border-top: 1px solid #e2ddd4; padding-top: 1.1rem; margin-bottom: 1.8rem; }
         .gh-ml { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.15em; color: #a98c52; align-self: center; }
-        .gh-mv { font-family: var(--font-display, "Playfair Display", serif); font-size: 1.05rem; font-style: italic; color: #2a2520; }
+        .gh-mv { font-family: var(--font-display, "Playfair Display", serif); font-size: 1.02rem; font-style: italic; color: #2a2520; }
+        .gh-slide-cta { pointer-events: auto; display: inline-flex; align-items: center; gap: 0.5em;
+          padding: 0.78rem 1.7rem; font-family: var(--font-body, "Lato", sans-serif); font-size: 0.6rem;
+          letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; cursor: pointer;
+          border: 1px solid rgba(176,141,78,0.6); color: #6b5630; background: rgba(247,247,245,0.4);
+          transition: background .4s ease, color .4s ease; }
+        .gh-slide-cta:hover { background: #b08d4e; color: #fff; }
         .gh-hint { position: absolute; bottom: 34px; left: clamp(28px,5vw,56px); z-index: 10;
           font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.2em; color: #9a9a95; }
         .gh-controls { position: absolute; bottom: 32px; right: clamp(28px,5vw,56px); z-index: 10;
@@ -418,57 +507,49 @@ const GalleryHall = ({ mode = "full", homeHref = "/", galleryHref = "/gallery" }
           transition: border-color .3s ease, background .3s ease; }
         .gh-arrow:hover { border-color: #b08d4e; background: rgba(176,141,78,0.12); }
         .gh-arrow svg { width: 20px; height: 20px; color: #4a4540; }
-        .gh-cta { position: absolute; bottom: 38px; left: clamp(40px,14vw,220px); z-index: 10; pointer-events: auto;
-          display: inline-flex; align-items: center; padding: 0.85rem 2rem; font-family: var(--font-body, "Lato", sans-serif);
-          font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none;
-          border: 1px solid rgba(176,141,78,0.6); color: #6b5630; transition: background .4s ease, color .4s ease; }
-        .gh-cta:hover { background: #b08d4e; color: #fff; }
       `}</style>
 
       {mounted && (
         <>
-      <div ref={canvasRef} className="gh-canvas" />
+          <div ref={canvasRef} className="gh-canvas" />
 
-      {/* light veil so the left-hand text never collides with a passing painting */}
-      <div className="gh-veil" />
+          {/* light veil so the left-hand text never collides with a passing painting */}
+          <div className="gh-veil" />
 
-      {mode === "full" && (
-        <a className="gh-logo" href={homeHref} style={{ textDecoration: "none", pointerEvents: "auto" }}>BLULUCE <span className="gh-art">ART</span></a>
-      )}
+          {mode === "full" && (
+            <a className="gh-logo" href={homeHref} style={{ textDecoration: "none", pointerEvents: "auto" }}>BLULUCE <span className="gh-art">ART</span></a>
+          )}
 
-      <div className="gh-ui">
-        {PAINTINGS.map((p, i) => (
-          <div key={i} className="gh-slide" id={`gh-slide-${i}`}>
-            <span className="gh-cat">{p.cat}</span>
-            <h2 className="gh-title">{p.t1}<br />{p.t2}</h2>
-            <p className="gh-desc">{p.desc}</p>
-            <div className="gh-meta">
-              <span className="gh-ml">Artista</span><span className="gh-mv">{p.artist}</span>
-              <span className="gh-ml">Anno</span><span className="gh-mv">{p.year}</span>
-              <span className="gh-ml">Tecnica</span><span className="gh-mv">{p.medium}</span>
+          <div className="gh-ui">
+            {BASE.map((b, i) => (
+              <div key={i} className="gh-slide" id={`gh-slide-${i}`}>
+                <span className="gh-cat">{text[i].cat}</span>
+                <h2 className="gh-title">{text[i].t1}<br />{text[i].t2}</h2>
+                <p className="gh-desc">{text[i].desc}</p>
+                <div className="gh-meta">
+                  <span className="gh-ml">{ui.artist}</span><span className="gh-mv">Bluluce</span>
+                  <span className="gh-ml">{ui.year}</span><span className="gh-mv">{b.year}</span>
+                  <span className="gh-ml">{ui.medium}</span><span className="gh-mv">{text[i].medium}</span>
+                </div>
+                <a className="gh-slide-cta" href={hrefs[i]}>{ui.cta} →</a>
+              </div>
+            ))}
+          </div>
+
+          <div className="gh-hint">{mode === "full" ? ui.hintFull : ui.hintSection}</div>
+
+          <div className="gh-controls">
+            <div className="gh-arrow" role="button" aria-label="Prev" onClick={() => prevRef.current()}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </div>
+            <div className="gh-arrow" role="button" aria-label="Next" onClick={() => nextRef.current()}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
             </div>
           </div>
-        ))}
-      </div>
-
-      {mode === "full" ? (
-        <div className="gh-hint">Scorri o trascina per esplorare</div>
-      ) : (
-        <div className="gh-hint">Trascina o usa le frecce per esplorare</div>
-      )}
-
-      <div className="gh-controls">
-        <div className="gh-arrow" role="button" aria-label="Precedente" onClick={() => prevRef.current()}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-        </div>
-        <div className="gh-arrow" role="button" aria-label="Successivo" onClick={() => nextRef.current()}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-          </svg>
-        </div>
-      </div>
         </>
       )}
     </section>

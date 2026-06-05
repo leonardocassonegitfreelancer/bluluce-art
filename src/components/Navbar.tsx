@@ -7,12 +7,16 @@ import { productsSlug } from "@/i18n/slugs";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { lang, setLang } = useLanguage();
   const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 80);
+      setPastHero(window.scrollY > window.innerHeight * 0.85);
+    };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -84,7 +88,7 @@ const Navbar = () => {
 
       {/* Desktop Header with Logo and Menu Trigger */}
       <header className={`hidden md:flex fixed top-0 left-0 right-0 z-50 justify-between items-center px-12 py-8 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-        isHome && !scrolled ? "opacity-0 pointer-events-none -translate-y-4" : "opacity-100 translate-y-0"
+        isHome && !pastHero ? "opacity-0 pointer-events-none -translate-y-4" : "opacity-100 translate-y-0"
       }`}>
         <a
           href={prefix}
@@ -111,7 +115,7 @@ const Navbar = () => {
 
       {/* Backdrop overlay (Desktop) */}
       <div
-        className={`hidden md:block fixed inset-0 z-[48] bg-[#0E0804]/30 backdrop-blur-sm transition-opacity duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`hidden md:block fixed inset-0 z-[48] bg-[#0E0804]/50 transition-opacity duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setMobileOpen(false)}
@@ -188,7 +192,7 @@ const Navbar = () => {
 
       {/* Mobile full-screen overlay */}
       <div
-        className={`fixed inset-0 z-[49] bg-[#0E0804] flex flex-col justify-center px-10 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`md:hidden fixed inset-0 z-[49] bg-[#0E0804] flex flex-col justify-center px-10 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >

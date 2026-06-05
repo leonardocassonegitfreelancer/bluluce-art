@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import IndexPageWrapper from "../../page-components/IndexPageWrapper";
+import IntroLoader from "../../components/IntroLoader.astro";
 import { th } from "../../i18n/homeTranslations";
 import type { Lang } from "../../i18n/homeTranslations";
 
@@ -42,5 +43,6 @@ const artGalleryJsonLd = {
   lang={lang}
   jsonLd={artGalleryJsonLd}
 >
+  <IntroLoader />
   <IndexPageWrapper lang={lang} client:load />
 </Layout>

@@ -32,5 +32,5 @@ const descriptions: Record<Lang, string> = {
   canonical={`/${lang}/gallery`}
   lang={lang}
 >
-  <GalleryHall mode="full" homeHref={`/${lang}`} client:only="react" />
+  <GalleryHall mode="full" lang={lang} homeHref={`/${lang}`} client:only="react" />
 </Layout>
