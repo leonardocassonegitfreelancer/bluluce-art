@@ -115,12 +115,18 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     let width = mount.clientWidth || window.innerWidth;
     let height = mount.clientHeight || window.innerHeight;
 
+    let isMobile = window.innerWidth < 768;
+    let aspect = width / height;
+    let activeCamZ = isMobile ? Math.max(30, 20 / Math.max(0.4, aspect)) : CONFIG.camZ;
+    let galleryOffsetX = isMobile ? 0 : 8;
+    let galleryOffsetY = isMobile ? 3.2 : 0;
+
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(BG);
     scene.fog = new THREE.Fog(BG, 12, 120);
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    camera.position.set(0, 0, CONFIG.camZ);
+    camera.position.set(0, 0, activeCamZ);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
@@ -183,7 +189,8 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     }
 
     galleryGroup.rotation.y = CONFIG.wallAngleY;
-    galleryGroup.position.x = 8;
+    galleryGroup.position.x = galleryOffsetX;
+    galleryGroup.position.y = galleryOffsetY;
 
     let currentScroll = 0;
     let targetScroll = 0;
@@ -373,7 +380,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
       // treat as a click (open the painting's collection) if the pointer barely moved
       if (movedDist < 6 && hoverInside) {
         const idx = pickIndex();
-        if (idx >= 0) {
+        if (idx >= 0 && !isMobile) {
           window.location.href = hrefsRef.current[idx];
           return;
         }
@@ -386,6 +393,10 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
       mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
 
+    const onCancel = () => {
+      dragging = false;
+    };
+
     if (mode === "section") {
       window.addEventListener("scroll", onScroll, { passive: true });
     }
@@ -395,6 +406,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     el.addEventListener("pointerdown", onDown);
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onCancel);
     window.addEventListener("mousemove", onMouseMove);
 
     // ── ui sync ────────────────────────────────────────────
@@ -415,7 +427,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
       raf = requestAnimationFrame(animate);
       currentScroll += (targetScroll - currentScroll) * CONFIG.lerpSpeed;
       camera.position.x = currentScroll * Math.cos(CONFIG.wallAngleY);
-      camera.position.z = CONFIG.camZ - currentScroll * Math.sin(CONFIG.wallAngleY);
+      camera.position.z = activeCamZ - currentScroll * Math.sin(CONFIG.wallAngleY);
       groups.forEach((g, i) => {
         const originalX = i * CONFIG.spacingX;
         const shift = Math.round((currentScroll - originalX) / totalWidth) * totalWidth;
@@ -436,6 +448,16 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     const onResize = () => {
       width = mount.clientWidth || window.innerWidth;
       height = mount.clientHeight || window.innerHeight;
+
+      isMobile = window.innerWidth < 768;
+      aspect = width / height;
+      activeCamZ = isMobile ? Math.max(30, 20 / Math.max(0.4, aspect)) : CONFIG.camZ;
+      galleryOffsetX = isMobile ? 0 : 8;
+      galleryOffsetY = isMobile ? 3.2 : 0;
+
+      galleryGroup.position.x = galleryOffsetX;
+      galleryGroup.position.y = galleryOffsetY;
+
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
@@ -452,6 +474,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
       el.removeEventListener("pointerdown", onDown);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onCancel);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("resize", onResize);
       textures.forEach((t) => t.dispose());
@@ -507,6 +530,56 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
           transition: border-color .3s ease, background .3s ease; }
         .gh-arrow:hover { border-color: #b08d4e; background: rgba(176,141,78,0.12); }
         .gh-arrow svg { width: 20px; height: 20px; color: #4a4540; }
+
+        @media (max-width: 767px) {
+          .gh-slide {
+            top: auto;
+            bottom: 110px;
+            left: 24px;
+            right: 24px;
+            width: auto;
+            max-width: none;
+            text-shadow: 0 1px 12px rgba(247,247,245,0.95), 0 0 4px rgba(247,247,245,0.98);
+          }
+          .gh-cat { margin-bottom: 0.6rem; padding-bottom: 4px; }
+          .gh-title {
+            font-size: clamp(1.8rem, 6vw, 2.2rem);
+            margin-bottom: 0.6rem;
+          }
+          .gh-desc {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+          }
+          .gh-meta {
+            grid-template-columns: 80px 1fr;
+            row-gap: 0.3rem;
+            padding-top: 0.8rem;
+            margin-bottom: 1rem;
+          }
+          .gh-slide-cta {
+            padding: 0.65rem 1.4rem;
+            font-size: 0.55rem;
+          }
+          .gh-hint {
+            bottom: 24px;
+            left: 20px;
+            font-size: 0.58rem;
+          }
+          .gh-controls {
+            bottom: 20px;
+            right: 20px;
+            gap: 10px;
+          }
+          .gh-arrow {
+            width: 40px;
+            height: 40px;
+          }
+          .gh-arrow svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
       `}</style>
 
       {mounted && (
