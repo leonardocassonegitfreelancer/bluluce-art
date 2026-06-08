@@ -350,18 +350,19 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
       lastX = e.clientX;
     };
     const onUp = () => {
-      const wasDragging = dragging;
-      dragging = false;
-      if (!wasDragging) return;
-      // treat as a click (open the painting's collection) if the pointer barely moved
-      if (movedDist < 6 && hoverInside) {
-        const idx = pickIndex();
-        if (idx >= 0 && !isMobile) {
-          window.location.href = hrefsRef.current[idx];
-          return;
-        }
-      }
-      snap();
+      if (dragging) { dragging = false; snap(); }
+    };
+
+    // Open the painting's collection on a click/tap. The `click` event is the
+    // reliable cross-device signal (it fires for mouse clicks and touch taps but
+    // not during a drag/scroll), so navigation lives here for desktop AND mobile.
+    const onClick = (e: MouseEvent) => {
+      if (movedDist >= 6) return; // it was a drag, not a tap
+      const r = el.getBoundingClientRect();
+      hoverNDC.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+      hoverNDC.y = -((e.clientY - r.top) / r.height) * 2 + 1;
+      const idx = pickIndex();
+      if (idx >= 0) window.location.href = hrefsRef.current[idx];
     };
 
     const onMouseMove = (e: MouseEvent) => {
@@ -380,6 +381,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     const el = renderer.domElement;
     el.style.touchAction = "pan-y";
     el.addEventListener("pointerdown", onDown);
+    el.addEventListener("click", onClick);
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerup", onUp);
     window.addEventListener("pointercancel", onCancel);
@@ -448,6 +450,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
         window.removeEventListener("scroll", onScroll);
       }
       el.removeEventListener("pointerdown", onDown);
+      el.removeEventListener("click", onClick);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerup", onUp);
       window.removeEventListener("pointercancel", onCancel);
