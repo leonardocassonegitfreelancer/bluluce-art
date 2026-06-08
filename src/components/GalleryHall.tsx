@@ -117,7 +117,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
 
     let isMobile = window.innerWidth < 768;
     let aspect = width / height;
-    let activeCamZ = CONFIG.camZ;
+    let activeCamZ = isMobile ? 25 : CONFIG.camZ;
     let galleryOffsetX = isMobile ? 0 : 8;
     let galleryOffsetY = 0;
 
@@ -429,7 +429,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
 
       isMobile = window.innerWidth < 768;
       aspect = width / height;
-      activeCamZ = CONFIG.camZ;
+      activeCamZ = isMobile ? 25 : CONFIG.camZ;
       galleryOffsetX = isMobile ? 0 : 8;
       galleryOffsetY = 0;
 
@@ -512,15 +512,15 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
 
         @media (max-width: 767px) {
           .gh-canvas {
-            height: 53dvh;
-            top: 7dvh;
+            height: 66dvh;
+            top: 6dvh;
             bottom: auto;
           }
           .gh-veil {
             display: none;
           }
           .gh-slide {
-            top: 62dvh;
+            top: 75dvh;
             bottom: auto;
             left: 24px;
             right: 24px;
@@ -528,16 +528,14 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
             max-width: none;
             text-shadow: none;
           }
-          .gh-cat { margin-bottom: 0.4rem; padding-bottom: 4px; }
+          .gh-cat { margin-bottom: 0.45rem; padding-bottom: 4px; }
           .gh-title {
             font-size: clamp(1.6rem, 5vw, 2rem);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.7rem;
             line-height: 1.1;
           }
           .gh-desc {
-            font-size: 0.85rem;
-            line-height: 1.5;
-            margin-bottom: 1.2rem;
+            display: none;
           }
           .gh-meta {
             display: none;
@@ -550,7 +548,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
             display: none;
           }
           .gh-controls {
-            top: 61.5dvh;
+            top: 67dvh;
             bottom: auto;
             left: auto;
             right: 24px;
