@@ -123,7 +123,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(BG);
-    scene.fog = new THREE.Fog(BG, 12, 120);
+    scene.fog = new THREE.Fog(BG, 32, 65);
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.set(0, 0, activeCamZ);
@@ -519,7 +519,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
         .gh-root { color: #1a1a1a; }
         .gh-canvas { position: absolute; inset: 0; z-index: 1; cursor: grab; }
         .gh-veil { position: absolute; inset: 0; z-index: 3; pointer-events: none;
-          background: linear-gradient(to right, rgba(247,247,245,0.7) 0%, rgba(247,247,245,0.42) 26%, rgba(247,247,245,0.14) 44%, rgba(247,247,245,0) 56%); }
+          background: linear-gradient(to right, rgba(247,247,245,0.98) 0%, rgba(247,247,245,0.85) 15%, rgba(247,247,245,0.4) 35%, rgba(247,247,245,0) 65%); }
         .gh-logo { position: absolute; top: 36px; left: clamp(28px,5vw,56px); z-index: 10;
           font-family: var(--font-display, "Playfair Display", serif); font-weight: 700; letter-spacing: 0.22em;
           font-size: 0.85rem; text-transform: uppercase; color: #161310; }
