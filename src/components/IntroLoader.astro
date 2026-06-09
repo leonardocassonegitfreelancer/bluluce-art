@@ -1,40 +1,11 @@
 ---
 import ninfeImg from "../assets/Ninfe picture for the home.webp";
-import scorciImg from "../assets/scorci_mediterraneo.webp";
-import oliveImg from "../assets/olive_sun.webp";
-import seaImg from "../assets/mediterranean_sea.webp";
 ---
 
-<section class="bluluce-loader-container bluluce-header is--loading">
-  <!-- Centered Loader with Letters and Expanding Image Box -->
-  <div class="bluluce-loader">
-    <div class="bluluce__h1">
-      <div class="bluluce__h1-start">
-        <span class="bluluce__letter">B</span>
-        <span class="bluluce__letter">l</span>
-        <span class="bluluce__letter">u</span>
-      </div>
-      <div class="bluluce-loader__box">
-        <div class="bluluce-loader__box-inner">
-          <div class="bluluce__growing-image">
-            <div class="bluluce__growing-image-wrap">
-              <!-- Intermittent Flashing Images -->
-              <img class="bluluce__cover-image-extra is--1" src={oliveImg.src} loading="eager" alt="" />
-              <img class="bluluce__cover-image-extra is--2" src={scorciImg.src} loading="eager" alt="" />
-              <img class="bluluce__cover-image-extra is--3" src={seaImg.src} loading="eager" alt="" />
-              <!-- Final Cover Image that expands -->
-              <img class="bluluce__cover-image" src={ninfeImg.src} loading="eager" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bluluce__h1-end">
-        <span class="bluluce__letter">l</span>
-        <span class="bluluce__letter">u</span>
-        <span class="bluluce__letter">c</span>
-        <span class="bluluce__letter">e</span>
-      </div>
-    </div>
+<section class="bluluce-header-desktop hidden md:block">
+  <!-- Background Image -->
+  <div class="bluluce-header__bg">
+    <img class="bluluce__cover-image" src={ninfeImg.src} loading="eager" alt="" />
   </div>
 
   <!-- Header Overlay Content (Nav and White Letters) -->
@@ -75,194 +46,42 @@ import seaImg from "../assets/mediterranean_sea.webp";
 <script>
   import { gsap } from "gsap";
 
-  function initBluluceLoader() {
-    const container = document.querySelector(".bluluce-loader-container") as HTMLElement;
+  function initBluluceHero() {
+    const container = document.querySelector(".bluluce-header-desktop");
     if (!container) return;
 
-    const isMobile = window.innerWidth < 768;
-    const isLoaded = sessionStorage.getItem("bluluce-intro-loaded");
-
-    // Replay the intro on the first visit of the session AND on every hard refresh
-    // (reload). Only skip it when softly returning to the page within the same
-    // session (e.g. navigating home from another page, or back/forward).
-    const navEntry = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
-    const isReload = navEntry?.type === "reload";
-    const shouldPlay = !isLoaded || isReload;
-
-    // If we should skip and we are on mobile, we don't show the loader at all (keeps display: none from CSS)
-    if (isMobile && !shouldPlay) {
-      document.documentElement.classList.remove("loading-active");
-      return;
-    }
-
-    // Set scroll lock
-    document.documentElement.classList.add("loading-active");
-
-    const loadingLetters = container.querySelectorAll(".bluluce__letter");
-    const box = container.querySelectorAll(".bluluce-loader__box");
-    const growingImage = container.querySelectorAll(".bluluce__growing-image");
-    const headingStart = container.querySelectorAll(".bluluce__h1-start");
-    const headingEnd = container.querySelectorAll(".bluluce__h1-end");
-    const coverImageExtra = container.querySelectorAll(".bluluce__cover-image-extra");
     const headerLetters = container.querySelectorAll(".bluluce__letter-white");
     const navLinks = container.querySelectorAll(".bluluce-nav span, .bluluce-nav__link");
 
-    /* GSAP Timeline */
     const tl = gsap.timeline({
       defaults: {
-        ease: "expo.inOut",
+        ease: "expo.out",
+        duration: 1.5,
       }
     });
 
-    /* Start of Timeline (Common to both Mobile & Desktop) */
-    if (loadingLetters.length) {
-      tl.from(loadingLetters, {
+    if (headerLetters.length) {
+      tl.fromTo(headerLetters, {
         yPercent: 100,
+      }, {
+        yPercent: 0,
         stagger: 0.025,
-        duration: 1.25
-      });
+      }, 0.2);
     }
 
-    if (box.length) {
-      tl.fromTo(box, {
-        width: "0em",
+    if (navLinks.length) {
+      tl.fromTo(navLinks, {
+        yPercent: 100,
       }, {
-        width: "1.1em", // Slightly wider to look balanced with 'Blu' and 'luce'
-        duration: 1.25
-      }, "< 1.25");
-    }
-
-    if (growingImage.length) {
-      tl.fromTo(growingImage, {
-        width: "0%",
-      }, {
-        width: "100%",
-        duration: 1.25
+        yPercent: 0,
+        stagger: 0.08,
       }, "<");
-    }
-
-    if (headingStart.length) {
-      tl.fromTo(headingStart, {
-        x: "0em",
-      }, {
-        x: "-0.05em",
-        duration: 1.25
-      }, "<");
-    }
-
-    if (headingEnd.length) {
-      tl.fromTo(headingEnd, {
-        x: "0em",
-      }, {
-        x: "0.05em",
-        duration: 1.25
-      }, "<");
-    }
-
-    if (coverImageExtra.length) {
-      tl.fromTo(coverImageExtra, {
-        opacity: 1,
-      }, {
-        opacity: 0,
-        duration: 0.05,
-        ease: "none",
-        stagger: 0.5
-      }, "-=0.05");
-    }
-
-    if (isMobile) {
-      // Show the loader container on mobile since we need to animate it
-      container.style.display = "block";
-
-      // ── MOBILE: Fade out and slide up the white loader container to reveal the video hero ──
-      tl.to(container, {
-        opacity: 0,
-        yPercent: -20,
-        duration: 1.1,
-        ease: "power3.inOut"
-      }, "+=0.3");
-    } else {
-      // ── DESKTOP: Expand the loader box to fill screen and reveal the navigation/text ──
-
-      // Step 1: Switch container to fixed so the growing image can escape relative bounds
-      tl.add(() => {
-        container.style.position = "fixed";
-        container.style.top = "0";
-        container.style.left = "0";
-        container.style.width = "100%";
-        container.style.height = "100dvh";
-        container.style.zIndex = "100";
-      }, "< 1.25");
-
-      if (growingImage.length) {
-        tl.to(growingImage, {
-          width: "100vw",
-          height: "100dvh",
-          duration: 2
-        }, "<");
-      }
-
-      if (box.length) {
-        tl.to(box, {
-          width: "110vw",
-          duration: 2
-        }, "<");
-      }
-
-      if (headerLetters.length) {
-        tl.from(headerLetters, {
-          yPercent: 100,
-          duration: 1.25,
-          ease: "expo.out",
-          stagger: 0.025
-        }, "< 1.2");
-      }
-
-      if (navLinks.length) {
-        tl.from(navLinks, {
-          yPercent: 100,
-          duration: 1.25,
-          ease: "expo.out",
-          stagger: 0.08
-        }, "<");
-      }
-
-      // Step 2: After reveal, switch back to relative so it becomes the in-flow hero section
-      tl.add(() => {
-        container.style.position = "relative";
-        container.style.top = "";
-        container.style.left = "";
-        container.style.width = "";
-        container.style.height = "";
-        container.style.zIndex = "10";
-      });
-    }
-
-    // Unlock scroll and hide overlay on mobile
-    tl.add(() => {
-      if (isMobile) {
-        container.style.display = "none";
-      }
-      document.documentElement.classList.remove("loading-active");
-    });
-
-    // Skip straight to the end only on a soft return within the same session
-    // (not on a hard refresh, where we want the full animation to play again).
-    if (!shouldPlay) {
-      if (isMobile) {
-        container.style.display = "none";
-      }
-      document.documentElement.classList.remove("loading-active");
-      tl.progress(1);
-    } else {
-      sessionStorage.setItem("bluluce-intro-loaded", "true");
     }
   }
 
   // Run on page load
-  document.addEventListener("DOMContentLoaded", initBluluceLoader);
-  // Also run on Astro page transitions if using ViewTransitions
-  document.addEventListener("astro:page-load", initBluluceLoader);
+  document.addEventListener("DOMContentLoaded", initBluluceHero);
+  document.addEventListener("astro:page-load", initBluluceHero);
 </script>
 
 <style>
@@ -274,169 +93,44 @@ import seaImg from "../assets/mediterranean_sea.webp";
     font-display: swap;
   }
 
-  /* Loader wrapper as a fixed full-screen overlay during loading animation */
-  .bluluce-loader-container {
-    position: fixed;
-    top: 0;
-    left: 0;
+  .bluluce-header-desktop {
+    position: relative;
     width: 100%;
     height: 100vh;
     height: 100dvh;
     background-color: #FAFAF8;
-    z-index: 100;
     overflow: hidden;
-    color: #201d1d;
+    color: #FAFAF8;
     font-family: 'PP Neue Montreal', Arial, sans-serif;
-    display: none; /* Hidden on mobile by default to prevent white flashes on page loads/refreshes */
   }
 
-  @media (min-width: 768px) {
-    .bluluce-loader-container {
-      display: block;
-      position: relative; /* On desktop it acts as the Hero section in document flow */
-      z-index: 10;
-    }
-  }
-
-  /* Global lock scroll class added to html element */
-  :global(html.loading-active) {
-    overflow: hidden !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-  }
-
-  /* Main centering flex for the loader header */
-  .bluluce-loader {
-    color: #201d1d;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    display: flex;
+  .bluluce-header__bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: 2;
-  }
-
-  /* Giant text container */
-  .bluluce__h1 {
-    white-space: nowrap;
-    justify-content: center;
-    font-size: clamp(4rem, 11vw, 11rem);
-    font-weight: 500;
-    line-height: .75;
-    display: flex;
-    position: relative;
-    letter-spacing: -0.01em;
-  }
-
-  /* Start and end wrappers with overflow hidden to clip sliding letters */
-  .bluluce__h1-start {
-    justify-content: flex-end;
-    width: 1.65em; /* Adjusted width for 'Blu' */
-    display: flex;
-    overflow: hidden;
-  }
-
-  .bluluce__h1-end {
-    justify-content: flex-start;
-    width: 2.15em; /* Adjusted width for 'luce' */
-    display: flex;
-    overflow: hidden;
-  }
-
-  .bluluce__letter {
-    display: block;
-    position: relative;
-  }
-
-  /* Box container that opens and grows */
-  .bluluce-loader__box {
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    width: 0;
-    display: flex;
-    position: relative;
-  }
-
-  .bluluce-loader__box-inner {
-    justify-content: center;
-    align-items: center;
-    min-width: 1.1em;
-    height: 95%;
-    display: flex;
-    position: relative;
-  }
-
-  /* Growing image element inside the box */
-  .bluluce__growing-image {
-    justify-content: center;
-    align-items: center;
-    width: 0%;
-    height: 100%;
-    display: flex;
-    position: absolute;
-    overflow: hidden;
-  }
-
-  .bluluce__growing-image-wrap {
-    /* Oversized wrap that always extends beyond its overflow:hidden parent
-       so the center of the painting fills the visible area */
-    position: absolute;
-    top: -30%;
-    left: -25%;
-    width: 150%;
-    height: 160%;
-  }
-
-  /* Cover images styling */
-  .bluluce__cover-image,
-  .bluluce__cover-image-extra {
-    pointer-events: none;
-    object-fit: cover;
-    object-position: center 40%; /* Focus on painting center, away from floor/ceiling */
-    -webkit-user-select: none;
-    user-select: none;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .bluluce__cover-image-extra.is--1 {
-    z-index: 3;
-  }
-
-  .bluluce__cover-image-extra.is--2 {
-    z-index: 2;
-  }
-
-  .bluluce__cover-image-extra.is--3 {
+    inset: 0;
     z-index: 1;
   }
 
-  /* Header content overlay (visible after expansion) */
-  .bluluce-header__content {
-    display: none;
+  .bluluce__cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    pointer-events: none;
+    user-select: none;
   }
 
-  @media (min-width: 768px) {
-    .bluluce-header__content {
-      flex-flow: column;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      min-height: 100dvh;
-      padding: 3rem;
-      display: flex;
-      position: relative;
-      z-index: 5;
-      pointer-events: none;
-    }
+  .bluluce-header__content {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 3rem;
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
   }
 
   /* Top Navigation */
@@ -480,7 +174,7 @@ import seaImg from "../assets/mediterranean_sea.webp";
     font-weight: 500;
   }
 
-  /* Bottom Header containing the final white logo reveal */
+  /* Bottom Header containing the final white logo */
   .bluluce-header__bottom {
     justify-content: space-between;
     align-items: flex-end;
@@ -493,7 +187,7 @@ import seaImg from "../assets/mediterranean_sea.webp";
   .bluluce__h1-white {
     white-space: nowrap;
     justify-content: center;
-    font-size: clamp(3rem, 7vw, 7.5rem); /* Slightly smaller than main loader to look elegant at the bottom */
+    font-size: clamp(3rem, 7vw, 7.5rem);
     font-weight: 500;
     line-height: .75;
     display: flex;
