@@ -45,13 +45,21 @@ const Hero = () => {
   const videoWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let rafId = 0;
     const onScroll = () => {
-      if (videoWrapRef.current)
-        videoWrapRef.current.style.transform =
-          `translateY(${window.scrollY * 0.3}px)`;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        if (videoWrapRef.current)
+          videoWrapRef.current.style.transform =
+            `translateY(${window.scrollY * 0.3}px)`;
+        rafId = 0;
+      });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const prefix = `/${lang}`;

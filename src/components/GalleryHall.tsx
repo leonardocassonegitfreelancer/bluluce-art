@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { productsSlug } from "@/i18n/slugs";
-import mareImg from "@/assets/mediterranean_sea.png";
-import ninfeImg from "@/assets/Ninfe picture for the home.png";
-import oliveImg from "@/assets/olive_sun.png";
-import terraImg from "@/assets/terracotta_clay.png";
-import scorciImg from "@/assets/scorci_mediterraneo.png";
+import mareImg from "@/assets/mediterranean_sea.webp";
+import ninfeImg from "@/assets/Ninfe picture for the home.webp";
+import oliveImg from "@/assets/olive_sun.webp";
+import terraImg from "@/assets/terracotta_clay.webp";
+import scorciImg from "@/assets/scorci_mediterraneo.webp";
 
 /*
  * GalleryHall — immersive infinite 3D art gallery (Three.js).
@@ -128,9 +128,9 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.set(0, 0, activeCamZ);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 2));
     mount.appendChild(renderer.domElement);
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.75));
@@ -339,9 +339,10 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
       movedDist = 0;
       setNDC(e);
       if (snapTimer) window.clearTimeout(snapTimer);
+      window.addEventListener("pointermove", onDragMove);
     };
-    const onMove = (e: PointerEvent) => {
-      setNDC(e);
+
+    const onDragMove = (e: PointerEvent) => {
       if (!dragging) return;
       const diff = lastX - e.clientX;
       targetScroll += diff * 0.18;
@@ -349,8 +350,19 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
       movedDist += Math.abs(diff);
       lastX = e.clientX;
     };
+
+    const onCanvasPointerMove = (e: PointerEvent) => {
+      if (isMobile) return;
+      if (dragging) return;
+      setNDC(e);
+    };
+
     const onUp = () => {
-      if (dragging) { dragging = false; snap(); }
+      if (dragging) {
+        dragging = false;
+        snap();
+        window.removeEventListener("pointermove", onDragMove);
+      }
     };
 
     // Open the painting's collection on a click/tap. The `click` event is the
@@ -366,12 +378,16 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     };
 
     const onMouseMove = (e: MouseEvent) => {
+      if (isMobile) return;
       mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
 
     const onCancel = () => {
-      dragging = false;
+      if (dragging) {
+        dragging = false;
+        window.removeEventListener("pointermove", onDragMove);
+      }
     };
 
     if (mode === "section") {
@@ -382,10 +398,12 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     el.style.touchAction = "pan-y";
     el.addEventListener("pointerdown", onDown);
     el.addEventListener("click", onClick);
-    window.addEventListener("pointermove", onMove);
+    el.addEventListener("pointermove", onCanvasPointerMove);
     window.addEventListener("pointerup", onUp);
     window.addEventListener("pointercancel", onCancel);
-    window.addEventListener("mousemove", onMouseMove);
+    if (!isMobile) {
+      window.addEventListener("mousemove", onMouseMove);
+    }
 
     // ── ui sync ────────────────────────────────────────────
     let activeIndex = -1;
@@ -401,7 +419,13 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     // ── loop ───────────────────────────────────────────────
     let raf = 0;
     let lastCursor = "";
+    let isIntersecting = true;
+
     const animate = () => {
+      if (!isIntersecting) {
+        raf = 0;
+        return;
+      }
       raf = requestAnimationFrame(animate);
       currentScroll += (targetScroll - currentScroll) * CONFIG.lerpSpeed;
       camera.position.x = currentScroll * Math.cos(CONFIG.wallAngleY);
@@ -411,16 +435,33 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
         const shift = Math.round((currentScroll - originalX) / totalWidth) * totalWidth;
         g.position.x = originalX + shift;
       });
-      camera.rotation.x = mouse.y * 0.05;
-      camera.rotation.y = -mouse.x * 0.05;
+      if (!isMobile) {
+        camera.rotation.x = mouse.y * 0.05;
+        camera.rotation.y = -mouse.x * 0.05;
+      }
       updateUI(currentScroll);
       renderer.render(scene, camera);
 
       // cursor feedback: pointer when hovering a painting
-      const cursor = dragging ? "grabbing" : hoverInside && pickIndex() >= 0 ? "pointer" : "grab";
-      if (cursor !== lastCursor) { el.style.cursor = cursor; lastCursor = cursor; }
+      if (!isMobile) {
+        const cursor = dragging ? "grabbing" : hoverInside && pickIndex() >= 0 ? "pointer" : "grab";
+        if (cursor !== lastCursor) { el.style.cursor = cursor; lastCursor = cursor; }
+      } else {
+        const cursor = dragging ? "grabbing" : "grab";
+        if (cursor !== lastCursor) { el.style.cursor = cursor; lastCursor = cursor; }
+      }
     };
-    animate();
+
+    const io = new IntersectionObserver(([entry]) => {
+      const prevIntersecting = isIntersecting;
+      isIntersecting = entry.isIntersecting;
+      if (isIntersecting && !prevIntersecting) {
+        if (raf === 0) {
+          animate();
+        }
+      }
+    }, { threshold: 0.01 });
+    io.observe(root);
 
     // ── resize ─────────────────────────────────────────────
     const onResize = () => {
@@ -444,6 +485,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
 
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
       if (snapTimer) window.clearTimeout(snapTimer);
       root.removeEventListener("wheel", onWheel);
       if (mode === "section") {
@@ -451,10 +493,13 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
       }
       el.removeEventListener("pointerdown", onDown);
       el.removeEventListener("click", onClick);
-      window.removeEventListener("pointermove", onMove);
+      el.removeEventListener("pointermove", onCanvasPointerMove);
+      window.removeEventListener("pointermove", onDragMove);
       window.removeEventListener("pointerup", onUp);
       window.removeEventListener("pointercancel", onCancel);
-      window.removeEventListener("mousemove", onMouseMove);
+      if (!isMobile) {
+        window.removeEventListener("mousemove", onMouseMove);
+      }
       window.removeEventListener("resize", onResize);
       textures.forEach((t) => t.dispose());
       disposables.forEach((d) => d.dispose());

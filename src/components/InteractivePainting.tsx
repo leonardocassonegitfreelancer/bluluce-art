@@ -255,17 +255,36 @@ function MobilePainting({ imageSrc, alt, theme }: InteractivePaintingProps) {
   useEffect(() => {
     const el = wrapperRef.current;
     if (!el) return;
+
+    let active = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        active = entry.isIntersecting;
+      },
+      { rootMargin: "10% 0px 10% 0px" }
+    );
+    observer.observe(el);
+
+    let rafId = 0;
     const onScroll = () => {
-      const rect   = el.getBoundingClientRect();
-      const center = rect.top + rect.height / 2;
-      const vhalf  = window.innerHeight / 2;
-      // normalised -1..1: how far from viewport center
-      const norm   = (center - vhalf) / vhalf;
-      setParallaxY(norm * 14); // max 14px shift — subtle
+      if (!active) return;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        const rect   = el.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const vhalf  = window.innerHeight / 2;
+        const norm   = (center - vhalf) / vhalf;
+        setParallaxY(norm * 14); // max 14px shift — subtle
+        rafId = 0;
+      });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (

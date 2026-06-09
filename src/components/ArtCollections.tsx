@@ -3,9 +3,9 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { categoryPath } from "@/i18n/slugs";
 
-import ninfePictureImg from "@/assets/Ninfe picture for the home.png";
-import scorciImg from "@/assets/scorci_mediterraneo.png";
-import oliveSunImg from "@/assets/olive_sun.png";
+import ninfePictureImg from "@/assets/Ninfe picture for the home.webp";
+import scorciImg from "@/assets/scorci_mediterraneo.webp";
+import oliveSunImg from "@/assets/olive_sun.webp";
 import InteractivePainting from "./InteractivePainting";
 import GalleryBackground from "./GalleryBackground";
 

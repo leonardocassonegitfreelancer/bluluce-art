@@ -4,9 +4,9 @@ import SEO from "@/components/SEO";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { th } from "@/i18n/homeTranslations";
 import { productsPath, categoryPath, categorySlugs as catSlugs } from "@/i18n/slugs";
-import mediterraneanSeaImg from "@/assets/mediterranean_sea.png";
-import terracottaClayImg from "@/assets/terracotta_clay.png";
-import oliveSunImg from "@/assets/olive_sun.png";
+import mediterraneanSeaImg from "@/assets/mediterranean_sea.webp";
+import terracottaClayImg from "@/assets/terracotta_clay.webp";
+import oliveSunImg from "@/assets/olive_sun.webp";
 
 const ProductsPage = () => {
   const { lang } = useLanguage();
