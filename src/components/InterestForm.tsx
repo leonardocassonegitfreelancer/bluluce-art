@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import formBg from "@/assets/form_background_paint.webp";
 
 export default function InterestForm() {
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function InterestForm() {
   }, []);
 
   return (
-    <section id="interesse" className="interest-section">
+    <section id="interesse" className="interest-section" style={{ backgroundImage: `url(${formBg.src})` }}>
       <div className="slide-form-container right-panel-active">
         {/* Sign Up */}
         <div className="form-container form-signup">
@@ -60,7 +61,7 @@ export default function InterestForm() {
 
         {/* Overlay */}
         <div className="overlay-container">
-          <div className="overlay">
+          <div className="overlay" style={{ backgroundImage: `url(${formBg.src})` }}>
             <div className="overlay__panel overlay--left">
               <button className="btn" id="signIn">Sign In</button>
             </div>
@@ -75,7 +76,6 @@ export default function InterestForm() {
         .interest-section {
           align-items: center;
           background-color: #e9e9e9;
-          background: url("https://res.cloudinary.com/dci1eujqw/image/upload/v1616769558/Codepen/waldemar-brandt-aThdSdgx0YM-unsplash_cnq4sb.jpg");
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
@@ -176,7 +176,6 @@ export default function InterestForm() {
 
         .slide-form-container .overlay {
           background-color: var(--lightblue);
-          background: url("https://res.cloudinary.com/dci1eujqw/image/upload/v1616769558/Codepen/waldemar-brandt-aThdSdgx0YM-unsplash_cnq4sb.jpg");
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
