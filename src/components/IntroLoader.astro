@@ -1,11 +1,73 @@
 ---
 import ninfeImg from "../assets/Ninfe picture for the home.webp";
+import seaImg from "../assets/mediterranean_sea.webp";
+import oliveImg from "../assets/olive_sun.webp";
+import scorciImg from "../assets/scorci_mediterraneo.webp";
+import clayImg from "../assets/terracotta_clay.webp";
+import type { Lang } from "../i18n/homeTranslations";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "es" } = Astro.props;
+
+const translations = {
+  es: {
+    navDipinti: "Dipinti,",
+    navArte: "Arte,",
+    navMed: "Mediterraneo"
+  },
+  en: {
+    navDipinti: "Paintings,",
+    navArte: "Art,",
+    navMed: "Mediterranean"
+  },
+  it: {
+    navDipinti: "Dipinti,",
+    navArte: "Arte,",
+    navMed: "Mediterraneo"
+  }
+};
+
+const t = translations[lang] || translations.es;
 ---
 
-<section class="bluluce-header-desktop hidden md:block">
-  <!-- Background Image -->
-  <div class="bluluce-header__bg">
-    <img class="bluluce__cover-image" src={ninfeImg.src} loading="eager" alt="" />
+<!-- Swiper CSS CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+<section class="bluluce-header-desktop">
+  <!-- Cutout silhouette foreground frame -->
+  <img class="hero" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c62efd51-f844-4335-ba29-70ea35521dd8" alt="silhouette" />
+
+  <!-- Swiper Slider behind -->
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <!-- Slide 1: Ninfe -->
+      <div class="swiper-slide">
+        <img class="slider-img" src={ninfeImg.src} loading="eager" alt="Ninfe" />
+      </div>
+
+      <!-- Slide 2: Mare -->
+      <div class="swiper-slide">
+        <img class="slider-img" src={seaImg.src} loading="lazy" alt="Mare" />
+      </div>
+
+      <!-- Slide 3: Ulivo -->
+      <div class="swiper-slide">
+        <img class="slider-img" src={oliveImg.src} loading="lazy" alt="Ulivo" />
+      </div>
+
+      <!-- Slide 4: Scorci -->
+      <div class="swiper-slide">
+        <img class="slider-img" src={scorciImg.src} loading="lazy" alt="Scorci" />
+      </div>
+
+      <!-- Slide 5: Terra -->
+      <div class="swiper-slide">
+        <img class="slider-img" src={clayImg.src} loading="lazy" alt="Terra" />
+      </div>
+    </div>
   </div>
 
   <!-- Header Overlay Content (Nav and White Letters) -->
@@ -17,9 +79,9 @@ import ninfeImg from "../assets/Ninfe picture for the home.webp";
         </div>
         <div class="bluluce-nav__end">
           <div class="bluluce-nav__links">
-            <span class="bluluce-nav__link">Dipinti,</span>
-            <span class="bluluce-nav__link">Arte,</span>
-            <span class="bluluce-nav__link">Mediterraneo</span>
+            <span class="bluluce-nav__link">{t.navDipinti}</span>
+            <span class="bluluce-nav__link">{t.navArte}</span>
+            <span class="bluluce-nav__link">{t.navMed}</span>
           </div>
         </div>
       </nav>
@@ -43,6 +105,9 @@ import ninfeImg from "../assets/Ninfe picture for the home.webp";
   </div>
 </section>
 
+<!-- Swiper JS CDN -->
+<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
 <script>
   import { gsap } from "gsap";
 
@@ -50,6 +115,24 @@ import ninfeImg from "../assets/Ninfe picture for the home.webp";
     const container = document.querySelector(".bluluce-header-desktop");
     if (!container) return;
 
+    // 1. Initialize Swiper from global Swiper constructor
+    const SwiperConstructor = (window as any).Swiper;
+    if (SwiperConstructor) {
+      const swiper = new SwiperConstructor(".swiper", {
+        grabCursor: true,
+        speed: 600,
+        effect: "slide",
+        loop: true,
+        mousewheel: false, // Disables mousewheel lock to allow natural page scrolling
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+      });
+      swiper.enable();
+    }
+
+    // 2. Run GSAP Animations for logo text and nav links
     const headerLetters = container.querySelectorAll(".bluluce__letter-white");
     const navLinks = container.querySelectorAll(".bluluce-nav span, .bluluce-nav__link");
 
@@ -79,7 +162,7 @@ import ninfeImg from "../assets/Ninfe picture for the home.webp";
     }
   }
 
-  // Run on page load
+  // Hook into both standard load and Astro's transitions
   document.addEventListener("DOMContentLoaded", initBluluceHero);
   document.addEventListener("astro:page-load", initBluluceHero);
 </script>
@@ -104,21 +187,43 @@ import ninfeImg from "../assets/Ninfe picture for the home.webp";
     font-family: 'PP Neue Montreal', Arial, sans-serif;
   }
 
-  .bluluce-header__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
+  /* Scoped global styles for Swiper structure */
+  .bluluce-header-desktop :global(.swiper) {
+    width: 100%;
+    height: 100%;
   }
 
-  .bluluce__cover-image {
+  .bluluce-header-desktop :global(.swiper-slide) {
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bluluce-header-desktop :global(.swiper-slide .slider-img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 40%;
-    pointer-events: none;
-    user-select: none;
+    z-index: 1;
   }
 
+  /* Cutout silhoutte */
+  .bluluce-header-desktop .hero {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    width: 100%;
+    max-width: 550px;
+    filter: contrast(90%);
+    pointer-events: none;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Original Header Overlay Styles */
   .bluluce-header__content {
     display: flex;
     flex-flow: column;
@@ -129,7 +234,7 @@ import ninfeImg from "../assets/Ninfe picture for the home.webp";
     padding: 3rem;
     position: absolute;
     inset: 0;
-    z-index: 5;
+    z-index: 6; /* Put in front of .hero cutout (z-index 5) */
     pointer-events: none;
   }
 
@@ -202,5 +307,15 @@ import ninfeImg from "../assets/Ninfe picture for the home.webp";
 
   .bluluce__letter-white.is--space {
     margin-left: 0.28em;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .bluluce-header__content {
+      padding: 1.5rem;
+    }
+    .bluluce-nav__link {
+      font-size: 0.95rem;
+    }
   }
 </style>
