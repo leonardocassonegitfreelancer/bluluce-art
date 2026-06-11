@@ -4,6 +4,7 @@ import IndexPageWrapper from "../../page-components/IndexPageWrapper";
 import IntroLoader from "../../components/IntroLoader.astro";
 import { th } from "../../i18n/homeTranslations";
 import type { Lang } from "../../i18n/homeTranslations";
+import silhouetteImg from "../../assets/gallery_hall_perspective.webp";
 
 export function getStaticPaths() {
   return [
@@ -43,6 +44,7 @@ const artGalleryJsonLd = {
   lang={lang}
   jsonLd={artGalleryJsonLd}
 >
+  <link slot="head" rel="preload" as="image" href={silhouetteImg.src} />
   <IntroLoader lang={lang} />
   <IndexPageWrapper lang={lang} client:load />
 </Layout>

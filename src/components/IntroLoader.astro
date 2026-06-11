@@ -4,6 +4,7 @@ import seaImg from "../assets/mediterranean_sea.webp";
 import oliveImg from "../assets/olive_sun.webp";
 import scorciImg from "../assets/scorci_mediterraneo.webp";
 import clayImg from "../assets/terracotta_clay.webp";
+import silhouetteImg from "../assets/gallery_hall_perspective.webp";
 import type { Lang } from "../i18n/homeTranslations";
 
 interface Props {
@@ -38,7 +39,7 @@ const t = translations[lang] || translations.es;
 
 <section class="bluluce-header-desktop">
   <!-- Cutout silhouette foreground frame -->
-  <img class="hero" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/c62efd51-f844-4335-ba29-70ea35521dd8" alt="silhouette" />
+  <img class="hero" src={silhouetteImg.src} alt="" fetchpriority="high" />
 
   <!-- Swiper Slider behind -->
   <div class="swiper">
