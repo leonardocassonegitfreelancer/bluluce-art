@@ -128,6 +128,28 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.set(0, 0, activeCamZ);
 
+    // Widest painting seen so far (paintings are scaled horizontally to their
+    // texture aspect, so a landscape artwork can exceed CONFIG.pWidth).
+    let maxAspectScale = 1;
+
+    // On narrow screens a fixed camera distance crops wide paintings: pull the
+    // camera back until the widest painting fits the viewport with margin.
+    const fitCamera = () => {
+      if (!isMobile) {
+        activeCamZ = CONFIG.camZ;
+        (scene.fog as THREE.Fog).near = 32;
+        (scene.fog as THREE.Fog).far = 65;
+        return;
+      }
+      const halfHFov = Math.atan(Math.tan(THREE.MathUtils.degToRad(45 / 2)) * (width / height));
+      const halfW = (CONFIG.pWidth * Math.max(1, maxAspectScale)) / 2;
+      const zFit = (halfW * 1.15) / Math.tan(halfHFov);
+      activeCamZ = Math.min(52, Math.max(25, zFit));
+      (scene.fog as THREE.Fog).near = activeCamZ + 4;
+      (scene.fog as THREE.Fog).far = activeCamZ + 38;
+    };
+    fitCamera();
+
     const renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 2));
@@ -164,7 +186,12 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
           if (imgW && imgH) {
             const textureAspect = imgW / imgH;
             const targetAspect = CONFIG.pWidth / CONFIG.pHeight;
-            paintingGroup.scale.set(textureAspect / targetAspect, 1, 1);
+            const s = textureAspect / targetAspect;
+            paintingGroup.scale.set(s, 1, 1);
+            if (s > maxAspectScale) {
+              maxAspectScale = s;
+              fitCamera();
+            }
           }
         }
       );
@@ -470,7 +497,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
 
       isMobile = window.innerWidth < 768;
       aspect = width / height;
-      activeCamZ = isMobile ? 25 : CONFIG.camZ;
+      fitCamera();
       galleryOffsetX = isMobile ? 0 : 8;
       galleryOffsetY = 0;
 
@@ -551,6 +578,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
           display: flex; gap: 14px; pointer-events: auto; }
         .gh-arrow { width: 50px; height: 50px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.18);
           display: grid; place-items: center; cursor: pointer; background: rgba(255,255,255,0.55); backdrop-filter: blur(4px);
+          -webkit-tap-highlight-color: transparent;
           transition: border-color .3s ease, background .3s ease; }
         .gh-arrow:hover { border-color: #b08d4e; background: rgba(176,141,78,0.12); }
         .gh-arrow svg { width: 20px; height: 20px; color: #4a4540; }
@@ -601,8 +629,8 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
             z-index: 10;
           }
           .gh-arrow {
-            width: 38px;
-            height: 38px;
+            width: 44px;
+            height: 44px;
             background: rgba(255,255,255,0.75);
           }
           .gh-arrow svg {
