@@ -26,9 +26,10 @@ export default function VideoShowcase() {
   const t = copy[lang as Lang] ?? copy.es;
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const parallaxRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,31 +45,74 @@ export default function VideoShowcase() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const container = containerRef.current;
+    const video = parallaxRef.current;
+    if (!container || !video) return;
+
+    // Skip parallax on touch devices — scroll hijacking feels wrong there
+    if (window.matchMedia("(hover: none)").matches) return;
+
+    let ticking = false;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      rafRef.current = requestAnimationFrame(() => {
+        const rect = container.getBoundingClientRect();
+        const vh = window.innerHeight;
+        // progress: 0 when bottom of section enters viewport, 1 when top exits
+        const progress = 1 - (rect.bottom / (vh + rect.height));
+        const clampedProgress = Math.max(0, Math.min(1, progress));
+        // shift the video up to 18% of its height as user scrolls through
+        const shift = clampedProgress * 18;
+        video.style.transform = `translateY(${shift}%)`;
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
   return (
     <div
       ref={containerRef}
       className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center bg-black"
     >
-      {/* Absolute background video */}
-      <style>{`
-        @keyframes ambientZoom {
-          0% { transform: scale(1.08) translateY(-2%); }
-          100% { transform: scale(1.18) translateY(2%); }
-        }
-      `}</style>
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-[120%] object-cover opacity-65 pointer-events-none will-change-transform"
+      {/* Parallax wrapper: JS moves this with translateY, oversized so no gaps show */}
+      <div
+        ref={parallaxRef}
         style={{
-          filter: "brightness(0.55) contrast(1.1) saturate(0.9)",
-          animation: "ambientZoom 20s infinite alternate ease-in-out"
+          position: "absolute",
+          top: "-15%",
+          left: 0,
+          width: "100%",
+          height: "130%",
+          pointerEvents: "none",
+          willChange: "transform",
         }}
-        src={insideVideo}
-      />
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: 0.65,
+            filter: "brightness(0.55) contrast(1.1) saturate(0.9)",
+          }}
+          src={insideVideo}
+        />
+      </div>
 
       {/* Film grain overlay just for this section to increase cinematic depth */}
       <div style={{
