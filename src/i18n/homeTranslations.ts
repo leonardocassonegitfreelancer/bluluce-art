@@ -6,6 +6,7 @@ const tr = {
   navMenu: { es: "Colección", en: "Collection", it: "Collezione" },
   navContacts: { es: "Contacto", en: "Contact", it: "Contatti" },
   navGallery: { es: "Galería", en: "Gallery", it: "Galleria" },
+  navExplore: { es: "Explorar", en: "Explore", it: "Esplora" },
 
   // Hero / shared description (used for SEO meta on the collection pages)
   heroDescDesktop: {

@@ -126,7 +126,7 @@ const Navbar = () => {
       >
         {/* Top Header inside Drawer */}
         <div className="flex justify-between items-center mb-12">
-          <span className="font-display text-[0.85rem] tracking-[0.25em] text-[#b08d4e] uppercase">ESPLORA</span>
+          <span className="font-display text-[0.85rem] tracking-[0.25em] text-[#b08d4e] uppercase">{th("navExplore", lang)}</span>
         </div>
 
         {/* Links */}
