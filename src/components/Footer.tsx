@@ -1,5 +1,6 @@
 import React from "react";
 import { Instagram } from "lucide-react";
+import formBg from "@/assets/form_background_paint.webp";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 
@@ -54,6 +55,7 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
     >
       {/* Responsive styles for mobile */}
       <style>{`
+        .footer-bg-img { height: 100% !important; }
         .footer-gradient { background: linear-gradient(to bottom, #FAFAF8 0%, #FAFAF8 8%, rgba(250,248,245,0.4) 20%, rgba(250,248,245,0) 45%) !important; }
         .footer-content {
           padding-top: 3.5rem !important;
@@ -64,7 +66,24 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
           }
         }
       `}</style>
-      {/* Gradient: fades from page-bg at top → transparent at bottom, revealing parent background */}
+      {/* Paint brushes background */}
+      <img
+        src={formBg.src}
+        alt=""
+        aria-hidden="true"
+        className="footer-bg-img"
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          objectFit: "cover",
+          objectPosition: "bottom center",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+      {/* Gradient: page-bg at top → transparent, so footer blends in from above */}
       <div
         aria-hidden="true"
         className="footer-gradient"

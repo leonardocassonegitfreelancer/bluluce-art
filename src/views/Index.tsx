@@ -5,7 +5,6 @@ import InterestForm from "@/components/InterestForm";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { useLanguage } from "@/i18n/LanguageContext";
-import formBg from "@/assets/form_background_paint.webp";
 
 const Index = () => {
   const { lang } = useLanguage();
@@ -17,14 +16,7 @@ const Index = () => {
         <VideoShowcase />
       </main>
 
-      <div
-        style={{
-          backgroundImage: `url(${formBg.src})`,
-          backgroundPosition: "bottom center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-      >
+      <div>
         <InterestForm />
         <Footer />
       </div>
