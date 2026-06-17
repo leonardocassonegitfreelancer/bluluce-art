@@ -50,7 +50,7 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
   return (
     <footer
       ref={ref}
-      style={{ position: "relative", overflow: "hidden", minHeight: "280px" }}
+      style={{ position: "relative", overflow: "hidden" }}
       className="py-16 px-6 md:px-8"
     >
       {/* Responsive styles for mobile */}
@@ -59,11 +59,6 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
         .footer-gradient { background: linear-gradient(to bottom, #FAFAF8 0%, #FAFAF8 8%, rgba(250,248,245,0.4) 20%, rgba(250,248,245,0) 45%) !important; }
         .footer-content {
           padding-top: 3.5rem !important;
-        }
-        @media (max-width: 768px) {
-          .footer-content {
-            padding-top: 9.5rem !important;
-          }
         }
       `}</style>
       {/* Paint brushes background */}
