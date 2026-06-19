@@ -23,7 +23,7 @@ export default function GalleryView() {
   const l = (lang as Lang) ?? "es";
 
   return (
-    <div style={{ background: "#0E0804", minHeight: "100vh" }}>
+    <div style={{ background: "#FAFAF8", minHeight: "100vh" }}>
       <SEO
         title={meta.title[l]}
         description={meta.desc[l]}

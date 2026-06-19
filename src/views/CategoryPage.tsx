@@ -113,7 +113,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
   const data = categoryData[slug];
 
   return (
-    <div className="min-h-screen" style={{ background: "#0E0804" }}>
+    <div className="min-h-screen" style={{ background: "#FAFAF8" }}>
       <SEO
         title={`${th(data.nameKey as any, lang)} | BLULUCE ART`}
         description={th(data.descKey as any, lang)}
@@ -128,12 +128,12 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
             src={data.heroImg}
             alt={th(data.nameKey as any, lang)}
             className="w-full h-full object-cover"
-            style={{ filter: "brightness(0.55) contrast(1.05)" }}
+            style={{ filter: "brightness(0.75) contrast(1.05)" }}
           />
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(to top, #0E0804 0%, rgba(14,8,4,0.6) 50%, transparent 100%)",
+              background: "linear-gradient(to top, #FAFAF8 0%, rgba(250,248,245,0.45) 35%, transparent 100%)",
             }}
           />
         </div>
@@ -142,12 +142,13 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
           <div className="max-w-5xl mx-auto text-center md:text-left">
             <span
               className="font-bebas text-xs tracking-[0.35em] uppercase mb-3 block"
-              style={{ color: "#C9A96E" }}
+              style={{ color: "#b08d4e" }}
             >
               {lang === "es" ? "COLECCIÓN DE ARTE" : lang === "it" ? "COLLEZIONE D'ARTE" : "FINE ART COLLECTION"}
             </span>
             <h1
-              className="font-display text-3xl md:text-5xl lg:text-6xl font-normal italic tracking-wide text-white"
+              className="font-display text-3xl md:text-5xl lg:text-6xl font-normal italic tracking-wide"
+              style={{ color: "#1c1917" }}
             >
               {th(data.nameKey as any, lang)}
             </h1>
@@ -161,8 +162,8 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
           href={productsPath(lang)}
           className="font-bebas text-[11px] md:text-xs tracking-[0.2em] uppercase px-5 md:px-7 py-2.5 md:py-3 transition-all duration-300"
           style={{
-            border: "1px solid rgba(201,169,110,0.35)",
-            color: "rgba(245,240,232,0.6)",
+            border: "1px solid rgba(176,141,78,0.3)",
+            color: "#78716c",
           }}
         >
           {th("collectionBackToAll", lang)}
@@ -173,9 +174,9 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
             href={categoryPath(lang, s.slug)}
             className="font-bebas text-[11px] md:text-xs tracking-[0.2em] uppercase px-5 md:px-7 py-2.5 md:py-3 transition-all duration-300"
             style={{
-              border: `1px solid ${s.slug === slug ? "#C9A96E" : "rgba(201,169,110,0.35)"}`,
-              background: s.slug === slug ? "rgba(201,169,110,0.12)" : "transparent",
-              color: s.slug === slug ? "#C9A96E" : "rgba(245,240,232,0.6)",
+              border: `1px solid ${s.slug === slug ? "#b08d4e" : "rgba(176,141,78,0.3)"}`,
+              background: s.slug === slug ? "rgba(176,141,78,0.08)" : "transparent",
+              color: s.slug === slug ? "#b08d4e" : "#78716c",
             }}
           >
             {th(s.labelKey as any, lang)}
@@ -186,18 +187,20 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
       {/* Description */}
       <div className="max-w-3xl mx-auto px-6 pb-16 md:pb-20 text-center">
         <p
-          className="font-body text-base md:text-lg leading-relaxed text-white/70"
+          className="font-body text-base md:text-lg leading-relaxed"
+          style={{ color: "#78716c" }}
         >
           {th(data.descKey as any, lang)}
         </p>
-        <div className="w-16 h-px mt-10 mx-auto" style={{ background: "rgba(201,169,110,0.25)" }} />
+        <div className="w-16 h-px mt-10 mx-auto" style={{ background: "rgba(176,141,78,0.25)" }} />
       </div>
 
       {/* Product cards / Paintings list */}
       {data.artworks.length > 0 && (
         <section className="max-w-5xl mx-auto px-6 pb-24">
           <p
-            className="font-bebas text-xs tracking-[0.3em] uppercase mb-10 text-center text-[#C9A96E]/55"
+            className="font-bebas text-xs tracking-[0.3em] uppercase mb-10 text-center"
+            style={{ color: "#b08d4e" }}
           >
             {lang === "es" ? "OBRAS EN LA COLECCIÓN" : lang === "it" ? "OPERE NELLA COLLEZIONE" : "WORKS IN THIS COLLECTION"}
           </p>
@@ -205,10 +208,10 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
             {data.artworks.map((prod, i) => (
               <div
                 key={i}
-                className="group flex flex-col justify-between overflow-hidden transition-all duration-500 hover:border-[#C9A96E]/40"
+                className="group flex flex-col justify-between overflow-hidden transition-all duration-500"
                 style={{
-                  background: "rgba(255,255,255,0.02)",
-                  border: "1px solid rgba(201,169,110,0.15)",
+                  background: "#f0ece5",
+                  border: "1px solid rgba(176,141,78,0.15)",
                 }}
               >
                 <div className="overflow-hidden aspect-[4/5] relative">
@@ -216,24 +219,23 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
                     src={data.heroImg}
                     alt={prod.name[lang] || prod.name.en}
                     className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-                    style={{ filter: "brightness(0.85) contrast(1.05) saturate(0.95)" }}
                   />
-                  {/* Subtle glass effect frame overlay */}
-                  <div className="absolute inset-4 border border-white/5 pointer-events-none transition-all duration-500 group-hover:inset-3 group-hover:border-white/10" />
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <span className="font-bebas text-[10px] tracking-[0.2em] text-[#C9A96E]/60 mb-2 block">
+                    <span
+                      className="font-bebas text-[10px] tracking-[0.2em] mb-2 block"
+                      style={{ color: "#b08d4e" }}
+                    >
                       {prod.status[lang] || prod.status.en}
                     </span>
                     <h3
-                      className="font-display text-xl font-normal italic tracking-wide mb-3 text-white group-hover:text-[#C9A96E] transition-colors duration-300"
+                      className="font-display text-xl font-normal italic tracking-wide mb-3 transition-colors duration-300 group-hover:text-[#b08d4e]"
+                      style={{ color: "#1c1917" }}
                     >
                       {prod.name[lang] || prod.name.en}
                     </h3>
-                    <p
-                      className="font-body text-xs leading-relaxed text-white/40"
-                    >
+                    <p className="font-body text-xs leading-relaxed" style={{ color: "#a8a29e" }}>
                       {prod.info[lang] || prod.info.en}
                     </p>
                   </div>
@@ -245,36 +247,37 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
       )}
 
       {/* CTA */}
-      <section className="py-20 px-6" style={{ borderTop: "1px solid rgba(201,169,110,0.1)" }}>
+      <section className="py-20 px-6" style={{ borderTop: "1px solid rgba(176,141,78,0.15)" }}>
         <div className="max-w-3xl mx-auto text-center">
           <h2
-            className="font-display text-3xl md:text-4xl font-normal italic mb-4 text-white"
+            className="font-display text-3xl md:text-4xl font-normal italic mb-4"
+            style={{ color: "#1c1917" }}
           >
-            {lang === "es" 
-              ? "¿Interesado en una obra en particular?" 
-              : lang === "it" 
-                ? "Interessato a un'opera in particolare?" 
+            {lang === "es"
+              ? "¿Interesado en una obra en particular?"
+              : lang === "it"
+                ? "Interessato a un'opera in particolare?"
                 : "Interested in a specific artwork?"}
           </h2>
-          <p className="font-body text-sm text-white/50 mb-8 max-w-lg mx-auto leading-relaxed">
+          <p className="font-body text-sm mb-8 max-w-lg mx-auto leading-relaxed" style={{ color: "#78716c" }}>
             {lang === "es"
               ? "Para conocer la disponibilidad, solicitar un catálogo de precios detallado o programar una visita privada al estudio, contáctenos."
               : lang === "it"
                 ? "Per conoscere la disponibilità, richiedere un listino prezzi dettagliato o prenotare una visita privata allo studio, non esitare a contattarci."
                 : "To check availability, request a detailed price list, or schedule a private studio visit, please get in touch with us."}
           </p>
-          <div className="w-16 h-px mx-auto mb-8" style={{ background: "rgba(201,169,110,0.3)" }} />
+          <div className="w-16 h-px mx-auto mb-8" style={{ background: "rgba(176,141,78,0.3)" }} />
           <a
             href={`/${lang}`}
             className="inline-block px-8 py-3 font-body text-xs tracking-widest uppercase transition-all duration-500"
-            style={{ border: "1px solid #C9A96E", color: "#C9A96E" }}
+            style={{ border: "1px solid #b08d4e", color: "#b08d4e" }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#C9A96E";
-              e.currentTarget.style.color = "#0E0804";
+              e.currentTarget.style.background = "#b08d4e";
+              e.currentTarget.style.color = "#FAFAF8";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#C9A96E";
+              e.currentTarget.style.color = "#b08d4e";
             }}
           >
             {lang === "es" ? "CONTACTAR EL ESTUDIO" : lang === "it" ? "CONTATTA LO STUDIO" : "CONTACT THE STUDIO"}

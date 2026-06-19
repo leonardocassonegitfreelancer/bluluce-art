@@ -33,7 +33,7 @@ const ProductsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: "#0E0804" }}>
+    <div className="min-h-screen" style={{ background: "#FAFAF8" }}>
       <SEO
         title={`${th("collectionTitle", lang)} | BLULUCE ART`}
         description={th("heroDescDesktop", lang)}
@@ -45,19 +45,19 @@ const ProductsPage = () => {
       <div className="pt-32 pb-8 px-6 text-center">
         <p
           className="font-body text-xs tracking-[0.35em] uppercase mb-4"
-          style={{ color: "#C9A96E" }}
+          style={{ color: "#b08d4e" }}
         >
           BLULUCE ART
         </p>
         <h1
           className="font-display text-4xl md:text-5xl lg:text-6xl font-normal italic mb-4"
-          style={{ color: "#f5f0e8" }}
+          style={{ color: "#1c1917" }}
         >
           {th("collectionTitle", lang)}
         </h1>
         <p
           className="font-body text-base max-w-xl mx-auto"
-          style={{ color: "rgba(245,240,232,0.6)" }}
+          style={{ color: "#78716c" }}
         >
           {lang === "es" 
             ? "Obras exclusivas pintadas a mano inspiradas en los reflejos y texturas del Mediterráneo." 
@@ -75,18 +75,18 @@ const ProductsPage = () => {
             href={categoryPath(lang, slug)}
             className="font-body text-[11px] md:text-xs tracking-[0.2em] uppercase px-5 md:px-7 py-2.5 md:py-3 transition-all duration-300"
             style={{
-              border: "1px solid rgba(201,169,110,0.35)",
-              color: "rgba(245,240,232,0.6)",
+              border: "1px solid rgba(176,141,78,0.3)",
+              color: "#78716c",
               background: "transparent",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#C9A96E";
-              e.currentTarget.style.color = "#0E0804";
-              e.currentTarget.style.background = "#C9A96E";
+              e.currentTarget.style.borderColor = "#b08d4e";
+              e.currentTarget.style.color = "#FAFAF8";
+              e.currentTarget.style.background = "#b08d4e";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(201,169,110,0.35)";
-              e.currentTarget.style.color = "rgba(245,240,232,0.6)";
+              e.currentTarget.style.borderColor = "rgba(176,141,78,0.3)";
+              e.currentTarget.style.color = "#78716c";
               e.currentTarget.style.background = "transparent";
             }}
           >
@@ -108,7 +108,7 @@ const ProductsPage = () => {
               <div
                 className="py-12 md:py-16"
                 style={{
-                  borderBottom: i < categories.length - 1 ? "1px solid rgba(201,169,110,0.1)" : "none",
+                  borderBottom: i < categories.length - 1 ? "1px solid rgba(28,25,23,0.08)" : "none",
                 }}
               >
                 <div
@@ -117,12 +117,11 @@ const ProductsPage = () => {
                   }`}
                 >
                   {/* Image */}
-                  <div className={`overflow-hidden ${isReversed ? "md:[direction:ltr]" : ""}`} style={{ border: "1px solid rgba(255,255,255,0.05)" }}>
+                  <div className={`overflow-hidden ${isReversed ? "md:[direction:ltr]" : ""}`} style={{ border: "1px solid rgba(176,141,78,0.12)" }}>
                     <img
                       src={cat.img}
                       alt={cat.name}
                       className="w-full h-64 md:h-80 lg:h-96 object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out"
-                      style={{ filter: "brightness(0.9) contrast(1.05)" }}
                     />
                   </div>
 
@@ -135,20 +134,20 @@ const ProductsPage = () => {
                       {String(i + 1).padStart(2, "0")}
                     </p>
                     <h2
-                      className="font-display text-2xl md:text-3xl lg:text-4xl font-normal italic tracking-wide mb-5 group-hover:text-[#C9A96E] transition-colors duration-300"
-                      style={{ color: "#f5f0e8" }}
+                      className="font-display text-2xl md:text-3xl lg:text-4xl font-normal italic tracking-wide mb-5 group-hover:text-[#b08d4e] transition-colors duration-300"
+                      style={{ color: "#1c1917" }}
                     >
                       {cat.name}
                     </h2>
                     <p
                       className="font-body text-sm md:text-base leading-relaxed mb-6"
-                      style={{ color: "rgba(245,240,232,0.55)" }}
+                      style={{ color: "#78716c" }}
                     >
                       {cat.desc}
                     </p>
                     <span
                       className="font-bebas text-xs tracking-[0.2em] uppercase group-hover:tracking-[0.3em] transition-all duration-300"
-                      style={{ color: "#C9A96E", borderBottom: "1px solid rgba(201,169,110,0.3)" }}
+                      style={{ color: "#b08d4e", borderBottom: "1px solid rgba(176,141,78,0.3)" }}
                     >
                       {lang === "it" ? "ESPLORA LA COLLEZIONE →" : lang === "en" ? "EXPLORE COLLECTION →" : "EXPLORAR LA COLECCIÓN →"}
                     </span>
@@ -161,40 +160,40 @@ const ProductsPage = () => {
       </section>
 
       {/* CTA Banner */}
-      <section className="py-20 px-6" style={{ background: "#0E0804", borderTop: "1px solid rgba(201,169,110,0.1)" }}>
+      <section className="py-20 px-6" style={{ borderTop: "1px solid rgba(176,141,78,0.15)" }}>
         <div className="max-w-3xl mx-auto text-center">
           <h2
             className="font-display text-3xl md:text-4xl font-normal italic mb-4"
-            style={{ color: "#f5f0e8" }}
+            style={{ color: "#1c1917" }}
           >
-            {lang === "es" 
-              ? "¿Interesado en una obra para su espacio?" 
-              : lang === "it" 
-                ? "Interessato a un'opera per i tuoi spazi?" 
+            {lang === "es"
+              ? "¿Interesado en una obra para su espacio?"
+              : lang === "it"
+                ? "Interessato a un'opera per i tuoi spazi?"
                 : "Interested in a piece for your space?"}
           </h2>
-          <p className="font-body text-sm text-white/50 mb-8 max-w-lg mx-auto leading-relaxed">
-            {lang === "es" 
-              ? "Cada pintura es única y se entrega con un certificado de autenticidad firmado. Póngase en contacto con nuestro estudio para consultas y encargos privados." 
-              : lang === "it" 
-                ? "Ogni dipinto è unico e viene fornito con certificato di autenticità firmato. Contatta lo studio per informazioni o commissioni private." 
+          <p className="font-body text-sm mb-8 max-w-lg mx-auto leading-relaxed" style={{ color: "#78716c" }}>
+            {lang === "es"
+              ? "Cada pintura es única y se entrega con un certificado de autenticidad firmado. Póngase en contacto con nuestro estudio para consultas y encargos privados."
+              : lang === "it"
+                ? "Ogni dipinto è unico e viene fornito con certificato di autenticità firmato. Contatta lo studio per informazioni o commissioni private."
                 : "Each painting is unique and comes with a signed certificate of authenticity. Contact the studio for inquiries and private commissions."}
           </p>
-          <div className="w-16 h-px mx-auto mb-8" style={{ background: "rgba(201,169,110,0.3)" }} />
+          <div className="w-16 h-px mx-auto mb-8" style={{ background: "rgba(176,141,78,0.3)" }} />
           <a
             href={`/${lang}`}
             className="inline-block px-8 py-3 font-body text-xs tracking-widest uppercase transition-all duration-500 ease-out"
             style={{
-              border: "1px solid #C9A96E",
-              color: "#C9A96E",
+              border: "1px solid #b08d4e",
+              color: "#b08d4e",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#C9A96E";
-              e.currentTarget.style.color = "#0E0804";
+              e.currentTarget.style.background = "#b08d4e";
+              e.currentTarget.style.color = "#FAFAF8";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#C9A96E";
+              e.currentTarget.style.color = "#b08d4e";
             }}
           >
             {lang === "es" ? "VOLVER AL INICIO" : lang === "it" ? "TORNA ALLA HOME" : "BACK TO HOME"}

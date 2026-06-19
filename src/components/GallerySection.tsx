@@ -16,93 +16,89 @@ interface Artwork {
 }
 
 const artworks: Artwork[] = [
-  // Mare
   {
     category: "mare",
     img: mediterraneanSeaImg,
     name: { es: "Susurro de la Ola I", en: "Whisper of the Wave I", it: "Sussurro dell'Onda I" },
-    info: { es: "120 x 100 cm | Mixta sobre lino con pan de oro (24k) | 2026", en: "120 x 100 cm | Mixed media on linen with gold leaf (24k) | 2026", it: "120 x 100 cm | Tecnica mista su lino con foglia d'oro (24k) | 2026" },
-    status: { es: "Disponible", en: "Available", it: "Disponibile" }
+    info: { es: "120 × 100 cm · Mixta sobre lino con pan de oro (24k) · 2026", en: "120 × 100 cm · Mixed media on linen with gold leaf (24k) · 2026", it: "120 × 100 cm · Tecnica mista su lino con foglia d'oro (24k) · 2026" },
+    status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
     category: "mare",
     img: mediterraneanSeaImg,
     name: { es: "Reflejos Meridionales", en: "Southern Reflections", it: "Riflessi Meridionali" },
-    info: { es: "100 x 80 cm | Óleo y pigmentos sobre lienzo | 2025", en: "100 x 80 cm | Oil and pigments on canvas | 2025", it: "100 x 80 cm | Olio e pigmenti su tela | 2025" },
-    status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
+    info: { es: "100 × 80 cm · Óleo y pigmentos sobre lienzo · 2025", en: "100 × 80 cm · Oil and pigments on canvas · 2025", it: "100 × 80 cm · Olio e pigmenti su tela · 2025" },
+    status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" },
   },
   {
     category: "mare",
     img: mediterraneanSeaImg,
-    name: { es: "Abismo Dorado", en: "Golden Abyss", it: "Abisco Dorato" },
-    info: { es: "150 x 120 cm | Mixta sobre lino crudo | 2026", en: "150 x 120 cm | Mixed media on raw linen | 2026", it: "150 x 120 cm | Tecnica mista su lino grezzo | 2026" },
-    status: { es: "Disponible", en: "Available", it: "Disponibile" }
+    name: { es: "Abismo Dorado", en: "Golden Abyss", it: "Abisso Dorato" },
+    info: { es: "150 × 120 cm · Mixta sobre lino crudo · 2026", en: "150 × 120 cm · Mixed media on raw linen · 2026", it: "150 × 120 cm · Tecnica mista su lino grezzo · 2026" },
+    status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
-  // Terra
   {
     category: "terra",
     img: terracottaClayImg,
     name: { es: "Materia Cálida", en: "Warm Matter", it: "Materia Calda" },
-    info: { es: "140 x 110 cm | Tierras naturales y aglutinantes orgánicos sobre lino | 2026", en: "140 x 110 cm | Natural earths and organic binders on linen | 2026", it: "140 x 110 cm | Terre naturali e leganti organici su lino | 2026" },
-    status: { es: "Disponible", en: "Available", it: "Disponibile" }
+    info: { es: "140 × 110 cm · Tierras naturales sobre lino · 2026", en: "140 × 110 cm · Natural earths on linen · 2026", it: "140 × 110 cm · Terre naturali su lino · 2026" },
+    status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
     category: "terra",
     img: terracottaClayImg,
     name: { es: "Falesia Blanca", en: "White Cliff", it: "Falesia Bianca" },
-    info: { es: "90 x 90 cm | Cemento acrílico y arena sobre lienzo | 2025", en: "90 x 90 cm | Acrylic cement and sand on canvas | 2025", it: "90 x 90 cm | Cemento acrilico e sabbia su tela | 2025" },
-    status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
+    info: { es: "90 × 90 cm · Cemento acrílico y arena sobre lienzo · 2025", en: "90 × 90 cm · Acrylic cement and sand on canvas · 2025", it: "90 × 90 cm · Cemento acrilico e sabbia su tela · 2025" },
+    status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" },
   },
   {
     category: "terra",
     img: terracottaClayImg,
     name: { es: "Sendero de Arcilla", en: "Clay Path", it: "Sentiero di Argilla" },
-    info: { es: "120 x 100 cm | Pigmentos naturales del Mediterráneo | 2026", en: "120 x 100 cm | Natural Mediterranean pigments on canvas | 2026", it: "120 x 100 cm | Pigmenti naturali del Mediterraneo | 2026" },
-    status: { es: "Disponible", en: "Available", it: "Disponibile" }
+    info: { es: "120 × 100 cm · Pigmentos naturales del Mediterráneo · 2026", en: "120 × 100 cm · Natural Mediterranean pigments · 2026", it: "120 × 100 cm · Pigmenti naturali del Mediterraneo · 2026" },
+    status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
-  // Ulivo
   {
     category: "ulivo",
     img: oliveSunImg,
     name: { es: "Luz Cenital", en: "Zenith Light", it: "Luce Zenitale" },
-    info: { es: "130 x 100 cm | Óleo y pan de oro sobre lino virgen | 2026", en: "130 x 100 cm | Oil and gold leaf on virgin linen | 2026", it: "130 x 100 cm | Olio e foglia d'oro su lino vergine | 2026" },
-    status: { es: "Disponible", en: "Available", it: "Disponibile" }
+    info: { es: "130 × 100 cm · Óleo y pan de oro sobre lino virgen · 2026", en: "130 × 100 cm · Oil and gold leaf on virgin linen · 2026", it: "130 × 100 cm · Olio e foglia d'oro su lino vergine · 2026" },
+    status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
     category: "ulivo",
     img: oliveSunImg,
     name: { es: "Hojas de Plata", en: "Silvery Leaves", it: "Foglie d'Argento" },
-    info: { es: "80 x 60 cm | Acrílico con textura sobre lienzo | 2025", en: "80 x 60 cm | Textured acrylic on canvas | 2025", it: "80 x 60 cm | Acrilico materico su tela | 2025" },
-    status: { es: "Disponible", en: "Available", it: "Disponibile" }
+    info: { es: "80 × 60 cm · Acrílico con textura sobre lienzo · 2025", en: "80 × 60 cm · Textured acrylic on canvas · 2025", it: "80 × 60 cm · Acrilico materico su tela · 2025" },
+    status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
     category: "ulivo",
     img: oliveSunImg,
     name: { es: "Mediodía Mediterráneo", en: "Mediterranean Noon", it: "Meriggio Mediterraneo" },
-    info: { es: "160 x 120 cm | Pigmentos minerales y óleo sobre lino crudo | 2026", en: "160 x 120 cm | Mineral pigments and oil on raw linen | 2026", it: "160 x 120 cm | Pigmenti minerali e olio su lino grezzo | 2026" },
-    status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
-  }
+    info: { es: "160 × 120 cm · Pigmentos minerales y óleo sobre lino crudo · 2026", en: "160 × 120 cm · Mineral pigments and oil on raw linen · 2026", it: "160 × 120 cm · Pigmenti minerali e olio su lino grezzo · 2026" },
+    status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" },
+  },
 ];
 
 const copy = {
-  label: { es: "BLULUCE ART", en: "BLULUCE ART", it: "BLULUCE ART" },
-  title: { es: "Galería Digital", en: "Digital Gallery", it: "Galleria Digitale" },
+  title:  { es: "Galería Digital", en: "Digital Gallery", it: "Galleria Digitale" },
   desc: {
-    es: "Descubra las pinturas originales de nuestras colecciones, capturando la luz y la naturaleza del Mediterráneo.",
-    en: "Discover original fine art paintings from our signature collections, capturing Mediterranean light and textures.",
-    it: "Scopri le opere d'arte originali delle nostre collezioni, catturando la luce e la materia del Mediterraneo."
+    es: "Pinturas originales de nuestras colecciones, capturando la luz y la naturaleza del Mediterráneo.",
+    en: "Original fine art paintings from our signature collections, capturing Mediterranean light and texture.",
+    it: "Opere originali dalle nostre collezioni, che catturano la luce e la materia del Mediterraneo.",
   },
   filters: {
-    all: { es: "Todos", en: "All", it: "Tutti" },
-    mare: { es: "Colección Mar", en: "Mare Collection", it: "Collezione Mare" },
-    terra: { es: "Colección Tierra", en: "Terra Collection", it: "Collezione Terra" },
-    ulivo: { es: "Colección Olivo", en: "Ulivo Collection", it: "Collezione Ulivo" }
+    all:   { es: "Todos", en: "All", it: "Tutti" },
+    mare:  { es: "Mar",   en: "Sea",   it: "Mare" },
+    terra: { es: "Tierra",en: "Earth", it: "Terra" },
+    ulivo: { es: "Olivo", en: "Olive", it: "Ulivo" },
   },
-  lightboxContact: {
-    es: "Solicitar información sobre esta obra →",
-    en: "Inquire about this artwork →",
-    it: "Richiedi informazioni su quest'opera →"
-  }
+  inquire: {
+    es: "Solicitar información →",
+    en: "Inquire about this work →",
+    it: "Richiedi informazioni →",
+  },
 };
 
 export default function GallerySection() {
@@ -111,170 +107,172 @@ export default function GallerySection() {
   const [activeFilter, setActiveFilter] = useState<"all" | "mare" | "terra" | "ulivo">("all");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const filteredArtworks = artworks.filter(
-    (art) => activeFilter === "all" || art.category === activeFilter
+  const filtered = artworks.filter(
+    (a) => activeFilter === "all" || a.category === activeFilter
   );
 
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (lightboxIndex === null) return;
-    const nextIdx = lightboxIndex === 0 ? filteredArtworks.length - 1 : lightboxIndex - 1;
-    setLightboxIndex(nextIdx);
+    setLightboxIndex(lightboxIndex === 0 ? filtered.length - 1 : lightboxIndex - 1);
   };
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (lightboxIndex === null) return;
-    const nextIdx = lightboxIndex === filteredArtworks.length - 1 ? 0 : lightboxIndex + 1;
-    setLightboxIndex(nextIdx);
+    setLightboxIndex(lightboxIndex === filtered.length - 1 ? 0 : lightboxIndex + 1);
   };
 
   return (
-    <section className="py-24 px-6 md:px-8 min-h-screen text-[#FAFAF8]" style={{ background: "#0E0804" }}>
+    <section className="py-24 px-6 md:px-10 min-h-screen" style={{ background: "#FAFAF8" }}>
       <div className="max-w-6xl mx-auto">
-        
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="font-bebas text-[#C9A96E] tracking-[0.24em] block mb-4 text-xs">
-            {copy.label[l]}
-          </span>
-          <h1 className="font-display font-normal italic text-[#FAFAF8] leading-none mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}>
+
+        {/* Header */}
+        <div className="mb-16">
+          <p className="font-body uppercase tracking-[0.28em] text-[#b08d4e] text-[0.6rem] mb-4">
+            BLULUCE ART
+          </p>
+          <h1
+            className="font-display font-normal italic leading-none mb-5"
+            style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)", color: "#1c1917" }}
+          >
             {copy.title[l]}
           </h1>
-          <p className="font-body text-white/60 text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+          <p className="font-body text-sm leading-relaxed max-w-lg" style={{ color: "#78716c" }}>
             {copy.desc[l]}
           </p>
-          <div className="w-12 h-[2px] bg-[#C9A96E] mx-auto mt-6" />
+          <div className="mt-6 h-px w-10" style={{ background: "#b08d4e" }} />
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-16">
-          {(["all", "mare", "terra", "ulivo"] as const).map((filter) => (
+        <div className="flex flex-wrap gap-2 mb-14">
+          {(["all", "mare", "terra", "ulivo"] as const).map((f) => (
             <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className="font-bebas text-[11px] md:text-xs tracking-[0.2em] uppercase px-5 md:px-7 py-2.5 md:py-3 transition-all duration-300"
+              key={f}
+              onClick={() => setActiveFilter(f)}
+              className="font-body text-[0.6rem] tracking-[0.22em] uppercase px-5 py-2.5 transition-all duration-300"
               style={{
-                border: `1px solid ${activeFilter === filter ? "#C9A96E" : "rgba(201,169,110,0.3)"}`,
-                background: activeFilter === filter ? "rgba(201,169,110,0.12)" : "transparent",
-                color: activeFilter === filter ? "#C9A96E" : "rgba(245,240,232,0.6)",
+                border: `1px solid ${activeFilter === f ? "#b08d4e" : "rgba(176,141,78,0.3)"}`,
+                background: activeFilter === f ? "rgba(176,141,78,0.08)" : "transparent",
+                color: activeFilter === f ? "#b08d4e" : "#78716c",
               }}
             >
-              {copy.filters[filter][l]}
+              {copy.filters[f][l]}
             </button>
           ))}
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {filteredArtworks.map((art, idx) => (
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+          {filtered.map((art, idx) => (
             <div
               key={idx}
               onClick={() => setLightboxIndex(idx)}
-              className="group flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-500 border border-white/5 hover:border-[#C9A96E]/30"
-              style={{ background: "rgba(255,255,255,0.01)" }}
+              className="group cursor-pointer"
             >
-              <div className="overflow-hidden aspect-[4/5] relative">
+              {/* Image */}
+              <div className="overflow-hidden aspect-[4/5] mb-4" style={{ background: "#f0ece5" }}>
                 <img
                   src={art.img.src}
-                  alt={art.name[l] || art.name.en}
+                  alt={art.name[l]}
                   className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-                  style={{ filter: "brightness(0.9) contrast(1.05) saturate(0.95)" }}
                 />
-                <div className="absolute inset-4 border border-white/5 pointer-events-none transition-all duration-500 group-hover:inset-3 group-hover:border-white/10" />
-                
-                {/* Visual spec badge inside grid */}
-                <div className="absolute top-4 left-4 bg-[#0E0804]/80 backdrop-blur-sm px-3 py-1 text-[9px] font-bebas tracking-[0.15em] text-[#C9A96E]">
-                  {art.status[l] || art.status.en}
-                </div>
               </div>
-              
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <span className="font-bebas text-[10px] tracking-[0.2em] text-[#C9A96E]/60 mb-2 block">
-                    {art.category.toUpperCase()} COLLECTION
-                  </span>
-                  <h3 className="font-display text-xl font-normal italic tracking-wide mb-3 text-white group-hover:text-[#C9A96E] transition-colors duration-300">
-                    {art.name[l] || art.name.en}
-                  </h3>
-                  <p className="font-body text-xs leading-relaxed text-white/40">
-                    {art.info[l] || art.info.en}
-                  </p>
-                </div>
+
+              {/* Info */}
+              <div>
+                <p className="font-body text-[0.58rem] uppercase tracking-[0.2em] mb-1.5" style={{ color: "#b08d4e" }}>
+                  {art.category}
+                </p>
+                <h3
+                  className="font-display font-normal italic text-lg leading-snug mb-1.5 transition-colors duration-300 group-hover:text-[#b08d4e]"
+                  style={{ color: "#1c1917" }}
+                >
+                  {art.name[l]}
+                </h3>
+                <p className="font-body text-[0.72rem] leading-relaxed" style={{ color: "#a8a29e" }}>
+                  {art.info[l]}
+                </p>
+                <p className="font-body text-[0.6rem] uppercase tracking-[0.15em] mt-2" style={{ color: art.status[l] === "Available" || art.status[l] === "Disponible" || art.status[l] === "Disponibile" ? "#b08d4e" : "#a8a29e" }}>
+                  {art.status[l]}
+                </p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Premium Lightbox Modal */}
+      {/* Lightbox */}
       {lightboxIndex !== null && (
         <div
           onClick={() => setLightboxIndex(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 transition-opacity duration-300"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10"
+          style={{ background: "rgba(14,8,4,0.92)", backdropFilter: "blur(8px)" }}
         >
-          {/* Close button */}
           <button
             onClick={() => setLightboxIndex(null)}
-            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2"
+            className="absolute top-6 right-6 p-2 transition-opacity hover:opacity-70"
+            style={{ color: "#FAFAF8" }}
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
 
-          {/* Navigation controls */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 md:left-8 text-white/70 hover:text-white transition-colors bg-white/5 hover:bg-white/10 backdrop-blur-sm p-3 rounded-full"
+            className="absolute left-4 md:left-8 p-3 rounded-full transition-all duration-300"
+            style={{ background: "rgba(250,248,245,0.08)", color: "#FAFAF8" }}
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
-
           <button
             onClick={handleNext}
-            className="absolute right-4 md:right-8 text-white/70 hover:text-white transition-colors bg-white/5 hover:bg-white/10 backdrop-blur-sm p-3 rounded-full"
+            className="absolute right-4 md:right-8 p-3 rounded-full transition-all duration-300"
+            style={{ background: "rgba(250,248,245,0.08)", color: "#FAFAF8" }}
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Lightbox Content Container */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="max-w-4xl w-full flex flex-col md:flex-row items-center gap-8 md:gap-12"
+            className="max-w-4xl w-full flex flex-col md:flex-row gap-8 md:gap-14 items-center"
           >
-            <div className="w-full md:w-1/2 max-h-[65vh] overflow-hidden" style={{ border: "1px solid rgba(201,169,110,0.15)" }}>
+            <div className="w-full md:w-1/2 max-h-[60vh] overflow-hidden">
               <img
-                src={filteredArtworks[lightboxIndex].img.src}
-                alt={filteredArtworks[lightboxIndex].name[l]}
+                src={filtered[lightboxIndex].img.src}
+                alt={filtered[lightboxIndex].name[l]}
                 className="w-full h-full object-contain"
-                style={{ filter: "brightness(0.95)" }}
               />
             </div>
 
-            <div className="w-full md:w-1/2 flex flex-col items-start text-left">
-              <span className="font-bebas text-xs tracking-[0.2em] text-[#C9A96E] mb-2">
-                {filteredArtworks[lightboxIndex].category.toUpperCase()} COLLECTION
-              </span>
-              <h2 className="font-display text-3xl md:text-4xl font-normal italic text-white mb-4">
-                {filteredArtworks[lightboxIndex].name[l]}
-              </h2>
-              <p className="font-body text-sm text-white/70 mb-6 leading-relaxed">
-                {filteredArtworks[lightboxIndex].info[l]}
+            <div className="w-full md:w-1/2 text-left">
+              <p className="font-body text-[0.58rem] uppercase tracking-[0.25em] mb-3" style={{ color: "#b08d4e" }}>
+                {filtered[lightboxIndex].category}
               </p>
-              
-              <div className="flex items-center gap-3 mb-8">
-                <span className="w-2 h-2 rounded-full bg-[#C9A96E]" />
-                <span className="font-bebas text-[11px] tracking-[0.15em] text-[#C9A96E]/80">
-                  {filteredArtworks[lightboxIndex].status[l]}
+              <h2
+                className="font-display font-normal italic leading-tight mb-4"
+                style={{ fontSize: "clamp(1.8rem, 3vw, 2.8rem)", color: "#FAFAF8" }}
+              >
+                {filtered[lightboxIndex].name[l]}
+              </h2>
+              <p className="font-body text-sm leading-relaxed mb-6" style={{ color: "rgba(250,248,245,0.55)" }}>
+                {filtered[lightboxIndex].info[l]}
+              </p>
+
+              <div className="flex items-center gap-2.5 mb-8">
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#b08d4e" }} />
+                <span className="font-body text-[0.6rem] uppercase tracking-[0.18em]" style={{ color: "#b08d4e" }}>
+                  {filtered[lightboxIndex].status[l]}
                 </span>
               </div>
 
-              <div className="w-full h-px bg-white/10 mb-8" />
-              
+              <div className="h-px mb-8" style={{ background: "rgba(250,248,245,0.1)" }} />
+
               <a
-                href={`mailto:studio@bluluceart.com?subject=Inquiry: ${filteredArtworks[lightboxIndex].name.en}`}
-                className="font-bebas text-[11px] tracking-[0.25em] text-[#C9A96E] border-b border-[#C9A96E]/30 pb-1 transition-all duration-300 hover:border-[#C9A96E] hover:text-white"
+                href={`mailto:info@bluluceart.com?subject=${filtered[lightboxIndex].name.en}`}
+                className="font-body text-[0.6rem] tracking-[0.22em] uppercase transition-all duration-300 hover:opacity-70"
+                style={{ color: "#b08d4e", borderBottom: "1px solid rgba(176,141,78,0.35)", paddingBottom: "3px" }}
               >
-                {copy.lightboxContact[l]}
+                {copy.inquire[l]}
               </a>
             </div>
           </div>
