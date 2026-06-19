@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
 import GalleryHall from "@/components/GalleryHall";
 import VideoShowcase from "@/components/VideoShowcase";
 import InterestForm from "@/components/InterestForm";
@@ -12,6 +13,7 @@ const Index = () => {
     <div style={{ background: "#FAFAF8" }}>
       <Navbar />
       <main>
+        <Hero />
         <GalleryHall mode="section" lang={lang} />
         <VideoShowcase />
       </main>
