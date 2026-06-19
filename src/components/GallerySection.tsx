@@ -3,9 +3,13 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-import mediterraneanSeaImg from "@/assets/mediterranean_sea.webp";
-import terracottaClayImg from "@/assets/terracotta_clay.webp";
-import oliveSunImg from "@/assets/olive_sun.webp";
+import mareSpiaggiaImg from "@/assets/pittura_mare_donna_spiaggia_dune.webp";
+import mareOndeImg from "@/assets/pittura_mare_donna_onde_spiaggia.webp";
+import mareSchienaImg from "@/assets/pittura_mare_donna_schiena_acqua.webp";
+import flamencarImg from "@/assets/pittura_ritratto_flamenca_rosa_scura.webp";
+import ritrattoOroImg from "@/assets/pittura_ritratto_donna_fiore_oro.webp";
+import giardinoImg from "@/assets/pittura_giardino_donna_terrazza_fiori.webp";
+import ulivoAlberoImg from "@/assets/pittura_ulivo_donna_sotto_albero.webp";
 
 interface Artwork {
   category: "mare" | "terra" | "ulivo";
@@ -18,65 +22,65 @@ interface Artwork {
 const artworks: Artwork[] = [
   {
     category: "mare",
-    img: mediterraneanSeaImg,
+    img: mareSpiaggiaImg,
     name: { es: "Susurro de la Ola I", en: "Whisper of the Wave I", it: "Sussurro dell'Onda I" },
     info: { es: "120 × 100 cm · Mixta sobre lino con pan de oro (24k) · 2026", en: "120 × 100 cm · Mixed media on linen with gold leaf (24k) · 2026", it: "120 × 100 cm · Tecnica mista su lino con foglia d'oro (24k) · 2026" },
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
     category: "mare",
-    img: mediterraneanSeaImg,
+    img: mareOndeImg,
     name: { es: "Reflejos Meridionales", en: "Southern Reflections", it: "Riflessi Meridionali" },
     info: { es: "100 × 80 cm · Óleo y pigmentos sobre lienzo · 2025", en: "100 × 80 cm · Oil and pigments on canvas · 2025", it: "100 × 80 cm · Olio e pigmenti su tela · 2025" },
     status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" },
   },
   {
     category: "mare",
-    img: mediterraneanSeaImg,
-    name: { es: "Abismo Dorado", en: "Golden Abyss", it: "Abisso Dorato" },
-    info: { es: "150 × 120 cm · Mixta sobre lino crudo · 2026", en: "150 × 120 cm · Mixed media on raw linen · 2026", it: "150 × 120 cm · Tecnica mista su lino grezzo · 2026" },
+    img: mareSchienaImg,
+    name: { es: "Verso il Largo", en: "Out to Sea", it: "Verso il Largo" },
+    info: { es: "150 × 120 cm · Óleo sobre lienzo · 2026", en: "150 × 120 cm · Oil on canvas · 2026", it: "150 × 120 cm · Olio su tela · 2026" },
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
     category: "terra",
-    img: terracottaClayImg,
+    img: flamencarImg,
     name: { es: "Materia Cálida", en: "Warm Matter", it: "Materia Calda" },
     info: { es: "140 × 110 cm · Tierras naturales sobre lino · 2026", en: "140 × 110 cm · Natural earths on linen · 2026", it: "140 × 110 cm · Terre naturali su lino · 2026" },
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
     category: "terra",
-    img: terracottaClayImg,
-    name: { es: "Falesia Blanca", en: "White Cliff", it: "Falesia Bianca" },
-    info: { es: "90 × 90 cm · Cemento acrílico y arena sobre lienzo · 2025", en: "90 × 90 cm · Acrylic cement and sand on canvas · 2025", it: "90 × 90 cm · Cemento acrilico e sabbia su tela · 2025" },
+    img: ritrattoOroImg,
+    name: { es: "La Rosa y el Oro", en: "The Rose and Gold", it: "La Rosa e l'Oro" },
+    info: { es: "90 × 90 cm · Óleo sobre lienzo · 2025", en: "90 × 90 cm · Oil on canvas · 2025", it: "90 × 90 cm · Olio su tela · 2025" },
     status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" },
   },
   {
     category: "terra",
-    img: terracottaClayImg,
-    name: { es: "Sendero de Arcilla", en: "Clay Path", it: "Sentiero di Argilla" },
+    img: giardinoImg,
+    name: { es: "El Jardín del Sur", en: "The Southern Garden", it: "Il Giardino del Sud" },
     info: { es: "120 × 100 cm · Pigmentos naturales del Mediterráneo · 2026", en: "120 × 100 cm · Natural Mediterranean pigments · 2026", it: "120 × 100 cm · Pigmenti naturali del Mediterraneo · 2026" },
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
     category: "ulivo",
-    img: oliveSunImg,
-    name: { es: "Luz Cenital", en: "Zenith Light", it: "Luce Zenitale" },
-    info: { es: "130 × 100 cm · Óleo y pan de oro sobre lino virgen · 2026", en: "130 × 100 cm · Oil and gold leaf on virgin linen · 2026", it: "130 × 100 cm · Olio e foglia d'oro su lino vergine · 2026" },
+    img: ulivoAlberoImg,
+    name: { es: "Bajo el Olivo", en: "Under the Olive Tree", it: "Sotto l'Ulivo" },
+    info: { es: "130 × 100 cm · Óleo sobre lienzo · 2026", en: "130 × 100 cm · Oil on canvas · 2026", it: "130 × 100 cm · Olio su tela · 2026" },
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
     category: "ulivo",
-    img: oliveSunImg,
-    name: { es: "Hojas de Plata", en: "Silvery Leaves", it: "Foglie d'Argento" },
-    info: { es: "80 × 60 cm · Acrílico con textura sobre lienzo · 2025", en: "80 × 60 cm · Textured acrylic on canvas · 2025", it: "80 × 60 cm · Acrilico materico su tela · 2025" },
+    img: giardinoImg,
+    name: { es: "Terraza Mediterránea", en: "Mediterranean Terrace", it: "Terrazza Mediterranea" },
+    info: { es: "80 × 60 cm · Acrílico sobre lienzo · 2025", en: "80 × 60 cm · Acrylic on canvas · 2025", it: "80 × 60 cm · Acrilico su tela · 2025" },
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
     category: "ulivo",
-    img: oliveSunImg,
-    name: { es: "Mediodía Mediterráneo", en: "Mediterranean Noon", it: "Meriggio Mediterraneo" },
-    info: { es: "160 × 120 cm · Pigmentos minerales y óleo sobre lino crudo · 2026", en: "160 × 120 cm · Mineral pigments and oil on raw linen · 2026", it: "160 × 120 cm · Pigmenti minerali e olio su lino grezzo · 2026" },
+    img: mareSpiaggiaImg,
+    name: { es: "Luz de Mediodía", en: "Midday Light", it: "Luce di Mezzogiorno" },
+    info: { es: "160 × 120 cm · Óleo y pigmentos sobre lino crudo · 2026", en: "160 × 120 cm · Oil and pigments on raw linen · 2026", it: "160 × 120 cm · Olio e pigmenti su lino grezzo · 2026" },
     status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" },
   },
 ];

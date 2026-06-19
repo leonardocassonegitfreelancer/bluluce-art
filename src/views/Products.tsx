@@ -4,9 +4,9 @@ import SEO from "@/components/SEO";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { th } from "@/i18n/homeTranslations";
 import { productsPath, categoryPath, categorySlugs as catSlugs } from "@/i18n/slugs";
-import mediterraneanSeaImg from "@/assets/mediterranean_sea.webp";
-import terracottaClayImg from "@/assets/terracotta_clay.webp";
-import oliveSunImg from "@/assets/olive_sun.webp";
+import mediterraneanSeaImg from "@/assets/pittura_mare_donna_spiaggia_dune.webp";
+import terracottaClayImg from "@/assets/pittura_ritratto_flamenca_rosa_scura.webp";
+import oliveSunImg from "@/assets/pittura_ulivo_donna_sotto_albero.webp";
 
 const ProductsPage = () => {
   const { lang } = useLanguage();
