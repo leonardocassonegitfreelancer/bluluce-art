@@ -195,54 +195,80 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
         <div className="w-16 h-px mt-10 mx-auto" style={{ background: "rgba(176,141,78,0.25)" }} />
       </div>
 
-      {/* Product cards / Paintings list */}
+      {/* Artwork editorial list */}
       {data.artworks.length > 0 && (
         <section className="max-w-5xl mx-auto px-6 pb-24">
-          <p
-            className="font-bebas text-xs tracking-[0.3em] uppercase mb-10 text-center"
-            style={{ color: "#b08d4e" }}
-          >
-            {lang === "es" ? "OBRAS EN LA COLECCIÓN" : lang === "it" ? "OPERE NELLA COLLEZIONE" : "WORKS IN THIS COLLECTION"}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {data.artworks.map((prod, i) => (
+
+          {/* Section label with flanking rules */}
+          <div className="flex items-center gap-5 mb-16 md:mb-20">
+            <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
+            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#b08d4e" }}>
+              {lang === "es" ? "OBRAS EN LA COLECCIÓN" : lang === "it" ? "OPERE NELLA COLLEZIONE" : "WORKS IN THIS COLLECTION"}
+            </p>
+            <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
+          </div>
+
+          {data.artworks.map((prod, i) => {
+            const isAvail = ["Disponibile","Disponible","Available"].includes(prod.status[lang] || prod.status.en);
+            const romans = ["I","II","III","IV","V"];
+            const rev = i % 2 === 1;
+            return (
               <div
                 key={i}
-                className="group flex flex-col justify-between overflow-hidden transition-all duration-500"
-                style={{
-                  background: "#f0ece5",
-                  border: "1px solid rgba(176,141,78,0.15)",
-                }}
+                className="py-14 md:py-20"
+                style={{ borderBottom: i < data.artworks.length - 1 ? "1px solid rgba(28,25,23,0.07)" : "none" }}
               >
-                <div className="overflow-hidden aspect-[4/5] relative">
-                  <img
-                    src={data.heroImg}
-                    alt={prod.name[lang] || prod.name.en}
-                    className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <span
-                      className="font-bebas text-[10px] tracking-[0.2em] mb-2 block"
-                      style={{ color: "#b08d4e" }}
+                <div className={`grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-14 items-center ${rev ? "md:[direction:rtl]" : ""}`}>
+
+                  {/* Image with gallery mat */}
+                  <div className={`md:col-span-3 ${rev ? "md:[direction:ltr]" : ""}`}>
+                    <div style={{ background: "#f0ece5", padding: "18px 18px 28px" }}>
+                      <img
+                        src={data.heroImg}
+                        alt={prod.name[lang] || prod.name.en}
+                        className="w-full object-cover"
+                        style={{ aspectRatio: "4/5" }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Details */}
+                  <div className={`md:col-span-2 ${rev ? "md:[direction:ltr]" : ""}`}>
+                    <p
+                      className="font-display font-normal italic leading-none mb-5 select-none"
+                      style={{ fontSize: "clamp(3.5rem, 7vw, 5.5rem)", color: "rgba(176,141,78,0.13)", lineHeight: 1 }}
                     >
-                      {prod.status[lang] || prod.status.en}
-                    </span>
+                      {romans[i]}
+                    </p>
+                    <div className="h-px mb-6" style={{ background: "rgba(176,141,78,0.22)" }} />
+
+                    <div className="flex items-center gap-2 mb-5">
+                      <span
+                        className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ background: isAvail ? "#b08d4e" : "#a8a29e" }}
+                      />
+                      <span
+                        className="font-bebas text-[10px] tracking-[0.32em] uppercase"
+                        style={{ color: isAvail ? "#b08d4e" : "#a8a29e" }}
+                      >
+                        {prod.status[lang] || prod.status.en}
+                      </span>
+                    </div>
+
                     <h3
-                      className="font-display text-xl font-normal italic tracking-wide mb-3 transition-colors duration-300 group-hover:text-[#b08d4e]"
-                      style={{ color: "#1c1917" }}
+                      className="font-display font-normal italic mb-5 leading-snug"
+                      style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", color: "#1c1917" }}
                     >
                       {prod.name[lang] || prod.name.en}
                     </h3>
-                    <p className="font-body text-xs leading-relaxed" style={{ color: "#a8a29e" }}>
+                    <p className="font-body text-xs leading-relaxed tracking-wide" style={{ color: "#a8a29e" }}>
                       {prod.info[lang] || prod.info.en}
                     </p>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </section>
       )}
 
