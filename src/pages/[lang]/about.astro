@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AboutPageWrapper from "../../page-components/AboutPageWrapper";
+import type { Lang } from "../../i18n/homeTranslations";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "es" } },
+    { params: { lang: "en" } },
+    { params: { lang: "it" } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const titles: Record<Lang, string> = {
+  es: "Sobre mí | BLULUCE ART – Pintora Italiana en Málaga",
+  en: "About | BLULUCE ART – Italian Painter in Málaga",
+  it: "Chi sono | BLULUCE ART – Pittrice Italiana a Málaga",
+};
+
+const descriptions: Record<Lang, string> = {
+  es: "Pintora italiana en Málaga inspirada por el arte impresionista. Obras originales sobre lino y tela con pigmentos naturales y pan de oro.",
+  en: "Italian painter in Málaga inspired by Impressionist art. Original works on linen and canvas with natural pigments and gold leaf.",
+  it: "Pittrice italiana a Málaga ispirata dall'arte impressionista. Opere originali su lino e tela con pigmenti naturali e foglia d'oro.",
+};
+---
+
+<Layout
+  title={titles[lang]}
+  description={descriptions[lang]}
+  canonical={`/${lang}/about`}
+  lang={lang}
+>
+  <AboutPageWrapper lang={lang} client:only="react" />
+</Layout>
