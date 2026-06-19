@@ -27,11 +27,11 @@ const tr = {
     it: "Pennellate profonde e dettagli in foglia d'oro catturano il movimento continuo e l'energia vibrante delle onde del Mediterraneo.",
   },
 
-  collectionTerraTitle: { es: "Colección Tierra", en: "The Clay Collection", it: "Collezione Terra" },
+  collectionTerraTitle: { es: "Colección Tierra", en: "The Earth Collection", it: "Collezione Terra" },
   collectionTerraDesc: {
-    es: "Formas orgánicas minimalistas y matices de terracota que evocan la materia prima, las costas accidentadas y la arena quemada por el sol.",
-    en: "Minimalist organic shapes and terracotta shades recalling raw matter, rugged coastlines, and sun-baked sand.",
-    it: "Forme organiche minimaliste e sfumature di terracotta che richiamano la materia prima, le coste frastagliate e la sabbia arsa dal sole.",
+    es: "Figuras, retratos y jardines bañados en la luz cálida del Sur. Pigmentos de tierra quemada, ocre y oro que capturan la presencia humana bajo el sol de Andalucía.",
+    en: "Figures, portraits and gardens bathed in the warm light of the South. Burnt earth pigments, ochre and gold capturing the human presence under the Andalusian sun.",
+    it: "Figure, ritratti e giardini immersi nella luce calda del Sud. Pigmenti di terra bruciata, ocra e oro che catturano la presenza umana sotto il sole andaluso.",
   },
 
   collectionUlivoTitle: { es: "Colección Olivo", en: "The Olive Collection", it: "Collezione Ulivo" },

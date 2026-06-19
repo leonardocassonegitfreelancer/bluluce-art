@@ -62,20 +62,20 @@ const categoryData: Record<CategorySlug, CategoryData> = {
     artworks: [
       {
         img: flamencarImg.src,
-        name: { es: "Materia Cálida", en: "Warm Matter", it: "Materia Calda" },
-        info: { es: "140 x 110 cm | Tierras naturales y aglutinantes orgánicos sobre lino | 2026", en: "140 x 110 cm | Natural earths and organic binders on linen | 2026", it: "140 x 110 cm | Terre naturali e leganti organici su lino | 2026" },
+        name: { es: "Fuego del Sur", en: "Fire of the South", it: "Fuoco del Sud" },
+        info: { es: "140 x 110 cm | Óleo y pigmentos naturales sobre lino | 2026", en: "140 x 110 cm | Oil and natural pigments on linen | 2026", it: "140 x 110 cm | Olio e pigmenti naturali su lino | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
         img: ritrattoOroImg.src,
-        name: { es: "La Rosa y el Oro", en: "The Rose and Gold", it: "La Rosa e l'Oro" },
-        info: { es: "90 x 90 cm | Óleo sobre lienzo | 2025", en: "90 x 90 cm | Oil on canvas | 2025", it: "90 x 90 cm | Olio su tela | 2025" },
+        name: { es: "La Dorada", en: "The Golden One", it: "La Dorata" },
+        info: { es: "90 x 90 cm | Óleo con detalles en pan de oro (24k) sobre lienzo | 2025", en: "90 x 90 cm | Oil with 24k gold leaf details on canvas | 2025", it: "90 x 90 cm | Olio con dettagli in foglia d'oro (24k) su tela | 2025" },
         status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
       },
       {
         img: giardinoImg.src,
-        name: { es: "El Jardín del Sur", en: "The Southern Garden", it: "Il Giardino del Sud" },
-        info: { es: "120 x 100 cm | Pigmentos naturales del Mediterráneo | 2026", en: "120 x 100 cm | Natural Mediterranean pigments | 2026", it: "120 x 100 cm | Pigmenti naturali del Mediterraneo | 2026" },
+        name: { es: "La Terraza", en: "The Terrace", it: "La Terrazza" },
+        info: { es: "120 x 100 cm | Óleo y pigmentos del Mediterráneo sobre lino crudo | 2026", en: "120 x 100 cm | Oil and Mediterranean pigments on raw linen | 2026", it: "120 x 100 cm | Olio e pigmenti del Mediterraneo su lino grezzo | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
     ]
