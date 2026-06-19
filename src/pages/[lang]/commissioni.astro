@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CommissionsPageWrapper from "../../page-components/CommissionsPageWrapper";
+import type { Lang } from "../../i18n/homeTranslations";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "es" } },
+    { params: { lang: "en" } },
+    { params: { lang: "it" } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const titles: Record<Lang, string> = {
+  es: "Encargos | BLULUCE ART – Obras a medida",
+  en: "Commissions | BLULUCE ART – Bespoke artworks",
+  it: "Commissioni | BLULUCE ART – Opere su misura",
+};
+
+const descriptions: Record<Lang, string> = {
+  es: "Solicita una obra original por encargo. Pinturas a mano sobre lino o lienzo, con pigmentos naturales y pan de oro, realizadas especialmente para tu espacio.",
+  en: "Request an original commissioned artwork. Hand-painted on linen or canvas with natural pigments and gold leaf, created specifically for your space.",
+  it: "Richiedi un'opera originale su commissione. Dipinti a mano su lino o tela, con pigmenti naturali e foglia d'oro, realizzati appositamente per il tuo spazio.",
+};
+---
+
+<Layout
+  title={titles[lang]}
+  description={descriptions[lang]}
+  canonical={`/${lang}/commissioni`}
+  lang={lang}
+>
+  <CommissionsPageWrapper lang={lang} client:only="react" />
+</Layout>

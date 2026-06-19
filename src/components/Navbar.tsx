@@ -38,6 +38,7 @@ const Navbar = () => {
     { label: th("navMenu", lang), href: `${prefix}/${productsSlug[lang]}` },
     { label: th("navGallery", lang), href: `${prefix}/gallery` },
     { label: th("navAbout", lang), href: `${prefix}/about` },
+    { label: th("navCommissions", lang), href: `${prefix}/commissioni` },
   ];
   const langs: Lang[] = ["es", "en", "it"];
 
