@@ -560,14 +560,14 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
           margin-bottom: 1.4rem; display: inline-block; border-bottom: 1px solid rgba(176,141,78,0.4); padding-bottom: 6px; }
         .gh-title { font-family: var(--font-display, "Cormorant Garamond", serif); font-weight: 400; font-style: italic;
           font-size: clamp(2.2rem, 3.7vw, 3.7rem); line-height: 1; margin: 0 0 1.3rem; color: #0d0d0d; }
-        .gh-desc { font-family: var(--font-body, "Lato", sans-serif); font-weight: 300; font-size: 0.98rem;
+        .gh-desc { font-family: var(--font-body, "Crimson Pro", serif); font-weight: 300; font-size: 0.98rem;
           line-height: 1.75; color: #555; margin-bottom: 1.8rem; }
         .gh-meta { display: grid; grid-template-columns: 86px 1fr; row-gap: 0.6rem;
           border-top: 1px solid #e2ddd4; padding-top: 1.1rem; margin-bottom: 1.8rem; }
         .gh-ml { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.15em; color: #a98c52; align-self: center; }
         .gh-mv { font-family: var(--font-display, "Cormorant Garamond", serif); font-size: 1.02rem; font-style: italic; color: #2a2520; }
         .gh-slide-cta { pointer-events: auto; display: inline-flex; align-items: center; gap: 0.5em;
-          padding: 0.78rem 1.7rem; font-family: var(--font-body, "Lato", sans-serif); font-size: 0.6rem;
+          padding: 0.78rem 1.7rem; font-family: var(--font-body, "Crimson Pro", serif); font-size: 0.6rem;
           letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; cursor: pointer;
           border: 1px solid rgba(176,141,78,0.6); color: #6b5630; background: rgba(247,247,245,0.4);
           transition: background .4s ease, color .4s ease; }
