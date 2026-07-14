@@ -1,5 +1,6 @@
 ﻿import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
+import artistaImg from "@/assets/artista_tenda_sguardo.webp";
 
 const copy: Record<Lang, {
   label: string;
@@ -32,42 +33,54 @@ export default function AboutTeaser() {
   const t = copy[lang as Lang] ?? copy.it;
 
   return (
-    <section className="py-24 md:py-32 px-6 md:px-10" style={{ background: "#FAFAF8" }}>
-      <div className="max-w-5xl mx-auto">
+    <section className="py-24 md:py-32" style={{ background: "#FAFAF8" }}>
+      <div className="max-w-6xl mx-auto px-6 md:px-10">
 
-        {/* Label + rule */}
-        <div className="flex items-center gap-5 mb-14">
-          <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#8a6a2e" }}>
-            {t.label}
-          </p>
-          <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-20 items-start">
+          {/* Portrait photo */}
+          <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
+            <img
+              src={artistaImg.src}
+              alt="Vittoria De Raymondi"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover"
+              style={{ objectPosition: "50% 15%" }}
+            />
+          </div>
 
-          {/* Quote — large left column */}
-          <div className="md:col-span-3">
+          {/* Text */}
+          <div className="flex flex-col gap-10">
+
+            <div className="flex items-center gap-5">
+              <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#8a6a2e" }}>
+                {t.label}
+              </p>
+              <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
+            </div>
+
             <blockquote
-              className="font-display font-normal italic leading-tight mb-0"
-              style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "#1c1917", margin: 0 }}
+              className="font-display font-normal italic leading-tight"
+              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "#1c1917", margin: 0 }}
             >
               {t.quote}
             </blockquote>
-          </div>
 
-          {/* Bio + link — right column */}
-          <div className="md:col-span-2 flex flex-col justify-between gap-8">
-            <div className="h-px" style={{ background: "rgba(176,141,78,0.22)" }} />
-            <p className="font-body text-sm leading-relaxed" style={{ color: "#78716c" }}>
-              {t.bio}
-            </p>
-            <a
-              href={`/${lang}/about`}
-              className="font-bebas text-[11px] tracking-[0.3em] uppercase transition-all duration-300 hover:tracking-[0.4em] self-start"
-              style={{ color: "#8a6a2e", borderBottom: "1px solid rgba(176,141,78,0.3)", paddingBottom: "3px" }}
-            >
-              {t.link}
-            </a>
+            <div className="flex flex-col gap-6">
+              <div className="h-px" style={{ background: "rgba(176,141,78,0.22)" }} />
+              <p className="font-body text-sm leading-relaxed" style={{ color: "#78716c" }}>
+                {t.bio}
+              </p>
+              <a
+                href={`/${lang}/about`}
+                className="font-bebas text-[11px] tracking-[0.3em] uppercase transition-all duration-300 hover:tracking-[0.4em] self-start"
+                style={{ color: "#8a6a2e", borderBottom: "1px solid rgba(176,141,78,0.3)", paddingBottom: "3px" }}
+              >
+                {t.link}
+              </a>
+            </div>
+
           </div>
         </div>
 
