@@ -3,6 +3,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { productsSlug } from "@/i18n/slugs";
 import heroVideo from "@/assets/mare.mp4?url";
+import heroPoster from "@/assets/pittura_mare_donna_schiena_acqua.webp?url";
 
 const copy: Record<Lang, {
   line1: string;
@@ -86,6 +87,7 @@ const Hero = () => {
           <video autoPlay muted loop playsInline
             className="w-full h-full object-cover"
             style={{ filter: "brightness(1.08) saturate(1.1)" }}
+            poster={heroPoster}
             src={heroVideo} />
         </div>
 

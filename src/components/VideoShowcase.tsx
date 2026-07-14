@@ -27,6 +27,7 @@ export default function VideoShowcase() {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const rafRef = useRef<number>(0);
@@ -39,11 +40,21 @@ export default function VideoShowcase() {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.05 }
     );
     if (containerRef.current) observer.observe(containerRef.current);
     return () => observer.disconnect();
   }, []);
+
+  // Lazy-load video: assign src only when the section enters the viewport
+  useEffect(() => {
+    if (!isVisible) return;
+    const vid = videoRef.current;
+    if (!vid || vid.src) return;
+    vid.src = insideVideo;
+    vid.load();
+    vid.play().catch(() => {});
+  }, [isVisible]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -99,10 +110,11 @@ export default function VideoShowcase() {
         }}
       >
         <video
-          autoPlay
+          ref={videoRef}
           muted
           loop
           playsInline
+          preload="none"
           style={{
             width: "100%",
             height: "100%",
@@ -110,7 +122,6 @@ export default function VideoShowcase() {
             opacity: 0.65,
             filter: "brightness(0.55) contrast(1.1) saturate(0.9)",
           }}
-          src={insideVideo}
         />
       </div>
 
