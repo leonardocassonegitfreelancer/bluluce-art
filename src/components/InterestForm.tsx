@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
-import formBg from "@/assets/form_background_paint.webp";
 
 const WA_NUMBER = "34603356284";
 
@@ -62,11 +61,7 @@ export default function InterestForm() {
     <section
       id="interesse"
       aria-label="contact form"
-      style={{
-        backgroundImage: `url(${formBg.src})`,
-        backgroundSize: "cover",
-        backgroundPosition: "top center",
-      }}
+      style={{ background: "#FAFAF8", borderTop: "1px solid rgba(176,141,78,0.15)" }}
     >
       <div className="cf-wrapper">
         <div className="cf-card">
@@ -115,10 +110,8 @@ export default function InterestForm() {
         }
 
         .cf-card {
-          background: oklch(98% 0.007 78 / 0.82);
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
-          border: 1px solid oklch(90% 0.01 78 / 0.6);
+          background: #ffffff;
+          border: 1px solid rgba(176,141,78,0.2);
           border-radius: 4px;
           padding: 52px 48px 48px;
         }
