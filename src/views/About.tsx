@@ -3,6 +3,9 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
+import artistaTerrazzoImg from "@/assets/artista_terrazzo_cavalletto_malaga.webp";
+import artistaColoriImg from "@/assets/artista_ritratto_colori_viso.webp";
+import artistaMijasImg from "@/assets/artista_mijas_pueblo_bianco_andalusia.webp";
 
 const copy: Record<Lang, {
   seoTitle: string;
@@ -88,18 +91,19 @@ export default function AboutView() {
       />
       <Navbar />
 
-      {/* Hero header */}
-      <div className="pt-40 pb-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex items-center gap-5 mb-12">
+      {/* Hero — split layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2" style={{ paddingTop: "80px", minHeight: "85vh" }}>
+        {/* Left: text */}
+        <div className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-20">
+          <div className="flex items-center gap-5 mb-14">
             <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#b08d4e" }}>
               {t.label}
             </p>
             <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
           </div>
           <h1
-            className="font-display font-normal italic leading-[1.1]"
-            style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)", color: "#1c1917" }}
+            className="font-display font-normal italic leading-[1.08]"
+            style={{ fontSize: "clamp(3rem, 6vw, 6rem)", color: "#1c1917" }}
           >
             {headingLines.map((line, i) => (
               <span key={i}>
@@ -108,24 +112,35 @@ export default function AboutView() {
               </span>
             ))}
           </h1>
-        </div>
-      </div>
-
-      {/* Quote band */}
-      <div className="py-14 px-6" style={{ borderTop: "1px solid rgba(176,141,78,0.15)", borderBottom: "1px solid rgba(176,141,78,0.15)" }}>
-        <div className="max-w-5xl mx-auto">
-          <blockquote
-            className="font-display font-normal italic"
-            style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)", color: "#b08d4e", margin: 0 }}
+          <div className="mt-12 h-px w-12" style={{ background: "rgba(176,141,78,0.35)" }} />
+          <p
+            className="font-display font-normal italic mt-8"
+            style={{ fontSize: "clamp(1rem, 1.8vw, 1.35rem)", color: "#b08d4e", maxWidth: "420px" }}
           >
             "{t.quote}"
-          </blockquote>
+          </p>
+        </div>
+
+        {/* Right: hero photo */}
+        <div className="relative" style={{ minHeight: "60vw" }}>
+          <img
+            src={artistaTerrazzoImg.src}
+            alt="Vittoria De Raymondi — studio a cielo aperto, Málaga"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "center top" }}
+          />
+          {/* Subtle gradient overlay on left edge to blend with text column */}
+          <div
+            className="absolute inset-y-0 left-0 w-20 hidden md:block"
+            style={{ background: "linear-gradient(to right, #FAFAF8, transparent)" }}
+          />
         </div>
       </div>
 
       {/* Bio */}
-      <div className="py-20 md:py-28 px-6">
+      <div className="py-20 md:py-28 px-6" style={{ borderTop: "1px solid rgba(176,141,78,0.15)" }}>
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-20">
+          {/* Text */}
           <div className="md:col-span-3 space-y-6">
             <p className="font-body text-base md:text-lg leading-relaxed" style={{ color: "#1c1917" }}>
               {t.bio1}
@@ -137,7 +152,19 @@ export default function AboutView() {
               {t.bio3}
             </p>
           </div>
-          <div className="md:col-span-2 flex flex-col gap-6 pt-1">
+
+          {/* Sidebar: photo + facts */}
+          <div className="md:col-span-2 flex flex-col gap-0">
+            {/* Photo with mat */}
+            <div className="mb-8 overflow-hidden" style={{ background: "#f0ece5", padding: "10px 10px 18px" }}>
+              <img
+                src={artistaColoriImg.src}
+                alt="Vittoria De Raymondi"
+                className="w-full object-cover"
+                style={{ aspectRatio: "3/4" }}
+              />
+            </div>
+            {/* Facts */}
             {[
               { label: lang === "it" ? "Nazionalità" : lang === "es" ? "Nacionalidad" : "Nationality", value: lang === "it" ? "Italiana" : "Italian / Italiana" },
               { label: lang === "it" ? "Basata a" : lang === "es" ? "Basada en" : "Based in", value: "Málaga, España" },
@@ -155,6 +182,16 @@ export default function AboutView() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Full-width photo band */}
+      <div className="w-full overflow-hidden" style={{ height: "clamp(260px, 38vw, 520px)" }}>
+        <img
+          src={artistaMijasImg.src}
+          alt="Vittoria De Raymondi — Mijas, Andalusia"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "center 38%" }}
+        />
       </div>
 
       {/* Technique */}
@@ -176,7 +213,7 @@ export default function AboutView() {
                   {["I", "II", "III"][i]}
                 </p>
                 <div className="h-px mb-5" style={{ background: "rgba(176,141,78,0.22)" }} />
-                <h3 className="font-body text-sm font-semibold mb-3 uppercase tracking-wider" style={{ color: "#1c1917", fontSize: "0.7rem", letterSpacing: "0.15em" }}>
+                <h3 className="font-body font-semibold mb-3 uppercase tracking-wider" style={{ color: "#1c1917", fontSize: "0.7rem", letterSpacing: "0.15em" }}>
                   {fact.title}
                 </h3>
                 <p className="font-body text-sm leading-relaxed" style={{ color: "#78716c" }}>
