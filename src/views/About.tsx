@@ -12,6 +12,7 @@ const copy: Record<Lang, {
   quote: string;
   bio1: string;
   bio2: string;
+  bio3: string;
   techniqueLabel: string;
   facts: { title: string; desc: string }[];
   ctaLabel: string;
@@ -19,51 +20,54 @@ const copy: Record<Lang, {
 }> = {
   it: {
     seoTitle: "Chi sono | BLULUCE ART – Pittrice Italiana a Málaga",
-    seoDesc: "Pittrice italiana a Málaga ispirata dall'arte impressionista. Opere originali su lino e tela con pigmenti naturali e foglia d'oro.",
+    seoDesc: "Artista italiana a Málaga. Dipingo figure immerse nella natura mediterranea con uno stile impressionista lirico — luce, pennellate libere, emozione.",
     label: "L'ARTISTA",
     heading: "Italiana.\nA Málaga.\nInnamorata della luce.",
     quote: "La luce del Mediterraneo non si descrive. Si dipinge.",
-    bio1: "Sono una pittrice italiana trapiantata a Málaga, dove la qualità della luce e il carattere del paesaggio mediterraneo hanno trasformato radicalmente il mio modo di vedere e dipingere. La tradizione impressionista — il suo approccio istintivo alla luce, alla pennellata libera, alla cattura dell'attimo — è il filo che guida ogni mio lavoro.",
-    bio2: "Il Mediterraneo è il mio studio a cielo aperto. Il modo in cui la luce cambia sul mare all'alba, il calore della terra andalusa, il fruscio argentato degli ulivi sotto il sole di mezzogiorno — tutto diventa pigmento, pennellata, tela. Ogni opera nasce dall'osservazione diretta e dal desiderio di fermare qualcosa di effimero.",
+    bio1: "Sono un'artista italiana che ha trovato nella luce del Mediterraneo la sua più grande fonte di ispirazione. Vivo a Málaga, dove il mare, il vento e la terra dell'Andalusia hanno trasformato il mio modo di osservare il mondo e di dipingere.",
+    bio2: "Credo che la natura non sia uno sfondo, ma il luogo a cui apparteniamo. È questa connessione che cerco di raccontare in ogni mia opera. Le figure che dipingo non dominano mai il paesaggio: ne fanno parte. Camminano nell'acqua, si perdono tra gli alberi, respirano la luce, diventando un tutt'uno con ciò che le circonda.",
+    bio3: "Attraverso uno stile impressionista lirico interpreto la realtà con pennellate libere, colori vibranti e una luce che non descrive soltanto un luogo, ma un'emozione. Non cerco la perfezione del dettaglio, ma la poesia di un istante, la memoria di una sensazione, la bellezza silenziosa di ciò che spesso passa inosservato. Ogni dipinto nasce dal desiderio di fermare quella luce e custodirla nel tempo.",
     techniqueLabel: "TECNICA E MATERIALI",
     facts: [
       { title: "Dipinto a mano", desc: "Ogni opera è unica, realizzata interamente a mano su lino grezzo o tela. Non esistono copie o riproduzioni." },
       { title: "Pigmenti naturali", desc: "Lavoro con pigmenti naturali del Mediterraneo, oli e, in alcune opere, dettagli in foglia d'oro a 24 carati." },
-      { title: "Tradizione impressionista", desc: "La pennellata visibile, la luce diretta e la spontaneità del gesto: l'impressionismo è la mia lingua madre pittorica." },
+      { title: "Stile impressionista lirico", desc: "Pennellate libere, colori vibranti e luce che non descrive un luogo ma un'emozione — la poesia di un istante fermata sulla tela." },
     ],
     ctaLabel: "ESPLORA LE OPERE",
     ctaHref: (l) => `/${l}/collezione`,
   },
   es: {
     seoTitle: "Sobre mí | BLULUCE ART – Pintora Italiana en Málaga",
-    seoDesc: "Pintora italiana en Málaga inspirada por el arte impresionista. Obras originales sobre lino y tela con pigmentos naturales y pan de oro.",
+    seoDesc: "Artista italiana en Málaga. Pinto figuras inmersas en la naturaleza mediterránea con un estilo impresionista lírico — luz, pinceladas libres, emoción.",
     label: "LA ARTISTA",
     heading: "Italiana.\nEn Málaga.\nEnamorada de la luz.",
     quote: "La luz del Mediterráneo no se describe. Se pinta.",
-    bio1: "Soy una pintora italiana afincada en Málaga, donde la calidad de la luz y el carácter del paisaje mediterráneo han transformado radicalmente mi forma de ver y pintar. La tradición impresionista — su enfoque instintivo hacia la luz, la pincelada libre, la captura del instante — es el hilo que guía cada uno de mis trabajos.",
-    bio2: "El Mediterráneo es mi estudio al aire libre. La forma en que la luz cambia sobre el mar al amanecer, el calor de la tierra andaluza, el susurro plateado de los olivos bajo el sol del mediodía — todo se convierte en pigmento, pincelada, lienzo. Cada obra nace de la observación directa y del deseo de detener algo efímero.",
+    bio1: "Soy una artista italiana que ha encontrado en la luz del Mediterráneo su mayor fuente de inspiración. Vivo en Málaga, donde el mar, el viento y la tierra de Andalucía han transformado mi forma de observar el mundo y de pintar.",
+    bio2: "Creo que la naturaleza no es un fondo, sino el lugar al que pertenecemos. Es esta conexión la que busco contar en cada una de mis obras. Las figuras que pinto nunca dominan el paisaje: forman parte de él. Caminan en el agua, se pierden entre los árboles, respiran la luz, convirtiéndose en uno con lo que les rodea.",
+    bio3: "A través de un estilo impresionista lírico interpreto la realidad con pinceladas libres, colores vibrantes y una luz que no solo describe un lugar, sino una emoción. No busco la perfección del detalle, sino la poesía de un instante, la memoria de una sensación, la belleza silenciosa de lo que a menudo pasa desapercibido. Cada pintura nace del deseo de detener esa luz y custodiarla en el tiempo.",
     techniqueLabel: "TÉCNICA Y MATERIALES",
     facts: [
       { title: "Pintado a mano", desc: "Cada obra es única, realizada íntegramente a mano sobre lino crudo o lienzo. No existen copias ni reproducciones." },
       { title: "Pigmentos naturales", desc: "Trabajo con pigmentos naturales del Mediterráneo, aceites y, en algunas obras, detalles en pan de oro de 24 quilates." },
-      { title: "Tradición impresionista", desc: "La pincelada visible, la luz directa y la espontaneidad del gesto: el impresionismo es mi lengua materna pictórica." },
+      { title: "Estilo impresionista lírico", desc: "Pinceladas libres, colores vibrantes y una luz que no describe un lugar sino una emoción — la poesía de un instante detenida en el lienzo." },
     ],
     ctaLabel: "EXPLORAR LAS OBRAS",
     ctaHref: (l) => `/${l}/tienda`,
   },
   en: {
     seoTitle: "About | BLULUCE ART – Italian Painter in Málaga",
-    seoDesc: "Italian painter in Málaga inspired by Impressionist art. Original works on linen and canvas with natural pigments and gold leaf.",
+    seoDesc: "Italian artist in Málaga. I paint figures immersed in Mediterranean nature with a lyrical Impressionist style — light, free brushstrokes, emotion.",
     label: "THE ARTIST",
     heading: "Italian.\nIn Málaga.\nIn love with light.",
     quote: "Mediterranean light cannot be described. It must be painted.",
-    bio1: "I am an Italian painter based in Málaga, where the quality of light and the character of the Mediterranean landscape have radically transformed the way I see and paint. The Impressionist tradition — its instinctive approach to light, free brushwork, the capture of the moment — is the thread running through all my work.",
-    bio2: "The Mediterranean is my open-air studio. The way light shifts across the sea at dawn, the warmth of Andalusian earth, the silver rustle of olive trees under the midday sun — everything becomes pigment, brushstroke, canvas. Every work is born from direct observation and the desire to hold something ephemeral still.",
+    bio1: "I am an Italian artist who found in the light of the Mediterranean her greatest source of inspiration. I live in Málaga, where the sea, the wind and the land of Andalusia have transformed the way I observe the world and paint.",
+    bio2: "I believe that nature is not a backdrop, but the place we belong to. It is this connection I seek to tell in each of my works. The figures I paint never dominate the landscape: they are part of it. They walk in the water, get lost among the trees, breathe the light, becoming one with everything around them.",
+    bio3: "Through a lyrical Impressionist style I interpret reality with free brushstrokes, vibrant colours and a light that does not only describe a place, but an emotion. I do not seek the perfection of detail, but the poetry of a moment, the memory of a feeling, the silent beauty of what often goes unnoticed. Every painting is born from the desire to stop that light and keep it forever.",
     techniqueLabel: "TECHNIQUE & MATERIALS",
     facts: [
       { title: "Hand-painted", desc: "Every work is unique, painted entirely by hand on raw linen or canvas. No copies or reproductions exist." },
       { title: "Natural pigments", desc: "I work with natural Mediterranean pigments, oils and, in some works, 24-carat gold leaf details." },
-      { title: "Impressionist tradition", desc: "Visible brushwork, direct light and spontaneity of gesture: Impressionism is my native pictorial language." },
+      { title: "Lyrical Impressionist style", desc: "Free brushstrokes, vibrant colours and a light that describes not a place but an emotion — the poetry of a moment held on canvas." },
     ],
     ctaLabel: "EXPLORE THE WORKS",
     ctaHref: (l) => `/${l}/shop`,
@@ -128,6 +132,9 @@ export default function AboutView() {
             </p>
             <p className="font-body text-base md:text-lg leading-relaxed" style={{ color: "#78716c" }}>
               {t.bio2}
+            </p>
+            <p className="font-body text-base md:text-lg leading-relaxed" style={{ color: "#78716c" }}>
+              {t.bio3}
             </p>
           </div>
           <div className="md:col-span-2 flex flex-col gap-6 pt-1">
