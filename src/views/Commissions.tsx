@@ -132,7 +132,7 @@ export default function CommissionsView() {
             src={artistaFieraImg.src}
             alt="Vittoria De Raymondi — Bluluce Art"
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: "center top" }}
+            style={{ objectPosition: "center 48%" }}
           />
           <div
             className="absolute inset-y-0 right-0 w-20 hidden md:block"
