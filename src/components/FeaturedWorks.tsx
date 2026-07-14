@@ -51,18 +51,18 @@ export default function FeaturedWorks() {
   const collectionUrl = `/${lang}/${productsSlug[lang as Lang] || productsSlug.it}`;
 
   return (
-    <section className="py-24 md:py-32 px-6 md:px-10" style={{ background: "#FAFAF8" }}>
+    <section className="pt-14 pb-20 md:py-32 px-6 md:px-10" style={{ background: "#FAFAF8" }}>
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
-        <div className="flex items-end justify-between mb-14 gap-6 flex-wrap">
+        <div className="flex items-end justify-between mb-8 md:mb-14 gap-4 flex-wrap">
           <div>
-            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase mb-4" style={{ color: "#b08d4e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.3em] uppercase mb-6" style={{ color: "#b08d4e" }}>
               {t.label}
             </p>
             <h2
-              className="font-bebas font-light uppercase leading-none"
-              style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)", color: "#1c1917", letterSpacing: "0.03em" }}
+              className="font-bebas font-light uppercase leading-[0.95]"
+              style={{ fontSize: "clamp(2.6rem, 7vw, 6.5rem)", color: "#1c1917", letterSpacing: "0.02em", textWrap: "balance" } as any}
             >
               {t.heading}
             </h2>
