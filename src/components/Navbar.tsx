@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+﻿import { useState, useEffect, useCallback } from "react";
 import { Globe } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { th } from "@/i18n/homeTranslations";
@@ -101,7 +101,7 @@ const Navbar = () => {
           style={{ textDecoration: "none" }}
         >
           BLULUCE
-          <span className="font-body text-[0.55rem] font-normal tracking-[0.35em] text-[#b08d4e] ml-1.5">ART</span>
+          <span className="font-body text-[0.55rem] font-normal tracking-[0.35em] text-[#8a6a2e] ml-1.5">ART</span>
         </a>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -128,13 +128,13 @@ const Navbar = () => {
 
       {/* Side Menu Drawer (Desktop) */}
       <div
-        className={`hidden md:flex fixed top-0 right-0 bottom-0 w-[420px] max-w-full z-[49] bg-[#fafaf8] border-l border-[#b08d4e]/15 flex-col justify-between px-16 py-20 shadow-[-10px_0_40px_rgba(0,0,0,0.04)] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`hidden md:flex fixed top-0 right-0 bottom-0 w-[420px] max-w-full z-[49] bg-[#fafaf8] border-l border-[#8a6a2e]/15 flex-col justify-between px-16 py-20 shadow-[-10px_0_40px_rgba(0,0,0,0.04)] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Top Header inside Drawer */}
         <div className="flex justify-between items-center mb-12">
-          <span className="font-display text-[0.85rem] tracking-[0.25em] text-[#b08d4e] uppercase">{th("navExplore", lang)}</span>
+          <span className="font-display text-[0.85rem] tracking-[0.25em] text-[#8a6a2e] uppercase">{th("navExplore", lang)}</span>
         </div>
 
         {/* Links */}
@@ -147,7 +147,7 @@ const Navbar = () => {
                 href={item.href}
                 onClick={handleNavClick}
                 className={`font-display text-[2.4rem] font-normal italic leading-none transition-all duration-500 hover:translate-x-3 text-decoration-none ${
-                  active ? "text-[#b08d4e]" : "text-[#1c1917] hover:text-[#b08d4e]"
+                  active ? "text-[#8a6a2e]" : "text-[#1c1917] hover:text-[#8a6a2e]"
                 }`}
                 style={{ textDecoration: "none", transitionDelay: mobileOpen ? `${i * 60}ms` : "0ms" }}
               >
@@ -158,7 +158,7 @@ const Navbar = () => {
         </nav>
 
         {/* Bottom Drawer Content */}
-        <div className="border-t border-[#b08d4e]/15 pt-10 flex flex-col gap-8">
+        <div className="border-t border-[#8a6a2e]/15 pt-10 flex flex-col gap-8">
           {/* Languages */}
           <div className="flex items-center gap-2">
             <Globe className="w-3.5 h-3.5 text-[#a8a29e] mr-2" />
@@ -168,7 +168,7 @@ const Navbar = () => {
                   key={l}
                   onClick={() => handleLangSwitch(l)}
                   className={`font-body text-[0.68rem] tracking-[0.15em] uppercase border-none bg-transparent cursor-pointer transition-colors ${
-                    lang === l ? "text-[#b08d4e] font-semibold" : "text-[#78716c] hover:text-[#1c1917]"
+                    lang === l ? "text-[#8a6a2e] font-semibold" : "text-[#78716c] hover:text-[#1c1917]"
                   }`}
                 >
                   {l.toUpperCase()}
@@ -181,7 +181,7 @@ const Navbar = () => {
           <a
             href={`${prefix}/#interesse`}
             onClick={handleNavClick}
-            className="w-full py-4 border border-[#b08d4e]/40 text-[#b08d4e] hover:bg-[#b08d4e] hover:text-[#fafaf8] hover:border-[#b08d4e] font-body text-[0.62rem] tracking-[0.3em] uppercase flex items-center justify-center transition-all duration-500"
+            className="w-full py-4 border border-[#8a6a2e]/40 text-[#8a6a2e] hover:bg-[#8a6a2e] hover:text-[#fafaf8] hover:border-[#8a6a2e] font-body text-[0.62rem] tracking-[0.3em] uppercase flex items-center justify-center transition-all duration-500"
             style={{ textDecoration: "none" }}
           >
             {th("navContacts", lang)}
@@ -203,7 +203,7 @@ const Navbar = () => {
               onClick={handleNavClick}
               className={`block font-display text-3xl font-normal py-1.5 transition-all duration-600 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                 mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              } ${isActive(item.href) ? "text-[#b08d4e]" : "text-[#1c1917]"}`}
+              } ${isActive(item.href) ? "text-[#8a6a2e]" : "text-[#1c1917]"}`}
               style={{ transitionDelay: mobileOpen ? `${80 + i * 70}ms` : "0ms" }}
             >
               {item.label}
@@ -212,20 +212,20 @@ const Navbar = () => {
         </nav>
 
         <div
-          className={`border-t border-[#b08d4e]/15 pt-10 flex flex-col gap-8 transition-all duration-500 ${
+          className={`border-t border-[#8a6a2e]/15 pt-10 flex flex-col gap-8 transition-all duration-500 ${
             mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ transitionDelay: mobileOpen ? "380ms" : "0ms" }}
         >
           <div className="flex items-center gap-4">
-            <Globe className="w-4 h-4 text-[#b08d4e]/60" />
+            <Globe className="w-4 h-4 text-[#8a6a2e]/60" />
             <div className="flex gap-4">
               {langs.map((l) => (
                 <button
                   key={l}
                   onClick={() => handleLangSwitch(l)}
                   className={`font-bebas text-lg tracking-[0.15em] uppercase transition-colors ${
-                    lang === l ? "text-[#b08d4e] font-semibold" : "text-[#78716c] hover:text-[#1c1917]"
+                    lang === l ? "text-[#8a6a2e] font-semibold" : "text-[#78716c] hover:text-[#1c1917]"
                   }`}
                 >
                   {l}
@@ -237,7 +237,7 @@ const Navbar = () => {
           <a
             href={`${prefix}/${productsSlug[lang]}`}
             onClick={handleNavClick}
-            className="w-full py-4 border text-[#b08d4e] font-body text-[0.6rem] tracking-[0.3em] uppercase flex items-center justify-center transition-all duration-500"
+            className="w-full py-4 border text-[#8a6a2e] font-body text-[0.6rem] tracking-[0.3em] uppercase flex items-center justify-center transition-all duration-500"
             style={{ background: "rgba(176,141,78,0.06)", borderColor: "rgba(176,141,78,0.25)" }}
           >
             {th("navMenu", lang)}

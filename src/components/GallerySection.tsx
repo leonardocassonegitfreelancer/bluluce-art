@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+﻿import { useState, useRef } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -152,7 +152,7 @@ export default function GallerySection() {
 
         {/* Header */}
         <div className="mb-16">
-          <p className="font-body uppercase tracking-[0.28em] text-[#b08d4e] text-[0.6rem] mb-4">
+          <p className="font-body uppercase tracking-[0.28em] text-[#8a6a2e] text-[0.6rem] mb-4">
             BLULUCE ART
           </p>
           <h1
@@ -164,7 +164,7 @@ export default function GallerySection() {
           <p className="font-body text-sm leading-relaxed max-w-lg" style={{ color: "#78716c" }}>
             {copy.desc[l]}
           </p>
-          <div className="mt-6 h-px w-10" style={{ background: "#b08d4e" }} />
+          <div className="mt-6 h-px w-10" style={{ background: "#8a6a2e" }} />
         </div>
 
         {/* Filters */}
@@ -175,9 +175,9 @@ export default function GallerySection() {
               onClick={() => changeFilter(f)}
               className="font-body text-[0.6rem] tracking-[0.22em] uppercase px-5 py-2.5 transition-all duration-300"
               style={{
-                border: `1px solid ${activeFilter === f ? "#b08d4e" : "rgba(176,141,78,0.3)"}`,
+                border: `1px solid ${activeFilter === f ? "#8a6a2e" : "rgba(176,141,78,0.3)"}`,
                 background: activeFilter === f ? "rgba(176,141,78,0.08)" : "transparent",
-                color: activeFilter === f ? "#b08d4e" : "#78716c",
+                color: activeFilter === f ? "#8a6a2e" : "#78716c",
               }}
             >
               {copy.filters[f][l]}
@@ -204,11 +204,11 @@ export default function GallerySection() {
 
               {/* Info */}
               <div>
-                <p className="font-body text-[0.58rem] uppercase tracking-[0.2em] mb-1.5" style={{ color: "#b08d4e" }}>
+                <p className="font-body text-[0.58rem] uppercase tracking-[0.2em] mb-1.5" style={{ color: "#8a6a2e" }}>
                   {art.category}
                 </p>
                 <h3
-                  className="font-display font-normal italic text-lg leading-snug mb-1.5 transition-colors duration-300 group-hover:text-[#b08d4e]"
+                  className="font-display font-normal italic text-lg leading-snug mb-1.5 transition-colors duration-300 group-hover:text-[#8a6a2e]"
                   style={{ color: "#1c1917" }}
                 >
                   {art.name[l]}
@@ -216,7 +216,7 @@ export default function GallerySection() {
                 <p className="font-body text-[0.72rem] leading-relaxed" style={{ color: "#a8a29e" }}>
                   {art.info[l]}
                 </p>
-                <p className="font-body text-[0.6rem] uppercase tracking-[0.15em] mt-2" style={{ color: art.status[l] === "Available" || art.status[l] === "Disponible" || art.status[l] === "Disponibile" ? "#b08d4e" : "#a8a29e" }}>
+                <p className="font-body text-[0.6rem] uppercase tracking-[0.15em] mt-2" style={{ color: art.status[l] === "Available" || art.status[l] === "Disponible" || art.status[l] === "Disponibile" ? "#8a6a2e" : "#a8a29e" }}>
                   {art.status[l]}
                 </p>
               </div>
@@ -268,7 +268,7 @@ export default function GallerySection() {
             </div>
 
             <div className="w-full md:w-1/2 text-left">
-              <p className="font-body text-[0.58rem] uppercase tracking-[0.25em] mb-3" style={{ color: "#b08d4e" }}>
+              <p className="font-body text-[0.58rem] uppercase tracking-[0.25em] mb-3" style={{ color: "#8a6a2e" }}>
                 {filtered[lightboxIndex].category}
               </p>
               <h2
@@ -282,8 +282,8 @@ export default function GallerySection() {
               </p>
 
               <div className="flex items-center gap-2.5 mb-8">
-                <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#b08d4e" }} />
-                <span className="font-body text-[0.6rem] uppercase tracking-[0.18em]" style={{ color: "#b08d4e" }}>
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#8a6a2e" }} />
+                <span className="font-body text-[0.6rem] uppercase tracking-[0.18em]" style={{ color: "#8a6a2e" }}>
                   {filtered[lightboxIndex].status[l]}
                 </span>
               </div>
@@ -295,7 +295,7 @@ export default function GallerySection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-body text-[0.6rem] tracking-[0.22em] uppercase transition-all duration-300 hover:opacity-70"
-                style={{ color: "#b08d4e", borderBottom: "1px solid rgba(176,141,78,0.35)", paddingBottom: "3px" }}
+                style={{ color: "#8a6a2e", borderBottom: "1px solid rgba(176,141,78,0.35)", paddingBottom: "3px" }}
               >
                 {copy.inquire[l]}
               </a>

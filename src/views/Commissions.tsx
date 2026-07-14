@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -142,7 +142,7 @@ export default function CommissionsView() {
 
         {/* Right: product details */}
         <div className="flex flex-col justify-center px-8 md:px-14 lg:px-20 py-16 md:py-24">
-          <p className="font-bebas text-[10px] tracking-[0.45em] uppercase mb-8" style={{ color: "#b08d4e" }}>
+          <p className="font-bebas text-[10px] tracking-[0.45em] uppercase mb-8" style={{ color: "#8a6a2e" }}>
             {t.label}
           </p>
 
@@ -163,7 +163,7 @@ export default function CommissionsView() {
 
           {/* Size selector */}
           <div className="mb-8">
-            <p className="font-bebas text-[10px] tracking-[0.4em] uppercase mb-4" style={{ color: "#b08d4e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.4em] uppercase mb-4" style={{ color: "#8a6a2e" }}>
               {t.sizeLabel}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -173,8 +173,8 @@ export default function CommissionsView() {
                   onClick={() => setSelectedSize(s)}
                   className="font-body text-[0.7rem] tracking-[0.12em] px-4 py-2 transition-all duration-200"
                   style={{
-                    border: `1px solid ${selectedSize === s ? "#b08d4e" : "rgba(176,141,78,0.3)"}`,
-                    background: selectedSize === s ? "#b08d4e" : "transparent",
+                    border: `1px solid ${selectedSize === s ? "#8a6a2e" : "rgba(176,141,78,0.3)"}`,
+                    background: selectedSize === s ? "#8a6a2e" : "transparent",
                     color: selectedSize === s ? "#FAFAF8" : "#78716c",
                   }}
                 >
@@ -186,7 +186,7 @@ export default function CommissionsView() {
 
           {/* Material selector */}
           <div className="mb-10">
-            <p className="font-bebas text-[10px] tracking-[0.4em] uppercase mb-4" style={{ color: "#b08d4e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.4em] uppercase mb-4" style={{ color: "#8a6a2e" }}>
               {t.materialLabel}
             </p>
             <div className="flex gap-2">
@@ -196,8 +196,8 @@ export default function CommissionsView() {
                   onClick={() => setSelectedMaterial(m)}
                   className="font-body text-[0.7rem] tracking-[0.12em] px-5 py-2 transition-all duration-200"
                   style={{
-                    border: `1px solid ${selectedMaterial === m ? "#b08d4e" : "rgba(176,141,78,0.3)"}`,
-                    background: selectedMaterial === m ? "#b08d4e" : "transparent",
+                    border: `1px solid ${selectedMaterial === m ? "#8a6a2e" : "rgba(176,141,78,0.3)"}`,
+                    background: selectedMaterial === m ? "#8a6a2e" : "transparent",
                     color: selectedMaterial === m ? "#FAFAF8" : "#78716c",
                   }}
                 >
@@ -210,13 +210,13 @@ export default function CommissionsView() {
           {/* Details */}
           <div className="mb-10 space-y-4">
             <div className="flex items-start gap-3">
-              <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#b08d4e", minWidth: "120px" }}>
+              <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#8a6a2e", minWidth: "120px" }}>
                 {t.timelineLabel}
               </span>
               <span className="font-body text-sm" style={{ color: "#1c1917" }}>{t.timelineValue}</span>
             </div>
             <div className="flex items-start gap-3">
-              <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#b08d4e", minWidth: "120px" }}>
+              <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#8a6a2e", minWidth: "120px" }}>
                 {t.shippingLabel}
               </span>
               <span className="font-body text-sm" style={{ color: "#1c1917" }}>{t.shippingValue}</span>
@@ -231,9 +231,9 @@ export default function CommissionsView() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-3 px-8 py-4 font-body text-xs tracking-widest uppercase transition-all duration-500 mb-4"
-            style={{ background: "#b08d4e", color: "#FAFAF8", border: "1px solid #b08d4e" }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#b08d4e"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "#b08d4e"; e.currentTarget.style.color = "#FAFAF8"; }}
+            style={{ background: "#8a6a2e", color: "#FAFAF8", border: "1px solid #8a6a2e" }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#8a6a2e"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "#8a6a2e"; e.currentTarget.style.color = "#FAFAF8"; }}
           >
             {/* WhatsApp icon */}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -251,7 +251,7 @@ export default function CommissionsView() {
       <div className="py-20 px-6" style={{ borderTop: "1px solid rgba(176,141,78,0.15)" }}>
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-5 mb-14">
-            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#b08d4e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#8a6a2e" }}>
               {t.processLabel}
             </p>
             <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />

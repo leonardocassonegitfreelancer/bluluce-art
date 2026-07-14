@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+﻿import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -45,7 +45,7 @@ const ProductsPage = () => {
       <div className="pt-32 pb-10 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-5 mb-10">
-            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#b08d4e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#8a6a2e" }}>
               BLULUCE ART
             </p>
             <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
@@ -80,9 +80,9 @@ const ProductsPage = () => {
               background: "transparent",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#b08d4e";
+              e.currentTarget.style.borderColor = "#8a6a2e";
               e.currentTarget.style.color = "#FAFAF8";
-              e.currentTarget.style.background = "#b08d4e";
+              e.currentTarget.style.background = "#8a6a2e";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderColor = "rgba(176,141,78,0.3)";
@@ -140,7 +140,7 @@ const ProductsPage = () => {
                     </p>
                     <div className="h-px mb-6" style={{ background: "rgba(176,141,78,0.22)" }} />
                     <h2
-                      className="font-display font-normal italic mb-5 leading-snug transition-colors duration-300 group-hover:text-[#b08d4e]"
+                      className="font-display font-normal italic mb-5 leading-snug transition-colors duration-300 group-hover:text-[#8a6a2e]"
                       style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.2rem)", color: "#1c1917" }}
                     >
                       {cat.name}
@@ -153,7 +153,7 @@ const ProductsPage = () => {
                     </p>
                     <span
                       className="font-bebas text-[11px] tracking-[0.25em] uppercase transition-all duration-300 group-hover:tracking-[0.35em]"
-                      style={{ color: "#b08d4e", borderBottom: "1px solid rgba(176,141,78,0.3)", paddingBottom: "3px" }}
+                      style={{ color: "#8a6a2e", borderBottom: "1px solid rgba(176,141,78,0.3)", paddingBottom: "3px" }}
                     >
                       {lang === "it" ? "ESPLORA LA COLLEZIONE →" : lang === "en" ? "EXPLORE COLLECTION →" : "EXPLORAR LA COLECCIÓN →"}
                     </span>
@@ -190,16 +190,16 @@ const ProductsPage = () => {
             href={`/${lang}`}
             className="inline-block px-8 py-3 font-body text-xs tracking-widest uppercase transition-all duration-500 ease-out"
             style={{
-              border: "1px solid #b08d4e",
-              color: "#b08d4e",
+              border: "1px solid #8a6a2e",
+              color: "#8a6a2e",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#b08d4e";
+              e.currentTarget.style.background = "#8a6a2e";
               e.currentTarget.style.color = "#FAFAF8";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#b08d4e";
+              e.currentTarget.style.color = "#8a6a2e";
             }}
           >
             {lang === "es" ? "VOLVER AL INICIO" : lang === "it" ? "TORNA ALLA HOME" : "BACK TO HOME"}

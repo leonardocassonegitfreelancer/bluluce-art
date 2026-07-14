@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { productsSlug } from "@/i18n/slugs";
 import mareImg from "@/assets/mediterranean_sea.webp";
@@ -550,13 +550,13 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
         .gh-logo { position: absolute; top: 36px; left: clamp(28px,5vw,56px); z-index: 10;
           font-family: var(--font-display, "Cormorant Garamond", serif); font-weight: 700; letter-spacing: 0.22em;
           font-size: 0.85rem; text-transform: uppercase; color: #161310; }
-        .gh-logo .gh-art { color: #b08d4e; }
+        .gh-logo .gh-art { color: #8a6a2e; }
         .gh-ui { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
         .gh-slide { position: absolute; top: 22%; left: clamp(40px,14vw,220px); width: min(32vw, 400px);
           opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease-out;
           text-shadow: 0 1px 16px rgba(247,247,245,0.92), 0 0 2px rgba(247,247,245,0.95); }
         .gh-slide.gh-active { opacity: 1; transform: translateY(0); }
-        .gh-cat { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.28em; color: #b08d4e;
+        .gh-cat { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.28em; color: #8a6a2e;
           margin-bottom: 1.4rem; display: inline-block; border-bottom: 1px solid rgba(176,141,78,0.4); padding-bottom: 6px; }
         .gh-title { font-family: var(--font-display, "Cormorant Garamond", serif); font-weight: 400; font-style: italic;
           font-size: clamp(2.2rem, 3.7vw, 3.7rem); line-height: 1; margin: 0 0 1.3rem; color: #0d0d0d; }
@@ -571,7 +571,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
           letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; cursor: pointer;
           border: 1px solid rgba(176,141,78,0.6); color: #6b5630; background: rgba(247,247,245,0.4);
           transition: background .4s ease, color .4s ease; }
-        .gh-slide-cta:hover { background: #b08d4e; color: #fff; }
+        .gh-slide-cta:hover { background: #8a6a2e; color: #fff; }
         .gh-hint { position: absolute; bottom: 34px; left: clamp(28px,5vw,56px); z-index: 10;
           font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.2em; color: #9a9a95; }
         .gh-controls { position: absolute; bottom: 32px; right: clamp(28px,5vw,56px); z-index: 10;
@@ -580,7 +580,7 @@ const GalleryHall = ({ mode = "full", lang = "it", homeHref = "/" }: GalleryHall
           display: grid; place-items: center; cursor: pointer; background: rgba(255,255,255,0.55); backdrop-filter: blur(4px);
           -webkit-tap-highlight-color: transparent;
           transition: border-color .3s ease, background .3s ease; }
-        .gh-arrow:hover { border-color: #b08d4e; background: rgba(176,141,78,0.12); }
+        .gh-arrow:hover { border-color: #8a6a2e; background: rgba(176,141,78,0.12); }
         .gh-arrow svg { width: 20px; height: 20px; color: #4a4540; }
 
         @media (max-width: 767px) {

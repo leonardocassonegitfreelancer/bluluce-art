@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+﻿import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -171,7 +171,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
           <div className="max-w-5xl mx-auto text-center md:text-left">
             <span
               className="font-bebas text-xs tracking-[0.35em] uppercase mb-3 block"
-              style={{ color: "#b08d4e" }}
+              style={{ color: "#8a6a2e" }}
             >
               {lang === "es" ? "COLECCIÓN DE ARTE" : lang === "it" ? "COLLEZIONE D'ARTE" : "FINE ART COLLECTION"}
             </span>
@@ -203,9 +203,9 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
             href={categoryPath(lang, s.slug)}
             className="font-bebas text-[11px] md:text-xs tracking-[0.2em] uppercase px-5 md:px-7 py-2.5 md:py-3 transition-all duration-300"
             style={{
-              border: `1px solid ${s.slug === slug ? "#b08d4e" : "rgba(176,141,78,0.3)"}`,
+              border: `1px solid ${s.slug === slug ? "#8a6a2e" : "rgba(176,141,78,0.3)"}`,
               background: s.slug === slug ? "rgba(176,141,78,0.08)" : "transparent",
-              color: s.slug === slug ? "#b08d4e" : "#78716c",
+              color: s.slug === slug ? "#8a6a2e" : "#78716c",
             }}
           >
             {th(s.labelKey as any, lang)}
@@ -231,7 +231,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
           {/* Section label with flanking rules */}
           <div className="flex items-center gap-5 mb-16 md:mb-20">
             <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
-            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#b08d4e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#8a6a2e" }}>
               {lang === "es" ? "OBRAS EN LA COLECCIÓN" : lang === "it" ? "OPERE NELLA COLLEZIONE" : "WORKS IN THIS COLLECTION"}
             </p>
             <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
@@ -274,11 +274,11 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
                     <div className="flex items-center gap-2 mb-5">
                       <span
                         className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
-                        style={{ background: isAvail ? "#b08d4e" : "#a8a29e" }}
+                        style={{ background: isAvail ? "#8a6a2e" : "#a8a29e" }}
                       />
                       <span
                         className="font-bebas text-[10px] tracking-[0.32em] uppercase"
-                        style={{ color: isAvail ? "#b08d4e" : "#a8a29e" }}
+                        style={{ color: isAvail ? "#8a6a2e" : "#a8a29e" }}
                       >
                         {prod.status[lang] || prod.status.en}
                       </span>
@@ -325,14 +325,14 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
           <a
             href={`/${lang}`}
             className="inline-block px-8 py-3 font-body text-xs tracking-widest uppercase transition-all duration-500"
-            style={{ border: "1px solid #b08d4e", color: "#b08d4e" }}
+            style={{ border: "1px solid #8a6a2e", color: "#8a6a2e" }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#b08d4e";
+              e.currentTarget.style.background = "#8a6a2e";
               e.currentTarget.style.color = "#FAFAF8";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#b08d4e";
+              e.currentTarget.style.color = "#8a6a2e";
             }}
           >
             {lang === "es" ? "CONTACTAR EL ESTUDIO" : lang === "it" ? "CONTATTA LO STUDIO" : "CONTACT THE STUDIO"}

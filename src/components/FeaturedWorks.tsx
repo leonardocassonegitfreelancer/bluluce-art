@@ -1,4 +1,4 @@
-import { useLanguage } from "@/i18n/LanguageContext";
+﻿import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { productsSlug } from "@/i18n/slugs";
 import mareSpiaggiaImg from "@/assets/pittura_mare_donna_spiaggia_dune.webp";
@@ -57,7 +57,7 @@ export default function FeaturedWorks() {
         {/* Header */}
         <div className="flex items-end justify-between mb-8 md:mb-14 gap-4 flex-wrap">
           <div>
-            <p className="font-bebas text-[10px] tracking-[0.3em] uppercase mb-6" style={{ color: "#b08d4e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.3em] uppercase mb-6" style={{ color: "#8a6a2e" }}>
               {t.label}
             </p>
             <h2
@@ -70,7 +70,7 @@ export default function FeaturedWorks() {
           <a
             href={collectionUrl}
             className="font-bebas text-[11px] tracking-[0.3em] uppercase transition-all duration-300 hover:tracking-[0.4em] flex-shrink-0 self-end"
-            style={{ color: "#b08d4e", borderBottom: "1px solid rgba(176,141,78,0.3)", paddingBottom: "3px" }}
+            style={{ color: "#8a6a2e", borderBottom: "1px solid rgba(176,141,78,0.3)", paddingBottom: "3px" }}
           >
             {t.cta}
           </a>
@@ -98,11 +98,11 @@ export default function FeaturedWorks() {
               </div>
 
               {/* Info */}
-              <p className="font-bebas text-[9px] tracking-[0.28em] uppercase mb-1.5" style={{ color: "#b08d4e" }}>
+              <p className="font-bebas text-[9px] tracking-[0.28em] uppercase mb-1.5" style={{ color: "#8a6a2e" }}>
                 {work.collection}
               </p>
               <h3
-                className="font-display font-normal italic text-lg leading-snug mb-1 transition-colors duration-300 group-hover:text-[#b08d4e]"
+                className="font-display font-normal italic text-lg leading-snug mb-1 transition-colors duration-300 group-hover:text-[#8a6a2e]"
                 style={{ color: "#1c1917" }}
               >
                 {work.name}

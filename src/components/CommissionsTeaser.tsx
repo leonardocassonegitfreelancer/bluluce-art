@@ -1,4 +1,4 @@
-import { useLanguage } from "@/i18n/LanguageContext";
+﻿import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 
 const copy: Record<Lang, {
@@ -40,7 +40,7 @@ export default function CommissionsTeaser() {
       <div className="max-w-5xl mx-auto">
 
         <div className="flex items-center gap-5 mb-14">
-          <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#b08d4e" }}>
+          <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#8a6a2e" }}>
             {t.label}
           </p>
           <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
@@ -70,7 +70,7 @@ export default function CommissionsTeaser() {
             <a
               href={`/${lang}/commissioni`}
               className="font-bebas text-[11px] tracking-[0.3em] uppercase transition-all duration-300 hover:tracking-[0.4em] self-start"
-              style={{ color: "#b08d4e", borderBottom: "1px solid rgba(176,141,78,0.3)", paddingBottom: "3px" }}
+              style={{ color: "#8a6a2e", borderBottom: "1px solid rgba(176,141,78,0.3)", paddingBottom: "3px" }}
             >
               {t.link}
             </a>

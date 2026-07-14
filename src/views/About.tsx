@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+﻿import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -120,7 +120,7 @@ export default function AboutView() {
         {/* Text — second on mobile, first on desktop */}
         <div className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-14 md:py-20 order-last md:order-first">
           <div className="flex items-center gap-5 mb-10 md:mb-14">
-            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#b08d4e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#8a6a2e" }}>
               {t.label}
             </p>
             <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
@@ -139,7 +139,7 @@ export default function AboutView() {
           <div className="mt-10 md:mt-12 h-px w-12" style={{ background: "rgba(176,141,78,0.35)" }} />
           <p
             className="font-display font-normal italic mt-6 md:mt-8"
-            style={{ fontSize: "clamp(1rem, 1.8vw, 1.35rem)", color: "#b08d4e", maxWidth: "420px" }}
+            style={{ fontSize: "clamp(1rem, 1.8vw, 1.35rem)", color: "#8a6a2e", maxWidth: "420px" }}
           >
             "{t.quote}"
           </p>
@@ -182,7 +182,7 @@ export default function AboutView() {
               { label: lang === "it" ? "Supporto" : lang === "es" ? "Soporte" : "Surface", value: lang === "it" ? "Lino · Tela" : "Linen · Canvas" },
             ].map((fact) => (
               <div key={fact.label} className="py-4" style={{ borderBottom: "1px solid rgba(28,25,23,0.07)" }}>
-                <p className="font-bebas text-[10px] tracking-[0.35em] uppercase mb-1" style={{ color: "#b08d4e" }}>
+                <p className="font-bebas text-[10px] tracking-[0.35em] uppercase mb-1" style={{ color: "#8a6a2e" }}>
                   {fact.label}
                 </p>
                 <p className="font-body text-sm" style={{ color: "#1c1917" }}>
@@ -208,7 +208,7 @@ export default function AboutView() {
       <div className="py-20 px-6" style={{ borderTop: "1px solid rgba(176,141,78,0.15)" }}>
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-5 mb-14">
-            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#b08d4e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#8a6a2e" }}>
               {t.techniqueLabel}
             </p>
             <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
@@ -240,9 +240,9 @@ export default function AboutView() {
         <a
           href={t.ctaHref(lang)}
           className="inline-block px-10 py-4 font-body text-xs tracking-widest uppercase transition-all duration-500"
-          style={{ border: "1px solid #b08d4e", color: "#b08d4e" }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = "#b08d4e"; e.currentTarget.style.color = "#FAFAF8"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#b08d4e"; }}
+          style={{ border: "1px solid #8a6a2e", color: "#8a6a2e" }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "#8a6a2e"; e.currentTarget.style.color = "#FAFAF8"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#8a6a2e"; }}
         >
           {t.ctaLabel}
         </a>

@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { Instagram } from "lucide-react";
 import formBg from "@/assets/form_background_paint.webp";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -109,7 +109,7 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
               className="font-body uppercase tracking-[0.3em] mb-5 font-bold"
               style={{
                 fontSize: "0.62rem",
-                color: "#b08d4e",
+                color: "#8a6a2e",
                 textShadow: "-1px -1px 0 #fafaf8, 1px -1px 0 #fafaf8, -1px 1px 0 #fafaf8, 1px 1px 0 #fafaf8, 0 0 5px rgba(250,248,245,0.8)"
               }}
             >
@@ -132,7 +132,7 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
               className="font-body uppercase tracking-[0.3em] mb-5 font-bold"
               style={{
                 fontSize: "0.62rem",
-                color: "#b08d4e",
+                color: "#8a6a2e",
                 textShadow: "-1px -1px 0 #fafaf8, 1px -1px 0 #fafaf8, -1px 1px 0 #fafaf8, 1px 1px 0 #fafaf8, 0 0 5px rgba(250,248,245,0.8)"
               }}
             >
@@ -149,7 +149,7 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
                       textShadow: "-1.5px -1.5px 0 #fafaf8, 1.5px -1.5px 0 #fafaf8, -1.5px 1.5px 0 #fafaf8, 1.5px 1.5px 0 #fafaf8, 0 0 8px rgba(250,248,245,0.9)"
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "#b08d4e";
+                      e.currentTarget.style.color = "#8a6a2e";
                       e.currentTarget.style.textShadow = "-1.5px -1.5px 0 #fafaf8, 1.5px -1.5px 0 #fafaf8, -1.5px 1.5px 0 #fafaf8, 1.5px 1.5px 0 #fafaf8, 0 0 8px rgba(250,248,245,0.9)";
                     }}
                     onMouseLeave={(e) => {
@@ -170,7 +170,7 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
               className="font-body uppercase tracking-[0.3em] mb-5 font-bold"
               style={{
                 fontSize: "0.62rem",
-                color: "#b08d4e",
+                color: "#8a6a2e",
                 textShadow: "-1px -1px 0 #fafaf8, 1px -1px 0 #fafaf8, -1px 1px 0 #fafaf8, 1px 1px 0 #fafaf8, 0 0 5px rgba(250,248,245,0.8)"
               }}
             >
@@ -187,7 +187,7 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
                 textShadow: "-1.5px -1.5px 0 #fafaf8, 1.5px -1.5px 0 #fafaf8, -1.5px 1.5px 0 #fafaf8, 1.5px 1.5px 0 #fafaf8, 0 0 8px rgba(250,248,245,0.9)"
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#b08d4e";
+                e.currentTarget.style.color = "#8a6a2e";
                 e.currentTarget.style.textShadow = "-1.5px -1.5px 0 #fafaf8, 1.5px -1.5px 0 #fafaf8, -1.5px 1.5px 0 #fafaf8, 1.5px 1.5px 0 #fafaf8, 0 0 8px rgba(250,248,245,0.9)";
               }}
               onMouseLeave={(e) => {
