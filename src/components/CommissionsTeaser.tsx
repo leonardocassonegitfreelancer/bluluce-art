@@ -10,19 +10,19 @@ const copy: Record<Lang, {
   it: {
     label: "QUADRO PERSONALIZZATO",
     heading: "Un'opera dipinta\napposta per te",
-    body: "Se hai in mente uno spazio, un soggetto, un'emozione — possiamo lavorarlo insieme. Ogni opera su commissione nasce da un dialogo: ascolto la tua idea e dipingo qualcosa che non esiste ancora da nessuna parte.",
+    body: "Ogni ricordo può diventare un dipinto. Inviami una foto o raccontami la tua idea, scegli il formato e la interpreterò nel mio stile impressionista lirico, trasformandola in un'opera unica da custodire nel tempo.",
     link: "Scopri il processo →",
   },
   es: {
     label: "CUADRO PERSONALIZADO",
     heading: "Una obra pintada\nexpresamente para ti",
-    body: "Si tienes en mente un espacio, un tema, una emoción — podemos trabajarlo juntos. Cada obra por encargo nace de un diálogo: escucho tu idea y pinto algo que aún no existe en ningún lugar.",
+    body: "Cada recuerdo puede convertirse en un cuadro. Envíame una foto o cuéntame tu idea, elige el formato y lo interpretaré en mi estilo impresionista lírico, convirtiéndolo en una obra única para guardar en el tiempo.",
     link: "Descubrir el proceso →",
   },
   en: {
     label: "CUSTOM PAINTING",
     heading: "A painting made\nfor you",
-    body: "If you have a space, a subject, an emotion in mind — we can work it through together. Every commissioned work begins with a conversation: I listen to your idea and paint something that doesn't yet exist anywhere.",
+    body: "Every memory can become a painting. Send me a photo or tell me your idea, choose the format and I'll interpret it in my lyrical Impressionist style, turning it into a unique work to treasure forever.",
     link: "Discover the process →",
   },
 };
