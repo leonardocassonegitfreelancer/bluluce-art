@@ -13,7 +13,7 @@ const copy: Record<Lang, {
 }> = {
   it: {
     label: "OPERE SELEZIONATE",
-    heading: "Ogni dipinto è unico.",
+    heading: "Ogni dipinto è unico",
     cta: "Esplora la collezione →",
     works: [
       { name: "Sussurro dell'Onda I", collection: "Mare",  info: "120 × 100 cm · Tecnica mista su lino · 2026" },
@@ -23,7 +23,7 @@ const copy: Record<Lang, {
   },
   es: {
     label: "OBRAS SELECCIONADAS",
-    heading: "Cada pintura es única.",
+    heading: "Cada pintura es única",
     cta: "Explorar la colección →",
     works: [
       { name: "Susurro de la Ola I", collection: "Mar",   info: "120 × 100 cm · Mixta sobre lino · 2026" },
@@ -33,7 +33,7 @@ const copy: Record<Lang, {
   },
   en: {
     label: "SELECTED WORKS",
-    heading: "Every painting is unique.",
+    heading: "Every painting is unique",
     cta: "Explore the collection →",
     works: [
       { name: "Whisper of the Wave I", collection: "Sea",   info: "120 × 100 cm · Mixed media on linen · 2026" },
@@ -61,8 +61,8 @@ export default function FeaturedWorks() {
               {t.label}
             </p>
             <h2
-              className="font-display font-normal italic leading-none"
-              style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", color: "#1c1917" }}
+              className="font-bebas font-light uppercase leading-none"
+              style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)", color: "#1c1917", letterSpacing: "0.03em" }}
             >
               {t.heading}
             </h2>

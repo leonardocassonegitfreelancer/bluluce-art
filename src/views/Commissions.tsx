@@ -147,8 +147,8 @@ export default function CommissionsView() {
           </p>
 
           <h1
-            className="font-display font-normal italic leading-[1.08] mb-8"
-            style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", color: "#1c1917" }}
+            className="font-display font-medium uppercase mb-8"
+            style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", color: "#1c1917", lineHeight: "1.1", letterSpacing: "0.08em" }}
           >
             {headingLines.map((line, i) => (
               <span key={i}>{line}{i < headingLines.length - 1 && <br />}</span>

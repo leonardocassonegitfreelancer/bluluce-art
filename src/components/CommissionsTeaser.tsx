@@ -9,19 +9,19 @@ const copy: Record<Lang, {
 }> = {
   it: {
     label: "QUADRO PERSONALIZZATO",
-    heading: "Un'opera dipinta\napposta per te.",
+    heading: "Un'opera dipinta\napposta per te",
     body: "Se hai in mente uno spazio, un soggetto, un'emozione — possiamo lavorarlo insieme. Ogni opera su commissione nasce da un dialogo: ascolto la tua idea e dipingo qualcosa che non esiste ancora da nessuna parte.",
     link: "Scopri il processo →",
   },
   es: {
     label: "CUADRO PERSONALIZADO",
-    heading: "Una obra pintada\nexpresamente para ti.",
+    heading: "Una obra pintada\nexpresamente para ti",
     body: "Si tienes en mente un espacio, un tema, una emoción — podemos trabajarlo juntos. Cada obra por encargo nace de un diálogo: escucho tu idea y pinto algo que aún no existe en ningún lugar.",
     link: "Descubrir el proceso →",
   },
   en: {
     label: "CUSTOM PAINTING",
-    heading: "A painting made\nfor you.",
+    heading: "A painting made\nfor you",
     body: "If you have a space, a subject, an emotion in mind — we can work it through together. Every commissioned work begins with a conversation: I listen to your idea and paint something that doesn't yet exist anywhere.",
     link: "Discover the process →",
   },
@@ -50,8 +50,8 @@ export default function CommissionsTeaser() {
 
           <div className="md:col-span-3">
             <h2
-              className="font-display font-normal italic leading-tight"
-              style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "#1c1917", margin: 0 }}
+              className="font-bebas font-light uppercase leading-none"
+              style={{ fontSize: "clamp(2.8rem, 6vw, 6rem)", color: "#1c1917", letterSpacing: "0.03em" }}
             >
               {headingLines.map((line, i) => (
                 <span key={i}>

@@ -51,8 +51,8 @@ const ProductsPage = () => {
             <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
           </div>
           <h1
-            className="font-display font-normal italic mb-6"
-            style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", color: "#1c1917", lineHeight: "1.05" }}
+            className="font-display font-medium uppercase mb-6"
+            style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", color: "#1c1917", lineHeight: "1.05", letterSpacing: "0.1em" }}
           >
             {th("collectionTitle", lang)}
           </h1>

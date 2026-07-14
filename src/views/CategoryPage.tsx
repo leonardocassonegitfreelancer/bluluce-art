@@ -176,8 +176,8 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
               {lang === "es" ? "COLECCIÓN DE ARTE" : lang === "it" ? "COLLEZIONE D'ARTE" : "FINE ART COLLECTION"}
             </span>
             <h1
-              className="font-display text-3xl md:text-5xl lg:text-6xl font-normal italic tracking-wide"
-              style={{ color: "#1c1917" }}
+              className="font-display text-3xl md:text-5xl lg:text-6xl font-medium uppercase"
+              style={{ color: "#1c1917", letterSpacing: "0.08em" }}
             >
               {th(data.nameKey as any, lang)}
             </h1>
