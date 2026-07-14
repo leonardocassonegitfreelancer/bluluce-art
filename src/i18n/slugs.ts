@@ -10,8 +10,8 @@ export const productsSlug: Record<Lang, string> = {
 /** Localized slugs for individual category pages */
 export const categorySlugs = [
   "mare",
+  "fuoco",
   "terra",
-  "ulivo",
 ] as const;
 
 export type CategorySlug = (typeof categorySlugs)[number];

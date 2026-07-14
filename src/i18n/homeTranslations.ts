@@ -28,18 +28,18 @@ const tr = {
     it: "Pennellate profonde e dettagli in foglia d'oro catturano il movimento continuo e l'energia vibrante delle onde del Mediterraneo.",
   },
 
-  collectionTerraTitle: { es: "Colección Tierra", en: "The Earth Collection", it: "Collezione Terra" },
-  collectionTerraDesc: {
-    es: "Figuras, retratos y jardines bañados en la luz cálida del Sur. Pigmentos de tierra quemada, ocre y oro que capturan la presencia humana bajo el sol de Andalucía.",
-    en: "Figures, portraits and gardens bathed in the warm light of the South. Burnt earth pigments, ochre and gold capturing the human presence under the Andalusian sun.",
-    it: "Figure, ritratti e giardini immersi nella luce calda del Sud. Pigmenti di terra bruciata, ocra e oro che catturano la presenza umana sotto il sole andaluso.",
+  collectionFuocoTitle: { es: "Colección Fuego", en: "The Fire Collection", it: "Collezione Fuoco" },
+  collectionFuocoDesc: {
+    es: "Retratos y figuras envueltos en la luz ardiente del Sur. Ocre, rojo llama y oro capturan el calor de la presencia humana — la pasión de Andalucía pintada con pigmentos vivos.",
+    en: "Portraits and figures bathed in the blazing light of the South. Ochre, flame and gold capture the warmth of human presence — the passion of Andalusia painted with vibrant pigments.",
+    it: "Ritratti e figure avvolti nella luce ardente del Sud. Ocra, rosso fiamma e oro catturano il calore della presenza umana — la passione dell'Andalusia dipinta con pigmenti vivi.",
   },
 
-  collectionUlivoTitle: { es: "Colección Olivo", en: "The Olive Collection", it: "Collezione Ulivo" },
-  collectionUlivoDesc: {
-    es: "Contrastes cálidos entre el verde plateado de las hojas del olivo y la luz cenital del mediodía mediterráneo, plasmados en lienzo de lino crudo.",
-    en: "Warm contrasts between the silvery green of olive leaves and the zenith light of the Mediterranean noon, printed on raw canvas.",
-    it: "Contrasti caldi tra il verde argentato delle foglie di ulivo e la luce zenitale del mezzogiorno mediterraneo, impressi su tela di lino grezzo.",
+  collectionTerraTitle: { es: "Colección Tierra", en: "The Earth Collection", it: "Collezione Terra" },
+  collectionTerraDesc: {
+    es: "Árboles, bosques y naturaleza mediterránea bañados en la luz del mediodía. El verde plateado de los olivos, el aliento del bosque, la orilla silenciosa — la tierra como paisaje del alma.",
+    en: "Trees, forests and Mediterranean nature bathed in midday light. The silvery green of olive trees, the breath of the forest, the silent shore — earth as landscape of the soul.",
+    it: "Alberi, boschi e natura mediterranea immersi nella luce del mezzogiorno. Il verde argentato degli ulivi, il respiro del bosco, la riva silenziosa — la terra come paesaggio dell'anima.",
   },
 } as const;
 

@@ -69,11 +69,11 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       }
     ]
   },
-  terra: {
+  fuoco: {
     heroImg: flamencarImg.src,
-    labelKey: "collectionTerraTitle",
-    nameKey: "collectionTerraTitle",
-    descKey: "collectionTerraDesc",
+    labelKey: "collectionFuocoTitle",
+    nameKey: "collectionFuocoTitle",
+    descKey: "collectionFuocoDesc",
     artworks: [
       {
         img: flamencarImg.src,
@@ -95,11 +95,11 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       }
     ]
   },
-  ulivo: {
+  terra: {
     heroImg: ulivoAlberoImg.src,
-    labelKey: "collectionUlivoTitle",
-    nameKey: "collectionUlivoTitle",
-    descKey: "collectionUlivoDesc",
+    labelKey: "collectionTerraTitle",
+    nameKey: "collectionTerraTitle",
+    descKey: "collectionTerraDesc",
     artworks: [
       {
         img: ulivoAlberoImg.src,
@@ -124,9 +124,9 @@ const categoryData: Record<CategorySlug, CategoryData> = {
 };
 
 const allSlugs: { slug: CategorySlug; labelKey: string }[] = [
-  { slug: "mare", labelKey: "collectionMareTitle" },
+  { slug: "mare",  labelKey: "collectionMareTitle" },
+  { slug: "fuoco", labelKey: "collectionFuocoTitle" },
   { slug: "terra", labelKey: "collectionTerraTitle" },
-  { slug: "ulivo", labelKey: "collectionUlivoTitle" }
 ];
 
 interface CategoryPageProps {

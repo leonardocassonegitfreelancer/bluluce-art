@@ -15,9 +15,9 @@ const copy: Record<Lang, {
     heading: "Ogni dipinto è unico.",
     cta: "Esplora la galleria completa →",
     works: [
-      { name: "Sussurro dell'Onda I", collection: "Mare", info: "120 × 100 cm · Tecnica mista su lino · 2026" },
-      { name: "Fuoco del Sud", collection: "Terra", info: "140 × 110 cm · Olio e pigmenti su lino · 2026" },
-      { name: "Sotto l'Ulivo", collection: "Ulivo", info: "130 × 100 cm · Olio su tela · 2026" },
+      { name: "Sussurro dell'Onda I", collection: "Mare",  info: "120 × 100 cm · Tecnica mista su lino · 2026" },
+      { name: "Fuoco del Sud",        collection: "Fuoco", info: "140 × 110 cm · Olio e pigmenti su lino · 2026" },
+      { name: "Sotto l'Ulivo",        collection: "Terra", info: "130 × 100 cm · Olio su tela · 2026" },
     ],
   },
   es: {
@@ -25,9 +25,9 @@ const copy: Record<Lang, {
     heading: "Cada pintura es única.",
     cta: "Explorar la galería completa →",
     works: [
-      { name: "Susurro de la Ola I", collection: "Mar", info: "120 × 100 cm · Mixta sobre lino · 2026" },
-      { name: "Fuego del Sur", collection: "Tierra", info: "140 × 110 cm · Óleo y pigmentos sobre lino · 2026" },
-      { name: "Bajo el Olivo", collection: "Olivo", info: "130 × 100 cm · Óleo sobre lienzo · 2026" },
+      { name: "Susurro de la Ola I", collection: "Mar",   info: "120 × 100 cm · Mixta sobre lino · 2026" },
+      { name: "Fuego del Sur",       collection: "Fuego", info: "140 × 110 cm · Óleo y pigmentos sobre lino · 2026" },
+      { name: "Bajo el Olivo",       collection: "Tierra",info: "130 × 100 cm · Óleo sobre lienzo · 2026" },
     ],
   },
   en: {
@@ -35,9 +35,9 @@ const copy: Record<Lang, {
     heading: "Every painting is unique.",
     cta: "Explore the full gallery →",
     works: [
-      { name: "Whisper of the Wave I", collection: "Sea", info: "120 × 100 cm · Mixed media on linen · 2026" },
-      { name: "Fire of the South", collection: "Earth", info: "140 × 110 cm · Oil and pigments on linen · 2026" },
-      { name: "Under the Olive Tree", collection: "Olive", info: "130 × 100 cm · Oil on canvas · 2026" },
+      { name: "Whisper of the Wave I", collection: "Sea",   info: "120 × 100 cm · Mixed media on linen · 2026" },
+      { name: "Fire of the South",     collection: "Fire",  info: "140 × 110 cm · Oil and pigments on linen · 2026" },
+      { name: "Under the Olive Tree",  collection: "Earth", info: "130 × 100 cm · Oil on canvas · 2026" },
     ],
   },
 };

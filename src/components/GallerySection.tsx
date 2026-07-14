@@ -45,35 +45,35 @@ const artworks: Artwork[] = [
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
-    category: "terra",
+    category: "fuoco",
     img: flamencarImg,
     name: { es: "Fuego del Sur", en: "Fire of the South", it: "Fuoco del Sud" },
     info: { es: "140 × 110 cm · Óleo y pigmentos naturales sobre lino · 2026", en: "140 × 110 cm · Oil and natural pigments on linen · 2026", it: "140 × 110 cm · Olio e pigmenti naturali su lino · 2026" },
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
-    category: "terra",
+    category: "fuoco",
     img: ritrattoOroImg,
     name: { es: "La Dorada", en: "The Golden One", it: "La Dorata" },
     info: { es: "90 × 90 cm · Óleo con pan de oro (24k) sobre lienzo · 2025", en: "90 × 90 cm · Oil with 24k gold leaf on canvas · 2025", it: "90 × 90 cm · Olio con foglia d'oro (24k) su tela · 2025" },
     status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" },
   },
   {
-    category: "terra",
+    category: "fuoco",
     img: giardinoImg,
     name: { es: "La Terraza", en: "The Terrace", it: "La Terrazza" },
     info: { es: "120 × 100 cm · Óleo y pigmentos del Mediterráneo sobre lino crudo · 2026", en: "120 × 100 cm · Oil and Mediterranean pigments on raw linen · 2026", it: "120 × 100 cm · Olio e pigmenti del Mediterraneo su lino grezzo · 2026" },
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
-    category: "ulivo",
+    category: "terra",
     img: ulivoAlberoImg,
     name: { es: "Bajo el Olivo", en: "Under the Olive Tree", it: "Sotto l'Ulivo" },
     info: { es: "130 × 100 cm · Óleo sobre lienzo · 2026", en: "130 × 100 cm · Oil on canvas · 2026", it: "130 × 100 cm · Olio su tela · 2026" },
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
-    category: "ulivo",
+    category: "terra",
     img: ulivoBoscoImg,
     name: { es: "El Bosque y el Lago", en: "Forest and Lake", it: "Il Bosco e il Lago" },
     info: { es: "80 × 110 cm · Óleo sobre lienzo · 2026", en: "80 × 110 cm · Oil on canvas · 2026", it: "80 × 110 cm · Olio su tela · 2026" },
@@ -103,10 +103,10 @@ const copy = {
     it: "Opere originali dalle nostre collezioni, che catturano la luce e la materia del Mediterraneo.",
   },
   filters: {
-    all:   { es: "Todos", en: "All", it: "Tutti" },
+    all:   { es: "Todos", en: "All",   it: "Tutti" },
     mare:  { es: "Mar",   en: "Sea",   it: "Mare" },
+    fuoco: { es: "Fuego", en: "Fire",  it: "Fuoco" },
     terra: { es: "Tierra",en: "Earth", it: "Terra" },
-    ulivo: { es: "Olivo", en: "Olive", it: "Ulivo" },
   },
   inquire: {
     es: "Solicitar información →",
@@ -118,7 +118,7 @@ const copy = {
 export default function GallerySection() {
   const { lang } = useLanguage();
   const l = (lang as Lang) ?? "es";
-  const [activeFilter, setActiveFilter] = useState<"all" | "mare" | "terra" | "ulivo">("all");
+  const [activeFilter, setActiveFilter] = useState<"all" | "mare" | "fuoco" | "terra">("all");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
@@ -169,7 +169,7 @@ export default function GallerySection() {
 
         {/* Filters */}
         <div className="flex flex-wrap gap-2 mb-14">
-          {(["all", "mare", "terra", "ulivo"] as const).map((f) => (
+          {(["all", "mare", "fuoco", "terra"] as const).map((f) => (
             <button
               key={f}
               onClick={() => changeFilter(f)}
@@ -230,7 +230,7 @@ export default function GallerySection() {
         <div
           onClick={() => setLightboxIndex(null)}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10"
-          style={{ background: "rgba(14,8,4,0.92)", backdropFilter: "blur(8px)" }}
+          style={{ background: "rgba(0,0,0,0.88)" }}
         >
           <button
             onClick={() => setLightboxIndex(null)}
@@ -291,7 +291,9 @@ export default function GallerySection() {
               <div className="h-px mb-8" style={{ background: "rgba(250,248,245,0.1)" }} />
 
               <a
-                href={`mailto:info@bluluceart.com?subject=${filtered[lightboxIndex].name.en}`}
+                href={`https://wa.me/34600000000?text=${encodeURIComponent(`Ciao, sono interessato all'opera "${filtered[lightboxIndex].name.en}"`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-body text-[0.6rem] tracking-[0.22em] uppercase transition-all duration-300 hover:opacity-70"
                 style={{ color: "#b08d4e", borderBottom: "1px solid rgba(176,141,78,0.35)", paddingBottom: "3px" }}
               >

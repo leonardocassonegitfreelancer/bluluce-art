@@ -19,16 +19,16 @@ const ProductsPage = () => {
       slug: "mare" as const,
     },
     {
-      name: th("collectionTerraTitle", lang),
-      desc: th("collectionTerraDesc", lang),
+      name: th("collectionFuocoTitle", lang),
+      desc: th("collectionFuocoDesc", lang),
       img: terracottaClayImg.src,
-      slug: "terra" as const,
+      slug: "fuoco" as const,
     },
     {
-      name: th("collectionUlivoTitle", lang),
-      desc: th("collectionUlivoDesc", lang),
+      name: th("collectionTerraTitle", lang),
+      desc: th("collectionTerraDesc", lang),
       img: oliveSunImg.src,
-      slug: "ulivo" as const,
+      slug: "terra" as const,
     },
   ];
 

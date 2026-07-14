@@ -14,15 +14,15 @@ const productsSlug: Record<string, string> = {
 type CategoryMeta = { nameKey: TranslationKey; descKey: TranslationKey };
 
 const categoryMeta: Record<CategorySlug, CategoryMeta> = {
-  mare: { nameKey: "collectionMareTitle", descKey: "collectionMareDesc" },
+  mare:  { nameKey: "collectionMareTitle",  descKey: "collectionMareDesc" },
+  fuoco: { nameKey: "collectionFuocoTitle", descKey: "collectionFuocoDesc" },
   terra: { nameKey: "collectionTerraTitle", descKey: "collectionTerraDesc" },
-  ulivo: { nameKey: "collectionUlivoTitle", descKey: "collectionUlivoDesc" },
 };
 
 export function getStaticPaths() {
   const langs = ["es", "en", "it"];
   const slugMap: Record<string, string> = { es: "tienda", en: "shop", it: "collezione" };
-  const cats: CategorySlug[] = ["mare", "terra", "ulivo"];
+  const cats: CategorySlug[] = ["mare", "fuoco", "terra"];
 
   return langs.flatMap((lang) =>
     cats.map((category) => ({
