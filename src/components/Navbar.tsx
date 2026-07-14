@@ -64,9 +64,16 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-[14px] bg-transparent transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-        isHome && !pastHero ? "opacity-0 pointer-events-none -translate-y-4" : "opacity-100 translate-y-0"
-      }`}>
+      <nav
+        className={`md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-[14px] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+          isHome && !pastHero ? "opacity-0 pointer-events-none -translate-y-4" : "opacity-100 translate-y-0"
+        }`}
+        style={{
+          background: mobileOpen ? "transparent" : scrolled ? "rgba(250,248,245,0.97)" : "transparent",
+          borderBottom: scrolled && !mobileOpen ? "1px solid rgba(176,141,78,0.12)" : "1px solid transparent",
+          backdropFilter: scrolled && !mobileOpen ? "blur(12px)" : "none",
+        }}
+      >
         <a href={prefix}
           className="font-display text-[1.05rem] font-bold tracking-[0.18em] transition-colors duration-300"
           style={{ color: textBurgerColor }}>
