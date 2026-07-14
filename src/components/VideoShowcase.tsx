@@ -141,8 +141,9 @@ export default function VideoShowcase() {
           className="font-display font-normal text-white italic leading-relaxed mb-6 tracking-wide"
           style={{
             fontSize: "clamp(1.4rem, 3.2vw, 2.6rem)",
-            textShadow: "0 2px 24px rgba(0,0,0,0.7), 0 1px 6px rgba(0,0,0,0.5)"
-          }}
+            textShadow: "0 2px 24px rgba(0,0,0,0.7), 0 1px 6px rgba(0,0,0,0.5)",
+            textWrap: "balance",
+          } as any}
         >
           {t.quote}
         </h3>

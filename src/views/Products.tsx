@@ -52,7 +52,7 @@ const ProductsPage = () => {
           </div>
           <h1
             className="font-display font-medium uppercase mb-6"
-            style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", color: "#1c1917", lineHeight: "1.05", letterSpacing: "0.1em" }}
+            style={{ fontSize: "clamp(1.8rem, 5vw, 5rem)", color: "#1c1917", lineHeight: "1.05", letterSpacing: "0.07em" }}
           >
             {th("collectionTitle", lang)}
           </h1>

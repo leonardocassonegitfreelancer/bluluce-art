@@ -127,7 +127,7 @@ export default function AboutView() {
           </div>
           <h1
             className="font-display font-normal italic leading-[1.08]"
-            style={{ fontSize: "clamp(2.6rem, 6vw, 6rem)", color: "#1c1917" }}
+            style={{ fontSize: "clamp(1.7rem, 6vw, 6rem)", color: "#1c1917" }}
           >
             {headingLines.map((line, i) => (
               <span key={i}>
