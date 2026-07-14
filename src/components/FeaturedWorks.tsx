@@ -1,5 +1,6 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
+import { productsSlug } from "@/i18n/slugs";
 import mareSpiaggiaImg from "@/assets/pittura_mare_donna_spiaggia_dune.webp";
 import flamencarImg from "@/assets/pittura_ritratto_flamenca_rosa_scura.webp";
 import ulivoAlberoImg from "@/assets/pittura_ulivo_donna_sotto_albero.webp";
@@ -13,7 +14,7 @@ const copy: Record<Lang, {
   it: {
     label: "OPERE SELEZIONATE",
     heading: "Ogni dipinto è unico.",
-    cta: "Esplora la galleria completa →",
+    cta: "Esplora la collezione →",
     works: [
       { name: "Sussurro dell'Onda I", collection: "Mare",  info: "120 × 100 cm · Tecnica mista su lino · 2026" },
       { name: "Fuoco del Sud",        collection: "Fuoco", info: "140 × 110 cm · Olio e pigmenti su lino · 2026" },
@@ -23,7 +24,7 @@ const copy: Record<Lang, {
   es: {
     label: "OBRAS SELECCIONADAS",
     heading: "Cada pintura es única.",
-    cta: "Explorar la galería completa →",
+    cta: "Explorar la colección →",
     works: [
       { name: "Susurro de la Ola I", collection: "Mar",   info: "120 × 100 cm · Mixta sobre lino · 2026" },
       { name: "Fuego del Sur",       collection: "Fuego", info: "140 × 110 cm · Óleo y pigmentos sobre lino · 2026" },
@@ -33,7 +34,7 @@ const copy: Record<Lang, {
   en: {
     label: "SELECTED WORKS",
     heading: "Every painting is unique.",
-    cta: "Explore the full gallery →",
+    cta: "Explore the collection →",
     works: [
       { name: "Whisper of the Wave I", collection: "Sea",   info: "120 × 100 cm · Mixed media on linen · 2026" },
       { name: "Fire of the South",     collection: "Fire",  info: "140 × 110 cm · Oil and pigments on linen · 2026" },
@@ -47,6 +48,7 @@ const images = [mareSpiaggiaImg, flamencarImg, ulivoAlberoImg];
 export default function FeaturedWorks() {
   const { lang } = useLanguage();
   const t = copy[lang as Lang] ?? copy.it;
+  const collectionUrl = `/${lang}/${productsSlug[lang as Lang] || productsSlug.it}`;
 
   return (
     <section className="py-24 md:py-32 px-6 md:px-10" style={{ background: "#FAFAF8" }}>
@@ -66,7 +68,7 @@ export default function FeaturedWorks() {
             </h2>
           </div>
           <a
-            href={`/${lang}/gallery`}
+            href={collectionUrl}
             className="font-bebas text-[11px] tracking-[0.3em] uppercase transition-all duration-300 hover:tracking-[0.4em] flex-shrink-0 self-end"
             style={{ color: "#b08d4e", borderBottom: "1px solid rgba(176,141,78,0.3)", paddingBottom: "3px" }}
           >
@@ -79,7 +81,7 @@ export default function FeaturedWorks() {
           {t.works.map((work, i) => (
             <a
               key={i}
-              href={`/${lang}/gallery`}
+              href={collectionUrl}
               className="group block"
               style={{ textDecoration: "none" }}
             >

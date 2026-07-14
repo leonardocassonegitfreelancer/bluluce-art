@@ -8,19 +8,19 @@ const copy: Record<Lang, {
   link: string;
 }> = {
   it: {
-    label: "COMMISSIONI",
+    label: "QUADRO PERSONALIZZATO",
     heading: "Un'opera dipinta\napposta per te.",
     body: "Se hai in mente uno spazio, un soggetto, un'emozione — possiamo lavorarlo insieme. Ogni opera su commissione nasce da un dialogo: ascolto la tua idea e dipingo qualcosa che non esiste ancora da nessuna parte.",
     link: "Scopri il processo →",
   },
   es: {
-    label: "ENCARGOS",
+    label: "CUADRO PERSONALIZADO",
     heading: "Una obra pintada\nexpresamente para ti.",
     body: "Si tienes en mente un espacio, un tema, una emoción — podemos trabajarlo juntos. Cada obra por encargo nace de un diálogo: escucho tu idea y pinto algo que aún no existe en ningún lugar.",
     link: "Descubrir el proceso →",
   },
   en: {
-    label: "COMMISSIONS",
+    label: "CUSTOM PAINTING",
     heading: "A painting made\nfor you.",
     body: "If you have a space, a subject, an emotion in mind — we can work it through together. Every commissioned work begins with a conversation: I listen to your idea and paint something that doesn't yet exist anywhere.",
     link: "Discover the process →",

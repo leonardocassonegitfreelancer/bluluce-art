@@ -18,7 +18,7 @@ const copy: Record<Lang, {
     line2: "el arte.",
     desc: "Pinturas originales inspiradas en la luz, las mujeres y los paisajes del Mediterráneo. Creaciones únicas pintadas a mano.",
     cta1: "Descubrir Colección",
-    cta2: "Portfolio",
+    cta2: "Sobre mí",
   },
   en: {
     line1: "Where the sea",
@@ -26,7 +26,7 @@ const copy: Record<Lang, {
     line2: "art.",
     desc: "Original paintings inspired by the light, women and landscapes of the Mediterranean. Unique hand-painted works of art.",
     cta1: "Shop Collection",
-    cta2: "Portfolio",
+    cta2: "About me",
   },
   it: {
     line1: "Dove il mare",
@@ -34,7 +34,7 @@ const copy: Record<Lang, {
     line2: "l'arte.",
     desc: "Dipinti originali ispirati alla luce, alle donne e ai paesaggi del Mediterraneo. Opere uniche dipinte a mano.",
     cta1: "Scopri la Collezione",
-    cta2: "Portfolio",
+    cta2: "Chi sono",
   },
 };
 
@@ -64,7 +64,7 @@ const Hero = () => {
 
   const prefix = `/${lang}`;
   const collectionUrl = `${prefix}/${productsSlug[lang as Lang] || productsSlug.es}`;
-  const galleryUrl = `${prefix}/gallery`;
+  const aboutUrl = `${prefix}/about`;
 
   return (
     <>
@@ -111,7 +111,7 @@ const Hero = () => {
               style={{ background: "#C9A96E", color: "#0E0804" }}>
               {t.cta1}
             </a>
-            <a href={galleryUrl}
+            <a href={aboutUrl}
               className="inline-flex items-center px-7 py-3.5 font-body text-[0.6rem] tracking-[0.3em] uppercase transition-all duration-700 active:scale-[0.98]"
               style={{ border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.75)" }}>
               {t.cta2}

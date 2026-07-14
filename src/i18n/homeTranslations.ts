@@ -7,7 +7,7 @@ const tr = {
   navContacts: { es: "Contacto", en: "Contact", it: "Contatti" },
   navGallery: { es: "Galería", en: "Gallery", it: "Galleria" },
   navAbout: { es: "Sobre mí", en: "About", it: "Chi sono" },
-  navCommissions: { es: "Encargos", en: "Commissions", it: "Commissioni" },
+  navCommissions: { es: "Cuadro Personalizado", en: "Custom Painting", it: "Quadro Personalizzato" },
   navExplore: { es: "Explorar", en: "Explore", it: "Esplora" },
 
   // Hero / shared description (used for SEO meta on the collection pages)

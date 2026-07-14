@@ -17,7 +17,6 @@ const copy: Record<Lang, {
     linksLabel: "Explorar",
     links: [
       { label: "Colección", href: "/es/tienda" },
-      { label: "Galería", href: "/es/gallery" },
     ],
     rights: "Todos los derechos reservados.",
   },
@@ -27,7 +26,6 @@ const copy: Record<Lang, {
     linksLabel: "Explore",
     links: [
       { label: "Collection", href: "/en/shop" },
-      { label: "Gallery", href: "/en/gallery" },
     ],
     rights: "All rights reserved.",
   },
@@ -37,7 +35,6 @@ const copy: Record<Lang, {
     linksLabel: "Esplora",
     links: [
       { label: "Collezione", href: "/it/collezione" },
-      { label: "Galleria", href: "/it/gallery" },
     ],
     rights: "Tutti i diritti riservati.",
   },

@@ -35,9 +35,9 @@ const copy: Record<Lang, {
   waMessage: (size: string, material: string) => string;
 }> = {
   it: {
-    seoTitle: "Commissioni | BLULUCE ART – Opere su misura",
-    seoDesc: "Richiedi un'opera originale su commissione. Dipinti a mano su lino o tela, con pigmenti naturali e foglia d'oro, realizzati appositamente per il tuo spazio.",
-    label: "COMMISSIONI",
+    seoTitle: "Quadro Personalizzato | BLULUCE ART – Opera su misura",
+    seoDesc: "Richiedi un quadro personalizzato dipinto a mano su lino o tela, con pigmenti naturali e foglia d'oro, realizzato appositamente per il tuo spazio.",
+    label: "QUADRO PERSONALIZZATO",
     heading: "Un dipinto\nfatto per te.",
     intro: "Se hai in mente uno spazio, un'emozione, un soggetto — possiamo lavorarlo insieme. Ogni opera su commissione nasce da un dialogo: ascolto la tua idea, propongo una composizione, e dipingo qualcosa che non esiste ancora da nessuna parte.",
     sizeLabel: "FORMATO",
@@ -58,9 +58,9 @@ const copy: Record<Lang, {
       `Ciao Vittoria! Sono interessata/o a un dipinto su commissione.\n\nFormato: ${size}\nMateriale: ${material}\n\nPuoi darmi maggiori informazioni?`,
   },
   es: {
-    seoTitle: "Encargos | BLULUCE ART – Obras a medida",
-    seoDesc: "Solicita una obra original por encargo. Pinturas a mano sobre lino o lienzo, con pigmentos naturales y pan de oro, realizadas especialmente para tu espacio.",
-    label: "ENCARGOS",
+    seoTitle: "Cuadro Personalizado | BLULUCE ART – Obra a medida",
+    seoDesc: "Solicita un cuadro personalizado pintado a mano sobre lino o lienzo, con pigmentos naturales y pan de oro, realizado especialmente para tu espacio.",
+    label: "CUADRO PERSONALIZADO",
     heading: "Una pintura\nhecha para ti.",
     intro: "Si tienes en mente un espacio, una emoción, un tema — podemos trabajarlo juntos. Cada obra por encargo nace de un diálogo: escucho tu idea, propongo una composición y pinto algo que aún no existe en ningún lugar.",
     sizeLabel: "FORMATO",
@@ -81,9 +81,9 @@ const copy: Record<Lang, {
       `¡Hola Vittoria! Me interesa encargar una pintura.\n\nFormato: ${size}\nMaterial: ${material}\n\n¿Puedes darme más información?`,
   },
   en: {
-    seoTitle: "Commissions | BLULUCE ART – Bespoke artworks",
-    seoDesc: "Request an original commissioned artwork. Hand-painted on linen or canvas with natural pigments and gold leaf, created specifically for your space.",
-    label: "COMMISSIONS",
+    seoTitle: "Custom Painting | BLULUCE ART – Bespoke artwork",
+    seoDesc: "Request a custom painting, hand-painted on linen or canvas with natural pigments and gold leaf, created specifically for your space.",
+    label: "CUSTOM PAINTING",
     heading: "A painting\nmade for you.",
     intro: "If you have a space, an emotion, a subject in mind — we can work it through together. Every commissioned work begins with a conversation: I listen to your idea, propose a composition, and paint something that doesn't yet exist anywhere.",
     sizeLabel: "SIZE",
