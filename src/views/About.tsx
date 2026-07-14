@@ -95,21 +95,25 @@ export default function AboutView() {
       <div className="grid grid-cols-1 md:grid-cols-2" style={{ paddingTop: "80px", minHeight: "85vh" }}>
 
         {/* Photo — first on mobile, second on desktop */}
-        <div className="relative order-first md:order-last" style={{ minHeight: "85vw", maxHeight: "92vw" }}>
+        <div className="relative order-first md:order-last" style={{ height: "88vw", maxHeight: "520px" }}>
           <img
             src={artistaTerrazzoImg.src}
             alt="Vittoria De Raymondi — studio a cielo aperto, Málaga"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: "center 18%" }}
           />
+          {/* Desktop: blend left edge into text column */}
           <div
             className="absolute inset-y-0 left-0 w-20 hidden md:block"
             style={{ background: "linear-gradient(to right, #FAFAF8, transparent)" }}
           />
-          {/* Mobile: gradient at bottom to blend into text */}
+          {/* Mobile: strong fade at bottom into background */}
           <div
-            className="absolute inset-x-0 bottom-0 h-20 md:hidden"
-            style={{ background: "linear-gradient(to top, #FAFAF8, transparent)" }}
+            className="absolute inset-x-0 bottom-0 md:hidden"
+            style={{
+              height: "45%",
+              background: "linear-gradient(to top, #FAFAF8 20%, rgba(250,248,245,0.6) 60%, transparent 100%)",
+            }}
           />
         </div>
 
