@@ -93,9 +93,29 @@ export default function AboutView() {
 
       {/* Hero — split layout */}
       <div className="grid grid-cols-1 md:grid-cols-2" style={{ paddingTop: "80px", minHeight: "85vh" }}>
-        {/* Left: text */}
-        <div className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-20">
-          <div className="flex items-center gap-5 mb-14">
+
+        {/* Photo — first on mobile, second on desktop */}
+        <div className="relative order-first md:order-last" style={{ minHeight: "85vw", maxHeight: "92vw" }}>
+          <img
+            src={artistaTerrazzoImg.src}
+            alt="Vittoria De Raymondi — studio a cielo aperto, Málaga"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "center 18%" }}
+          />
+          <div
+            className="absolute inset-y-0 left-0 w-20 hidden md:block"
+            style={{ background: "linear-gradient(to right, #FAFAF8, transparent)" }}
+          />
+          {/* Mobile: gradient at bottom to blend into text */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-20 md:hidden"
+            style={{ background: "linear-gradient(to top, #FAFAF8, transparent)" }}
+          />
+        </div>
+
+        {/* Text — second on mobile, first on desktop */}
+        <div className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-14 md:py-20 order-last md:order-first">
+          <div className="flex items-center gap-5 mb-10 md:mb-14">
             <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#b08d4e" }}>
               {t.label}
             </p>
@@ -103,7 +123,7 @@ export default function AboutView() {
           </div>
           <h1
             className="font-display font-normal italic leading-[1.08]"
-            style={{ fontSize: "clamp(3rem, 6vw, 6rem)", color: "#1c1917" }}
+            style={{ fontSize: "clamp(2.6rem, 6vw, 6rem)", color: "#1c1917" }}
           >
             {headingLines.map((line, i) => (
               <span key={i}>
@@ -112,29 +132,15 @@ export default function AboutView() {
               </span>
             ))}
           </h1>
-          <div className="mt-12 h-px w-12" style={{ background: "rgba(176,141,78,0.35)" }} />
+          <div className="mt-10 md:mt-12 h-px w-12" style={{ background: "rgba(176,141,78,0.35)" }} />
           <p
-            className="font-display font-normal italic mt-8"
+            className="font-display font-normal italic mt-6 md:mt-8"
             style={{ fontSize: "clamp(1rem, 1.8vw, 1.35rem)", color: "#b08d4e", maxWidth: "420px" }}
           >
             "{t.quote}"
           </p>
         </div>
 
-        {/* Right: hero photo */}
-        <div className="relative" style={{ minHeight: "60vw" }}>
-          <img
-            src={artistaTerrazzoImg.src}
-            alt="Vittoria De Raymondi — studio a cielo aperto, Málaga"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: "center top" }}
-          />
-          {/* Subtle gradient overlay on left edge to blend with text column */}
-          <div
-            className="absolute inset-y-0 left-0 w-20 hidden md:block"
-            style={{ background: "linear-gradient(to right, #FAFAF8, transparent)" }}
-          />
-        </div>
       </div>
 
       {/* Bio */}
