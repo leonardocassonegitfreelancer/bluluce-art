@@ -1,0 +1,118 @@
+import { useLanguage } from "@/i18n/LanguageContext";
+import type { Lang } from "@/i18n/homeTranslations";
+import mareSpiaggiaImg from "@/assets/pittura_mare_donna_spiaggia_dune.webp";
+import flamencarImg from "@/assets/pittura_ritratto_flamenca_rosa_scura.webp";
+import ulivoAlberoImg from "@/assets/pittura_ulivo_donna_sotto_albero.webp";
+
+const copy: Record<Lang, {
+  label: string;
+  heading: string;
+  cta: string;
+  works: { name: string; collection: string; info: string }[];
+}> = {
+  it: {
+    label: "OPERE SELEZIONATE",
+    heading: "Ogni dipinto è unico.",
+    cta: "Esplora la galleria completa →",
+    works: [
+      { name: "Sussurro dell'Onda I", collection: "Mare", info: "120 × 100 cm · Tecnica mista su lino · 2026" },
+      { name: "Fuoco del Sud", collection: "Terra", info: "140 × 110 cm · Olio e pigmenti su lino · 2026" },
+      { name: "Sotto l'Ulivo", collection: "Ulivo", info: "130 × 100 cm · Olio su tela · 2026" },
+    ],
+  },
+  es: {
+    label: "OBRAS SELECCIONADAS",
+    heading: "Cada pintura es única.",
+    cta: "Explorar la galería completa →",
+    works: [
+      { name: "Susurro de la Ola I", collection: "Mar", info: "120 × 100 cm · Mixta sobre lino · 2026" },
+      { name: "Fuego del Sur", collection: "Tierra", info: "140 × 110 cm · Óleo y pigmentos sobre lino · 2026" },
+      { name: "Bajo el Olivo", collection: "Olivo", info: "130 × 100 cm · Óleo sobre lienzo · 2026" },
+    ],
+  },
+  en: {
+    label: "SELECTED WORKS",
+    heading: "Every painting is unique.",
+    cta: "Explore the full gallery →",
+    works: [
+      { name: "Whisper of the Wave I", collection: "Sea", info: "120 × 100 cm · Mixed media on linen · 2026" },
+      { name: "Fire of the South", collection: "Earth", info: "140 × 110 cm · Oil and pigments on linen · 2026" },
+      { name: "Under the Olive Tree", collection: "Olive", info: "130 × 100 cm · Oil on canvas · 2026" },
+    ],
+  },
+};
+
+const images = [mareSpiaggiaImg, flamencarImg, ulivoAlberoImg];
+
+export default function FeaturedWorks() {
+  const { lang } = useLanguage();
+  const t = copy[lang as Lang] ?? copy.it;
+
+  return (
+    <section className="py-24 md:py-32 px-6 md:px-10" style={{ background: "#FAFAF8" }}>
+      <div className="max-w-6xl mx-auto">
+
+        {/* Header */}
+        <div className="flex items-end justify-between mb-14 gap-6 flex-wrap">
+          <div>
+            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase mb-4" style={{ color: "#b08d4e" }}>
+              {t.label}
+            </p>
+            <h2
+              className="font-display font-normal italic leading-none"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", color: "#1c1917" }}
+            >
+              {t.heading}
+            </h2>
+          </div>
+          <a
+            href={`/${lang}/gallery`}
+            className="font-bebas text-[11px] tracking-[0.3em] uppercase transition-all duration-300 hover:tracking-[0.4em] flex-shrink-0 self-end"
+            style={{ color: "#b08d4e", borderBottom: "1px solid rgba(176,141,78,0.3)", paddingBottom: "3px" }}
+          >
+            {t.cta}
+          </a>
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+          {t.works.map((work, i) => (
+            <a
+              key={i}
+              href={`/${lang}/gallery`}
+              className="group block"
+              style={{ textDecoration: "none" }}
+            >
+              {/* Image with mat */}
+              <div
+                className="overflow-hidden mb-4"
+                style={{ background: "#f0ece5", padding: "12px 12px 20px", aspectRatio: "4/5" }}
+              >
+                <img
+                  src={images[i].src}
+                  alt={work.name}
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                />
+              </div>
+
+              {/* Info */}
+              <p className="font-bebas text-[9px] tracking-[0.28em] uppercase mb-1.5" style={{ color: "#b08d4e" }}>
+                {work.collection}
+              </p>
+              <h3
+                className="font-display font-normal italic text-lg leading-snug mb-1 transition-colors duration-300 group-hover:text-[#b08d4e]"
+                style={{ color: "#1c1917" }}
+              >
+                {work.name}
+              </h3>
+              <p className="font-body text-xs leading-relaxed" style={{ color: "#a8a29e" }}>
+                {work.info}
+              </p>
+            </a>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}

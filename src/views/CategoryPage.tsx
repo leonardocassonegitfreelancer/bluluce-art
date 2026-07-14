@@ -11,6 +11,9 @@ import flamencarImg from "@/assets/pittura_ritratto_flamenca_rosa_scura.webp";
 import ritrattoOroImg from "@/assets/pittura_ritratto_donna_fiore_oro.webp";
 import giardinoImg from "@/assets/pittura_giardino_donna_terrazza_fiori.webp";
 import ulivoAlberoImg from "@/assets/pittura_ulivo_donna_sotto_albero.webp";
+import ulivoBoscoImg from "@/assets/pittura_ulivo_donna_bosco_laghetto.webp";
+import marreTerazzaImg from "@/assets/pittura_mare_donna_terrazza_barca.webp";
+import mareMadreFigliaImg from "@/assets/pittura_mare_madre_figlia_acqua.webp";
 
 interface Artwork {
   img: string;
@@ -51,6 +54,18 @@ const categoryData: Record<CategorySlug, CategoryData> = {
         name: { es: "Verso il Largo", en: "Out to Sea", it: "Verso il Largo" },
         info: { es: "150 x 120 cm | Óleo sobre lienzo | 2026", en: "150 x 120 cm | Oil on canvas | 2026", it: "150 x 120 cm | Olio su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
+      },
+      {
+        img: marreTerazzaImg.src,
+        name: { es: "La Terraza del Mar", en: "Terrace by the Sea", it: "La Terrazza sul Mare" },
+        info: { es: "100 x 70 cm | Óleo sobre lienzo | 2026", en: "100 x 70 cm | Oil on canvas | 2026", it: "100 x 70 cm | Olio su tela | 2026" },
+        status: { es: "Disponible", en: "Available", it: "Disponibile" }
+      },
+      {
+        img: mareMadreFigliaImg.src,
+        name: { es: "Madre e Hija", en: "Mother and Daughter", it: "Madre e Figlia" },
+        info: { es: "90 x 120 cm | Óleo y pigmentos sobre lienzo | 2025", en: "90 x 120 cm | Oil and pigments on canvas | 2025", it: "90 x 120 cm | Olio e pigmenti su tela | 2025" },
+        status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
       }
     ]
   },
@@ -93,16 +108,16 @@ const categoryData: Record<CategorySlug, CategoryData> = {
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
-        img: giardinoImg.src,
-        name: { es: "Terraza Mediterránea", en: "Mediterranean Terrace", it: "Terrazza Mediterranea" },
-        info: { es: "80 x 60 cm | Acrílico sobre lienzo | 2025", en: "80 x 60 cm | Acrylic on canvas | 2025", it: "80 x 60 cm | Acrilico su tela | 2025" },
+        img: ulivoBoscoImg.src,
+        name: { es: "El Bosque y el Lago", en: "Forest and Lake", it: "Il Bosco e il Lago" },
+        info: { es: "80 x 110 cm | Óleo sobre lienzo | 2026", en: "80 x 110 cm | Oil on canvas | 2026", it: "80 x 110 cm | Olio su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
-        img: mareSpiaggiaImg.src,
-        name: { es: "Luz de Mediodía", en: "Midday Light", it: "Luce di Mezzogiorno" },
-        info: { es: "160 x 120 cm | Óleo y pigmentos sobre lino crudo | 2026", en: "160 x 120 cm | Oil and pigments on raw linen | 2026", it: "160 x 120 cm | Olio e pigmenti su lino grezzo | 2026" },
-        status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
+        img: giardinoImg.src,
+        name: { es: "La Terraza", en: "The Terrace", it: "La Terrazza" },
+        info: { es: "120 x 100 cm | Óleo y pigmentos del Mediterráneo sobre lino crudo | 2026", en: "120 x 100 cm | Oil and Mediterranean pigments on raw linen | 2026", it: "120 x 100 cm | Olio e pigmenti del Mediterraneo su lino grezzo | 2026" },
+        status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
     ]
   }

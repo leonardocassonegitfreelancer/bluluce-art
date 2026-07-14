@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -10,6 +10,9 @@ import flamencarImg from "@/assets/pittura_ritratto_flamenca_rosa_scura.webp";
 import ritrattoOroImg from "@/assets/pittura_ritratto_donna_fiore_oro.webp";
 import giardinoImg from "@/assets/pittura_giardino_donna_terrazza_fiori.webp";
 import ulivoAlberoImg from "@/assets/pittura_ulivo_donna_sotto_albero.webp";
+import marreTerazzaImg from "@/assets/pittura_mare_donna_terrazza_barca.webp";
+import mareMadreFigliaImg from "@/assets/pittura_mare_madre_figlia_acqua.webp";
+import ulivoBoscoImg from "@/assets/pittura_ulivo_donna_bosco_laghetto.webp";
 
 interface Artwork {
   category: "mare" | "terra" | "ulivo";
@@ -71,16 +74,23 @@ const artworks: Artwork[] = [
   },
   {
     category: "ulivo",
-    img: giardinoImg,
-    name: { es: "Terraza Mediterránea", en: "Mediterranean Terrace", it: "Terrazza Mediterranea" },
-    info: { es: "80 × 60 cm · Acrílico sobre lienzo · 2025", en: "80 × 60 cm · Acrylic on canvas · 2025", it: "80 × 60 cm · Acrilico su tela · 2025" },
+    img: ulivoBoscoImg,
+    name: { es: "El Bosque y el Lago", en: "Forest and Lake", it: "Il Bosco e il Lago" },
+    info: { es: "80 × 110 cm · Óleo sobre lienzo · 2026", en: "80 × 110 cm · Oil on canvas · 2026", it: "80 × 110 cm · Olio su tela · 2026" },
     status: { es: "Disponible", en: "Available", it: "Disponibile" },
   },
   {
-    category: "ulivo",
-    img: mareSpiaggiaImg,
-    name: { es: "Luz de Mediodía", en: "Midday Light", it: "Luce di Mezzogiorno" },
-    info: { es: "160 × 120 cm · Óleo y pigmentos sobre lino crudo · 2026", en: "160 × 120 cm · Oil and pigments on raw linen · 2026", it: "160 × 120 cm · Olio e pigmenti su lino grezzo · 2026" },
+    category: "mare",
+    img: marreTerazzaImg,
+    name: { es: "La Terraza del Mar", en: "Terrace by the Sea", it: "La Terrazza sul Mare" },
+    info: { es: "100 × 70 cm · Óleo sobre lienzo · 2026", en: "100 × 70 cm · Oil on canvas · 2026", it: "100 × 70 cm · Olio su tela · 2026" },
+    status: { es: "Disponible", en: "Available", it: "Disponibile" },
+  },
+  {
+    category: "mare",
+    img: mareMadreFigliaImg,
+    name: { es: "Madre e Hija", en: "Mother and Daughter", it: "Madre e Figlia" },
+    info: { es: "90 × 120 cm · Óleo y pigmentos sobre lienzo · 2025", en: "90 × 120 cm · Oil and pigments on canvas · 2025", it: "90 × 120 cm · Olio e pigmenti su tela · 2025" },
     status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" },
   },
 ];
@@ -110,6 +120,15 @@ export default function GallerySection() {
   const l = (lang as Lang) ?? "es";
   const [activeFilter, setActiveFilter] = useState<"all" | "mare" | "terra" | "ulivo">("all");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  const changeFilter = (f: "all" | "mare" | "terra" | "ulivo") => {
+    setActiveFilter(f);
+    setLightboxIndex(null);
+    setTimeout(() => {
+      gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
 
   const filtered = artworks.filter(
     (a) => activeFilter === "all" || a.category === activeFilter
@@ -153,7 +172,7 @@ export default function GallerySection() {
           {(["all", "mare", "terra", "ulivo"] as const).map((f) => (
             <button
               key={f}
-              onClick={() => setActiveFilter(f)}
+              onClick={() => changeFilter(f)}
               className="font-body text-[0.6rem] tracking-[0.22em] uppercase px-5 py-2.5 transition-all duration-300"
               style={{
                 border: `1px solid ${activeFilter === f ? "#b08d4e" : "rgba(176,141,78,0.3)"}`,
@@ -167,10 +186,10 @@ export default function GallerySection() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {filtered.map((art, idx) => (
             <div
-              key={idx}
+              key={art.name.en}
               onClick={() => setLightboxIndex(idx)}
               className="group cursor-pointer"
             >
