@@ -2,7 +2,6 @@ import { useRef, useEffect, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import insideVideo from "@/assets/video-bottom-home.mp4?url";
-import posterImg from "@/assets/video-bottom-home-poster.webp?url";
 
 const copy: Record<Lang, {
   quote: string;
@@ -111,20 +110,18 @@ export default function VideoShowcase() {
           willChange: "transform",
         }}
       >
-        {/* Poster — visible until video is ready */}
-        <img
-          src={posterImg}
-          aria-hidden="true"
-          style={{
-            position: "absolute", inset: 0,
-            width: "100%", height: "100%",
-            objectFit: "cover",
-            opacity: videoReady ? 0 : 0.65,
-            filter: "brightness(0.55) contrast(1.1) saturate(0.9)",
-            transition: "opacity 1s ease",
-            pointerEvents: "none",
-          }}
-        />
+        {/* Dark placeholder with gold shimmer — visible until video is ready */}
+        {!videoReady && (
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(135deg, #1c1917 0%, #2a2118 50%, #1c1917 100%)",
+              backgroundSize: "400% 400%",
+              animation: "shimmer 3s ease infinite",
+            }}
+          />
+        )}
         <video
           ref={videoRef}
           src={insideVideo}
