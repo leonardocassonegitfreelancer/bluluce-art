@@ -74,8 +74,8 @@ const Navbar = () => {
         }}
       >
         <a href={prefix} className="flex flex-col leading-none transition-colors duration-300" style={{ textDecoration: "none" }}>
-          <span className="font-display text-[1.05rem] font-bold tracking-[0.18em]" style={{ color: textBurgerColor }}>BLULUCE</span>
-          <span className="font-body text-[0.52rem] tracking-[0.22em] uppercase mt-[2px]" style={{ color: "#8a6a2e" }}>Vittoria De Raimondi</span>
+          <span className="font-display text-[1.35rem] font-bold tracking-[0.18em]" style={{ color: textBurgerColor }}>BLULUCE</span>
+          <span className="font-body text-[0.65rem] tracking-[0.22em] uppercase mt-[2px]" style={{ color: "#8a6a2e" }}>Vittoria De Raimondi</span>
         </a>
         <div className="flex items-center gap-4">
           <button onClick={() => setMobileOpen(!mobileOpen)} className="relative w-8 h-8 flex items-center justify-center" aria-label="Menu">
