@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import LegalPageWrapper from "../../page-components/LegalPageWrapper";
+import type { Lang } from "../../i18n/homeTranslations";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "es" } },
+    { params: { lang: "en" } },
+    { params: { lang: "it" } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const titles: Record<Lang, string> = {
+  es: "Política de Cookies | BLULUCE ART",
+  en: "Cookie Policy | BLULUCE ART",
+  it: "Cookie Policy | BLULUCE ART",
+};
+
+const descriptions: Record<Lang, string> = {
+  es: "Información sobre el uso de cookies en bluluceart.com: Google Analytics, Meta Pixel y cookies técnicas.",
+  en: "Information about cookie usage on bluluceart.com: Google Analytics, Meta Pixel and technical cookies.",
+  it: "Informazioni sull'uso dei cookie su bluluceart.com: Google Analytics, Meta Pixel e cookie tecnici.",
+};
+---
+
+<Layout
+  title={titles[lang]}
+  description={descriptions[lang]}
+  canonical={`/${lang}/cookie-policy`}
+  lang={lang}
+  robots="noindex, follow"
+>
+  <LegalPageWrapper lang={lang} type="cookie" client:only="react" />
+</Layout>

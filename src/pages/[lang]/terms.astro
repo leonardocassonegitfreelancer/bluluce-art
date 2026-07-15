@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import LegalPageWrapper from "../../page-components/LegalPageWrapper";
+import type { Lang } from "../../i18n/homeTranslations";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "es" } },
+    { params: { lang: "en" } },
+    { params: { lang: "it" } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const titles: Record<Lang, string> = {
+  es: "Términos de uso | BLULUCE ART",
+  en: "Terms of Use | BLULUCE ART",
+  it: "Termini di utilizzo | BLULUCE ART",
+};
+
+const descriptions: Record<Lang, string> = {
+  es: "Términos y condiciones de uso del sitio web bluluceart.com.",
+  en: "Terms and conditions of use for bluluceart.com.",
+  it: "Termini e condizioni di utilizzo del sito bluluceart.com.",
+};
+---
+
+<Layout
+  title={titles[lang]}
+  description={descriptions[lang]}
+  canonical={`/${lang}/terms`}
+  lang={lang}
+  robots="noindex, follow"
+>
+  <LegalPageWrapper lang={lang} type="terms" client:only="react" />
+</Layout>

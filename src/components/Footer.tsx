@@ -9,6 +9,8 @@ const copy: Record<Lang, {
   desc: string;
   linksLabel: string;
   links: { label: string; href: string }[];
+  legalLabel: string;
+  legal: { label: string; href: string }[];
   rights: string;
 }> = {
   es: {
@@ -16,7 +18,15 @@ const copy: Record<Lang, {
     desc: "Obras originales inspiradas en la luz, el mar y los colores del Mediterráneo.",
     linksLabel: "Explorar",
     links: [
+      { label: "Inicio", href: "/es" },
       { label: "Colección", href: "/es/tienda" },
+      { label: "Sobre mí", href: "/es/about" },
+      { label: "Encargos", href: "/es/commissioni" },
+    ],
+    legalLabel: "Legal",
+    legal: [
+      { label: "Cookie Policy", href: "/es/cookie-policy" },
+      { label: "Términos de uso", href: "/es/terms" },
     ],
     rights: "Todos los derechos reservados.",
   },
@@ -25,7 +35,15 @@ const copy: Record<Lang, {
     desc: "Original works inspired by the light, sea and colours of the Mediterranean.",
     linksLabel: "Explore",
     links: [
+      { label: "Home", href: "/en" },
       { label: "Collection", href: "/en/shop" },
+      { label: "About", href: "/en/about" },
+      { label: "Commissions", href: "/en/commissioni" },
+    ],
+    legalLabel: "Legal",
+    legal: [
+      { label: "Cookie Policy", href: "/en/cookie-policy" },
+      { label: "Terms of Use", href: "/en/terms" },
     ],
     rights: "All rights reserved.",
   },
@@ -34,7 +52,15 @@ const copy: Record<Lang, {
     desc: "Opere originali ispirate alla luce, al mare e ai colori del Mediterraneo.",
     linksLabel: "Esplora",
     links: [
+      { label: "Home", href: "/it" },
       { label: "Collezione", href: "/it/collezione" },
+      { label: "Chi sono", href: "/it/about" },
+      { label: "Commissioni", href: "/it/commissioni" },
+    ],
+    legalLabel: "Legale",
+    legal: [
+      { label: "Cookie Policy", href: "/it/cookie-policy" },
+      { label: "Termini di utilizzo", href: "/it/terms" },
     ],
     rights: "Tutti i diritti riservati.",
   },
@@ -92,10 +118,10 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
         {/* Top rule */}
         <div className="h-px mb-14" style={{ background: "rgba(14, 8, 4, 0.15)" }} />
 
-        <div className="grid md:grid-cols-3 gap-12 mb-14">
+        <div className="grid md:grid-cols-4 gap-12 mb-14">
 
           {/* Brand */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-2">
             <p
               className="font-display text-xl font-bold tracking-[0.14em] mb-0.5"
               style={{
@@ -165,6 +191,42 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
                     onMouseLeave={(e) => {
                       e.currentTarget.style.color = "#1c1917";
                       e.currentTarget.style.textShadow = "-1.5px -1.5px 0 #fafaf8, 1.5px -1.5px 0 #fafaf8, -1.5px 1.5px 0 #fafaf8, 1.5px 1.5px 0 #fafaf8, 0 0 8px rgba(250,248,245,0.9)";
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <p
+              className="font-body uppercase tracking-[0.3em] mb-5 font-bold"
+              style={{
+                fontSize: "0.62rem",
+                color: "#8a6a2e",
+                textShadow: "-1px -1px 0 #fafaf8, 1px -1px 0 #fafaf8, -1px 1px 0 #fafaf8, 1px 1px 0 #fafaf8, 0 0 5px rgba(250,248,245,0.8)"
+              }}
+            >
+              {t.legalLabel}
+            </p>
+            <ul className="space-y-3">
+              {t.legal.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="font-body text-sm font-bold transition-colors duration-300"
+                    style={{
+                      color: "#1c1917",
+                      textShadow: "-1.5px -1.5px 0 #fafaf8, 1.5px -1.5px 0 #fafaf8, -1.5px 1.5px 0 #fafaf8, 1.5px 1.5px 0 #fafaf8, 0 0 8px rgba(250,248,245,0.9)"
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "#8a6a2e";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "#1c1917";
                     }}
                   >
                     {link.label}
