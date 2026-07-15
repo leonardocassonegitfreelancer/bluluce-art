@@ -165,48 +165,6 @@ const ProductsPage = () => {
         })}
       </section>
 
-      {/* CTA Banner */}
-      <section className="py-20 px-6" style={{ borderTop: "1px solid rgba(176,141,78,0.15)" }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <h2
-            className="font-display text-3xl md:text-4xl font-normal italic mb-4"
-            style={{ color: "#1c1917" }}
-          >
-            {lang === "es"
-              ? "¿Interesado en una obra para su espacio?"
-              : lang === "it"
-                ? "Interessato a un'opera per i tuoi spazi?"
-                : "Interested in a piece for your space?"}
-          </h2>
-          <p className="font-body text-sm mb-8 max-w-lg mx-auto leading-relaxed" style={{ color: "#78716c" }}>
-            {lang === "es"
-              ? "Cada pintura es única y se entrega con un certificado de autenticidad firmado. Póngase en contacto con nuestro estudio para consultas y encargos privados."
-              : lang === "it"
-                ? "Ogni dipinto è unico e viene fornito con certificato di autenticità firmato. Contatta lo studio per informazioni o commissioni private."
-                : "Each painting is unique and comes with a signed certificate of authenticity. Contact the studio for inquiries and private commissions."}
-          </p>
-          <div className="w-16 h-px mx-auto mb-8" style={{ background: "rgba(176,141,78,0.3)" }} />
-          <a
-            href={`/${lang}`}
-            className="inline-block px-8 py-3 font-body text-xs tracking-widest uppercase transition-all duration-500 ease-out"
-            style={{
-              border: "1px solid #8a6a2e",
-              color: "#8a6a2e",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#8a6a2e";
-              e.currentTarget.style.color = "#FAFAF8";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#8a6a2e";
-            }}
-          >
-            {lang === "es" ? "VOLVER AL INICIO" : lang === "it" ? "TORNA ALLA HOME" : "BACK TO HOME"}
-          </a>
-        </div>
-      </section>
-
       <Footer />
     </div>
   );
