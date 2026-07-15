@@ -141,7 +141,7 @@ const ProductsPage = () => {
                     <div className="h-px mb-6" style={{ background: "rgba(176,141,78,0.22)" }} />
                     <h2
                       className="font-display font-semibold italic mb-5 leading-snug transition-colors duration-300 group-hover:text-[#8a6a2e]"
-                      style={{ fontSize: "clamp(2.05rem, 3.2vw, 2.8rem)", color: "#1c1917" }}
+                      style={{ fontSize: "clamp(2.5rem, 3.2vw, 2.8rem)", color: "#1c1917" }}
                     >
                       {cat.name}
                     </h2>

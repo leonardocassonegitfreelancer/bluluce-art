@@ -208,7 +208,7 @@ export default function GallerySection() {
                   {art.category}
                 </p>
                 <h3
-                  className="font-display font-normal italic text-xl leading-snug mb-1.5 transition-colors duration-300 group-hover:text-[#8a6a2e]"
+                  className="font-display font-normal italic text-2xl leading-snug mb-1.5 transition-colors duration-300 group-hover:text-[#8a6a2e]"
                   style={{ color: "#1c1917" }}
                 >
                   {art.name[l]}
@@ -273,7 +273,7 @@ export default function GallerySection() {
               </p>
               <h2
                 className="font-display font-normal italic leading-tight mb-4"
-                style={{ fontSize: "clamp(1.95rem, 3.2vw, 3rem)", color: "#FAFAF8" }}
+                style={{ fontSize: "clamp(2.4rem, 3.2vw, 3rem)", color: "#FAFAF8" }}
               >
                 {filtered[lightboxIndex].name[l]}
               </h2>
