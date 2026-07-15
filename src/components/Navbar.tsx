@@ -75,7 +75,7 @@ const Navbar = () => {
       >
         <a href={prefix} className="flex flex-col leading-none transition-colors duration-300" style={{ textDecoration: "none" }}>
           <span className="font-display text-[1.05rem] font-bold tracking-[0.18em]" style={{ color: textBurgerColor }}>BLULUCE</span>
-          <span className="font-body text-[0.68rem] tracking-[0.22em] uppercase mt-[2px]" style={{ color: "#8a6a2e" }}>Vittoria De Raimondi</span>
+          <span className="font-body text-[0.52rem] tracking-[0.22em] uppercase mt-[2px]" style={{ color: "#8a6a2e" }}>Vittoria De Raimondi</span>
         </a>
         <div className="flex items-center gap-4">
           <button onClick={() => setMobileOpen(!mobileOpen)} className="relative w-8 h-8 flex items-center justify-center" aria-label="Menu">
@@ -196,7 +196,7 @@ const Navbar = () => {
               key={item.href}
               href={item.href}
               onClick={handleNavClick}
-              className={`block font-display text-5xl font-normal py-1.5 transition-all duration-600 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+              className={`block font-display text-3xl font-normal py-1.5 transition-all duration-600 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                 mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               } ${isActive(item.href) ? "text-[#8a6a2e]" : "text-[#1c1917]"}`}
               style={{ transitionDelay: mobileOpen ? `${80 + i * 70}ms` : "0ms" }}
@@ -232,7 +232,7 @@ const Navbar = () => {
           <a
             href={`${prefix}/${productsSlug[lang]}`}
             onClick={handleNavClick}
-            className="w-full py-4 border text-[#8a6a2e] font-body text-[0.75rem] tracking-[0.3em] uppercase flex items-center justify-center transition-all duration-500"
+            className="w-full py-4 border text-[#8a6a2e] font-body text-[0.6rem] tracking-[0.3em] uppercase flex items-center justify-center transition-all duration-500"
             style={{ background: "rgba(176,141,78,0.06)", borderColor: "rgba(176,141,78,0.25)" }}
           >
             {th("navMenu", lang)}
