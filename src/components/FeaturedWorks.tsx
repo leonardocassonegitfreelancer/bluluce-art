@@ -109,7 +109,7 @@ export default function FeaturedWorks() {
               >
                 {work.name}
               </h3>
-              <p className="font-body text-xs leading-relaxed" style={{ color: "#a8a29e" }}>
+              <p className="font-body text-sm leading-relaxed" style={{ color: "#a8a29e" }}>
                 {work.info}
               </p>
             </a>

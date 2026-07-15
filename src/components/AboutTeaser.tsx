@@ -73,7 +73,7 @@ export default function AboutTeaser() {
 
             <div className="flex flex-col gap-6">
               <div className="h-px" style={{ background: "rgba(176,141,78,0.22)" }} />
-              <p className="font-body text-sm leading-relaxed" style={{ color: "#78716c" }}>
+              <p className="font-body text-base leading-relaxed" style={{ color: "#78716c" }}>
                 {t.bio}
               </p>
               <a

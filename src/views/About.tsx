@@ -188,7 +188,7 @@ export default function AboutView() {
                 <p className="font-bebas text-[10px] tracking-[0.35em] uppercase mb-1" style={{ color: "#8a6a2e" }}>
                   {fact.label}
                 </p>
-                <p className="font-body text-sm" style={{ color: "#1c1917" }}>
+                <p className="font-body text-base" style={{ color: "#1c1917" }}>
                   {fact.value}
                 </p>
               </div>
@@ -226,10 +226,10 @@ export default function AboutView() {
                   {["I", "II", "III"][i]}
                 </p>
                 <div className="h-px mb-5" style={{ background: "rgba(176,141,78,0.22)" }} />
-                <h3 className="font-body font-semibold mb-3 uppercase tracking-wider" style={{ color: "#1c1917", fontSize: "0.7rem", letterSpacing: "0.15em" }}>
+                <h3 className="font-body font-semibold mb-3 uppercase tracking-wider" style={{ color: "#1c1917", fontSize: "0.82rem", letterSpacing: "0.15em" }}>
                   {fact.title}
                 </h3>
-                <p className="font-body text-sm leading-relaxed" style={{ color: "#78716c" }}>
+                <p className="font-body text-base leading-relaxed" style={{ color: "#78716c" }}>
                   {fact.desc}
                 </p>
               </div>

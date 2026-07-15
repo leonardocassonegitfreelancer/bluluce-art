@@ -314,7 +314,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
                 ? "Interessato a un'opera in particolare?"
                 : "Interested in a specific artwork?"}
           </h2>
-          <p className="font-body text-sm mb-8 max-w-lg mx-auto leading-relaxed" style={{ color: "#78716c" }}>
+          <p className="font-body text-base mb-8 max-w-lg mx-auto leading-relaxed" style={{ color: "#78716c" }}>
             {lang === "es"
               ? "Para conocer la disponibilidad, solicitar un catálogo de precios detallado o programar una visita privada al estudio, contáctenos."
               : lang === "it"

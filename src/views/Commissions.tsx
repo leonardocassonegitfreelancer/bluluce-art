@@ -224,7 +224,7 @@ export default function CommissionsView() {
               );
             })}
           </h1>
-          <p className="font-body text-sm leading-relaxed mb-10" style={{ color: "#78716c", maxWidth: "420px" }}>
+          <p className="font-body text-base leading-relaxed mb-10" style={{ color: "#78716c", maxWidth: "420px" }}>
             {t.intro}
           </p>
 
@@ -287,7 +287,7 @@ export default function CommissionsView() {
             <p className="font-bebas text-[9px] tracking-[0.35em] uppercase mb-3" style={{ color: "#8a6a2e" }}>
               {t.previewLabel}
             </p>
-            <p className="font-body text-sm leading-relaxed whitespace-pre-line" style={{ color: "#57534e" }}>
+            <p className="font-body text-base leading-relaxed whitespace-pre-line" style={{ color: "#57534e" }}>
               {t.waMessage(selectedSize, selectedMaterial)}
             </p>
           </div>
@@ -318,13 +318,13 @@ export default function CommissionsView() {
               <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#8a6a2e", minWidth: "110px" }}>
                 {t.timelineLabel}
               </span>
-              <span className="font-body text-xs" style={{ color: "#78716c" }}>{t.timelineValue}</span>
+              <span className="font-body text-sm" style={{ color: "#78716c" }}>{t.timelineValue}</span>
             </div>
             <div className="flex items-start gap-3">
               <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#8a6a2e", minWidth: "110px" }}>
                 {t.shippingLabel}
               </span>
-              <span className="font-body text-xs" style={{ color: "#78716c" }}>{t.shippingValue}</span>
+              <span className="font-body text-sm" style={{ color: "#78716c" }}>{t.shippingValue}</span>
             </div>
           </div>
 
@@ -350,10 +350,10 @@ export default function CommissionsView() {
                   {["I", "II", "III"][i]}
                 </p>
                 <div className="h-px mb-5" style={{ background: "rgba(176,141,78,0.22)" }} />
-                <h3 className="font-body font-semibold mb-3 uppercase tracking-wider" style={{ color: "#1c1917", fontSize: "0.7rem", letterSpacing: "0.15em" }}>
+                <h3 className="font-body font-semibold mb-3 uppercase tracking-wider" style={{ color: "#1c1917", fontSize: "0.82rem", letterSpacing: "0.15em" }}>
                   {step.title}
                 </h3>
-                <p className="font-body text-sm leading-relaxed" style={{ color: "#78716c" }}>
+                <p className="font-body text-base leading-relaxed" style={{ color: "#78716c" }}>
                   {step.desc}
                 </p>
               </div>
