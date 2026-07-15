@@ -129,12 +129,15 @@ export default function AboutView() {
             className="font-display font-normal italic leading-[1.08]"
             style={{ fontSize: "clamp(1.7rem, 6vw, 6rem)", color: "#1c1917" }}
           >
-            {headingLines.map((line, i) => (
-              <span key={i}>
-                {line}
-                {i < headingLines.length - 1 && <br />}
-              </span>
-            ))}
+            {headingLines.map((line, i) => {
+              const isLast = i === headingLines.length - 1;
+              return (
+                <span key={i} className={isLast ? "not-italic font-semibold" : ""} style={isLast ? { color: "#8a6a2e" } : {}}>
+                  {line}
+                  {!isLast && <br />}
+                </span>
+              );
+            })}
           </h1>
           <div className="mt-10 md:mt-12 h-px w-12" style={{ background: "rgba(176,141,78,0.35)" }} />
           <p

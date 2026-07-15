@@ -176,7 +176,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
               {lang === "es" ? "COLECCIÓN DE ARTE" : lang === "it" ? "COLLEZIONE D'ARTE" : "FINE ART COLLECTION"}
             </span>
             <h1
-              className="font-display text-3xl md:text-5xl lg:text-6xl font-medium uppercase"
+              className="font-display text-3xl md:text-5xl lg:text-6xl font-semibold uppercase"
               style={{ color: "#1c1917", letterSpacing: "0.08em" }}
             >
               {th(data.nameKey as any, lang)}
@@ -285,7 +285,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
                     </div>
 
                     <h3
-                      className="font-display font-normal italic mb-5 leading-snug"
+                      className="font-display font-semibold italic mb-5 leading-snug"
                       style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", color: "#1c1917" }}
                     >
                       {prod.name[lang] || prod.name.en}
@@ -305,7 +305,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
       <section className="py-20 px-6" style={{ borderTop: "1px solid rgba(176,141,78,0.15)" }}>
         <div className="max-w-3xl mx-auto text-center">
           <h2
-            className="font-display text-3xl md:text-4xl font-normal italic mb-4"
+            className="font-display text-3xl md:text-4xl font-semibold italic mb-4"
             style={{ color: "#1c1917" }}
           >
             {lang === "es"

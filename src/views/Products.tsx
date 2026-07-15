@@ -51,7 +51,7 @@ const ProductsPage = () => {
             <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
           </div>
           <h1
-            className="font-display font-medium uppercase mb-6"
+            className="font-display font-semibold uppercase mb-6"
             style={{ fontSize: "clamp(1.8rem, 5vw, 5rem)", color: "#1c1917", lineHeight: "1.05", letterSpacing: "0.07em" }}
           >
             {th("collectionTitle", lang)}
@@ -140,7 +140,7 @@ const ProductsPage = () => {
                     </p>
                     <div className="h-px mb-6" style={{ background: "rgba(176,141,78,0.22)" }} />
                     <h2
-                      className="font-display font-normal italic mb-5 leading-snug transition-colors duration-300 group-hover:text-[#8a6a2e]"
+                      className="font-display font-semibold italic mb-5 leading-snug transition-colors duration-300 group-hover:text-[#8a6a2e]"
                       style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.2rem)", color: "#1c1917" }}
                     >
                       {cat.name}

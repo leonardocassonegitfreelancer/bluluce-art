@@ -147,12 +147,18 @@ export default function CommissionsView() {
           </p>
 
           <h1
-            className="font-display font-medium uppercase mb-8"
-            style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", color: "#1c1917", lineHeight: "1.1", letterSpacing: "0.08em" }}
+            className="font-display font-normal italic mb-8"
+            style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", color: "#1c1917", lineHeight: "1.1" }}
           >
-            {headingLines.map((line, i) => (
-              <span key={i}>{line}{i < headingLines.length - 1 && <br />}</span>
-            ))}
+            {headingLines.map((line, i) => {
+              const isLast = i === headingLines.length - 1;
+              return (
+                <span key={i} className={isLast ? "not-italic font-semibold" : ""} style={isLast ? { color: "#8a6a2e" } : {}}>
+                  {line}
+                  {!isLast && <br />}
+                </span>
+              );
+            })}
           </h1>
 
           <p className="font-body text-sm leading-relaxed mb-10" style={{ color: "#78716c", maxWidth: "420px" }}>
