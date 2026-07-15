@@ -6,7 +6,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import artistaFieraImg from "@/assets/artista_fiera_opere_seduta.webp";
 
-const WHATSAPP_BASE = "https://wa.me/34600000000";
+const WHATSAPP_BASE = "https://wa.me/34603356284";
 
 const sizes = ["60×50 cm", "80×60 cm", "100×80 cm", "120×100 cm", "150×120 cm"];
 
