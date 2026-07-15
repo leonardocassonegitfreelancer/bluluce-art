@@ -3,7 +3,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { productsSlug } from "@/i18n/slugs";
 import heroVideo from "@/assets/mare.mp4?url";
-import heroPoster from "@/assets/pittura_mare_donna_schiena_acqua.webp?url";
+import heroPoster from "@/assets/mare-poster.webp?url";
 
 const copy: Record<Lang, {
   line1: string;
