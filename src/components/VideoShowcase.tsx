@@ -1,7 +1,8 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react"; // useState kept for isVisible
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import insideVideo from "@/assets/video-bottom-home.mp4?url";
+import posterImg from "@/assets/video-bottom-home-poster.webp?url";
 
 const copy: Record<Lang, {
   quote: string;
@@ -30,7 +31,6 @@ export default function VideoShowcase() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
   const rafRef = useRef<number>(0);
 
   // Text fade-in when section enters viewport
@@ -48,13 +48,10 @@ export default function VideoShowcase() {
     return () => observer.disconnect();
   }, []);
 
-  // Video fade-in when ready to play
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
-    const onReady = () => { setVideoReady(true); vid.play().catch(() => {}); };
-    vid.addEventListener("canplay", onReady, { once: true });
-    return () => vid.removeEventListener("canplay", onReady);
+    vid.play().catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -113,6 +110,7 @@ export default function VideoShowcase() {
         <video
           ref={videoRef}
           src={insideVideo}
+          poster={posterImg}
           muted
           loop
           playsInline
@@ -121,9 +119,8 @@ export default function VideoShowcase() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: videoReady ? 0.65 : 0,
+            opacity: 0.65,
             filter: "brightness(0.55) contrast(1.1) saturate(0.9)",
-            transition: "opacity 1.2s ease",
           }}
         />
       </div>
@@ -136,19 +133,6 @@ export default function VideoShowcase() {
       }} />
 
 
-
-      {/* Solid dark cover — sits above video, fades out only when video is playing */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute", inset: 0,
-          background: "#1c1917",
-          opacity: videoReady ? 0 : 1,
-          transition: "opacity 1.2s ease",
-          pointerEvents: "none",
-          zIndex: 9,
-        }}
-      />
 
       {/* Cinematic vignette — edges */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none z-10" />
