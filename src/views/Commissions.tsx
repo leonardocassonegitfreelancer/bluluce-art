@@ -26,10 +26,6 @@ const copy: Record<Lang, {
   intro: string;
   sizeLabel: string;
   materialLabel: string;
-  timelineLabel: string;
-  timelineValue: string;
-  shippingLabel: string;
-  shippingValue: string;
   ctaLabel: string;
   ctaNote: string;
   configLabel: string;
@@ -49,10 +45,6 @@ const copy: Record<Lang, {
     intro: "Ogni ricordo può diventare un dipinto. Inviami una foto o raccontami la tua idea, scegli il formato e la interpreterò nel mio stile impressionista lirico, trasformandola in un'opera unica da custodire nel tempo.",
     sizeLabel: "FORMATO",
     materialLabel: "MATERIALE",
-    timelineLabel: "Tempi di realizzazione",
-    timelineValue: "4–8 settimane dalla conferma",
-    shippingLabel: "Spedizione",
-    shippingValue: "Tutta Europa · Imballaggio professionale",
     ctaLabel: "INVIA RICHIESTA VIA WHATSAPP",
     ctaNote: "Ti rispondo entro 24 ore.",
     configLabel: "PERSONALIZZA LA TUA RICHIESTA",
@@ -77,10 +69,6 @@ const copy: Record<Lang, {
     intro: "Cada recuerdo puede convertirse en un cuadro. Envíame una foto o cuéntame tu idea, elige el formato y lo interpretaré en mi estilo impresionista lírico, convirtiéndolo en una obra única para guardar en el tiempo.",
     sizeLabel: "FORMATO",
     materialLabel: "MATERIAL",
-    timelineLabel: "Plazo de realización",
-    timelineValue: "4–8 semanas desde la confirmación",
-    shippingLabel: "Envío",
-    shippingValue: "Toda Europa · Embalaje profesional",
     ctaLabel: "ENVIAR SOLICITUD POR WHATSAPP",
     ctaNote: "Te respondo en menos de 24 horas.",
     configLabel: "PERSONALIZA TU SOLICITUD",
@@ -105,10 +93,6 @@ const copy: Record<Lang, {
     intro: "Every memory can become a painting. Send me a photo or tell me your idea, choose the format and I'll interpret it in my lyrical Impressionist style, turning it into a unique work to treasure forever.",
     sizeLabel: "SIZE",
     materialLabel: "MATERIAL",
-    timelineLabel: "Timeline",
-    timelineValue: "4–8 weeks from confirmation",
-    shippingLabel: "Shipping",
-    shippingValue: "All Europe · Professional packaging",
     ctaLabel: "SEND REQUEST VIA WHATSAPP",
     ctaNote: "I'll reply within 24 hours.",
     configLabel: "PERSONALISE YOUR REQUEST",
@@ -311,22 +295,6 @@ export default function CommissionsView() {
             {t.ctaNote}
           </p>
 
-          {/* Supporting details — below the CTA */}
-          <div className="h-px mb-6" style={{ background: "rgba(176,141,78,0.15)" }} />
-          <div className="space-y-3">
-            <div className="flex items-start gap-3">
-              <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#8a6a2e", minWidth: "110px" }}>
-                {t.timelineLabel}
-              </span>
-              <span className="font-body text-sm" style={{ color: "#78716c" }}>{t.timelineValue}</span>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#8a6a2e", minWidth: "110px" }}>
-                {t.shippingLabel}
-              </span>
-              <span className="font-body text-sm" style={{ color: "#78716c" }}>{t.shippingValue}</span>
-            </div>
-          </div>
 
         </div>
       </div>
