@@ -118,8 +118,8 @@ const ProductsPage = () => {
                     isReversed ? "md:[direction:rtl]" : ""
                   }`}
                 >
-                  {/* Image with gallery mat — 3/5 cols */}
-                  <div className={`md:col-span-3 overflow-hidden ${isReversed ? "md:[direction:ltr]" : ""}`}>
+                  {/* Image — second on mobile */}
+                  <div className={`order-last md:order-none md:col-span-3 overflow-hidden ${isReversed ? "md:[direction:ltr]" : ""}`}>
                     <div style={{ background: "#f0ece5", padding: "16px 16px 24px" }}>
                       <img
                         src={cat.img}
@@ -130,8 +130,8 @@ const ProductsPage = () => {
                     </div>
                   </div>
 
-                  {/* Text — 2/5 cols */}
-                  <div className={`md:col-span-2 ${isReversed ? "md:[direction:ltr]" : ""}`}>
+                  {/* Text — first on mobile */}
+                  <div className={`order-first md:order-none md:col-span-2 ${isReversed ? "md:[direction:ltr]" : ""}`}>
                     <p
                       className="font-display font-normal italic leading-none mb-5 select-none"
                       style={{ fontSize: "clamp(3.5rem, 6vw, 5rem)", color: "rgba(176,141,78,0.13)", lineHeight: 1 }}
@@ -141,12 +141,12 @@ const ProductsPage = () => {
                     <div className="h-px mb-6" style={{ background: "rgba(176,141,78,0.22)" }} />
                     <h2
                       className="font-display font-semibold italic mb-5 leading-snug transition-colors duration-300 group-hover:text-[#8a6a2e]"
-                      style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.2rem)", color: "#1c1917" }}
+                      style={{ fontSize: "clamp(1.9rem, 3vw, 2.6rem)", color: "#1c1917" }}
                     >
                       {cat.name}
                     </h2>
                     <p
-                      className="font-body text-sm leading-relaxed mb-8"
+                      className="font-body text-base leading-relaxed mb-8"
                       style={{ color: "#78716c" }}
                     >
                       {cat.desc}

@@ -249,8 +249,8 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
               >
                 <div className={`grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-14 items-center ${rev ? "md:[direction:rtl]" : ""}`}>
 
-                  {/* Image with gallery mat */}
-                  <div className={`md:col-span-3 ${rev ? "md:[direction:ltr]" : ""}`}>
+                  {/* Image — second on mobile, position handled by desktop grid */}
+                  <div className={`order-last md:order-none md:col-span-3 ${rev ? "md:[direction:ltr]" : ""}`}>
                     <div style={{ background: "#f0ece5", padding: "18px 18px 28px" }}>
                       <img
                         src={prod.img}
@@ -261,8 +261,8 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
                     </div>
                   </div>
 
-                  {/* Details */}
-                  <div className={`md:col-span-2 ${rev ? "md:[direction:ltr]" : ""}`}>
+                  {/* Details — first on mobile */}
+                  <div className={`order-first md:order-none md:col-span-2 ${rev ? "md:[direction:ltr]" : ""}`}>
                     <p
                       className="font-display font-normal italic leading-none mb-5 select-none"
                       style={{ fontSize: "clamp(3.5rem, 7vw, 5.5rem)", color: "rgba(176,141,78,0.13)", lineHeight: 1 }}
@@ -277,7 +277,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
                         style={{ background: isAvail ? "#8a6a2e" : "#a8a29e" }}
                       />
                       <span
-                        className="font-bebas text-[10px] tracking-[0.32em] uppercase"
+                        className="font-bebas text-xs tracking-[0.32em] uppercase"
                         style={{ color: isAvail ? "#8a6a2e" : "#a8a29e" }}
                       >
                         {prod.status[lang] || prod.status.en}
@@ -286,11 +286,11 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
 
                     <h3
                       className="font-display font-semibold italic mb-5 leading-snug"
-                      style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", color: "#1c1917" }}
+                      style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", color: "#1c1917" }}
                     >
                       {prod.name[lang] || prod.name.en}
                     </h3>
-                    <p className="font-body text-xs leading-relaxed tracking-wide" style={{ color: "#a8a29e" }}>
+                    <p className="font-body text-sm leading-relaxed tracking-wide" style={{ color: "#a8a29e" }}>
                       {prod.info[lang] || prod.info.en}
                     </p>
                   </div>
