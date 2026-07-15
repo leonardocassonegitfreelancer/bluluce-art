@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import insideVideo from "@/assets/video-bottom-home.mp4?url";
+import posterImg from "@/assets/video-bottom-home-poster.webp?url";
 
 const copy: Record<Lang, {
   quote: string;
@@ -30,8 +31,10 @@ export default function VideoShowcase() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const rafRef = useRef<number>(0);
 
+  // Text fade-in when section enters viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -46,15 +49,14 @@ export default function VideoShowcase() {
     return () => observer.disconnect();
   }, []);
 
-  // Lazy-load video: assign src only when the section enters the viewport
+  // Video fade-in when ready to play
   useEffect(() => {
-    if (!isVisible) return;
     const vid = videoRef.current;
-    if (!vid || vid.src) return;
-    vid.src = insideVideo;
-    vid.load();
-    vid.play().catch(() => {});
-  }, [isVisible]);
+    if (!vid) return;
+    const onReady = () => { setVideoReady(true); vid.play().catch(() => {}); };
+    vid.addEventListener("canplay", onReady, { once: true });
+    return () => vid.removeEventListener("canplay", onReady);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -109,18 +111,34 @@ export default function VideoShowcase() {
           willChange: "transform",
         }}
       >
+        {/* Poster — visible until video is ready */}
+        <img
+          src={posterImg}
+          aria-hidden="true"
+          style={{
+            position: "absolute", inset: 0,
+            width: "100%", height: "100%",
+            objectFit: "cover",
+            opacity: videoReady ? 0 : 0.65,
+            filter: "brightness(0.55) contrast(1.1) saturate(0.9)",
+            transition: "opacity 1s ease",
+            pointerEvents: "none",
+          }}
+        />
         <video
           ref={videoRef}
+          src={insideVideo}
           muted
           loop
           playsInline
-          preload="none"
+          preload="auto"
           style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.65,
+            opacity: videoReady ? 0.65 : 0,
             filter: "brightness(0.55) contrast(1.1) saturate(0.9)",
+            transition: "opacity 1s ease",
           }}
         />
       </div>
