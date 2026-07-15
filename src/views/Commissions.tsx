@@ -5,6 +5,8 @@ import SEO from "@/components/SEO";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import artistaFieraImg from "@/assets/artista_fiera_opere_seduta.webp";
+import beforeImg from "@/assets/commissioni_foto_bambina_spiaggia.webp";
+import afterImg from "@/assets/commissioni_dipinto_bambina_spiaggia.webp";
 
 const WHATSAPP_BASE = "https://wa.me/34603356284";
 
@@ -30,6 +32,9 @@ const copy: Record<Lang, {
   shippingValue: string;
   ctaLabel: string;
   ctaNote: string;
+  beforeAfterLabel: string;
+  beforeLabel: string;
+  afterLabel: string;
   processLabel: string;
   steps: { title: string; desc: string }[];
   waMessage: (size: string, material: string) => string;
@@ -48,6 +53,9 @@ const copy: Record<Lang, {
     shippingValue: "Tutta Europa · Imballaggio professionale",
     ctaLabel: "RICHIEDI VIA WHATSAPP",
     ctaNote: "Ti rispondo entro 24 ore.",
+    beforeAfterLabel: "LA FOTO DIVENTA UN DIPINTO",
+    beforeLabel: "Foto originale",
+    afterLabel: "Dipinto a mano",
     processLabel: "COME FUNZIONA",
     steps: [
       { title: "Contatto", desc: "Scrivimi descrivendo l'idea: il soggetto, le dimensioni approssimative, lo spazio dove l'opera andrà. Nessun dettaglio è troppo piccolo o troppo vago." },
@@ -71,6 +79,9 @@ const copy: Record<Lang, {
     shippingValue: "Toda Europa · Embalaje profesional",
     ctaLabel: "SOLICITAR POR WHATSAPP",
     ctaNote: "Te respondo en menos de 24 horas.",
+    beforeAfterLabel: "LA FOTO SE CONVIERTE EN PINTURA",
+    beforeLabel: "Foto original",
+    afterLabel: "Pintura a mano",
     processLabel: "CÓMO FUNCIONA",
     steps: [
       { title: "Contacto", desc: "Escríbeme describiendo la idea: el tema, las dimensiones aproximadas, el espacio donde irá la obra. Ningún detalle es demasiado pequeño o demasiado vago." },
@@ -94,6 +105,9 @@ const copy: Record<Lang, {
     shippingValue: "All Europe · Professional packaging",
     ctaLabel: "REQUEST VIA WHATSAPP",
     ctaNote: "I'll reply within 24 hours.",
+    beforeAfterLabel: "THE PHOTO BECOMES A PAINTING",
+    beforeLabel: "Original photo",
+    afterLabel: "Hand-painted work",
     processLabel: "HOW IT WORKS",
     steps: [
       { title: "Get in touch", desc: "Write to me describing your idea: the subject, the approximate dimensions, the space where the work will go. No detail is too small or too vague." },
@@ -250,6 +264,52 @@ export default function CommissionsView() {
           <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase" style={{ color: "#a8a29e" }}>
             {t.ctaNote}
           </p>
+        </div>
+      </div>
+
+      {/* Before / After */}
+      <div className="py-20 px-6" style={{ borderTop: "1px solid rgba(176,141,78,0.15)" }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-5 mb-14">
+            <p className="font-bebas text-[10px] tracking-[0.45em] uppercase flex-shrink-0" style={{ color: "#8a6a2e" }}>
+              {t.beforeAfterLabel}
+            </p>
+            <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
+            {/* Before */}
+            <div>
+              <div style={{ background: "#f0ece5", padding: "14px 14px 22px" }}>
+                <img
+                  src={beforeImg.src}
+                  alt={t.beforeLabel}
+                  className="w-full object-cover"
+                  style={{ aspectRatio: "4/5" }}
+                  loading="lazy"
+                />
+              </div>
+              <p className="font-bebas text-[10px] tracking-[0.35em] uppercase mt-4 text-center" style={{ color: "#a8a29e" }}>
+                {t.beforeLabel}
+              </p>
+            </div>
+            {/* Arrow — visible only on desktop */}
+            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
+            {/* After */}
+            <div>
+              <div style={{ background: "#f0ece5", padding: "14px 14px 22px" }}>
+                <img
+                  src={afterImg.src}
+                  alt={t.afterLabel}
+                  className="w-full object-cover"
+                  style={{ aspectRatio: "4/5" }}
+                  loading="lazy"
+                />
+              </div>
+              <p className="font-bebas text-[10px] tracking-[0.35em] uppercase mt-4 text-center" style={{ color: "#8a6a2e" }}>
+                {t.afterLabel}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
