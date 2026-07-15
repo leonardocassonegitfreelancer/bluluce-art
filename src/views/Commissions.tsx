@@ -32,6 +32,8 @@ const copy: Record<Lang, {
   shippingValue: string;
   ctaLabel: string;
   ctaNote: string;
+  configLabel: string;
+  previewLabel: string;
   beforeAfterLabel: string;
   beforeLabel: string;
   afterLabel: string;
@@ -51,8 +53,10 @@ const copy: Record<Lang, {
     timelineValue: "4–8 settimane dalla conferma",
     shippingLabel: "Spedizione",
     shippingValue: "Tutta Europa · Imballaggio professionale",
-    ctaLabel: "RICHIEDI VIA WHATSAPP",
+    ctaLabel: "INVIA RICHIESTA VIA WHATSAPP",
     ctaNote: "Ti rispondo entro 24 ore.",
+    configLabel: "PERSONALIZZA LA TUA RICHIESTA",
+    previewLabel: "Messaggio che verrà inviato a Vittoria",
     beforeAfterLabel: "LA FOTO DIVENTA UN DIPINTO",
     beforeLabel: "Foto originale",
     afterLabel: "Dipinto a mano",
@@ -77,8 +81,10 @@ const copy: Record<Lang, {
     timelineValue: "4–8 semanas desde la confirmación",
     shippingLabel: "Envío",
     shippingValue: "Toda Europa · Embalaje profesional",
-    ctaLabel: "SOLICITAR POR WHATSAPP",
+    ctaLabel: "ENVIAR SOLICITUD POR WHATSAPP",
     ctaNote: "Te respondo en menos de 24 horas.",
+    configLabel: "PERSONALIZA TU SOLICITUD",
+    previewLabel: "Mensaje que se enviará a Vittoria",
     beforeAfterLabel: "LA FOTO SE CONVIERTE EN PINTURA",
     beforeLabel: "Foto original",
     afterLabel: "Pintura a mano",
@@ -103,8 +109,10 @@ const copy: Record<Lang, {
     timelineValue: "4–8 weeks from confirmation",
     shippingLabel: "Shipping",
     shippingValue: "All Europe · Professional packaging",
-    ctaLabel: "REQUEST VIA WHATSAPP",
+    ctaLabel: "SEND REQUEST VIA WHATSAPP",
     ctaNote: "I'll reply within 24 hours.",
+    configLabel: "PERSONALISE YOUR REQUEST",
+    previewLabel: "Message that will be sent to Vittoria",
     beforeAfterLabel: "THE PHOTO BECOMES A PAINTING",
     beforeLabel: "Original photo",
     afterLabel: "Hand-painted work",
@@ -196,34 +204,33 @@ export default function CommissionsView() {
           />
         </div>
 
-        {/* Right: product details */}
+        {/* Right: configurator */}
         <div className="flex flex-col justify-center px-8 md:px-14 lg:px-20 py-16 md:py-24">
+
+          {/* Heading */}
           <p className="font-bebas text-[10px] tracking-[0.45em] uppercase mb-8" style={{ color: "#8a6a2e" }}>
             {t.label}
           </p>
-
           <h1
-            className="font-display font-normal italic mb-8"
+            className="font-display font-normal italic mb-6"
             style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", color: "#1c1917", lineHeight: "1.1" }}
           >
             {headingLines.map((line, i) => {
               const isLast = i === headingLines.length - 1;
               return (
                 <span key={i} className={isLast ? "not-italic font-semibold" : ""} style={isLast ? { color: "#8a6a2e" } : {}}>
-                  {line}
-                  {!isLast && <br />}
+                  {line}{!isLast && <br />}
                 </span>
               );
             })}
           </h1>
-
           <p className="font-body text-sm leading-relaxed mb-10" style={{ color: "#78716c", maxWidth: "420px" }}>
             {t.intro}
           </p>
 
           <div className="h-px mb-10" style={{ background: "rgba(176,141,78,0.2)" }} />
 
-          {/* Size selector — editorial text style */}
+          {/* Step 1 — Format */}
           <div className="mb-8">
             <p className="font-bebas text-[10px] tracking-[0.4em] uppercase mb-5" style={{ color: "#8a6a2e" }}>
               {t.sizeLabel}
@@ -236,11 +243,10 @@ export default function CommissionsView() {
                   className="font-body text-sm transition-all duration-200"
                   style={{
                     color: selectedSize === s ? "#1c1917" : "#a8a29e",
-                    borderBottom: selectedSize === s ? "1px solid #8a6a2e" : "1px solid transparent",
-                    paddingBottom: "2px",
                     background: "none",
                     border: "none",
                     borderBottom: selectedSize === s ? "1px solid #8a6a2e" : "1px solid transparent",
+                    paddingBottom: "2px",
                     cursor: "pointer",
                   }}
                 >
@@ -250,7 +256,7 @@ export default function CommissionsView() {
             </div>
           </div>
 
-          {/* Material selector — editorial text style */}
+          {/* Step 2 — Material */}
           <div className="mb-10">
             <p className="font-bebas text-[10px] tracking-[0.4em] uppercase mb-5" style={{ color: "#8a6a2e" }}>
               {t.materialLabel}
@@ -276,30 +282,22 @@ export default function CommissionsView() {
             </div>
           </div>
 
-          {/* Details */}
-          <div className="mb-10 space-y-4">
-            <div className="flex items-start gap-3">
-              <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#8a6a2e", minWidth: "120px" }}>
-                {t.timelineLabel}
-              </span>
-              <span className="font-body text-sm" style={{ color: "#1c1917" }}>{t.timelineValue}</span>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#8a6a2e", minWidth: "120px" }}>
-                {t.shippingLabel}
-              </span>
-              <span className="font-body text-sm" style={{ color: "#1c1917" }}>{t.shippingValue}</span>
-            </div>
+          {/* Message preview */}
+          <div className="mb-8 p-5" style={{ background: "rgba(176,141,78,0.06)", borderLeft: "2px solid rgba(176,141,78,0.35)" }}>
+            <p className="font-bebas text-[9px] tracking-[0.35em] uppercase mb-3" style={{ color: "#8a6a2e" }}>
+              {t.previewLabel}
+            </p>
+            <p className="font-body text-sm leading-relaxed whitespace-pre-line" style={{ color: "#57534e" }}>
+              {t.waMessage(selectedSize, selectedMaterial)}
+            </p>
           </div>
-
-          <div className="h-px mb-10" style={{ background: "rgba(176,141,78,0.2)" }} />
 
           {/* WhatsApp CTA */}
           <a
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 px-8 py-4 font-body text-xs tracking-widest uppercase transition-all duration-500 mb-4"
+            className="inline-flex items-center justify-center gap-3 px-8 py-4 font-body text-xs tracking-widest uppercase transition-all duration-500 mb-3"
             style={{ background: "#8a6a2e", color: "#FAFAF8", border: "1px solid #8a6a2e" }}
             onMouseEnter={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#8a6a2e"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "#8a6a2e"; e.currentTarget.style.color = "#FAFAF8"; }}
@@ -309,9 +307,27 @@ export default function CommissionsView() {
             </svg>
             {t.ctaLabel}
           </a>
-          <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase" style={{ color: "#a8a29e" }}>
+          <p className="font-body text-[0.65rem] tracking-[0.15em] uppercase mb-10" style={{ color: "#a8a29e" }}>
             {t.ctaNote}
           </p>
+
+          {/* Supporting details — below the CTA */}
+          <div className="h-px mb-6" style={{ background: "rgba(176,141,78,0.15)" }} />
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#8a6a2e", minWidth: "110px" }}>
+                {t.timelineLabel}
+              </span>
+              <span className="font-body text-xs" style={{ color: "#78716c" }}>{t.timelineValue}</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="font-bebas text-[9px] tracking-[0.3em] uppercase mt-0.5 flex-shrink-0" style={{ color: "#8a6a2e", minWidth: "110px" }}>
+                {t.shippingLabel}
+              </span>
+              <span className="font-body text-xs" style={{ color: "#78716c" }}>{t.shippingValue}</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
