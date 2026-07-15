@@ -60,9 +60,13 @@ export default function AboutTeaser() {
               <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
             </div>
 
+            <p className="font-display font-normal tracking-[0.06em]" style={{ fontSize: "clamp(1.4rem, 2.8vw, 2rem)", color: "#1c1917" }}>
+              Vittoria De Raimondi
+            </p>
+
             <blockquote
               className="font-display font-normal italic leading-tight"
-              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "#1c1917", margin: 0 }}
+              style={{ fontSize: "clamp(1.2rem, 2.4vw, 1.8rem)", color: "#78716c", margin: 0 }}
             >
               {t.quote}
             </blockquote>

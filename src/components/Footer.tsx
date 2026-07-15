@@ -97,13 +97,23 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
           {/* Brand */}
           <div className="md:col-span-1">
             <p
-              className="font-display text-xl font-bold tracking-[0.14em] mb-1"
+              className="font-display text-xl font-bold tracking-[0.14em] mb-0.5"
               style={{
                 color: "#1c1917",
                 textShadow: "-1.5px -1.5px 0 #fafaf8, 1.5px -1.5px 0 #fafaf8, -1.5px 1.5px 0 #fafaf8, 1.5px 1.5px 0 #fafaf8, 0 0 8px rgba(250,248,245,0.9)"
               }}
             >
               BLULUCE
+            </p>
+            <p
+              className="font-body tracking-[0.18em] mb-1"
+              style={{
+                fontSize: "0.65rem",
+                color: "#1c1917",
+                textShadow: "-1px -1px 0 #fafaf8, 1px -1px 0 #fafaf8, -1px 1px 0 #fafaf8, 1px 1px 0 #fafaf8, 0 0 5px rgba(250,248,245,0.8)"
+              }}
+            >
+              Vittoria De Raimondi
             </p>
             <p
               className="font-body uppercase tracking-[0.3em] mb-5 font-bold"
@@ -213,7 +223,7 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
             textShadow: "-1px -1px 0 #fafaf8, 1px -1px 0 #fafaf8, -1px 1px 0 #fafaf8, 1px 1px 0 #fafaf8, 0 0 5px rgba(250,248,245,0.8)"
           }}
         >
-          © 2026 BLULUCE ART — {t.rights}
+          © 2026 Vittoria De Raimondi · BLULUCE ART — {t.rights}
         </p>
 
       </div>

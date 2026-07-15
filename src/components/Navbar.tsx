@@ -73,10 +73,9 @@ const Navbar = () => {
           backdropFilter: scrolled && !mobileOpen ? "blur(12px)" : "none",
         }}
       >
-        <a href={prefix}
-          className="font-display text-[1.05rem] font-bold tracking-[0.18em] transition-colors duration-300"
-          style={{ color: textBurgerColor }}>
-          BLULUCE
+        <a href={prefix} className="flex flex-col leading-none transition-colors duration-300" style={{ textDecoration: "none" }}>
+          <span className="font-display text-[1.05rem] font-bold tracking-[0.18em]" style={{ color: textBurgerColor }}>BLULUCE</span>
+          <span className="font-body text-[0.52rem] tracking-[0.22em] uppercase mt-[2px]" style={{ color: "#8a6a2e" }}>Vittoria De Raimondi</span>
         </a>
         <div className="flex items-center gap-4">
           <button onClick={() => setMobileOpen(!mobileOpen)} className="relative w-8 h-8 flex items-center justify-center" aria-label="Menu">
@@ -95,13 +94,9 @@ const Navbar = () => {
       <header className={`hidden md:flex fixed top-0 left-0 right-0 z-50 justify-between items-center px-12 py-8 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
         isHome && !pastHero ? "opacity-0 pointer-events-none -translate-y-4" : "opacity-100 translate-y-0"
       }`}>
-        <a
-          href={prefix}
-          className="font-display text-[1rem] font-bold text-[#1c1917] tracking-[0.24em] leading-none"
-          style={{ textDecoration: "none" }}
-        >
-          BLULUCE
-          <span className="font-body text-[0.55rem] font-normal tracking-[0.35em] text-[#8a6a2e] ml-1.5">ART</span>
+        <a href={prefix} className="flex flex-col leading-none" style={{ textDecoration: "none" }}>
+          <span className="font-display text-[1rem] font-bold text-[#1c1917] tracking-[0.24em]">BLULUCE</span>
+          <span className="font-body text-[0.5rem] tracking-[0.22em] uppercase mt-[3px]" style={{ color: "#8a6a2e" }}>Vittoria De Raimondi</span>
         </a>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
