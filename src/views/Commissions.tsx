@@ -277,24 +277,7 @@ export default function CommissionsView() {
             <div className="h-px flex-1" style={{ background: "rgba(176,141,78,0.2)" }} />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
-            {/* Before */}
-            <div>
-              <div style={{ background: "#f0ece5", padding: "14px 14px 22px" }}>
-                <img
-                  src={beforeImg.src}
-                  alt={t.beforeLabel}
-                  className="w-full object-cover"
-                  style={{ aspectRatio: "4/5" }}
-                  loading="lazy"
-                />
-              </div>
-              <p className="font-bebas text-[10px] tracking-[0.35em] uppercase mt-4 text-center" style={{ color: "#a8a29e" }}>
-                {t.beforeLabel}
-              </p>
-            </div>
-            {/* Arrow — visible only on desktop */}
-            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
-            {/* After */}
+            {/* After (painting) — shown first */}
             <div>
               <div style={{ background: "#f0ece5", padding: "14px 14px 22px" }}>
                 <img
@@ -307,6 +290,21 @@ export default function CommissionsView() {
               </div>
               <p className="font-bebas text-[10px] tracking-[0.35em] uppercase mt-4 text-center" style={{ color: "#8a6a2e" }}>
                 {t.afterLabel}
+              </p>
+            </div>
+            {/* Before (photo) — shown second */}
+            <div>
+              <div style={{ background: "#f0ece5", padding: "14px 14px 22px" }}>
+                <img
+                  src={beforeImg.src}
+                  alt={t.beforeLabel}
+                  className="w-full object-cover"
+                  style={{ aspectRatio: "4/5" }}
+                  loading="lazy"
+                />
+              </div>
+              <p className="font-bebas text-[10px] tracking-[0.35em] uppercase mt-4 text-center" style={{ color: "#a8a29e" }}>
+                {t.beforeLabel}
               </p>
             </div>
           </div>
