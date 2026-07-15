@@ -286,7 +286,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
 
                     <h3
                       className="font-display font-semibold italic mb-5 leading-snug"
-                      style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", color: "#1c1917" }}
+                      style={{ fontSize: "clamp(1.95rem, 3.2vw, 2.8rem)", color: "#1c1917" }}
                     >
                       {prod.name[lang] || prod.name.en}
                     </h3>
@@ -305,8 +305,8 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
       <section className="py-20 px-6" style={{ borderTop: "1px solid rgba(176,141,78,0.15)" }}>
         <div className="max-w-3xl mx-auto text-center">
           <h2
-            className="font-display text-3xl md:text-4xl font-semibold italic mb-4"
-            style={{ color: "#1c1917" }}
+            className="font-display font-semibold italic mb-4"
+            style={{ fontSize: "clamp(2rem, 4vw, 2.7rem)", color: "#1c1917" }}
           >
             {lang === "es"
               ? "¿Interesado en una obra en particular?"

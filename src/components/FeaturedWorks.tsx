@@ -104,7 +104,7 @@ export default function FeaturedWorks() {
                 {work.collection}
               </p>
               <h3
-                className="font-display font-normal italic text-lg leading-snug mb-1 transition-colors duration-300 group-hover:text-[#8a6a2e]"
+                className="font-display font-normal italic text-xl leading-snug mb-1 transition-colors duration-300 group-hover:text-[#8a6a2e]"
                 style={{ color: "#1c1917" }}
               >
                 {work.name}

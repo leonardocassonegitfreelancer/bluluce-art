@@ -66,7 +66,7 @@ export default function AboutTeaser() {
 
             <blockquote
               className="font-display font-normal italic leading-tight"
-              style={{ fontSize: "clamp(1.2rem, 2.4vw, 1.8rem)", color: "#78716c", margin: 0 }}
+              style={{ fontSize: "clamp(1.3rem, 2.6vw, 1.95rem)", color: "#78716c", margin: 0 }}
             >
               {t.quote}
             </blockquote>
