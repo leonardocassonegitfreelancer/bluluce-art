@@ -74,7 +74,7 @@ const Navbar = () => {
         }}
       >
         <a href={prefix} className="flex flex-col leading-none transition-colors duration-300" style={{ textDecoration: "none" }}>
-          <span className="font-display text-[1.35rem] font-bold tracking-[0.18em]" style={{ color: textBurgerColor }}>BLULUCE</span>
+          <span className="font-display text-[1.35rem] font-semibold tracking-[0.18em]" style={{ color: textBurgerColor }}>BLULUCE</span>
           <span className="font-body text-[0.65rem] tracking-[0.22em] uppercase mt-[2px]" style={{ color: "#8a6a2e" }}>Vittoria De Raimondi</span>
         </a>
         <div className="flex items-center gap-4">
@@ -95,7 +95,7 @@ const Navbar = () => {
         isHome && !pastHero ? "opacity-0 pointer-events-none -translate-y-4" : "opacity-100 translate-y-0"
       }`}>
         <a href={prefix} className="flex flex-col leading-none" style={{ textDecoration: "none" }}>
-          <span className="font-display text-[1rem] font-bold text-[#1c1917] tracking-[0.24em]">BLULUCE</span>
+          <span className="font-display text-[1rem] font-semibold text-[#1c1917] tracking-[0.24em]">BLULUCE</span>
           <span className="font-body text-[0.5rem] tracking-[0.22em] uppercase mt-[3px]" style={{ color: "#8a6a2e" }}>Vittoria De Raimondi</span>
         </a>
         <button
