@@ -110,18 +110,6 @@ export default function VideoShowcase() {
           willChange: "transform",
         }}
       >
-        {/* Dark placeholder with gold shimmer — visible until video is ready */}
-        {!videoReady && (
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute", inset: 0,
-              background: "linear-gradient(135deg, #1c1917 0%, #2a2118 50%, #1c1917 100%)",
-              backgroundSize: "400% 400%",
-              animation: "shimmer 3s ease infinite",
-            }}
-          />
-        )}
         <video
           ref={videoRef}
           src={insideVideo}
@@ -135,7 +123,7 @@ export default function VideoShowcase() {
             objectFit: "cover",
             opacity: videoReady ? 0.65 : 0,
             filter: "brightness(0.55) contrast(1.1) saturate(0.9)",
-            transition: "opacity 1s ease",
+            transition: "opacity 1.2s ease",
           }}
         />
       </div>
@@ -148,6 +136,19 @@ export default function VideoShowcase() {
       }} />
 
 
+
+      {/* Solid dark cover — sits above video, fades out only when video is playing */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", inset: 0,
+          background: "#1c1917",
+          opacity: videoReady ? 0 : 1,
+          transition: "opacity 1.2s ease",
+          pointerEvents: "none",
+          zIndex: 9,
+        }}
+      />
 
       {/* Cinematic vignette — edges */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/50 pointer-events-none z-10" />
