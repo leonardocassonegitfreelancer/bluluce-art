@@ -80,8 +80,10 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
       <style>{`
         .footer-bg-img { height: 100% !important; }
         .footer-gradient { background: linear-gradient(to bottom, #FAFAF8 0%, #FAFAF8 8%, rgba(250,248,245,0.4) 20%, rgba(250,248,245,0) 45%) !important; }
-        .footer-content {
-          padding-top: 3.5rem !important;
+        .footer-content { padding-top: 3.5rem !important; }
+        @media (max-width: 767px) {
+          .footer-bg-img { display: none !important; }
+          .footer-gradient { display: none !important; }
         }
       `}</style>
       {/* Paint brushes background */}
