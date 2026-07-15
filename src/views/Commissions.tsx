@@ -223,21 +223,25 @@ export default function CommissionsView() {
 
           <div className="h-px mb-10" style={{ background: "rgba(176,141,78,0.2)" }} />
 
-          {/* Size selector */}
+          {/* Size selector — editorial text style */}
           <div className="mb-8">
-            <p className="font-bebas text-[10px] tracking-[0.4em] uppercase mb-4" style={{ color: "#8a6a2e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.4em] uppercase mb-5" style={{ color: "#8a6a2e" }}>
               {t.sizeLabel}
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
               {sizes.map((s) => (
                 <button
                   key={s}
                   onClick={() => setSelectedSize(s)}
-                  className="font-body text-[0.7rem] tracking-[0.12em] px-4 py-2 transition-all duration-200"
+                  className="font-body text-sm transition-all duration-200"
                   style={{
-                    border: `1px solid ${selectedSize === s ? "#8a6a2e" : "rgba(176,141,78,0.3)"}`,
-                    background: selectedSize === s ? "#8a6a2e" : "transparent",
-                    color: selectedSize === s ? "#FAFAF8" : "#78716c",
+                    color: selectedSize === s ? "#1c1917" : "#a8a29e",
+                    borderBottom: selectedSize === s ? "1px solid #8a6a2e" : "1px solid transparent",
+                    paddingBottom: "2px",
+                    background: "none",
+                    border: "none",
+                    borderBottom: selectedSize === s ? "1px solid #8a6a2e" : "1px solid transparent",
+                    cursor: "pointer",
                   }}
                 >
                   {s}
@@ -246,21 +250,24 @@ export default function CommissionsView() {
             </div>
           </div>
 
-          {/* Material selector */}
+          {/* Material selector — editorial text style */}
           <div className="mb-10">
-            <p className="font-bebas text-[10px] tracking-[0.4em] uppercase mb-4" style={{ color: "#8a6a2e" }}>
+            <p className="font-bebas text-[10px] tracking-[0.4em] uppercase mb-5" style={{ color: "#8a6a2e" }}>
               {t.materialLabel}
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-6">
               {(materials[lang as Lang] ?? materials.it).map((m) => (
                 <button
                   key={m}
                   onClick={() => setSelectedMaterial(m)}
-                  className="font-body text-[0.7rem] tracking-[0.12em] px-5 py-2 transition-all duration-200"
+                  className="font-body text-sm transition-all duration-200"
                   style={{
-                    border: `1px solid ${selectedMaterial === m ? "#8a6a2e" : "rgba(176,141,78,0.3)"}`,
-                    background: selectedMaterial === m ? "#8a6a2e" : "transparent",
-                    color: selectedMaterial === m ? "#FAFAF8" : "#78716c",
+                    color: selectedMaterial === m ? "#1c1917" : "#a8a29e",
+                    background: "none",
+                    border: "none",
+                    borderBottom: selectedMaterial === m ? "1px solid #8a6a2e" : "1px solid transparent",
+                    paddingBottom: "2px",
+                    cursor: "pointer",
                   }}
                 >
                   {m}
