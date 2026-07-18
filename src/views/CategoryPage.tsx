@@ -131,7 +131,7 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: ulivoBoscoImg.src,
         name: { es: "El Bosque y el Lago", en: "Forest and Lake", it: "Il Bosco e il Lago" },
-        info: { es: "80 x 110 cm | Óleo sobre lienzo | 2026", en: "80 x 110 cm | Oil on canvas | 2026", it: "80 x 110 cm | Olio su tela | 2026" },
+        info: { es: "40 x 60 cm | Acrílico sobre lienzo | 2026", en: "40 x 60 cm | Acrylic on canvas | 2026", it: "40 x 60 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
