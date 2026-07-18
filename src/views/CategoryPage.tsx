@@ -48,8 +48,8 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       },
       {
         img: mareOndeImg.src,
-        name: { es: "Reflejos Meridionales", en: "Southern Reflections", it: "Riflessi Meridionali" },
-        info: { es: "100 x 80 cm | Acrílico sobre lienzo | 2025", en: "100 x 80 cm | Acrylic on canvas | 2025", it: "100 x 80 cm | Acrilico su tela | 2025" },
+        name: { es: "A la Orilla", en: "A la Orilla", it: "A la Orilla" },
+        info: { es: "38 x 46 cm | Acrílico sobre lienzo | 2026", en: "38 x 46 cm | Acrylic on canvas | 2026", it: "38 x 46 cm | Acrilico su tela | 2026" },
         status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
       },
       {
