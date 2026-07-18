@@ -98,14 +98,14 @@ const categoryData: Record<CategorySlug, CategoryData> = {
     artworks: [
       {
         img: flamencarImg.src,
-        name: { es: "Fuego del Sur", en: "Fire of the South", it: "Fuoco del Sud" },
-        info: { es: "140 x 110 cm | Acrílico sobre lienzo | 2026", en: "140 x 110 cm | Acrylic on canvas | 2026", it: "140 x 110 cm | Acrilico su tela | 2026" },
+        name: { es: "Fuego Callado", en: "Fuego Callado", it: "Fuego Callado" },
+        info: { es: "38 x 46 cm | Acrílico sobre lienzo | 2026", en: "38 x 46 cm | Acrylic on canvas | 2026", it: "38 x 46 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
         img: ritrattoOroImg.src,
-        name: { es: "La Dorada", en: "The Golden One", it: "La Dorata" },
-        info: { es: "90 x 90 cm | Acrílico sobre lienzo | 2025", en: "90 x 90 cm | Acrylic on canvas | 2025", it: "90 x 90 cm | Acrilico su tela | 2025" },
+        name: { es: "Rosa de la Tarde", en: "Rosa de la Tarde", it: "Rosa de la Tarde" },
+        info: { es: "46 x 38 cm | Acrílico sobre lienzo | 2026", en: "46 x 38 cm | Acrylic on canvas | 2026", it: "46 x 38 cm | Acrilico su tela | 2026" },
         status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
       },
       {
