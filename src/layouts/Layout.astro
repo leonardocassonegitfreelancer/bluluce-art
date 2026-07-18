@@ -1,5 +1,6 @@
 ---
 import "../index.css";
+import CookieBanner from "../components/CookieBanner";
 
 interface Props {
   title: string;
@@ -81,5 +82,6 @@ const canonicalUrl = `${BASE_URL}${canonical}`;
   <body>
     <div class="grain-overlay" aria-hidden="true"></div>
     <slot />
+    <CookieBanner lang={lang} client:load />
   </body>
 </html>
