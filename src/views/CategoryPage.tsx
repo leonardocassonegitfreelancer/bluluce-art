@@ -49,13 +49,13 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: mareOndeImg.src,
         name: { es: "Reflejos Meridionales", en: "Southern Reflections", it: "Riflessi Meridionali" },
-        info: { es: "100 x 80 cm | Óleo y pigmentos sobre lienzo | 2025", en: "100 x 80 cm | Oil and pigments on canvas | 2025", it: "100 x 80 cm | Olio e pigmenti su tela | 2025" },
+        info: { es: "100 x 80 cm | Acrílico sobre lienzo | 2025", en: "100 x 80 cm | Acrylic on canvas | 2025", it: "100 x 80 cm | Acrilico su tela | 2025" },
         status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
       },
       {
         img: mareSchienaImg.src,
         name: { es: "Verso il Largo", en: "Out to Sea", it: "Verso il Largo" },
-        info: { es: "150 x 120 cm | Óleo sobre lienzo | 2026", en: "150 x 120 cm | Oil on canvas | 2026", it: "150 x 120 cm | Olio su tela | 2026" },
+        info: { es: "150 x 120 cm | Acrílico sobre lienzo | 2026", en: "150 x 120 cm | Acrylic on canvas | 2026", it: "150 x 120 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
@@ -99,19 +99,19 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: flamencarImg.src,
         name: { es: "Fuego del Sur", en: "Fire of the South", it: "Fuoco del Sud" },
-        info: { es: "140 x 110 cm | Óleo y pigmentos naturales sobre lino | 2026", en: "140 x 110 cm | Oil and natural pigments on linen | 2026", it: "140 x 110 cm | Olio e pigmenti naturali su lino | 2026" },
+        info: { es: "140 x 110 cm | Acrílico sobre lienzo | 2026", en: "140 x 110 cm | Acrylic on canvas | 2026", it: "140 x 110 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
         img: ritrattoOroImg.src,
         name: { es: "La Dorada", en: "The Golden One", it: "La Dorata" },
-        info: { es: "90 x 90 cm | Óleo con detalles en pan de oro (24k) sobre lienzo | 2025", en: "90 x 90 cm | Oil with 24k gold leaf details on canvas | 2025", it: "90 x 90 cm | Olio con dettagli in foglia d'oro (24k) su tela | 2025" },
+        info: { es: "90 x 90 cm | Acrílico sobre lienzo | 2025", en: "90 x 90 cm | Acrylic on canvas | 2025", it: "90 x 90 cm | Acrilico su tela | 2025" },
         status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
       },
       {
         img: giardinoImg.src,
         name: { es: "La Terraza", en: "The Terrace", it: "La Terrazza" },
-        info: { es: "120 x 100 cm | Óleo y pigmentos del Mediterráneo sobre lino crudo | 2026", en: "120 x 100 cm | Oil and Mediterranean pigments on raw linen | 2026", it: "120 x 100 cm | Olio e pigmenti del Mediterraneo su lino grezzo | 2026" },
+        info: { es: "120 x 100 cm | Acrílico sobre lienzo | 2026", en: "120 x 100 cm | Acrylic on canvas | 2026", it: "120 x 100 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
     ]
@@ -125,7 +125,7 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: ulivoAlberoImg.src,
         name: { es: "Bajo el Olivo", en: "Under the Olive Tree", it: "Sotto l'Ulivo" },
-        info: { es: "130 x 100 cm | Óleo sobre lienzo | 2026", en: "130 x 100 cm | Oil on canvas | 2026", it: "130 x 100 cm | Olio su tela | 2026" },
+        info: { es: "130 x 100 cm | Acrílico sobre lienzo | 2026", en: "130 x 100 cm | Acrylic on canvas | 2026", it: "130 x 100 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
@@ -137,7 +137,7 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: giardinoImg.src,
         name: { es: "La Terraza", en: "The Terrace", it: "La Terrazza" },
-        info: { es: "120 x 100 cm | Óleo y pigmentos del Mediterráneo sobre lino crudo | 2026", en: "120 x 100 cm | Oil and Mediterranean pigments on raw linen | 2026", it: "120 x 100 cm | Olio e pigmenti del Mediterraneo su lino grezzo | 2026" },
+        info: { es: "120 x 100 cm | Acrílico sobre lienzo | 2026", en: "120 x 100 cm | Acrylic on canvas | 2026", it: "120 x 100 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
     ]
