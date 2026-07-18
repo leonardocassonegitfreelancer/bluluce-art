@@ -73,19 +73,19 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: bambinaSpiaggiaImg.src,
         name: { es: "Juegos en la Orilla", en: "Shore Games", it: "Giochi in Riva" },
-        info: { es: "50 x 35 cm | Óleo sobre lienzo | 2026", en: "50 x 35 cm | Oil on canvas | 2026", it: "50 x 35 cm | Olio su tela | 2026" },
+        info: { es: "18 x 24 cm | Acrílico sobre lienzo | 2026", en: "18 x 24 cm | Acrylic on canvas | 2026", it: "18 x 24 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
         img: bambinaSecchielloOndeImg.src,
         name: { es: "La Niña del Cubo Rojo I", en: "Girl with the Red Bucket I", it: "La Bambina col Secchiello Rosso I" },
-        info: { es: "60 x 50 cm | Óleo sobre lienzo | 2026", en: "60 x 50 cm | Oil on canvas | 2026", it: "60 x 50 cm | Olio su tela | 2026" },
+        info: { es: "18 x 24 cm | Acrílico sobre lienzo | 2026", en: "18 x 24 cm | Acrylic on canvas | 2026", it: "18 x 24 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
         img: bambinaSecchielloRossoImg.src,
         name: { es: "La Niña del Cubo Rojo II", en: "Girl with the Red Bucket II", it: "La Bambina col Secchiello Rosso II" },
-        info: { es: "60 x 50 cm | Óleo sobre lienzo | 2026", en: "60 x 50 cm | Oil on canvas | 2026", it: "60 x 50 cm | Olio su tela | 2026" },
+        info: { es: "18 x 24 cm | Acrílico sobre lienzo | 2026", en: "18 x 24 cm | Acrylic on canvas | 2026", it: "18 x 24 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
     ]
