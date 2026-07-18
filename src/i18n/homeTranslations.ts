@@ -12,9 +12,9 @@ const tr = {
 
   // Hero / shared description (used for SEO meta on the collection pages)
   heroDescDesktop: {
-    es: "Pinturas originales y obras de arte inspiradas en la luz, el mar y los colores del Mediterráneo. Descubre la auténtica belleza con las creaciones exclusivas de BLULUCE ART.",
-    en: "Original paintings and artworks inspired by the light, the sea, and the colors of the Mediterranean. Discover authentic beauty with exclusive BLULUCE ART creations.",
-    it: "Dipinti e opere d'arte originali ispirati alla luce, al mare e ai colori del Mediterraneo. Scopri l'autentica bellezza con le creazioni esclusive di BLULUCE ART.",
+    es: "Vittoria De Raimondi, pintora italiana en Málaga. Pinturas originales inspiradas en la luz, el mar y los colores del Mediterráneo — obras únicas pintadas a mano.",
+    en: "Vittoria De Raimondi, Italian painter in Málaga. Original paintings inspired by the light, the sea and the colours of the Mediterranean — unique hand-painted works.",
+    it: "Vittoria De Raimondi, pittrice italiana a Málaga. Dipinti originali ispirati alla luce, al mare e ai colori del Mediterraneo — opere uniche dipinte a mano.",
   },
 
   // Art collections

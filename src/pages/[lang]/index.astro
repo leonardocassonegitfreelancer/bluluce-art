@@ -17,22 +17,42 @@ export function getStaticPaths() {
 const { lang } = Astro.params as { lang: Lang };
 
 const titles: Record<Lang, string> = {
-  es: "BLULUCE ART | Pinturas originales y arte del Mediterráneo",
-  en: "BLULUCE ART | Original Paintings & Mediterranean Art",
-  it: "BLULUCE ART | Dipinti Originali & Arte Mediterranea",
+  es: "Vittoria De Raimondi – BLULUCE ART | Pinturas Originales del Mediterráneo",
+  en: "Vittoria De Raimondi – BLULUCE ART | Original Mediterranean Paintings",
+  it: "Vittoria De Raimondi – BLULUCE ART | Dipinti Originali del Mediterraneo",
 };
 
 const artGalleryJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ArtGallery",
-  "@id": "https://bluluceart.com",
-  name: "BLULUCE ART",
-  description: "Original paintings and artworks inspired by the light, the sea, and the colors of the Mediterranean.",
-  image: "https://bluluceart.com/og-image.webp",
-  url: "https://bluluceart.com",
-  email: "info@bluluceart.com",
-  sameAs: [
-    "https://www.instagram.com/bluluce.art/",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://bluluceart.com/#vittoria",
+      name: "Vittoria De Raimondi",
+      jobTitle: lang === "it" ? "Pittrice" : lang === "es" ? "Pintora" : "Painter",
+      description: lang === "it"
+        ? "Pittrice italiana a Málaga, ispirata dall'Impressionismo e dai colori del Mediterraneo."
+        : lang === "es"
+          ? "Pintora italiana afincada en Málaga, inspirada por el Impresionismo y los colores del Mediterráneo."
+          : "Italian painter based in Málaga, inspired by Impressionism and the colours of the Mediterranean.",
+      url: "https://bluluceart.com",
+      sameAs: ["https://www.instagram.com/bluluce.art/"],
+      image: "https://bluluceart.com/og-image.webp",
+      nationality: "Italian",
+      knowsAbout: ["Oil painting", "Mediterranean art", "Impressionism"],
+    },
+    {
+      "@type": "ArtGallery",
+      "@id": "https://bluluceart.com",
+      name: "BLULUCE ART",
+      description: "Original paintings and artworks inspired by the light, the sea, and the colors of the Mediterranean.",
+      image: "https://bluluceart.com/og-image.webp",
+      url: "https://bluluceart.com",
+      email: "info@bluluceart.com",
+      founder: { "@id": "https://bluluceart.com/#vittoria" },
+      artist: { "@id": "https://bluluceart.com/#vittoria" },
+      sameAs: ["https://www.instagram.com/bluluce.art/"],
+    },
   ],
 };
 ---
