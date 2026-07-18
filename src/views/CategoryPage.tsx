@@ -43,7 +43,7 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: mareSpiaggiaImg.src,
         name: { es: "Susurro de la Ola I", en: "Whisper of the Wave I", it: "Sussurro dell'Onda I" },
-        info: { es: "120 x 100 cm | Mixta sobre lino con pan de oro (24k) | 2026", en: "120 x 100 cm | Mixed media on linen with gold leaf (24k) | 2026", it: "120 x 100 cm | Tecnica mista su lino con foglia d'oro (24k) | 2026" },
+        info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
@@ -55,7 +55,7 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: mareSchienaImg.src,
         name: { es: "Verso il Largo", en: "Out to Sea", it: "Verso il Largo" },
-        info: { es: "150 x 120 cm | Acrílico sobre lienzo | 2026", en: "150 x 120 cm | Acrylic on canvas | 2026", it: "150 x 120 cm | Acrilico su tela | 2026" },
+        info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
@@ -111,7 +111,7 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: giardinoImg.src,
         name: { es: "La Terraza", en: "The Terrace", it: "La Terrazza" },
-        info: { es: "120 x 100 cm | Acrílico sobre lienzo | 2026", en: "120 x 100 cm | Acrylic on canvas | 2026", it: "120 x 100 cm | Acrilico su tela | 2026" },
+        info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
     ]
@@ -125,7 +125,7 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: ulivoAlberoImg.src,
         name: { es: "Bajo el Olivo", en: "Under the Olive Tree", it: "Sotto l'Ulivo" },
-        info: { es: "130 x 100 cm | Acrílico sobre lienzo | 2026", en: "130 x 100 cm | Acrylic on canvas | 2026", it: "130 x 100 cm | Acrilico su tela | 2026" },
+        info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
@@ -137,7 +137,7 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: giardinoImg.src,
         name: { es: "La Terraza", en: "The Terrace", it: "La Terrazza" },
-        info: { es: "120 x 100 cm | Acrílico sobre lienzo | 2026", en: "120 x 100 cm | Acrylic on canvas | 2026", it: "120 x 100 cm | Acrilico su tela | 2026" },
+        info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
     ]
