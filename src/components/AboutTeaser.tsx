@@ -42,7 +42,7 @@ export default function AboutTeaser() {
           <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
             <img
               src={artistaImg.src}
-              alt="Vittoria De Raymondi"
+              alt="Vittoria De Raimondi"
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover"
