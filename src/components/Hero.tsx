@@ -4,6 +4,13 @@ import type { Lang } from "@/i18n/homeTranslations";
 import { productsSlug } from "@/i18n/slugs";
 import heroVideo from "@/assets/mare.mp4?url";
 import heroPoster from "@/assets/mare-poster.webp?url";
+import HeroTimedCards from "@/components/HeroTimedCards";
+import img1 from "@/assets/pittura_mare_donna_spiaggia_dune.webp?url";
+import img2 from "@/assets/pittura_ritratto_flamenca_rosa_scura.webp?url";
+import img3 from "@/assets/pittura_ulivo_donna_sotto_albero.webp?url";
+import img4 from "@/assets/pittura_mare_donna_schiena_acqua.webp?url";
+import img5 from "@/assets/pittura_ritratto_donna_fiore_oro.webp?url";
+import img6 from "@/assets/pittura_mare_madre_figlia_acqua.webp?url";
 
 const copy: Record<Lang, {
   line1: string;
@@ -78,6 +85,24 @@ const Hero = () => {
         .hero-ctas { animation: heroFadeUp 1s cubic-bezier(0.25,1,0.5,1) 0.3s both; }
         .hero-desc { animation: heroFadeUp 1s cubic-bezier(0.25,1,0.5,1) 0.15s both; }
       `}</style>
+
+      {/* ─── DESKTOP ONLY: timed cards slideshow ─── */}
+      <div className="hidden md:block">
+        <HeroTimedCards
+          images={[img1, img2, img3, img4, img5, img6]}
+          line1={t.line1}
+          highlight={t.highlight}
+          line2={t.line2}
+          description={t.desc}
+          ctas={[
+            { label: t.cta1, href: collectionUrl },
+            { label: t.cta2, href: aboutUrl },
+          ]}
+          accent="#C9A96E"
+          background="#0E0804"
+          autoMs={6000}
+        />
+      </div>
 
       {/* ─── MOBILE ONLY: full-screen video overlay ─── */}
       <section className="md:hidden relative h-[100dvh] flex flex-col overflow-hidden bg-[#0E0804]">
