@@ -61,7 +61,7 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: marreTerazzaImg.src,
         name: { es: "La Terraza del Mar", en: "Terrace by the Sea", it: "La Terrazza sul Mare" },
-        info: { es: "100 x 70 cm | Óleo sobre lienzo | 2026", en: "100 x 70 cm | Oil on canvas | 2026", it: "100 x 70 cm | Olio su tela | 2026" },
+        info: { es: "70 x 50 cm | Acrílico sobre lienzo | 2026", en: "70 x 50 cm | Acrylic on canvas | 2026", it: "70 x 50 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       },
       {
