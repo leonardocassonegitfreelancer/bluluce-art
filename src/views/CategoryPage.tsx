@@ -67,7 +67,7 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: mareMadreFigliaImg.src,
         name: { es: "Madre e Hija", en: "Mother and Daughter", it: "Madre e Figlia" },
-        info: { es: "90 x 120 cm | Óleo y pigmentos sobre lienzo | 2025", en: "90 x 120 cm | Oil and pigments on canvas | 2025", it: "90 x 120 cm | Olio e pigmenti su tela | 2025" },
+        info: { es: "50 x 70 cm | Acrílico sobre lienzo | 2026", en: "50 x 70 cm | Acrylic on canvas | 2026", it: "50 x 70 cm | Acrilico su tela | 2026" },
         status: { es: "Colección Privada", en: "Private Collection", it: "Collezione Privata" }
       },
       {
