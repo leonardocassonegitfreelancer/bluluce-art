@@ -17,7 +17,7 @@ import mareMadreFigliaImg from "@/assets/pittura_mare_madre_figlia_acqua.webp";
 import bambinaSpiaggiaImg from "@/assets/pittura_mare_bambina_spiaggia_cielo.webp";
 import bambinaSecchielloOndeImg from "@/assets/pittura_mare_bambina_secchiello_onde.webp";
 import bambinaSecchielloRossoImg from "@/assets/pittura_mare_bambina_secchiello_rosso.webp";
-import terraCampoFioriImg from "@/assets/pittura_terra_donna_campo_fiori.webp";
+import mareRocciSaliceImg from "@/assets/pittura_mare_donna_rocce_salice_acqua.webp";
 
 interface Artwork {
   img: string;
@@ -88,6 +88,12 @@ const categoryData: Record<CategorySlug, CategoryData> = {
         name: { es: "La Niña del Cubo Rojo II", en: "Girl with the Red Bucket II", it: "La Bambina col Secchiello Rosso II" },
         info: { es: "18 x 24 cm | Acrílico sobre lienzo | 2026", en: "18 x 24 cm | Acrylic on canvas | 2026", it: "18 x 24 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
+      },
+      {
+        img: mareRocciSaliceImg.src,
+        name: { es: "Bajo el Sauce", en: "Under the Willow", it: "Sotto il Salice" },
+        info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
+        status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
     ]
   },
@@ -133,18 +139,6 @@ const categoryData: Record<CategorySlug, CategoryData> = {
         img: ulivoBoscoImg.src,
         name: { es: "El Bosque y el Lago", en: "Forest and Lake", it: "Il Bosco e il Lago" },
         info: { es: "40 x 60 cm | Acrílico sobre lienzo | 2026", en: "40 x 60 cm | Acrylic on canvas | 2026", it: "40 x 60 cm | Acrilico su tela | 2026" },
-        status: { es: "Disponible", en: "Available", it: "Disponibile" }
-      },
-      {
-        img: giardinoImg.src,
-        name: { es: "La Terraza", en: "The Terrace", it: "La Terrazza" },
-        info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
-        status: { es: "Disponible", en: "Available", it: "Disponibile" }
-      },
-      {
-        img: terraCampoFioriImg.src,
-        name: { es: "Entre las Flores", en: "Among the Flowers", it: "Tra i Fiori" },
-        info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
     ]
