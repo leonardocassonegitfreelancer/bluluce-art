@@ -18,6 +18,7 @@ import bambinaSpiaggiaImg from "@/assets/pittura_mare_bambina_spiaggia_cielo.web
 import bambinaSecchielloOndeImg from "@/assets/pittura_mare_bambina_secchiello_onde.webp";
 import bambinaSecchielloRossoImg from "@/assets/pittura_mare_bambina_secchiello_rosso.webp";
 import mareRocciSaliceImg from "@/assets/pittura_mare_donna_rocce_salice_acqua.webp";
+import dueBimbiRivaImg from "@/assets/pittura_mare_due_bimbi_riva.webp";
 
 interface Artwork {
   img: string;
@@ -92,6 +93,12 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: mareRocciSaliceImg.src,
         name: { es: "Bajo el Sauce", en: "Under the Willow", it: "Sotto il Salice" },
+        info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
+        status: { es: "Disponible", en: "Available", it: "Disponibile" }
+      },
+      {
+        img: dueBimbiRivaImg.src,
+        name: { es: "Dos Niños en la Orilla", en: "Two Children by the Shore", it: "Due Bimbi in Riva" },
         info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
