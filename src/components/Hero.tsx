@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/homeTranslations";
 import { productsSlug } from "@/i18n/slugs";
@@ -46,25 +45,6 @@ const Hero = () => {
   const collectionUrl = `${prefix}/${productsSlug[lang as Lang] || productsSlug.es}`;
   const aboutUrl = `${prefix}/about`;
 
-  const videoWrapRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let rafId = 0;
-    const onScroll = () => {
-      if (rafId) return;
-      rafId = requestAnimationFrame(() => {
-        if (videoWrapRef.current)
-          videoWrapRef.current.style.transform = `translateY(${window.scrollY * 0.3}px)`;
-        rafId = 0;
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, []);
-
   return (
     <>
       {/* ─── DESKTOP: timed cards slideshow ─── */}
@@ -95,7 +75,7 @@ const Hero = () => {
         .hero-ctas { animation: heroFadeUp 1s cubic-bezier(0.25,1,0.5,1) 0.3s both; }
       `}</style>
       <section className="md:hidden relative h-[100dvh] flex flex-col overflow-hidden bg-[#0E0804]">
-        <div ref={videoWrapRef} className="absolute will-change-transform" style={{ inset: "-20%" }}>
+        <div className="absolute" style={{ inset: "-20%" }}>
           <video autoPlay muted loop playsInline
             className="w-full h-full object-cover"
             style={{ filter: "brightness(1.08) saturate(1.1)" }}
