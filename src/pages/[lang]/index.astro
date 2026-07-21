@@ -24,7 +24,7 @@ const artGalleryJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Person",
+      "@type": ["Person", "VisualArtist"],
       "@id": "https://bluluceart.com/#vittoria",
       name: "Vittoria De Raimondi",
       jobTitle: lang === "it" ? "Pittrice" : lang === "es" ? "Pintora" : "Painter",
@@ -38,6 +38,14 @@ const artGalleryJsonLd = {
       image: "https://bluluceart.com/og-image.webp",
       nationality: "Italian",
       knowsAbout: ["Acrylic painting", "Mediterranean art", "Impressionism"],
+      artMedium: "Acrylic on canvas",
+      artform: "Painting",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: "info@bluluceart.com",
+        availableLanguage: ["Italian", "Spanish", "English"],
+      },
     },
     {
       "@type": "ArtGallery",

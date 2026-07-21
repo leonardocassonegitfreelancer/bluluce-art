@@ -14,15 +14,89 @@ export function getStaticPaths() {
 const { lang } = Astro.params as { lang: Lang };
 
 const titles: Record<Lang, string> = {
-  es: "Cuadro Personalizado | BLULUCE ART – Obra a medida",
-  en: "Custom Painting | BLULUCE ART – Bespoke artwork",
-  it: "Quadro Personalizzato | BLULUCE ART – Opera su misura",
+  es: "Vittoria De Raimondi | Cuadro Personalizado – BLULUCE ART",
+  en: "Vittoria De Raimondi | Custom Painting – BLULUCE ART",
+  it: "Vittoria De Raimondi | Quadro Personalizzato – BLULUCE ART",
 };
 
 const descriptions: Record<Lang, string> = {
-  es: "Solicita una obra original por encargo. Pinturas a mano sobre lino o lienzo, con pigmentos naturales y pan de oro, realizadas especialmente para tu espacio.",
-  en: "Request an original commissioned artwork. Hand-painted on linen or canvas with natural pigments and gold leaf, created specifically for your space.",
-  it: "Richiedi un'opera originale su commissione. Dipinti a mano su lino o tela, con pigmenti naturali e foglia d'oro, realizzati appositamente per il tuo spazio.",
+  es: "Encarga una pintura original a Vittoria De Raimondi. Acrílico sobre lienzo, soggetto e dimensioni a tu elección. Contacto por WhatsApp o email: info@bluluceart.com.",
+  en: "Commission an original painting by Vittoria De Raimondi. Acrylic on canvas, subject and size of your choice. Contact via WhatsApp or email: info@bluluceart.com.",
+  it: "Commissiona un dipinto originale a Vittoria De Raimondi. Acrilico su tela, soggetto e dimensioni a tua scelta. Contatto via WhatsApp o email: info@bluluceart.com.",
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: lang === "it" ? [
+    {
+      "@type": "Question",
+      name: "Come posso commissionare un dipinto a Vittoria De Raimondi?",
+      acceptedAnswer: { "@type": "Answer", text: "Puoi contattare Vittoria direttamente via WhatsApp o email (info@bluluceart.com) specificando soggetto, dimensioni e materiale desiderato. Risponde personalmente a ogni richiesta." }
+    },
+    {
+      "@type": "Question",
+      name: "Quanto tempo ci vuole per un quadro su commissione?",
+      acceptedAnswer: { "@type": "Answer", text: "I tempi variano in base alla complessità e alle dimensioni dell'opera. Vittoria concorda i tempi direttamente con il cliente al momento della commissione." }
+    },
+    {
+      "@type": "Question",
+      name: "Quali dimensioni sono disponibili per i dipinti su commissione?",
+      acceptedAnswer: { "@type": "Answer", text: "Vittoria lavora su tele di vari formati, da piccoli formati (18x24 cm) fino a grandi dimensioni (70x100 cm e oltre). Il formato viene concordato in base alle esigenze del cliente." }
+    },
+    {
+      "@type": "Question",
+      name: "Vittoria De Raimondi spedisce i quadri?",
+      acceptedAnswer: { "@type": "Answer", text: "Per informazioni sulla spedizione o sul ritiro delle opere contatta direttamente Vittoria via email a info@bluluceart.com o tramite WhatsApp." }
+    },
+    {
+      "@type": "Question",
+      name: "Dove si trova lo studio di Vittoria De Raimondi?",
+      acceptedAnswer: { "@type": "Answer", text: "Lo studio di Vittoria si trova a Málaga, in Andalusia (Spagna). Le visite private sono possibili su appuntamento." }
+    },
+  ] : lang === "es" ? [
+    {
+      "@type": "Question",
+      name: "¿Cómo puedo encargar un cuadro a Vittoria De Raimondi?",
+      acceptedAnswer: { "@type": "Answer", text: "Puedes contactar a Vittoria directamente por WhatsApp o email (info@bluluceart.com) indicando el tema, las dimensiones y el material deseado. Ella responde personalmente a cada solicitud." }
+    },
+    {
+      "@type": "Question",
+      name: "¿Cuánto tiempo tarda un cuadro por encargo?",
+      acceptedAnswer: { "@type": "Answer", text: "Los plazos varían según la complejidad y las dimensiones de la obra. Vittoria acuerda los tiempos directamente con el cliente en el momento del encargo." }
+    },
+    {
+      "@type": "Question",
+      name: "¿Qué dimensiones están disponibles para los cuadros por encargo?",
+      acceptedAnswer: { "@type": "Answer", text: "Vittoria trabaja con lienzos de varios formatos, desde pequeños (18x24 cm) hasta grandes dimensiones (70x100 cm y más). El formato se acuerda según las necesidades del cliente." }
+    },
+    {
+      "@type": "Question",
+      name: "¿Dónde está el estudio de Vittoria De Raimondi?",
+      acceptedAnswer: { "@type": "Answer", text: "El estudio de Vittoria se encuentra en Málaga, Andalucía (España). Las visitas privadas son posibles con cita previa." }
+    },
+  ] : [
+    {
+      "@type": "Question",
+      name: "How can I commission a painting from Vittoria De Raimondi?",
+      acceptedAnswer: { "@type": "Answer", text: "You can contact Vittoria directly via WhatsApp or email (info@bluluceart.com) specifying the subject, size and material you want. She responds personally to every request." }
+    },
+    {
+      "@type": "Question",
+      name: "How long does a commissioned painting take?",
+      acceptedAnswer: { "@type": "Answer", text: "Timelines vary depending on the complexity and size of the work. Vittoria agrees on timing directly with the client at the time of the commission." }
+    },
+    {
+      "@type": "Question",
+      name: "What sizes are available for commissioned paintings?",
+      acceptedAnswer: { "@type": "Answer", text: "Vittoria works on canvases of various sizes, from small formats (18x24 cm) to large dimensions (70x100 cm and beyond). The format is agreed according to the client's needs." }
+    },
+    {
+      "@type": "Question",
+      name: "Where is Vittoria De Raimondi's studio?",
+      acceptedAnswer: { "@type": "Answer", text: "Vittoria's studio is located in Málaga, Andalusia (Spain). Private visits are possible by appointment." }
+    },
+  ]
 };
 ---
 
@@ -31,6 +105,7 @@ const descriptions: Record<Lang, string> = {
   description={descriptions[lang]}
   canonical={`/${lang}/commissioni`}
   lang={lang}
+  jsonLd={faqJsonLd}
 >
   <CommissionsPageWrapper lang={lang} client:only="react" />
 </Layout>
