@@ -19,6 +19,7 @@ import bambinaSecchielloOndeImg from "@/assets/pittura_mare_bambina_secchiello_o
 import bambinaSecchielloRossoImg from "@/assets/pittura_mare_bambina_secchiello_rosso.webp";
 import mareRocciSaliceImg from "@/assets/pittura_mare_donna_rocce_salice_acqua.webp";
 import dueBimbiRivaImg from "@/assets/pittura_mare_due_bimbi_riva.webp";
+import donnaAbitoAcquaImg from "@/assets/pittura_mare_donna_abito_acqua_luce.webp";
 
 interface Artwork {
   img: string;
@@ -100,6 +101,12 @@ const categoryData: Record<CategorySlug, CategoryData> = {
         img: dueBimbiRivaImg.src,
         name: { es: "Dos Niños en la Orilla", en: "Two Children by the Shore", it: "Due Bimbi in Riva" },
         info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
+        status: { es: "Disponible", en: "Available", it: "Disponibile" }
+      },
+      {
+        img: donnaAbitoAcquaImg.src,
+        name: { es: "Reflejos", en: "Reflections", it: "Riflessi" },
+        info: { es: "40 x 50 cm | Acrílico sobre lienzo | 2026", en: "40 x 50 cm | Acrylic on canvas | 2026", it: "40 x 50 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
     ]
