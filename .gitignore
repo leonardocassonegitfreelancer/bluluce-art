@@ -22,3 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local dev / machine-specific
+dev.ps1
+
+# Temp photo folders and source zips
+*.zip
+before_after_tmp/
+foto_artista_tmp/
+foto_bimbi_tmp/
+
+# Dev screenshots and utility scripts
+ss-*.png
+mobile-check.mjs
+screenshot-check.mjs
+mobile-nav-check.mjs
+gen-favicons.mjs
