@@ -17,6 +17,7 @@ import mareMadreFigliaImg from "@/assets/pittura_mare_madre_figlia_acqua.webp";
 import bambinaSpiaggiaImg from "@/assets/pittura_mare_bambina_spiaggia_cielo.webp";
 import bambinaSecchielloOndeImg from "@/assets/pittura_mare_bambina_secchiello_onde.webp";
 import bambinaSecchielloRossoImg from "@/assets/pittura_mare_bambina_secchiello_rosso.webp";
+import terraCampoFioriImg from "@/assets/pittura_terra_donna_campo_fiori.webp";
 
 interface Artwork {
   img: string;
@@ -137,6 +138,12 @@ const categoryData: Record<CategorySlug, CategoryData> = {
       {
         img: giardinoImg.src,
         name: { es: "La Terraza", en: "The Terrace", it: "La Terrazza" },
+        info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
+        status: { es: "Disponible", en: "Available", it: "Disponibile" }
+      },
+      {
+        img: terraCampoFioriImg.src,
+        name: { es: "Entre las Flores", en: "Among the Flowers", it: "Tra i Fiori" },
         info: { es: "60 x 80 cm | Acrílico sobre lienzo | 2026", en: "60 x 80 cm | Acrylic on canvas | 2026", it: "60 x 80 cm | Acrilico su tela | 2026" },
         status: { es: "Disponible", en: "Available", it: "Disponibile" }
       }
