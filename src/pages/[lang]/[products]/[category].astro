@@ -34,7 +34,7 @@ export function getStaticPaths() {
 const { lang, category } = Astro.params as { lang: Lang; products: string; category: CategorySlug };
 const meta = categoryMeta[category];
 const title = meta
-  ? `${th(meta.nameKey, lang)} | Vittoria De Raimondi – BLULUCE ART`
+  ? `${th(meta.nameKey, lang)} | Vittoria De Raymondi – BLULUCE ART`
   : `${category} | BLULUCE ART`;
 const description = meta ? th(meta.descKey, lang) : "";
 ---

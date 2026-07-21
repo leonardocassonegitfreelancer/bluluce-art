@@ -14,15 +14,15 @@ export function getStaticPaths() {
 const { lang } = Astro.params as { lang: Lang };
 
 const titles: Record<Lang, string> = {
-  es: "Vittoria De Raimondi | Cuadro Personalizado – BLULUCE ART",
-  en: "Vittoria De Raimondi | Custom Painting – BLULUCE ART",
-  it: "Vittoria De Raimondi | Quadro Personalizzato – BLULUCE ART",
+  es: "Vittoria De Raymondi | Cuadro Personalizado – BLULUCE ART",
+  en: "Vittoria De Raymondi | Custom Painting – BLULUCE ART",
+  it: "Vittoria De Raymondi | Quadro Personalizzato – BLULUCE ART",
 };
 
 const descriptions: Record<Lang, string> = {
-  es: "Encarga una pintura original a Vittoria De Raimondi. Acrílico sobre lienzo, soggetto e dimensioni a tu elección. Contacto por WhatsApp o email: info@bluluceart.com.",
-  en: "Commission an original painting by Vittoria De Raimondi. Acrylic on canvas, subject and size of your choice. Contact via WhatsApp or email: info@bluluceart.com.",
-  it: "Commissiona un dipinto originale a Vittoria De Raimondi. Acrilico su tela, soggetto e dimensioni a tua scelta. Contatto via WhatsApp o email: info@bluluceart.com.",
+  es: "Encarga una pintura original a Vittoria De Raymondi. Acrílico sobre lienzo, soggetto e dimensioni a tu elección. Contacto por WhatsApp o email: info@bluluceart.com.",
+  en: "Commission an original painting by Vittoria De Raymondi. Acrylic on canvas, subject and size of your choice. Contact via WhatsApp or email: info@bluluceart.com.",
+  it: "Commissiona un dipinto originale a Vittoria De Raymondi. Acrilico su tela, soggetto e dimensioni a tua scelta. Contatto via WhatsApp o email: info@bluluceart.com.",
 };
 
 const faqJsonLd = {
@@ -31,7 +31,7 @@ const faqJsonLd = {
   mainEntity: lang === "it" ? [
     {
       "@type": "Question",
-      name: "Come posso commissionare un dipinto a Vittoria De Raimondi?",
+      name: "Come posso commissionare un dipinto a Vittoria De Raymondi?",
       acceptedAnswer: { "@type": "Answer", text: "Puoi contattare Vittoria direttamente via WhatsApp o email (info@bluluceart.com) specificando soggetto, dimensioni e materiale desiderato. Risponde personalmente a ogni richiesta." }
     },
     {
@@ -46,18 +46,18 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "Vittoria De Raimondi spedisce i quadri?",
+      name: "Vittoria De Raymondi spedisce i quadri?",
       acceptedAnswer: { "@type": "Answer", text: "Per informazioni sulla spedizione o sul ritiro delle opere contatta direttamente Vittoria via email a info@bluluceart.com o tramite WhatsApp." }
     },
     {
       "@type": "Question",
-      name: "Dove si trova lo studio di Vittoria De Raimondi?",
+      name: "Dove si trova lo studio di Vittoria De Raymondi?",
       acceptedAnswer: { "@type": "Answer", text: "Lo studio di Vittoria si trova a Málaga, in Andalusia (Spagna). Le visite private sono possibili su appuntamento." }
     },
   ] : lang === "es" ? [
     {
       "@type": "Question",
-      name: "¿Cómo puedo encargar un cuadro a Vittoria De Raimondi?",
+      name: "¿Cómo puedo encargar un cuadro a Vittoria De Raymondi?",
       acceptedAnswer: { "@type": "Answer", text: "Puedes contactar a Vittoria directamente por WhatsApp o email (info@bluluceart.com) indicando el tema, las dimensiones y el material deseado. Ella responde personalmente a cada solicitud." }
     },
     {
@@ -72,13 +72,13 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "¿Dónde está el estudio de Vittoria De Raimondi?",
+      name: "¿Dónde está el estudio de Vittoria De Raymondi?",
       acceptedAnswer: { "@type": "Answer", text: "El estudio de Vittoria se encuentra en Málaga, Andalucía (España). Las visitas privadas son posibles con cita previa." }
     },
   ] : [
     {
       "@type": "Question",
-      name: "How can I commission a painting from Vittoria De Raimondi?",
+      name: "How can I commission a painting from Vittoria De Raymondi?",
       acceptedAnswer: { "@type": "Answer", text: "You can contact Vittoria directly via WhatsApp or email (info@bluluceart.com) specifying the subject, size and material you want. She responds personally to every request." }
     },
     {
@@ -93,7 +93,7 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "Where is Vittoria De Raimondi's studio?",
+      name: "Where is Vittoria De Raymondi's studio?",
       acceptedAnswer: { "@type": "Answer", text: "Vittoria's studio is located in Málaga, Andalusia (Spain). Private visits are possible by appointment." }
     },
   ]

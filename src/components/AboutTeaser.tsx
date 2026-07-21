@@ -42,7 +42,7 @@ export default function AboutTeaser() {
           <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
             <img
               src={artistaImg.src}
-              alt="Vittoria De Raimondi"
+              alt="Vittoria De Raymondi"
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover"
@@ -61,7 +61,7 @@ export default function AboutTeaser() {
             </div>
 
             <p className="font-display font-normal tracking-[0.06em]" style={{ fontSize: "clamp(1.4rem, 2.8vw, 2rem)", color: "#1c1917" }}>
-              Vittoria De Raimondi
+              Vittoria De Raymondi
             </p>
 
             <blockquote

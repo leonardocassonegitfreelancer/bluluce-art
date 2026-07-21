@@ -15,9 +15,9 @@ export function getStaticPaths() {
 const { lang } = Astro.params as { lang: Lang };
 
 const titles: Record<Lang, string> = {
-  es: "Vittoria De Raimondi – BLULUCE ART | Pinturas Originales del Mediterráneo",
-  en: "Vittoria De Raimondi – BLULUCE ART | Original Mediterranean Paintings",
-  it: "Vittoria De Raimondi – BLULUCE ART | Dipinti Originali del Mediterraneo",
+  es: "Vittoria De Raymondi – BLULUCE ART | Pinturas Originales del Mediterráneo",
+  en: "Vittoria De Raymondi – BLULUCE ART | Original Mediterranean Paintings",
+  it: "Vittoria De Raymondi – BLULUCE ART | Dipinti Originali del Mediterraneo",
 };
 
 const artGalleryJsonLd = {
@@ -26,7 +26,7 @@ const artGalleryJsonLd = {
     {
       "@type": ["Person", "VisualArtist"],
       "@id": "https://bluluceart.com/#vittoria",
-      name: "Vittoria De Raimondi",
+      name: "Vittoria De Raymondi",
       jobTitle: lang === "it" ? "Pittrice" : lang === "es" ? "Pintora" : "Painter",
       description: lang === "it"
         ? "Pittrice italiana a Málaga, ispirata dall'Impressionismo e dai colori del Mediterraneo."

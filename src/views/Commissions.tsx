@@ -178,7 +178,7 @@ export default function CommissionsView() {
         <div className="relative" style={{ minHeight: "60vw" }}>
           <img
             src={artistaFieraImg.src}
-            alt="Vittoria De Raimondi — Bluluce Art"
+            alt="Vittoria De Raymondi — Bluluce Art"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: "center 48%" }}
           />

@@ -140,7 +140,7 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
                 textShadow: "-1px -1px 0 #fafaf8, 1px -1px 0 #fafaf8, -1px 1px 0 #fafaf8, 1px 1px 0 #fafaf8, 0 0 5px rgba(250,248,245,0.8)"
               }}
             >
-              Vittoria De Raimondi
+              Vittoria De Raymondi
             </p>
             <p
               className="font-body uppercase tracking-[0.3em] mb-5 font-bold"
@@ -286,7 +286,7 @@ const Footer = React.forwardRef<HTMLElement>((_, ref) => {
             textShadow: "-1px -1px 0 #fafaf8, 1px -1px 0 #fafaf8, -1px 1px 0 #fafaf8, 1px 1px 0 #fafaf8, 0 0 5px rgba(250,248,245,0.8)"
           }}
         >
-          © 2026 Vittoria De Raimondi · BLULUCE ART — {t.rights}
+          © 2026 Vittoria De Raymondi · BLULUCE ART — {t.rights}
         </p>
 
       </div>

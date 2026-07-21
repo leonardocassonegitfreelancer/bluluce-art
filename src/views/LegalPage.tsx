@@ -11,7 +11,7 @@ const cookieCopy: Record<Lang, { title: string; sections: { h: string; p: string
     sections: [
       {
         h: "Titolare del trattamento",
-        p: "Vittoria De Raimondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
+        p: "Vittoria De Raymondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
       },
       {
         h: "Cosa sono i cookie",
@@ -52,7 +52,7 @@ const cookieCopy: Record<Lang, { title: string; sections: { h: string; p: string
     sections: [
       {
         h: "Responsable del tratamiento",
-        p: "Vittoria De Raimondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
+        p: "Vittoria De Raymondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
       },
       {
         h: "¿Qué son las cookies?",
@@ -93,7 +93,7 @@ const cookieCopy: Record<Lang, { title: string; sections: { h: string; p: string
     sections: [
       {
         h: "Data Controller",
-        p: "Vittoria De Raimondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
+        p: "Vittoria De Raymondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
       },
       {
         h: "What are cookies?",
@@ -137,11 +137,11 @@ const termsCopy: Record<Lang, { title: string; sections: { h: string; p: string 
     sections: [
       {
         h: "Titolare",
-        p: "Vittoria De Raimondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
+        p: "Vittoria De Raymondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
       },
       {
         h: "Proprietà intellettuale",
-        p: "Tutti i contenuti presenti su questo sito — immagini, dipinti, testi, loghi e materiali grafici — sono di proprietà esclusiva di Vittoria De Raimondi e protetti dalle leggi sul diritto d'autore. È vietata qualsiasi riproduzione, distribuzione, modifica o utilizzo commerciale senza autorizzazione scritta.",
+        p: "Tutti i contenuti presenti su questo sito — immagini, dipinti, testi, loghi e materiali grafici — sono di proprietà esclusiva di Vittoria De Raymondi e protetti dalle leggi sul diritto d'autore. È vietata qualsiasi riproduzione, distribuzione, modifica o utilizzo commerciale senza autorizzazione scritta.",
       },
       {
         h: "Uso del sito",
@@ -174,11 +174,11 @@ const termsCopy: Record<Lang, { title: string; sections: { h: string; p: string 
     sections: [
       {
         h: "Titular",
-        p: "Vittoria De Raimondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
+        p: "Vittoria De Raymondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
       },
       {
         h: "Propiedad intelectual",
-        p: "Todos los contenidos de este sitio web — imágenes, pinturas, textos, logotipos y materiales gráficos — son propiedad exclusiva de Vittoria De Raimondi y están protegidos por las leyes de propiedad intelectual. Queda prohibida cualquier reproducción, distribución, modificación o uso comercial sin autorización escrita.",
+        p: "Todos los contenidos de este sitio web — imágenes, pinturas, textos, logotipos y materiales gráficos — son propiedad exclusiva de Vittoria De Raymondi y están protegidos por las leyes de propiedad intelectual. Queda prohibida cualquier reproducción, distribución, modificación o uso comercial sin autorización escrita.",
       },
       {
         h: "Uso del sitio",
@@ -211,11 +211,11 @@ const termsCopy: Record<Lang, { title: string; sections: { h: string; p: string 
     sections: [
       {
         h: "Owner",
-        p: "Vittoria De Raimondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
+        p: "Vittoria De Raymondi – BLULUCE ART · bluluceart.com · info@bluluceart.com",
       },
       {
         h: "Intellectual property",
-        p: "All content on this website — images, paintings, texts, logos and graphic materials — is the exclusive property of Vittoria De Raimondi and is protected by copyright law. Any reproduction, distribution, modification or commercial use without written permission is strictly prohibited.",
+        p: "All content on this website — images, paintings, texts, logos and graphic materials — is the exclusive property of Vittoria De Raymondi and is protected by copyright law. Any reproduction, distribution, modification or commercial use without written permission is strictly prohibited.",
       },
       {
         h: "Use of the site",

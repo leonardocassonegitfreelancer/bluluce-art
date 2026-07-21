@@ -98,7 +98,7 @@ export default function AboutView() {
         <div className="relative order-first md:order-last" style={{ height: "88vw", maxHeight: "520px" }}>
           <img
             src={artistaTerrazzoImg.src}
-            alt="Vittoria De Raimondi — studio a cielo aperto, Málaga"
+            alt="Vittoria De Raymondi — studio a cielo aperto, Málaga"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: "center 18%" }}
           />
@@ -172,7 +172,7 @@ export default function AboutView() {
             <div className="mb-8 overflow-hidden" style={{ background: "#f0ece5", padding: "10px 10px 18px" }}>
               <img
                 src={artistaColoriImg.src}
-                alt="Vittoria De Raimondi"
+                alt="Vittoria De Raymondi"
                 className="w-full object-cover"
                 style={{ aspectRatio: "3/4" }}
               />
@@ -201,7 +201,7 @@ export default function AboutView() {
       <div className="w-full overflow-hidden" style={{ height: "clamp(260px, 38vw, 520px)" }}>
         <img
           src={artistaMijasImg.src}
-          alt="Vittoria De Raimondi — Mijas, Andalusia"
+          alt="Vittoria De Raymondi — Mijas, Andalusia"
           className="w-full h-full object-cover"
           style={{ objectPosition: "center 38%" }}
         />
