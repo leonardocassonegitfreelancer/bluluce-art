@@ -26,8 +26,12 @@ const BASE_URL = "https://bluluceart.com";
 const DEFAULT_IMAGE = "https://bluluceart.com/og-image.webp";
 const LANGS = ["es", "en", "it"] as const;
 const subPath = canonical.replace(/^\/(es|en|it)/, "") || "";
-const ogImage = image || DEFAULT_IMAGE;
+const ogImage = image ? `${BASE_URL}${image}` : DEFAULT_IMAGE;
 const canonicalUrl = `${BASE_URL}${canonical}`;
+
+const localeMap: Record<string, string> = { it: "it_IT", es: "es_ES", en: "en_GB" };
+const ogLocale = localeMap[lang] ?? "it_IT";
+const altLocales = LANGS.filter((l) => l !== lang).map((l) => localeMap[l]);
 ---
 
 <!doctype html>
@@ -52,15 +56,24 @@ const canonicalUrl = `${BASE_URL}${canonical}`;
     <link rel="alternate" hreflang="x-default" href={`${BASE_URL}/es${subPath}`} />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BLULUCE ART" />
+    <meta property="og:locale" content={ogLocale} />
+    {altLocales.map((l) => <meta property="og:locale:alternate" content={l} />)}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${title} – Vittoria De Raymondi`} />
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bluluceart" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={`${title} – Vittoria De Raymondi`} />
 
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
