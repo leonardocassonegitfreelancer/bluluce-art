@@ -13,8 +13,6 @@ export default defineConfig({
     react(),
     tailwind({ applyBaseStyles: false }),
     sitemap({
-      // Drop the bare "/" entry — it's a noindex JS-redirect splash page.
-      filter: (page) => page !== 'https://bluluceart.com/',
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
