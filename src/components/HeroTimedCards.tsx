@@ -39,6 +39,8 @@ export interface HeroTimedCardsProps {
   images?: string[];
   /** Small gold rule shown above the title (decorative). */
   showRule?: boolean;
+  /** Small uppercase label shown above the title (e.g. the artist's name). */
+  kicker?: string;
   line1?: string;
   highlight?: string;
   line2?: string;
@@ -70,6 +72,7 @@ const DUR = 0.85;
 const HeroTimedCards = ({
   images = DEFAULT_IMAGES,
   showRule = true,
+  kicker,
   line1 = "Where ideas",
   highlight = "take",
   line2 = "shape.",
@@ -221,6 +224,8 @@ const HeroTimedCards = ({
         .tc-copy .tc-anim1 { animation: tcFadeUp 1.1s cubic-bezier(0.25,1,0.5,1) both; }
         .tc-copy .tc-anim2 { animation: tcFadeUp 1s cubic-bezier(0.25,1,0.5,1) 0.15s both; }
         .tc-copy .tc-anim3 { animation: tcFadeUp 1s cubic-bezier(0.25,1,0.5,1) 0.3s both; }
+        .tc-kicker { font-family: var(--font-body, "Inter", sans-serif); font-size: 0.7rem;
+          font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; margin: 0 0 1.2rem; }
         .tc-title { font-family: var(--font-display, "Playfair Display", serif); font-weight: 700;
           font-style: normal; line-height: 0.95; letter-spacing: -0.02em; color: #f5f0e8;
           font-size: clamp(3rem, 4.8vw, 5.6rem); text-shadow: 0 2px 30px rgba(0,0,0,0.5); margin: 0 0 1.4rem; }
@@ -264,6 +269,7 @@ const HeroTimedCards = ({
       />
 
       <div className="tc-copy">
+        {kicker && <p className="tc-anim1 tc-kicker" style={{ color: accent }}>{kicker}</p>}
         {showRule && <div className="tc-anim1" style={{ width: 40, height: 1, background: accent, margin: "0 0 2rem" }} />}
         <h1 className="tc-anim1 tc-title">
           {line1}{" "}

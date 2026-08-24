@@ -51,6 +51,7 @@ const Hero = () => {
       <div className="hidden md:block">
         <HeroTimedCards
           images={[img1, img2, img3, img4, img5, img6]}
+          kicker="Vittoria De Raymondi"
           line1={t.line1}
           highlight={t.highlight}
           line2={t.line2}
@@ -86,6 +87,10 @@ const Hero = () => {
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#EDE0C4]/95 via-[#EDE0C4]/50 to-transparent" />
         <div className="relative z-10 flex-1 flex flex-col px-7">
           <div className="mt-[48vh]">
+            <p className="hero-h1 font-body font-semibold uppercase text-[#C9A96E]"
+              style={{ fontSize: "0.7rem", letterSpacing: "0.4em", margin: "0 0 0.9rem" }}>
+              Vittoria De Raymondi
+            </p>
             <h1 className="hero-h1 font-display font-normal italic text-white leading-[0.9]"
               style={{ fontSize: "clamp(2.8rem, 10vw, 3.8rem)", letterSpacing: "-0.02em", textShadow: "0 2px 24px rgba(0,0,0,0.65)" }}>
               {t.line1}{" "}
