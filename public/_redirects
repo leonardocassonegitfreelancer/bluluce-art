@@ -4,5 +4,16 @@
 / /it 302 Country=IT
 / /es 302 Country=ES
 
+# 2026-07-14 rename recovery (commit 91ae5dc: Terra→Fuoco, Ulivo→Terra).
+# "ulivo" was retired outright (its content moved to "terra"), so this
+# redirect is safe. The old "terra" URL can't be redirected the same way
+# -- that slug is now live again with different content (the old Ulivo
+# collection) -- so its GSC 404/mismatch entries are not fixable without
+# either reverting the slug reuse or accepting the loss. Don't reuse a
+# retiring slug for new content next time; pick a fresh one instead.
+/it/collezione/ulivo /it/collezione/terra 301
+/es/tienda/ulivo /es/tienda/terra 301
+/en/shop/ulivo /en/shop/terra 301
+
 # Catch-all: serve the 404 page
 /* /404.html 404
